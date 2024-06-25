@@ -2,6 +2,7 @@
 using ECM.Helpers;
 using UnityEngine;
 using UnityEngine.Serialization;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 namespace ECM.Controllers
 {
@@ -917,7 +918,7 @@ namespace ECM.Controllers
             // Pause / resume character
 
             Pause();
-
+            
             // If paused, return
 
             if (isPaused)
@@ -934,6 +935,7 @@ namespace ECM.Controllers
 
         public virtual void Update()
         {
+            Quaternion rot = transform.rotation;
             // Handle input
 
             HandleInput();

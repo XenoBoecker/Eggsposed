@@ -50,6 +50,10 @@ namespace ECM.Components
         [SerializeField]
         private Vector3 _gravity = new Vector3(0.0f, -30.0f, 0.0f);
 
+        [Tooltip("Multiplicative gravity modifier applied to this character.")]
+        [SerializeField]
+        private float _glideGravityModifier = 1.0f;
+
         [Header("Slopes")]
         [Tooltip("Should the character slide down of a steep slope?")]
         [SerializeField]
@@ -153,6 +157,18 @@ namespace ECM.Components
             get { return _gravity; }
             set { _gravity = value; }
         }
+
+        /// <summary>
+        /// Multiplicative gravity modifier applied to this character.
+        /// </summary>
+
+        public float glideGravityMultiplier
+        {
+            get { return _glideGravityModifier; }
+            set { _glideGravityModifier = value; }
+        }
+
+        
 
         /// <summary>
         /// Should the character slide down of a steep slope?
@@ -1099,7 +1115,7 @@ namespace ECM.Components
                 // If desired, apply gravity
 
                 if (useGravity)
-                    velocity += gravity * Time.deltaTime;
+                    velocity += gravity * glideGravityMultiplier * Time.deltaTime;
             }
             
             // If moving towards a step,
@@ -1282,7 +1298,7 @@ namespace ECM.Components
             // If desired, apply gravity
 
             if (useGravity)
-                velocity += gravity * Time.deltaTime;
+                velocity += gravity * glideGravityMultiplier * Time.deltaTime;
         }
 
         /// <summary>
