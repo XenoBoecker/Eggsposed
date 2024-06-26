@@ -1600,6 +1600,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chicken (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1902837851461061361, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: _isControlledByPlayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7165455128689545529, guid: c677be8ddf1434a44a95262881e373c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3494,6 +3499,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2647213ebbdb266459b73e2559e24337, type: 2}
   eggPrefab: {fileID: 4219821116601913590, guid: d29f8953a0f610646b95006457ab3f27,
     type: 3}
+  inheritanceCount: 2
 --- !u!4 &1753978951
 Transform:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class BreedUI : MonoBehaviour
         GameManager.Instance.OnSpawnChicken += OnSpawnChicken;
     }
 
-    private void OnSpawnChicken(ChickenData data)
+    private void OnSpawnChicken()
     {
         playerChickenController = GameManager.Instance.Player.GetComponent<BaseChickenController>();
     }

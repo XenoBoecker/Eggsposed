@@ -7,27 +7,24 @@ public class NewChickenUI : MonoBehaviour
 
     [SerializeField] TMP_Text newChickenNameText;
 
-    GameManager gameManager;
-
     private void Start()
     {
         showChickenPanel.SetActive(false);
 
-        gameManager = GameObject.FindObjectOfType<GameManager>();
-        gameManager.OnSpawnChicken += OnSpawnChicken;
+        GameManager.Instance.OnSpawnChicken += OnSpawnChicken;
     }
 
-    private void OnSpawnChicken(ChickenData chickenData)
+    private void OnSpawnChicken()
     {
-        gameManager.PauseGame();
+        GameManager.Instance.PauseGame();
         showChickenPanel.SetActive(true);
 
-        newChickenNameText.text = chickenData.name;
+        newChickenNameText.text = GameManager.Instance.CurrentChickenData.name;
     }
 
     public void Continue()
     {
         showChickenPanel.SetActive(false);
-        gameManager.ResumeGame();
+        GameManager.Instance.ResumeGame();
     }
 }

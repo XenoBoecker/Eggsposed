@@ -54,9 +54,19 @@ public class BaseChickenController : BaseCharacterController
         
         return transform.forward * speed * Mathf.Max(0, moveDirection.z);
     }
+    
+    public delegate Vector3 UpdateRotationDelegate(Vector3 moveDirection);
+    public event UpdateRotationDelegate OnUpdateRotationStart;
 
     protected override void UpdateRotation()
     {
+        if (OnUpdateRotationStart != null)
+        {
+            print("change direction: " + moveDirection);
+            moveDirection = OnUpdateRotationStart.Invoke(moveDirection);
+            print("new direction: " + moveDirection);
+        }
+        
         if (breeding) return;
         movement.Rotate(transform.right * moveDirection.x, angularSpeed);
     }

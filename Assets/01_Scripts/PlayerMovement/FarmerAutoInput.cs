@@ -38,7 +38,7 @@ public class FarmerAutoInput : MonoBehaviour
         GameManager.Instance.OnSpawnChicken += RefreshPlayerChicken;
     }
 
-    private void RefreshPlayerChicken(ChickenData data)
+    private void RefreshPlayerChicken()
     {
         playerChicken = GameManager.Instance.Player;
     }

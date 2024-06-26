@@ -11,12 +11,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject eggPrefab;
 
+    [SerializeField] int inheritanceCount = 2;
+
+    List<ChickenData> previousChickenDatas = new List<ChickenData>();
     ChickenData _nextChickenData;
+    public ChickenData CurrentChickenData => previousChickenDatas[previousChickenDatas.Count - 1];
 
     Chicken _player;
     public Chicken Player => _player;
 
-    public event Action<ChickenData> OnSpawnChicken;
+    public event Action OnSpawnChicken;
 
     public static GameManager Instance { get; private set; }
 
@@ -37,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     private void SpawnChicken(ChickenData chickenData, Vector3 spawnPos)
     {
+        previousChickenDatas.Add(chickenData);
+        
         _player = Instantiate(chickenData.prefab, spawnPos, Quaternion.identity).GetComponent<Chicken>();
         _player.SetControlledByPlayer(true);
 
@@ -48,7 +54,16 @@ public class GameManager : MonoBehaviour
 
         _player.OnFinishBreeding += SpawnNextChicken;
 
-        OnSpawnChicken?.Invoke(chickenData);
+        for (int i = 0; i < inheritanceCount; i++)
+        {
+            if (previousChickenDatas.Count <= i)
+            {
+                return;
+            }
+            previousChickenDatas[previousChickenDatas.Count - 1 - i].prefab.GetComponent<ChickenAbilitySetup>().Setup(_player);
+        }
+
+        OnSpawnChicken?.Invoke();
     }
 
     private void SpawnNextChicken()

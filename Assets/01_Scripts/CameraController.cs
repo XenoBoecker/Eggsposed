@@ -10,6 +10,16 @@ public class CameraController : MonoBehaviour
         offset = transform.position - transform.parent.position;
     }
 
+    private void Start()
+    {
+        GameManager.Instance.OnSpawnChicken += TargetNewChicken;
+    }
+
+    void TargetNewChicken()
+    {
+        SetTarget(GameManager.Instance.Player.transform);
+    }
+
     public void SetTarget(Transform target)
     {
         transform.parent = target;

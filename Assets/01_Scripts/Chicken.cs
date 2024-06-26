@@ -1,15 +1,22 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Chicken : MonoBehaviour
 {
     [SerializeField] bool _isControlledByPlayer;
 
     [SerializeField] float pickupRange = 5f;
+
+    BaseChickenController baseChickenController;
+    public BaseChickenController BaseChickenController => baseChickenController;
+    ChickenInputManager chickenInputManager;
+    
+    ChickenAutoInput chickenAutoInput;
+    ChickenAgentController chickenAgentController;
+
+    NavMeshAgent navMeshAgent;
+
     Egg myEgg;
 
     bool hasEgg;
@@ -17,10 +24,20 @@ public class Chicken : MonoBehaviour
 
     public event Action OnFinishBreeding;
 
+    private void Awake()
+    {
+        baseChickenController = GetComponent<BaseChickenController>();
+        chickenInputManager = GetComponent<ChickenInputManager>();
+        chickenAutoInput = GetComponent<ChickenAutoInput>();
+        chickenAgentController = GetComponent<ChickenAgentController>();
+
+        navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<BaseChickenController>().OnFinishBreeding += HatchEgg;
+        baseChickenController.OnFinishBreeding += HatchEgg;
 
         SetControlledByPlayer(_isControlledByPlayer);
     }
@@ -37,19 +54,19 @@ public class Chicken : MonoBehaviour
 
         if (_isControlledByPlayer)
         {
-            GetComponent<ChickenAutoInput>().enabled = false;
-            GetComponent<ChickenAgentController>().enabled = false;
-            GetComponent<NavMeshAgent>().enabled = false;
-            GetComponent<BaseChickenController>().enabled = true;
-            GetComponent<ChickenInputManager>().enabled = true;
+            chickenAutoInput.enabled = false;
+            chickenAgentController.enabled = false;
+            navMeshAgent.enabled = false;
+            baseChickenController.enabled = true;
+            chickenInputManager.enabled = true;
         }
         else
         {
-            GetComponent<ChickenAutoInput>().enabled = true;
-            GetComponent<ChickenAgentController>().enabled = true;
-            GetComponent<NavMeshAgent>().enabled = true;
-            GetComponent<BaseChickenController>().enabled = false;
-            GetComponent<ChickenInputManager>().enabled = false;
+            chickenAutoInput.enabled = true;
+            chickenAgentController.enabled = true;
+            navMeshAgent.enabled = true;
+            baseChickenController.enabled = false;
+            chickenInputManager.enabled = false;
             
         }
     }
