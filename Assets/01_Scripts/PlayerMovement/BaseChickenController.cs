@@ -1,5 +1,6 @@
 ﻿using ECM.Controllers;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BaseChickenController : BaseCharacterController
@@ -18,14 +19,34 @@ public class BaseChickenController : BaseCharacterController
     bool _breeding;
     float _breedTimer = 0;
 
+    List<BreedingSpot> breedingSpots = new List<BreedingSpot>();
+
     float _baseMaxFallSpeed;
 
     public event Action OnFinishBreeding;
 
+
+    public delegate Vector3 UpdateRotationDelegate(Vector3 moveDirection);
+    public event UpdateRotationDelegate OnUpdateRotationStart;
+
+    public delegate Vector3 CalcDesiredVelocityDelegate(Vector3 moveDirection);
+    public event CalcDesiredVelocityDelegate OnCalcDesiredVelocityStart;
+
+    public delegate float AddSpeedMultiplierDelegate();
+    public event AddSpeedMultiplierDelegate OnAddSpeedMultiplier;
+
+    public delegate float AddBreedMultiplierDelegate();
+    public event AddBreedMultiplierDelegate OnAddBreedMultiplier;
+
     public bool breeding
     {
         get { return _breeding; }
-        set { _breeding = value; }
+    }
+
+    public float breedTime
+    {
+        get { return _breedTime; }
+        set { _breedTime = value; }
     }
 
     public float breedPercentage
@@ -48,24 +69,48 @@ public class BaseChickenController : BaseCharacterController
 
     }
 
+    public void TryStartBreeding()
+    {
+        if (breedingSpots.Count == 0) breedingSpots.AddRange(FindObjectsOfType<BreedingSpot>());
+
+        foreach (BreedingSpot spot in breedingSpots)
+        {
+            if (spot.IsCloseEnough(transform.position))
+            {
+                print("Go Breed");
+                _breeding = true;
+                break;
+            }
+        }
+    }
+
+    public void StopBreeding()
+    {
+        _breeding = false;
+    }
+
     protected override Vector3 CalcDesiredVelocity()
     {
         if (breeding) return Vector3.zero;
-        
-        return transform.forward * speed * Mathf.Max(0, moveDirection.z);
+
+        if (OnCalcDesiredVelocityStart != null)
+        {
+            moveDirection = OnCalcDesiredVelocityStart(moveDirection);
+        }
+
+        float speedMultiplier = 1.0f;
+
+        if (OnAddSpeedMultiplier != null)
+        {
+            speedMultiplier *= OnAddSpeedMultiplier();
+        }
+
+        return transform.forward * speed * speedMultiplier * Mathf.Max(0, moveDirection.z);
     }
-    
-    public delegate Vector3 UpdateRotationDelegate(Vector3 moveDirection);
-    public event UpdateRotationDelegate OnUpdateRotationStart;
 
     protected override void UpdateRotation()
     {
-        if (OnUpdateRotationStart != null)
-        {
-            print("change direction: " + moveDirection);
-            moveDirection = OnUpdateRotationStart.Invoke(moveDirection);
-            print("new direction: " + moveDirection);
-        }
+        if (OnUpdateRotationStart != null) moveDirection = OnUpdateRotationStart.Invoke(moveDirection);
         
         if (breeding) return;
         movement.Rotate(transform.right * moveDirection.x, angularSpeed);
@@ -88,7 +133,7 @@ public class BaseChickenController : BaseCharacterController
 
             var currentFriction = isGrounded ? groundFriction : airFriction;
             var currentBrakingFriction = useBrakingFriction ? brakingFriction : currentFriction;
-
+            
             movement.Move(desiredVelocity, speed, acceleration, deceleration, currentFriction,
                 currentBrakingFriction, !allowVerticalMovement);
         }
@@ -110,11 +155,23 @@ public class BaseChickenController : BaseCharacterController
     private void Breed()
     {
         crouch = breeding;
-        if (breeding) _breedTimer += Time.deltaTime;
+        if (!breeding) return;
+        
+        float breedTimeMultiplier = 1;
+
+        if (OnAddBreedMultiplier != null)
+        {
+            breedTimeMultiplier *= OnAddBreedMultiplier();
+        }
+            
+        _breedTimer += Time.deltaTime / breedTimeMultiplier;
+
+
+
 
         if (_breedTimer >= _breedTime)
         {
-            breeding = false;
+            _breeding = false;
             _breedTimer = 0;
 
             HatchNewChicken();

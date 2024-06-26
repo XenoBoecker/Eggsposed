@@ -30,12 +30,12 @@ public class ChickenInputManager : MonoBehaviour
 
     public void StartBreed()
     {
-        chickenController.breeding = true;
+        chickenController.TryStartBreeding();
     }
 
     public void StopBreed()
     {
-        chickenController.breeding = false;
+        chickenController.StopBreeding();
     }
 
     public void PickupDropEgg()

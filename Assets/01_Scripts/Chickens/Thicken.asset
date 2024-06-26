@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2ae24e5c1ecce64a9f4827395b58855, type: 3}
-  m_Name: RedChicken
+  m_Name: Thicken
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3002197581194551021, guid: 30ec0f1377d6a914d9a8a37a4bea36df, type: 3}
+  prefab: {fileID: 5663354524666116100, guid: 91819dca4793d2d4cbe9afef330f8d97, type: 3}
   eggVisual: {fileID: 0}
   chickenVisual: {fileID: 0}

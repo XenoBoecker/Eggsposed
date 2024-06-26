@@ -1048,6 +1048,7 @@ namespace ECM.Components
         private void ApplyMovement(Vector3 desiredVelocity, float maxDesiredSpeed, bool onlyLateral)
         {
             // If onlyLateral, discards any vertical velocity
+            print("Apply velocity: " + desiredVelocity);
 
             var up = transform.up;
 
@@ -1063,6 +1064,8 @@ namespace ECM.Components
                     // Walkable 'ground' movement
 
                     desiredVelocity = MathLibrary.GetTangent(desiredVelocity, _normal, up) * Mathf.Min(desiredVelocity.magnitude, maxDesiredSpeed);
+
+                    print("Set velocity: " + desiredVelocity);
 
                     velocity += desiredVelocity - velocity;
                 }
@@ -1116,8 +1119,11 @@ namespace ECM.Components
 
                 if (useGravity)
                     velocity += gravity * glideGravityMultiplier * Time.deltaTime;
+
+
             }
-            
+            print("final velocity: " + velocity);
+
             // If moving towards a step,
             // prevent too steep velocities, anything above 75 degrees will be dampened
 
@@ -1136,6 +1142,7 @@ namespace ECM.Components
             factor = factor * (2.0f - factor);
 
             velocity *= factor;
+
         }
 
         /// <summary>
@@ -1354,7 +1361,10 @@ namespace ECM.Components
         {
             var lateralVelocity = Vector3.ProjectOnPlane(velocity, transform.up);
             if (lateralVelocity.sqrMagnitude > maxLateralSpeed * maxLateralSpeed)
+            {
+                print("limit speed to" + maxLateralSpeed);
                 cachedRigidbody.velocity += lateralVelocity.normalized * maxLateralSpeed - lateralVelocity;
+            }
         }
 
         /// <summary>
