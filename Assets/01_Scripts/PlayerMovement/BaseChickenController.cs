@@ -71,6 +71,8 @@ public class BaseChickenController : BaseCharacterController
 
     public void TryStartBreeding()
     {
+        if (!GetComponent<Chicken>().HasEgg) return;
+
         if (breedingSpots.Count == 0) breedingSpots.AddRange(FindObjectsOfType<BreedingSpot>());
 
         foreach (BreedingSpot spot in breedingSpots)
