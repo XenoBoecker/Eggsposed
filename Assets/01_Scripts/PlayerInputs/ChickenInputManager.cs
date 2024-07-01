@@ -28,14 +28,14 @@ public class ChickenInputManager : MonoBehaviour
         chickenController.jump = false;
     }
 
-    public void StartBreed()
+    public void SitDown()
     {
-        chickenController.TryStartBreeding();
+        chickenController.SitDown();
     }
 
-    public void StopBreed()
+    public void StandUp()
     {
-        chickenController.StopBreeding();
+        chickenController.StandUp();
     }
 
     public void PickupDropEgg()

@@ -16,6 +16,7 @@ public class BaseChickenController : BaseCharacterController
     [SerializeField]
     float _breedTime = 20f;
 
+    bool _sitting;
     bool _breeding;
     float _breedTimer = 0;
 
@@ -37,6 +38,11 @@ public class BaseChickenController : BaseCharacterController
 
     public delegate float AddBreedMultiplierDelegate();
     public event AddBreedMultiplierDelegate OnAddBreedMultiplier;
+
+    public bool sitting
+    {
+        get { return _sitting; }
+    }
 
     public bool breeding
     {
@@ -69,8 +75,10 @@ public class BaseChickenController : BaseCharacterController
 
     }
 
-    public void TryStartBreeding()
+    public void SitDown()
     {
+        _sitting = true;
+        
         if (!GetComponent<Chicken>().HasEgg) return;
 
         if (breedingSpots.Count == 0) breedingSpots.AddRange(FindObjectsOfType<BreedingSpot>());
@@ -86,14 +94,15 @@ public class BaseChickenController : BaseCharacterController
         }
     }
 
-    public void StopBreeding()
+    public void StandUp()
     {
+        _sitting = false;
         _breeding = false;
     }
 
     protected override Vector3 CalcDesiredVelocity()
     {
-        if (breeding) return Vector3.zero;
+        if (sitting) return Vector3.zero;
 
         if (OnCalcDesiredVelocityStart != null)
         {
@@ -114,7 +123,6 @@ public class BaseChickenController : BaseCharacterController
     {
         if (OnUpdateRotationStart != null) moveDirection = OnUpdateRotationStart.Invoke(moveDirection);
         
-        if (breeding) return;
         movement.Rotate(transform.right * moveDirection.x, angularSpeed);
     }
 
@@ -156,7 +164,7 @@ public class BaseChickenController : BaseCharacterController
 
     private void Breed()
     {
-        crouch = breeding;
+        crouch = sitting;
         if (!breeding) return;
         
         float breedTimeMultiplier = 1;
@@ -173,7 +181,7 @@ public class BaseChickenController : BaseCharacterController
 
         if (_breedTimer >= _breedTime)
         {
-            _breeding = false;
+            _sitting = false;
             _breedTimer = 0;
 
             HatchNewChicken();

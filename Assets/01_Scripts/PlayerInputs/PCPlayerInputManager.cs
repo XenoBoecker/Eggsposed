@@ -17,8 +17,8 @@ public class PCPlayerInputManager : ChickenInputManager
     {
         Move(controls.Player.Move.ReadValue<Vector2>());
         
-        if (controls.Player.Breed.triggered) StartBreed();
-        if (controls.Player.Breed.phase == InputActionPhase.Waiting) StopBreed();
+        if (controls.Player.Breed.triggered) SitDown();
+        if (controls.Player.Breed.phase == InputActionPhase.Waiting) StandUp();
 
         if (controls.Player.Jump.triggered) Jump();
         if (controls.Player.Jump.phase == InputActionPhase.Waiting) StopJump();
