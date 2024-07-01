@@ -14,4 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5663354524666116100, guid: 91819dca4793d2d4cbe9afef330f8d97, type: 3}
   eggVisual: {fileID: 0}
-  chickenVisual: {fileID: 0}
+  chickenVisualHead: {fileID: 919132149155446097, guid: a7bfb86924e9793419612bf5cbc0dabb,
+    type: 3}
+  chickenVisualBody: {fileID: 8200676663847201341, guid: 8cd7e9e94af12634caf1765a85c645cb,
+    type: 3}
+  chickenVisualTail: {fileID: 6684023612524318044, guid: 51b28084022c122418faed237b34051a,
+    type: 3}

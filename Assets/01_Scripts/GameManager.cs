@@ -50,7 +50,8 @@ public class GameManager : MonoBehaviour
 
         playerCam.SetTarget(_player.transform);
 
-        _nextChickenData = _allChicken[UnityEngine.Random.Range(0, _allChicken.Count)];
+        do _nextChickenData = _allChicken[UnityEngine.Random.Range(0, _allChicken.Count)]; 
+        while (_nextChickenData == chickenData);
 
         _player.OnFinishBreeding += SpawnNextChicken;
 
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
             }
             previousChickenDatas[previousChickenDatas.Count - 1 - i].prefab.GetComponent<ChickenAbilitySetup>().Setup(_player);
         }
+        if(previousChickenDatas.Count > 1) _player.SetChickenVisuals(chickenData, previousChickenDatas[previousChickenDatas.Count - 2], previousChickenDatas.Count);
 
         OnSpawnChicken?.Invoke();
     }

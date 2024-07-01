@@ -8,6 +8,9 @@ public class Chicken : MonoBehaviour
 
     [SerializeField] float pickupRange = 5f;
 
+    [SerializeField] GameObject headParent, bodyParent, tailParent;
+    [SerializeField] GameObject head, body, tail;
+
     BaseChickenController baseChickenController;
     public BaseChickenController BaseChickenController => baseChickenController;
     ChickenInputManager chickenInputManager;
@@ -110,6 +113,32 @@ public class Chicken : MonoBehaviour
         {
             hasEgg = false;
             myEgg.Pickup();
+        }
+    }
+
+    internal void SetChickenVisuals(ChickenData newChickenData, ChickenData oldChickenData, int count)
+    {
+        head.SetActive(false);
+        body.SetActive(false);
+        tail.SetActive(false);
+
+        if(count == 2)
+        {
+            Instantiate(newChickenData.chickenVisualHead, headParent.transform);
+            Instantiate(newChickenData.chickenVisualBody, bodyParent.transform);
+            Instantiate(newChickenData.chickenVisualTail, tailParent.transform);
+        }
+        else if (count % 2 == 0)
+        {
+            Instantiate(newChickenData.chickenVisualHead, headParent.transform);
+            Instantiate(oldChickenData.chickenVisualBody, bodyParent.transform);
+            Instantiate(newChickenData.chickenVisualTail, tailParent.transform);
+        }
+        else
+        {
+            Instantiate(oldChickenData.chickenVisualHead, headParent.transform);
+            Instantiate(newChickenData.chickenVisualBody, bodyParent.transform);
+            Instantiate(oldChickenData.chickenVisualTail, tailParent.transform);
         }
     }
 }
