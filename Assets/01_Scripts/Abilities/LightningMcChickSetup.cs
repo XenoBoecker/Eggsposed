@@ -9,7 +9,7 @@ public class LightningMcChickSetup : ChickenAbilitySetup
     
     public override void Setup(Chicken chicken)
     {
-        BaseChickenController bcc = chicken.BaseChickenController;
+        BaseChickenController bcc = chicken.GetComponent<BaseChickenController>();
         CharacterMovement movement = bcc.movement;
 
         bcc.OnCalcDesiredVelocityStart += SetMoveInputToForward;

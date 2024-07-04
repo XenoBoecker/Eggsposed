@@ -7,7 +7,7 @@ public class ThickenSetup : ChickenAbilitySetup
     [SerializeField] float moveSpeedMultiplier = 0.7f;
     public override void Setup(Chicken chicken)
     {
-        BaseChickenController bcc = chicken.BaseChickenController;
+        BaseChickenController bcc = chicken.GetComponent<BaseChickenController>();
 
         
         bcc.OnAddSpeedMultiplier += SpeedMultiplier;

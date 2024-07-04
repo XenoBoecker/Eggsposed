@@ -125,7 +125,6 @@ public class FarmerAutoInput : MonoBehaviour
                 Egg foundEgg = hit.collider.GetComponent<Egg>();
                 if (foundEgg != null)
                 {
-                    print("Found Egg: " + foundEgg.name);
                     currentTarget = foundEgg.transform;
                     eggPositions.Add(hit.collider.transform.position);
                 }

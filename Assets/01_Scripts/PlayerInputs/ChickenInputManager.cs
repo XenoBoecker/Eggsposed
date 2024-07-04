@@ -42,4 +42,9 @@ public class ChickenInputManager : MonoBehaviour
     {
         chicken.PickupDropEgg();
     }
+
+    public void Call()
+    {
+        print("Chicken call");
+    }
 }

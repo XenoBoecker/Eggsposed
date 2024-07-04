@@ -11,14 +11,8 @@ public class Chicken : MonoBehaviour
     [SerializeField] GameObject headParent, bodyParent, tailParent;
     [SerializeField] GameObject head, body, tail;
 
-    BaseChickenController baseChickenController;
-    public BaseChickenController BaseChickenController => baseChickenController;
-    ChickenInputManager chickenInputManager;
-    
-    ChickenAutoInput chickenAutoInput;
-    ChickenAgentController chickenAgentController;
-
-    NavMeshAgent navMeshAgent;
+    [SerializeField] Behaviour[] playerControlComponents;
+    [SerializeField] Behaviour[] aiControlComponents;
 
     Egg myEgg;
 
@@ -27,28 +21,12 @@ public class Chicken : MonoBehaviour
 
     public event Action OnFinishBreeding;
 
-    private void Awake()
-    {
-        baseChickenController = GetComponent<BaseChickenController>();
-        chickenInputManager = GetComponent<ChickenInputManager>();
-        chickenAutoInput = GetComponent<ChickenAutoInput>();
-        chickenAgentController = GetComponent<ChickenAgentController>();
-
-        navMeshAgent = GetComponent<NavMeshAgent>();
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-        baseChickenController.OnFinishBreeding += HatchEgg;
+        GetComponent<BaseChickenController>().OnFinishBreeding += HatchEgg;
 
         SetControlledByPlayer(_isControlledByPlayer);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void SetControlledByPlayer(bool isControlledByPlayer)
@@ -57,20 +35,37 @@ public class Chicken : MonoBehaviour
 
         if (_isControlledByPlayer)
         {
-            chickenAutoInput.enabled = false;
-            chickenAgentController.enabled = false;
-            navMeshAgent.enabled = false;
-            baseChickenController.enabled = true;
-            chickenInputManager.enabled = true;
+            ActivateComponents(playerControlComponents);
+            DeactivateComponents(aiControlComponents);
         }
         else
         {
-            chickenAutoInput.enabled = true;
-            chickenAgentController.enabled = true;
-            navMeshAgent.enabled = true;
-            baseChickenController.enabled = false;
-            chickenInputManager.enabled = false;
-            
+            ActivateComponents(aiControlComponents);
+            DeactivateComponents(playerControlComponents);
+
+        }
+    }
+
+    private void ActivateComponents(Behaviour[] behaviours)
+    {
+        foreach (Behaviour behaviour in behaviours)
+        {
+            if (behaviour != null)
+            {
+                behaviour.enabled = true;
+            }
+        }
+    }
+
+    // Method to deactivate a list of components
+    private void DeactivateComponents(Behaviour[] behaviours)
+    {
+        foreach (Behaviour behaviour in behaviours)
+        {
+            if (behaviour != null)
+            {
+                behaviour.enabled = false;
+            }
         }
     }
 
