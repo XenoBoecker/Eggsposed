@@ -9,6 +9,8 @@ public class LightningMcChickSetup : ChickenAbilitySetup
     
     public override void Setup(Chicken chicken)
     {
+        base.Setup(chicken);
+        
         BaseChickenController bcc = chicken.GetComponent<BaseChickenController>();
         CharacterMovement movement = bcc.movement;
 

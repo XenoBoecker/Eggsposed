@@ -25,7 +25,8 @@ public class BaseChickenController : BaseCharacterController
     float _baseMaxFallSpeed;
 
     public event Action OnFinishBreeding;
-
+    public event Action OnSitDown;
+    public event Action OnStandUp;
 
     public delegate Vector3 UpdateRotationDelegate(Vector3 moveDirection);
     public event UpdateRotationDelegate OnUpdateRotationStart;
@@ -78,26 +79,33 @@ public class BaseChickenController : BaseCharacterController
     public void SitDown()
     {
         _sitting = true;
-        
-        if (!GetComponent<Chicken>().HasEgg) return;
 
-        if (breedingSpots.Count == 0) breedingSpots.AddRange(FindObjectsOfType<BreedingSpot>());
 
-        foreach (BreedingSpot spot in breedingSpots)
+        if (GetComponent<Chicken>().HasEgg)
         {
-            if (spot.IsCloseEnough(transform.position))
+            if (breedingSpots.Count == 0) breedingSpots.AddRange(FindObjectsOfType<BreedingSpot>());
+
+            foreach (BreedingSpot spot in breedingSpots)
             {
-                print("Go Breed");
-                _breeding = true;
-                break;
+                if (spot.IsCloseEnough(transform.position))
+                {
+                    print("Go Breed");
+                    _breeding = true;
+                    break;
+                }
             }
         }
+        print("Sit Down");
+        OnSitDown?.Invoke();
     }
 
     public void StandUp()
     {
         _sitting = false;
         _breeding = false;
+
+        print("StandUp");
+        OnStandUp?.Invoke();
     }
 
     protected override Vector3 CalcDesiredVelocity()

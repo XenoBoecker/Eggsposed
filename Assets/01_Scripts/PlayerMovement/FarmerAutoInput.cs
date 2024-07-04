@@ -89,7 +89,6 @@ public class FarmerAutoInput : MonoBehaviour
             {
                 if (hit.collider.transform == currentTarget)
                 {
-                    print("Can see: " + currentTarget.name);
                     agentController.SetDestination(currentTarget.position);
 
                     findNewTargetTimer = 0;
@@ -164,5 +163,10 @@ public class FarmerAutoInput : MonoBehaviour
     void RefreshEggList()
     {
         allEggs = new List<Egg>(FindObjectsOfType<Egg>());
+    }
+
+    internal void HearCall(Vector3 position)
+    {
+        print("Farmer heard call");
     }
 }

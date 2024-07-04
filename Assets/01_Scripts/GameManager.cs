@@ -50,8 +50,8 @@ public class GameManager : MonoBehaviour
 
         playerCam.SetTarget(_player.transform);
 
-        do _nextChickenData = _allChicken[UnityEngine.Random.Range(0, _allChicken.Count)]; 
-        while (_nextChickenData == chickenData);
+        do _nextChickenData = _allChicken[UnityEngine.Random.Range(0, _allChicken.Count)];
+        while (_nextChickenData == chickenData && _allChicken.Count != 1);
 
         _player.OnFinishBreeding += SpawnNextChicken;
 
@@ -87,5 +87,10 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1;
+    }
+
+    internal void HackSpawnNextChicken()
+    {
+        SpawnNextChicken();
     }
 }
