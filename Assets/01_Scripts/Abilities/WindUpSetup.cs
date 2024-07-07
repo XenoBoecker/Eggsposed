@@ -1,9 +1,10 @@
 ﻿using ECM.Components;
+using System;
 using UnityEngine;
 
 public class WindUpSetup : ChickenAbilitySetup
 {
-    [SerializeField] float startChargeTime = 10;
+    [SerializeField] float startCharge = 10;
 
     [SerializeField] float chargeGainPerSecond;
     [SerializeField] float chargeLossPerSecond;
@@ -12,11 +13,7 @@ public class WindUpSetup : ChickenAbilitySetup
     [SerializeField] float maxSpeedMultiplier = 3;
 
     [SerializeField] AnimationCurve SpeedPerCharge;
-
-    float movementMaxLateralSpeed;
-    float bccSpeed;
-
-    float timeCharged;
+    
     bool charging;
 
     float currentCharge;
@@ -29,32 +26,31 @@ public class WindUpSetup : ChickenAbilitySetup
         bcc = chicken.GetComponent<BaseChickenController>();
         bcc.OnSitDown += StartCharging;
 
-        movement = bcc.movement;
-        
-        timeCharged = startChargeTime;
+        currentCharge = startCharge;
 
-        movementMaxLateralSpeed = movement.maxLateralSpeed;
-        bccSpeed = bcc.speed;
-        
+        movement = bcc.movement;
+
+        movement.OnAddMaxSpeedMultiplier += SpeedMultiplier;
+        bcc.OnAddMaxSpeedMultiplier += SpeedMultiplier;  
         
         bcc.OnStandUp += StopCharging;
         
         bcc.OnAddSpeedMultiplier += TurnChargeIntoSpeedMultiplier;
     }
-    
+
+    private float SpeedMultiplier()
+    {
+        return SpeedPerCharge.Evaluate(currentCharge / maxCharge) * maxSpeedMultiplier;
+    }
+
     private float TurnChargeIntoSpeedMultiplier()
     {
         if (charging) return 0;
 
         currentCharge -= Time.deltaTime * chargeLossPerSecond;
-        if (timeCharged < 0) timeCharged = 0;
+        if (currentCharge < 0) currentCharge = 0;
 
-        float multiplier = SpeedPerCharge.Evaluate(currentCharge / maxCharge) * maxSpeedMultiplier;
-
-        movement.maxLateralSpeed = movementMaxLateralSpeed * multiplier;
-        bcc.speed = bccSpeed * multiplier;
-
-        return multiplier;
+        return SpeedMultiplier();
     }
     
     protected override void Update()

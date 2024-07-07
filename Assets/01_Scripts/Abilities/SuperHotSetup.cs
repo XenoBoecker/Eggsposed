@@ -35,7 +35,7 @@ public class SuperHotSetup : ChickenAbilitySetup
         }
         
 
-        if (!bcc.breeding && bcc.moveDirection.z <= 0)
+        if (!bcc.sitting && bcc.moveDirection.z <= 0)
         {
             SetTimeSlow();
         }

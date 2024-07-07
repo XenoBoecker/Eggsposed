@@ -504,6 +504,7 @@ namespace ECM.Controllers
 
         public bool isCrouching { get; protected set; }
 
+
         #endregion
 
         #region METHODS
@@ -759,7 +760,7 @@ namespace ECM.Controllers
                 return rootMotionController.animVelocity;
 
             // else, convert input (moveDirection) to velocity vector
-
+            
             return moveDirection * speed;
         }
 
@@ -779,13 +780,16 @@ namespace ECM.Controllers
             var desiredVelocity = CalcDesiredVelocity();
 
             if (useRootMotion && applyRootMotion)
+            {
                 movement.Move(desiredVelocity, speed, !allowVerticalMovement);
+            }
             else
             {
                 // Move with acceleration and friction
 
                 var currentFriction = isGrounded ? groundFriction : airFriction;
                 var currentBrakingFriction = useBrakingFriction ? brakingFriction : currentFriction;
+                
 
                 movement.Move(desiredVelocity, speed, acceleration, deceleration, currentFriction,
                     currentBrakingFriction, !allowVerticalMovement);

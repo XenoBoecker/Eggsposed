@@ -1,21 +1,48 @@
 ﻿using ECM.Components;
+using System;
 using UnityEngine;
 
 public class LightningMcChickSetup : ChickenAbilitySetup
 {
-    [SerializeField] float accelerationPerSecond = 1.0f;
-    [SerializeField] float decelerateThreshold = 1;
-    [SerializeField] float maxSpeed = 100.0f;
-    
+    [SerializeField] float accelerationPerSecond = 0.2f;
+
+    [SerializeField] float resetAccelerationThreshold = 0.7f;
+
+    float currentSpeedMultiplier = 1.0f;
+
+    float currentSpeed = 0.0f;
+
     public override void Setup(Chicken chicken)
     {
         base.Setup(chicken);
 
         bcc.OnCalcDesiredVelocityStart += SetMoveInputToForward;
 
-        movement.maxLateralSpeed = Mathf.Infinity;
-        bcc.speed = 100;
-        bcc.acceleration = accelerationPerSecond;
+        bcc.OnAddSpeedMultiplier += GetCurrentSpeedMultiplier;
+        bcc.OnAddMaxSpeedMultiplier += GetCurrentSpeedMultiplier;
+        movement.OnAddMaxSpeedMultiplier += GetCurrentSpeedMultiplier;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        currentSpeedMultiplier += accelerationPerSecond * Time.deltaTime;
+
+        if (movement.velocity.magnitude >= currentSpeed * resetAccelerationThreshold)
+        {
+            currentSpeed = movement.velocity.magnitude;
+        }
+        else
+        {
+            currentSpeedMultiplier = 1.0f;
+            currentSpeed = 0;
+        }
+    }
+
+    private float GetCurrentSpeedMultiplier()
+    {
+        return currentSpeedMultiplier;
     }
 
     private Vector3 SetMoveInputToForward(Vector3 moveDirection)

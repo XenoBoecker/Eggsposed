@@ -535,6 +535,12 @@ namespace ECM.Components
 
         public Rigidbody cachedRigidbody { get; private set; }
 
+
+
+
+        public delegate float AddMaxSpeedMultiplierDelegate();
+        public event AddMaxSpeedMultiplierDelegate OnAddMaxSpeedMultiplier;
+
         #endregion
 
         #region METHODS
@@ -545,7 +551,7 @@ namespace ECM.Components
         /// </summary>
         /// <param name="pause">True == pause, false == unpause</param>
         /// <param name="restoreVelocity">Should restore saved velocity on resume?</param>
-        
+
         public void Pause(bool pause, bool restoreVelocity = true)
         {
             if (pause)
@@ -1359,11 +1365,14 @@ namespace ECM.Components
 
         private void LimitLateralVelocity()
         {
+            float currentMaxLateralSpeed = maxLateralSpeed;
+
+            if(OnAddMaxSpeedMultiplier != null) currentMaxLateralSpeed *= OnAddMaxSpeedMultiplier();
+
             var lateralVelocity = Vector3.ProjectOnPlane(velocity, transform.up);
-            if (lateralVelocity.sqrMagnitude > maxLateralSpeed * maxLateralSpeed)
+            if (lateralVelocity.sqrMagnitude > currentMaxLateralSpeed * currentMaxLateralSpeed)
             {
-                print("limit speed to" + maxLateralSpeed);
-                cachedRigidbody.velocity += lateralVelocity.normalized * maxLateralSpeed - lateralVelocity;
+                cachedRigidbody.velocity += lateralVelocity.normalized * currentMaxLateralSpeed - lateralVelocity;
             }
         }
 

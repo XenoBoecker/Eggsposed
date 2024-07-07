@@ -23,6 +23,7 @@ public class BaseChickenController : BaseCharacterController
     List<BreedingSpot> breedingSpots = new List<BreedingSpot>();
 
     float _baseMaxFallSpeed;
+    float _baseSpeed;
 
     public event Action OnFinishBreeding;
     public event Action OnSitDown;
@@ -36,6 +37,9 @@ public class BaseChickenController : BaseCharacterController
 
     public delegate float AddSpeedMultiplierDelegate();
     public event AddSpeedMultiplierDelegate OnAddSpeedMultiplier;
+
+    public delegate float AddMaxSpeedMultiplierDelegate();
+    public event AddMaxSpeedMultiplierDelegate OnAddMaxSpeedMultiplier;
 
     public delegate float AddBreedMultiplierDelegate();
     public event AddBreedMultiplierDelegate OnAddBreedMultiplier;
@@ -140,6 +144,8 @@ public class BaseChickenController : BaseCharacterController
     {
         // Apply movement
 
+        speed = _baseSpeed * OnAddMaxSpeedMultiplier();
+
         // If using root motion and root motion is being applied (eg: grounded),
         // move without acceleration / deceleration, let the animation takes full control
 
@@ -212,5 +218,6 @@ public class BaseChickenController : BaseCharacterController
     void Start()
     {
         _baseMaxFallSpeed = movement.maxFallSpeed;
+        _baseSpeed = speed;
     }
 }
