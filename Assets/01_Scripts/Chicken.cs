@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class Chicken : MonoBehaviour
 {
     [SerializeField] bool _isControlledByPlayer;
+    public bool IsControlledByPlayer => _isControlledByPlayer;
 
     [SerializeField] float pickupRange = 5f;
 
@@ -20,6 +21,10 @@ public class Chicken : MonoBehaviour
     public bool HasEgg => hasEgg;
 
     public event Action OnFinishBreeding;
+
+    public delegate int OnCheckCanCall();
+    public event OnCheckCanCall OnCheckCanCallEvent;
+    public event Action OnCall;
 
     // Start is called before the first frame update
     void Start()
@@ -135,5 +140,13 @@ public class Chicken : MonoBehaviour
             Instantiate(newChickenData.chickenVisualBody, bodyParent.transform);
             Instantiate(oldChickenData.chickenVisualTail, tailParent.transform);
         }
+    }
+
+    internal void Call()
+    {
+        int canCall = 0;
+        canCall += OnCheckCanCallEvent.Invoke();
+
+        if(canCall > 0) OnCall?.Invoke();
     }
 }

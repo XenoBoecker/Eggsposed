@@ -45,6 +45,6 @@ public class ChickenInputManager : MonoBehaviour
 
     public void Call()
     {
-        print("Chicken call");
+        chicken.Call();
     }
 }

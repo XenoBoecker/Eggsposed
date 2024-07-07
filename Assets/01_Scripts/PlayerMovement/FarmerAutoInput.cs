@@ -1,13 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using ECM.Components;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FarmerAutoInput : MonoBehaviour
 {
+    enum FarmerState
+    {
+        Patrol,
+        Scan,
+        Chase,
+        Search,
+        Collect
+    }
+
     [SerializeField] float randomPositionRange = 10;
 
-    [SerializeField] float minWaitTime = 1;
-    [SerializeField] float maxWaitTime = 3;
-    [SerializeField] float followOutOfSightTargetTime = 5f;
+    [SerializeField] float scanRotSpeed = 60;
+
+    [SerializeField] float callReactionProbability = 1f;
+    [SerializeField] float searchTime = 5f;
 
     [SerializeField] float detectionRange = 30;
     [SerializeField] float pickupRange = 3;
@@ -19,23 +30,33 @@ public class FarmerAutoInput : MonoBehaviour
     Transform currentTarget;
 
     FarmerAgentController agentController;
+    CharacterMovement movement;
+
+    FarmerState currentState;
 
     // timer to wait before setting a new random destination has random range
 
-    float waitToGetNewDestinationTimer;
-    float findNewTargetTimer = 0;
+    Vector3 targetLastSeenPosition;
 
+    Vector3 startScanForwardDirection;
+    Vector3 targetDirection;
+    int rotStep;
+
+    float searchTimer;
 
 
     void Start()
     {
         agentController = GetComponent<FarmerAgentController>();
+        movement = GetComponent<CharacterMovement>();
         agentController.SetDestination(Random.insideUnitSphere * randomPositionRange);
 
         InvokeRepeating("RefreshEggList", 0, 0.5f);
 
         playerChicken = GameManager.Instance.Player;
         GameManager.Instance.OnSpawnChicken += RefreshPlayerChicken;
+
+        SetState(FarmerState.Scan);
     }
 
     private void RefreshPlayerChicken()
@@ -45,21 +66,140 @@ public class FarmerAutoInput : MonoBehaviour
 
     void Update()
     {
-
-        waitToGetNewDestinationTimer -= Time.deltaTime;
-
-        if (agentController.HasReachedDestination() && waitToGetNewDestinationTimer <= 0)
+        switch (currentState)
         {
-            agentController.SetDestination(Random.insideUnitSphere * randomPositionRange);
-            waitToGetNewDestinationTimer = Random.Range(minWaitTime, maxWaitTime);
+            case FarmerState.Patrol:
+                Patrol();
+                break;
+            case FarmerState.Scan:
+                Scan();
+                break;
+            case FarmerState.Chase:
+                Chase();
+                break;
+            case FarmerState.Search:
+                Search();
+                break;
+            case FarmerState.Collect:
+                Collect();
+                break;
         }
-
-        ScanForEggs();
-
-        PickupEggs();
+        
+        PickupEggsInRange();
     }
 
-    private void PickupEggs()
+    private void Patrol()
+    {
+        if (agentController.HasReachedDestination())
+        {
+            SetState(FarmerState.Scan);
+        }
+        else
+        {
+            currentTarget = GetClosestEggInSight();
+            if (currentTarget != null) SetState(FarmerState.Chase);
+        }
+    }
+
+    private void Scan()
+    {
+        if (rotStep == 0)
+        {
+            movement.Rotate(targetDirection, scanRotSpeed, true);
+
+            if (AreVectorsApproximatelyEqual(transform.forward, targetDirection, 0.1f))
+            {
+                rotStep = 1;
+                targetDirection = GetVectorRotated(startScanForwardDirection, -120);
+            }
+        }
+        else if(rotStep == 1)
+        {
+            movement.Rotate(targetDirection, scanRotSpeed, true);
+
+            if (AreVectorsApproximatelyEqual(transform.forward, targetDirection, 0.1f))
+            {
+                rotStep = 2;
+                targetDirection = startScanForwardDirection;
+            }
+        }else if(rotStep == 2)
+        {
+            movement.Rotate(targetDirection, scanRotSpeed, true);
+
+            if (AreVectorsApproximatelyEqual(transform.forward, targetDirection, 0.1f))
+            {
+                SetState(FarmerState.Patrol);
+            }
+        }
+
+        currentTarget = GetClosestEggInSight();
+        if (currentTarget != null) SetState(FarmerState.Chase);
+    }
+
+    Vector3 GetVectorRotated(Vector3 inputVector, float yRotation)
+    {
+        return Quaternion.Euler(0, yRotation, 0) * inputVector;
+    }
+    bool AreVectorsApproximatelyEqual(Vector3 vec1, Vector3 vec2, float tolerance)
+    {
+        return Vector3.SqrMagnitude(vec1 - vec2) < tolerance * tolerance;
+    }
+
+    private void Chase()
+    {
+        if (CanSee(currentTarget))
+        {
+            targetLastSeenPosition = currentTarget.position;
+        }
+        else
+        {
+            if (agentController.HasReachedDestination())
+            {
+                SetState(FarmerState.Scan);
+            }
+        }
+
+        agentController.SetDestination(targetLastSeenPosition);
+    }
+
+    private void Search()
+    {
+        searchTimer += Time.deltaTime;
+
+        if (searchTimer > searchTime || agentController.HasReachedDestination())
+        {
+            SetState(FarmerState.Patrol);
+        }
+    }
+
+    private void Collect()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    void SetState(FarmerState newState)
+    {
+        if (currentState == newState) return;
+        
+        currentState = newState;
+
+        if (newState == FarmerState.Patrol)
+        {
+            agentController.SetDestination(Random.insideUnitSphere * randomPositionRange);
+        } else if(newState == FarmerState.Scan)
+        {
+            startScanForwardDirection = transform.forward;
+            rotStep = 0;
+            targetDirection = GetVectorRotated(startScanForwardDirection, 120);
+        }else if(newState == FarmerState.Search)
+        {
+            searchTimer = 0;
+        }
+
+        print("State: " + newState);
+    }
+
+    private void PickupEggsInRange()
     {
         foreach (Egg egg in allEggs)
         {
@@ -79,85 +219,54 @@ public class FarmerAutoInput : MonoBehaviour
         }
     }
 
-    private void ScanForEggs()
+    private Transform GetClosestEggInSight()
     {
-        if(currentTarget != null)
-        {
-            Vector3 direction = currentTarget.position - eyes.position;
-            RaycastHit hit;
-            if (Physics.Raycast(eyes.position, direction, out hit, detectionRange, detectionMask))
-            {
-                if (hit.collider.transform == currentTarget)
-                {
-                    agentController.SetDestination(currentTarget.position);
-
-                    findNewTargetTimer = 0;
-                    
-                    return;
-                }
-                else
-                {
-                    findNewTargetTimer += Time.deltaTime;
-                    if (findNewTargetTimer < followOutOfSightTargetTime || agentController.HasReachedDestination())
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        currentTarget = null;
-                        findNewTargetTimer = 0;
-                    }
-                }
-            }
-        }
-        
-        List<Vector3> eggPositions = new List<Vector3>();
+        List<Transform> possibleTargets = new List<Transform>();
 
         foreach (Egg egg in allEggs)
         {
-            if (egg == null) continue;
-            // cast ray from eyes to egg
-            Vector3 direction = egg.transform.position - eyes.position;
-            RaycastHit hit;
-            if (Physics.Raycast(eyes.position, direction, out hit, detectionRange, detectionMask))
+            if (CanSee(egg.transform))
             {
-                Egg foundEgg = hit.collider.GetComponent<Egg>();
-                if (foundEgg != null)
-                {
-                    currentTarget = foundEgg.transform;
-                    eggPositions.Add(hit.collider.transform.position);
-                }
+                possibleTargets.Add(egg.transform);
             }
         }
 
         if (playerChicken != null)
         {
-            Vector3 direction = playerChicken.transform.position - eyes.position;
-            RaycastHit hit;
-            if (Physics.Raycast(eyes.position, direction, out hit, detectionRange, detectionMask))
+            if (playerChicken.HasEgg && CanSee(playerChicken.transform))
             {
-                Chicken found = hit.collider.GetComponent<Chicken>();
-                if (found != null && found.HasEgg)
-                {
-                    print("Found Player Chicken Egg: " + found.name);
-                    currentTarget = found.transform;
-                    eggPositions.Add(hit.collider.transform.position);
-                }
+                possibleTargets.Add(playerChicken.transform);
             }
         }
 
         float closestDistance = Mathf.Infinity;
 
-        foreach (Vector3 eggPos in eggPositions)
+        foreach (Transform target in possibleTargets)
         {
-            float distance = Vector3.Distance(transform.position, eggPos);
+            float distance = Vector3.Distance(transform.position, target.position);
             if (distance < closestDistance)
             {
                 closestDistance = distance;
-                agentController.SetDestination(eggPos);
+                return target;
             }
-
         }
+        return null;
+    }
+
+    private bool CanSee(Transform target)
+    {
+        if (target == null) return false;
+
+        Vector3 direction = target.position - eyes.position;
+        RaycastHit hit;
+        if (Physics.Raycast(eyes.position, direction, out hit, detectionRange, detectionMask))
+        {
+            if(hit.collider.transform == target)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     void RefreshEggList()
@@ -167,6 +276,9 @@ public class FarmerAutoInput : MonoBehaviour
 
     internal void HearCall(Vector3 position)
     {
-        print("Farmer heard call");
+        if (Random.Range(0, 1f) > callReactionProbability) return;
+
+        agentController.SetDestination(position);
+        SetState(FarmerState.Search);
     }
 }

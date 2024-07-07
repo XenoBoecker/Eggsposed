@@ -117,6 +117,8 @@ public class BaseChickenController : BaseCharacterController
             moveDirection = OnCalcDesiredVelocityStart(moveDirection);
         }
 
+        if (moveDirection.z == 0) return Vector3.zero;
+
         float speedMultiplier = 1.0f;
 
         if (OnAddSpeedMultiplier != null)

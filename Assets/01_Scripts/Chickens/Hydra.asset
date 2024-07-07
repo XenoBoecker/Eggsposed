@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2ae24e5c1ecce64a9f4827395b58855, type: 3}
-  m_Name: Lightning
+  m_Name: Hydra
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8158019855574468723, guid: a14776ce3d4cb2d4e83bcc8a32e9e162, type: 3}
+  prefab: {fileID: 1037596074530622094, guid: 95cf14a6344813c41984089d4a0caa38, type: 3}
   eggVisual: {fileID: 0}
-  chickenVisualHead: {fileID: 4785397024427436285, guid: 72722a4cf4d80324c81c05823943eb03,
+  chickenVisualHead: {fileID: 5102228603206636648, guid: 4e969ae689d03b54ea0a47b4906f9bd1,
     type: 3}
-  chickenVisualBody: {fileID: 1064445737630549295, guid: ba9dbfc1fe635a14084c5e194a51aa89,
+  chickenVisualBody: {fileID: 8200676663847201341, guid: 8cd7e9e94af12634caf1765a85c645cb,
     type: 3}
-  chickenVisualTail: {fileID: 3578432218920092674, guid: f0ae560d4e5f1cf4298f773390f0dafa,
+  chickenVisualTail: {fileID: 6684023612524318044, guid: 51b28084022c122418faed237b34051a,
     type: 3}

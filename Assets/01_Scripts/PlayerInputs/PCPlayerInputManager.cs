@@ -25,6 +25,8 @@ public class PCPlayerInputManager : ChickenInputManager
 
         if (controls.Player.PickupDrop.triggered) PickupDropEgg();
 
+        if (controls.Player.Call.triggered) Call();
+
         // if (controls.Player.Repair.ReadValue<float>() > 0) isRepairing = true;
         // else isRepairing = false;
 

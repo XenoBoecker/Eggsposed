@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ae24e5c1ecce64a9f4827395b58855, type: 3}
   m_Name: WindUp
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8867397650837001658, guid: 63cf755deb51b6f49a8d8dcfc6646d8a, type: 3}
+  prefab: {fileID: 8972487873215855097, guid: bc7beb7d84a2a424c85904c6d8aaccd9, type: 3}
   eggVisual: {fileID: 0}
   chickenVisualHead: {fileID: 5102228603206636648, guid: 4e969ae689d03b54ea0a47b4906f9bd1,
     type: 3}

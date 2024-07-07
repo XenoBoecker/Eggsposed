@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2ae24e5c1ecce64a9f4827395b58855, type: 3}
-  m_Name: Lightning
+  m_Name: SuperHot
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8158019855574468723, guid: a14776ce3d4cb2d4e83bcc8a32e9e162, type: 3}
+  prefab: {fileID: 5541882822226729079, guid: ce67c2255debc7e47a5e31d5396fe37d, type: 3}
   eggVisual: {fileID: 0}
   chickenVisualHead: {fileID: 4785397024427436285, guid: 72722a4cf4d80324c81c05823943eb03,
     type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ae24e5c1ecce64a9f4827395b58855, type: 3}
   m_Name: BaseChicken
   m_EditorClassIdentifier: 
-  prefab: {fileID: 25585136701300107, guid: c677be8ddf1434a44a95262881e373c5, type: 3}
+  prefab: {fileID: 7930122644705264913, guid: 028827376c198a146968cfe6fff543ac, type: 3}
   eggVisual: {fileID: 0}
   chickenVisualHead: {fileID: 1782462930609190790, guid: 58ef7226b5891264c9e7ec2b6ed26f32,
     type: 3}
