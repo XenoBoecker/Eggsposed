@@ -7161,36 +7161,36 @@ PrefabInstance:
         type: 3}
       propertyPath: _baseChickenData
       value: 
-      objectReference: {fileID: 11400000, guid: 8e4fbdc357118484a9e6bfa07dd89796,
+      objectReference: {fileID: 11400000, guid: 719ae78b830f4824bb949b0037f5fccb,
         type: 2}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
       propertyPath: _allChicken.Array.size
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
       propertyPath: _allChicken.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 719ae78b830f4824bb949b0037f5fccb,
+      objectReference: {fileID: 11400000, guid: 36c84c9f97cd9ad4986ad0acf22577ac,
         type: 2}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
       propertyPath: _allChicken.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 36c84c9f97cd9ad4986ad0acf22577ac,
+      objectReference: {fileID: 11400000, guid: ef19b8b9272751d4d8219d39ac64187b,
         type: 2}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
       propertyPath: _allChicken.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: ef19b8b9272751d4d8219d39ac64187b,
+      objectReference: {fileID: 11400000, guid: 724745a58d3cc0b438f3b811225b1c35,
         type: 2}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
       propertyPath: _allChicken.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 724745a58d3cc0b438f3b811225b1c35,
+      objectReference: {fileID: 11400000, guid: 5285b1f15bf6c374ca1f817aa81a091d,
         type: 2}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}

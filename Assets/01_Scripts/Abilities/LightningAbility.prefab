@@ -93,6 +93,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   callRange: 10
   callCD: 5
-  accelerationPerSecond: 1
-  decelerateThreshold: 1
-  maxSpeed: 100
+  accelerationPerSecond: 0.2
+  resetAccelerationThreshold: 0.7
