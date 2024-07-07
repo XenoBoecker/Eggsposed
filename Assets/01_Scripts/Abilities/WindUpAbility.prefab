@@ -93,10 +93,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   callRange: 10
   callCD: 5
-  startCharge: 10
-  chargeGainPerSecond: 2
+  startCharge: 12
+  chargeGainPerSecond: 4
   chargeLossPerSecond: 2
-  maxCharge: 10
+  maxCharge: 12
   maxSpeedMultiplier: 3
   SpeedPerCharge:
     serializedVersion: 2
@@ -104,12 +104,21 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 2.5238175
+      outSlope: 2.5238175
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.07563765
+    - serializedVersion: 3
+      time: 0.3
+      value: 0.65
+      inSlope: 1.470135
+      outSlope: 1.470135
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.09938438
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
