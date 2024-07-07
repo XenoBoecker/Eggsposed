@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int inheritanceCount = 2;
 
     List<ChickenData> previousChickenDatas = new List<ChickenData>();
+    public int BredEggCount => previousChickenDatas.Count -1;
     ChickenData _nextChickenData;
     public ChickenData CurrentChickenData => previousChickenDatas[previousChickenDatas.Count - 1];
 

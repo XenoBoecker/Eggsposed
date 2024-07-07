@@ -5,14 +5,22 @@ public class WindUpSetup : ChickenAbilitySetup
 {
     [SerializeField] float startChargeTime = 10;
 
-    [SerializeField] float chargeTimeToUnchargeTimeRatio = 2f;
-    [SerializeField] float chargeTimeToSpeedMultiplierRatio = 0.5f;
+    [SerializeField] float chargeGainPerSecond;
+    [SerializeField] float chargeLossPerSecond;
+
+    [SerializeField] float maxCharge = 10;
+    [SerializeField] float maxSpeedMultiplier = 3;
+
+    [SerializeField] AnimationCurve SpeedPerCharge;
 
     float movementMaxLateralSpeed;
     float bccSpeed;
 
     float timeCharged;
     bool charging;
+
+    float currentCharge;
+
 
     public override void Setup(Chicken chicken)
     {
@@ -37,11 +45,11 @@ public class WindUpSetup : ChickenAbilitySetup
     private float TurnChargeIntoSpeedMultiplier()
     {
         if (charging) return 0;
-        
-        timeCharged -= Time.deltaTime * chargeTimeToUnchargeTimeRatio;
+
+        currentCharge -= Time.deltaTime * chargeLossPerSecond;
         if (timeCharged < 0) timeCharged = 0;
 
-        float multiplier = timeCharged * chargeTimeToSpeedMultiplierRatio;
+        float multiplier = SpeedPerCharge.Evaluate(currentCharge / maxCharge) * maxSpeedMultiplier;
 
         movement.maxLateralSpeed = movementMaxLateralSpeed * multiplier;
         bcc.speed = bccSpeed * multiplier;
@@ -53,9 +61,9 @@ public class WindUpSetup : ChickenAbilitySetup
     {
         base.Update();
 
-        if (charging)
+        if (charging && currentCharge < maxCharge)
         {
-            timeCharged += Time.deltaTime;
+            currentCharge += Time.deltaTime * chargeGainPerSecond;
         }
     }
 
