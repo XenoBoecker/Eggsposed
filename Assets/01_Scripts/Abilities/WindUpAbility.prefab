@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   callRange: 10
-  startChargeTime: 10
-  chargeTimeToUnchargeTimeRatio: 0.5
-  chargeTimeToSpeedMultiplierRatio: 0.3
+  callCD: 5
+  startChargeTime: 3
+  chargeTimeToUnchargeTimeRatio: 0.1
+  chargeTimeToSpeedMultiplierRatio: 5
