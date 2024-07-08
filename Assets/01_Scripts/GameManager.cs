@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] CameraController playerCam;
 
+    [SerializeField] Transform playerStartPosition;
+
     [SerializeField] Chicken chickenPrefab;
 
     [SerializeField] ChickenData _baseChickenData;
@@ -41,7 +43,8 @@ public class GameManager : MonoBehaviour
         }
 
 
-        SpawnChicken(_baseChickenData, Vector3.zero);
+        SpawnChicken(_baseChickenData, playerStartPosition.position);
+        playerStartPosition.gameObject.SetActive(false);
     }
 
     private void SpawnChicken(ChickenData chickenData, Vector3 spawnPos)
@@ -87,12 +90,12 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        Time.timeScale = 0;
+        TimeManager.Instance.Pause();
     }
 
     public void ResumeGame()
     {
-        Time.timeScale = 1;
+        TimeManager.Instance.Unpause();
     }
 
     private void CopyDerivedComponent(GameObject source, GameObject destination)

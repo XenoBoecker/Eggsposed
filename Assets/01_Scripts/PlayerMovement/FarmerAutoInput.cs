@@ -49,7 +49,7 @@ public class FarmerAutoInput : MonoBehaviour
     {
         agentController = GetComponent<FarmerAgentController>();
         movement = GetComponent<CharacterMovement>();
-        agentController.SetDestination(Random.insideUnitSphere * randomPositionRange);
+        agentController.SetDestination(transform.position + Random.insideUnitSphere * randomPositionRange);
 
         InvokeRepeating("RefreshEggList", 0, 0.5f);
 

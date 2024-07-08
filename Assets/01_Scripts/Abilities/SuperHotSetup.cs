@@ -4,6 +4,8 @@ public class SuperHotSetup : ChickenAbilitySetup
 {
     [SerializeField] float timeSlowFactor = 0.1f;
 
+    TimeManager timeManager;
+
     Chicken chicken;
 
     float baseAngularSpeed;
@@ -49,19 +51,17 @@ public class SuperHotSetup : ChickenAbilitySetup
     {
         if (Time.timeScale == 0) return;
 
-        Time.timeScale = timeSlowFactor;
+        TimeManager.Instance.SetTimeScale(timeSlowFactor);
 
         bcc.angularSpeed = baseAngularSpeed / timeSlowFactor;
-        print("slow");
     }
 
     void SetTimeNormal()
     {
         if (Time.timeScale == 0) return;
-        
-        Time.timeScale = 1;
+
+        TimeManager.Instance.SetTimeScale(1);
 
         bcc.angularSpeed = baseAngularSpeed;
-        print("normal");
     }
 }

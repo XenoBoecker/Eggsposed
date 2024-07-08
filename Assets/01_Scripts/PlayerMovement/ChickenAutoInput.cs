@@ -18,7 +18,7 @@ public class ChickenAutoInput : MonoBehaviour
     void Start()
     {
         agentController = GetComponent<ChickenAgentController>();
-        agentController.SetDestination(Random.insideUnitSphere * randomPositionRange);
+        agentController.SetDestination(transform.position + Random.insideUnitSphere * randomPositionRange);
     }
 
     void Update()

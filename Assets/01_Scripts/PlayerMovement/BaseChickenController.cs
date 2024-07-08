@@ -144,7 +144,12 @@ public class BaseChickenController : BaseCharacterController
     {
         // Apply movement
 
-        speed = _baseSpeed * OnAddMaxSpeedMultiplier();
+        speed = _baseSpeed;
+            
+        if (OnAddMaxSpeedMultiplier != null)
+        {
+            speed *= OnAddMaxSpeedMultiplier();
+        }
 
         // If using root motion and root motion is being applied (eg: grounded),
         // move without acceleration / deceleration, let the animation takes full control

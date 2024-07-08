@@ -89,6 +89,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleSettings"",
+                    ""type"": ""Button"",
+                    ""id"": ""737afe45-da15-4dcf-8bf5-2f48bf4c9836"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -353,6 +362,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Call"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c8071550-e7e7-41fa-8e2d-c04c9724fd45"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ToggleSettings"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -947,6 +967,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_Breed = m_Player.FindAction("Breed", throwIfNotFound: true);
         m_Player_PickupDrop = m_Player.FindAction("PickupDrop", throwIfNotFound: true);
         m_Player_Call = m_Player.FindAction("Call", throwIfNotFound: true);
+        m_Player_ToggleSettings = m_Player.FindAction("ToggleSettings", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1027,6 +1048,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Breed;
     private readonly InputAction m_Player_PickupDrop;
     private readonly InputAction m_Player_Call;
+    private readonly InputAction m_Player_ToggleSettings;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -1038,6 +1060,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Breed => m_Wrapper.m_Player_Breed;
         public InputAction @PickupDrop => m_Wrapper.m_Player_PickupDrop;
         public InputAction @Call => m_Wrapper.m_Player_Call;
+        public InputAction @ToggleSettings => m_Wrapper.m_Player_ToggleSettings;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1068,6 +1091,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Call.started += instance.OnCall;
             @Call.performed += instance.OnCall;
             @Call.canceled += instance.OnCall;
+            @ToggleSettings.started += instance.OnToggleSettings;
+            @ToggleSettings.performed += instance.OnToggleSettings;
+            @ToggleSettings.canceled += instance.OnToggleSettings;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1093,6 +1119,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Call.started -= instance.OnCall;
             @Call.performed -= instance.OnCall;
             @Call.canceled -= instance.OnCall;
+            @ToggleSettings.started -= instance.OnToggleSettings;
+            @ToggleSettings.performed -= instance.OnToggleSettings;
+            @ToggleSettings.canceled -= instance.OnToggleSettings;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1282,6 +1311,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnBreed(InputAction.CallbackContext context);
         void OnPickupDrop(InputAction.CallbackContext context);
         void OnCall(InputAction.CallbackContext context);
+        void OnToggleSettings(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

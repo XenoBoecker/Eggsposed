@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleSettings",
+                    "type": "Button",
+                    "id": "737afe45-da15-4dcf-8bf5-2f48bf4c9836",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -331,6 +340,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Call",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c8071550-e7e7-41fa-8e2d-c04c9724fd45",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ToggleSettings",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
