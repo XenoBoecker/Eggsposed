@@ -1,0 +1,13 @@
+In Visual Studio: Select Tools->NuGet Package Manager-> Package Manager Console
+
+On the command line of the console at type the following command:
+
+Update-Package -reinstall
+
+
+run the batch file MoveLibraryFile.bat in the sample_unity_bodytracking directory
+
+
+For DirectML:
+
+    Copy the directml.dll from the sample_unity_bodytracking folder to the unity editor directory (e.g C:\Program Files\Unity\Hub\Editor\2019.1.2f1\Editor)

@@ -15,6 +15,8 @@ public class ChickenInputManager : MonoBehaviour
 
     public void Move(Vector2 dir)
     {
+        if(chickenController == null) chickenController = GetComponent<BaseChickenController>();
+
         chickenController.moveDirection = new Vector3(dir.x, 0, dir.y);
     }
 

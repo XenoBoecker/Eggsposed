@@ -98,3 +98,8 @@ Workflow/
 .vsconfig
 .idea/
 Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
+
+
+*.dll
+*.onnx
+*.nupkg

@@ -42,6 +42,8 @@ public class Chicken : MonoBehaviour
         {
             ActivateComponents(playerControlComponents);
             DeactivateComponents(aiControlComponents);
+
+            SetInputMethod(GameManager.Instance.KinectInputs);
         }
         else
         {
@@ -70,6 +72,24 @@ public class Chicken : MonoBehaviour
             if (behaviour != null)
             {
                 behaviour.enabled = false;
+            }
+        }
+    }
+
+    void SetInputMethod(bool kinectInputs)
+    {
+        if (kinectInputs)
+        {
+            foreach (Behaviour component in playerControlComponents)
+            {
+                if (component is PCPlayerInputManager) component.enabled = false;
+            }
+        }
+        else
+        {
+            foreach (Behaviour component in playerControlComponents)
+            {
+                if (component is KinectInputs) component.enabled = false;
             }
         }
     }

@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] bool kinectInputs;
+    public bool KinectInputs => kinectInputs;
+    
     [SerializeField] CameraController playerCam;
 
     [SerializeField] Transform playerStartPosition;
