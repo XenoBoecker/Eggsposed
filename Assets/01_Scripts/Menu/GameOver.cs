@@ -14,11 +14,31 @@ public class GameOver : MonoBehaviour
         {
             Debug.Log(chicken.ToString());
         }
+
+        StartCoroutine(DropEggs());
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    IEnumerator DropEggs()
+    {
+        yield return new WaitForSeconds(3f);
+        foreach (ChickenData chicken in bredChicken)
+        {
+            SpawnChickenEgg(chicken.eggVisual);
+
+            yield return new WaitForSeconds(Random.Range(0.5f, 0.8f));
+        }
+    }
+
+    private void SpawnChickenEgg(GameObject eggVisual)
+    {
+        GameObject egg = Instantiate(eggVisual, new Vector3(Random.Range(-1f, 1f), 8, Random.Range(-1f, 1f)), Quaternion.identity);
+
+        if(egg.GetComponent<Collider>() == null) egg.AddComponent<SphereCollider>();
     }
 }
