@@ -68,6 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7799274417496748032}
   - component: {fileID: 797512652359808758}
+  - component: {fileID: 7272904736494988563}
   m_Layer: 0
   m_Name: KinectBody
   m_TagString: Untagged
@@ -108,6 +109,19 @@ MonoBehaviour:
   pelvis: {fileID: 6314742584544181867}
   leftHand: {fileID: 6314742583756019421}
   rightHand: {fileID: 6314742583449428835}
+--- !u!114 &7272904736494988563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2769904743427648134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebbf133b2670fab4193bafbd88a08a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  calibrationValues: {fileID: 11400000, guid: 24d832ba5c2dd43428d077be5f6386ff, type: 2}
 --- !u!1001 &6314742583234024511
 PrefabInstance:
   m_ObjectHideFlags: 0

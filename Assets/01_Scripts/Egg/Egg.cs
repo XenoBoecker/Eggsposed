@@ -10,6 +10,8 @@ public class Egg : MonoBehaviour
     {
         if (isPlayersEgg)
         {
+            GameManager.Instance.GameOver();
+
             Debug.Log("Game Over");
         }
         else

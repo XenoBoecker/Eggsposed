@@ -15,5 +15,7 @@ public class Hacks : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.O)) GameManager.Instance.HackSpawnNextChicken();
+
+        if (Input.GetKeyDown(KeyCode.L)) GameManager.Instance.GameOver();
     }
 }

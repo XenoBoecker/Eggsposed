@@ -137,7 +137,7 @@ public class BaseChickenController : BaseCharacterController
     {
         if (OnUpdateRotationStart != null) moveDirection = OnUpdateRotationStart.Invoke(moveDirection);
         
-        movement.Rotate(transform.right * moveDirection.x, angularSpeed);
+        movement.Rotate(transform.right * moveDirection.x, angularSpeed * Mathf.Abs(moveDirection.x));
     }
 
     protected override void Move()

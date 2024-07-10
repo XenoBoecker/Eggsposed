@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -138,5 +139,30 @@ public class GameManager : MonoBehaviour
     internal void HackSpawnNextChicken()
     {
         SpawnNextChicken();
+    }
+
+    internal void GameOver()
+    {
+        GameOverInfo.SetBredChickens(previousChickenDatas);
+
+        SceneManager.LoadScene("GameOver");
+    }
+}
+
+public static class GameOverInfo
+{
+    static List<ChickenData> bredChickens = new List<ChickenData>();
+
+    public static void SetBredChickens(List<ChickenData> chickens)
+    {
+        foreach (ChickenData chicken in chickens)
+        {
+            bredChickens.Add(chicken);
+        }
+    }
+
+    public static List<ChickenData> GetBredChickens()
+    {
+        return bredChickens;
     }
 }

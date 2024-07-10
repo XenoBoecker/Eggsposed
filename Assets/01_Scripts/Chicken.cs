@@ -89,7 +89,7 @@ public class Chicken : MonoBehaviour
         {
             foreach (Behaviour component in playerControlComponents)
             {
-                if (component is KinectInputs) component.enabled = false;
+                if (component is KinectInputManager) component.enabled = false;
             }
         }
     }

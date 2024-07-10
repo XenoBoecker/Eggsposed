@@ -7,7 +7,7 @@ public class ChickenInputManager : MonoBehaviour
 {
     Chicken chicken;
     BaseChickenController chickenController;
-    private void Awake()
+    private void Start()
     {
         chicken = GetComponent<Chicken>();
         chickenController = GetComponent<BaseChickenController>();
@@ -37,6 +37,8 @@ public class ChickenInputManager : MonoBehaviour
 
     public void StandUp()
     {
+        if (chickenController == null) chickenController = GetComponent<BaseChickenController>();
+        
         chickenController.StandUp();
     }
 

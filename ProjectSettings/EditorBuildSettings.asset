@@ -9,13 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/GamePlayTest.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/MenuSettings/GameOver.unity
+    path: Assets/MenuSettings/GameOverIcarus.unity
     guid: 3e12b58bb4247e347ac7cfc85bac0cb1
   - enabled: 1
-    path: Assets/MenuSettings/Menu.unity
+    path: Assets/MenuSettings/MenuIcarus.unity
     guid: 0b8ae6e90a15ab74fba1d9f7b3ce0d69
   - enabled: 1
-    path: Assets/MenuSettings/Settings.unity
+    path: Assets/MenuSettings/SettingsIcarus.unity
     guid: e3a77647cc6903f45963007ba5f12c36
   - enabled: 1
     path: Assets/Scenes/Game.unity

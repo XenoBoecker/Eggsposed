@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 8436353215386987010}
   - component: {fileID: 2145837982883020667}
   - component: {fileID: -5962194614486061174}
-  - component: {fileID: 1764753278750723563}
+  - component: {fileID: 3961564759560718402}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Untagged
@@ -266,7 +266,7 @@ MonoBehaviour:
   - {fileID: 8661628317894715477}
   - {fileID: 2145837982883020667}
   - {fileID: -5962194614486061174}
-  - {fileID: 1764753278750723563}
+  - {fileID: 3961564759560718402}
   aiControlComponents:
   - {fileID: 8343700215415963554}
   - {fileID: 5084944400656500730}
@@ -403,7 +403,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1764753278750723563
+--- !u!114 &3961564759560718402
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -412,14 +412,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 25585136701300107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebbf133b2670fab4193bafbd88a08a0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 44d78258a1ad8a044abec460299ec4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  savePositionCount: 10
-  headMoveThreshold: 0.2
-  rotateOffsetThreshold: 0.2
-  breedHeightChangeThreshold: 0.2
-  jumpHeightChangeThreshold: 0.4
 --- !u!1 &1264574075333774109
 GameObject:
   m_ObjectHideFlags: 0
