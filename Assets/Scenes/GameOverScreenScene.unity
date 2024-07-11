@@ -618,7 +618,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  testEggCount: 10
+  delayBeforeEggsDrop: 1
+  delayBeforeCamAnimation: 1
+  testEggCount: 2
   testChicken: {fileID: 11400000, guid: 36c84c9f97cd9ad4986ad0acf22577ac, type: 2}
 --- !u!4 &1201386711
 Transform:

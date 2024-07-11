@@ -2306,6 +2306,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: KinectBody
       objectReference: {fileID: 0}
+    - target: {fileID: 2769904743427648134, guid: 8501343530130654aac497e25d8db543,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7799274417496748032, guid: 8501343530130654aac497e25d8db543,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3495,7 +3500,7 @@ PrefabInstance:
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
       propertyPath: kinectInputs
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
@@ -3507,7 +3512,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _baseChickenData
       value: 
-      objectReference: {fileID: 11400000, guid: 8e4fbdc357118484a9e6bfa07dd89796,
+      objectReference: {fileID: 11400000, guid: fb0a77ff2ddd5d048841c9a4274bb78a,
         type: 2}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}

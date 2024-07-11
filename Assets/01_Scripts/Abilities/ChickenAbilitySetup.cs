@@ -1,5 +1,4 @@
 using ECM.Components;
-using System;
 using TMPro.EditorUtilities;
 using UnityEngine;
 
@@ -53,6 +52,8 @@ public class ChickenAbilitySetup : MonoBehaviour
 
     protected virtual bool CanCall()
     {
+        print("Checking Can Call");
+
         if (timeSinceLastCall >= callCD) return true;
         else return false;
     }

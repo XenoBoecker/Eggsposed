@@ -49,6 +49,8 @@ public class ChickenInputManager : MonoBehaviour
 
     public void Call()
     {
+        if (chicken == null) chicken = GetComponent<Chicken>();
+
         chicken.Call();
     }
 }
