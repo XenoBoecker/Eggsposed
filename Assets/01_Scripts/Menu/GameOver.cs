@@ -9,6 +9,9 @@ public class GameOver : MonoBehaviour
     [SerializeField] float cameraTransitionTime = 2f;
     [SerializeField] AnimationCurve cameraTransitionCurve;
 
+    [SerializeField] float delayBeforeEggsDrop = 1f;
+    [SerializeField] float delayBeforeCamAnimation = 1f;
+
     [SerializeField] int testEggCount = 10;
     [SerializeField] ChickenData testChicken;
 
@@ -43,13 +46,15 @@ public class GameOver : MonoBehaviour
 
     IEnumerator DropEggs()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(delayBeforeEggsDrop);
         foreach (ChickenData chicken in bredChicken)
         {
             SpawnChickenEgg(chicken.eggVisual);
 
             yield return new WaitForSeconds(Random.Range(0.5f, 0.8f));
         }
+
+        yield return new WaitForSeconds(delayBeforeCamAnimation);
 
         StartCoroutine(CameraAnimation());
     }

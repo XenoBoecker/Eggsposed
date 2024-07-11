@@ -1,5 +1,5 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MainMenu : MonoBehaviour
@@ -9,6 +9,10 @@ public class MainMenu : MonoBehaviour
     [SerializeField] float timeBetweenInputs = 0.5f;
 
     float timeSinceLastInput;
+
+    public event Action OnInputRight;
+    public event Action OnInputLeft;
+    public event Action OnInputConfirm;
 
     private void Awake()
     {
@@ -30,16 +34,16 @@ public class MainMenu : MonoBehaviour
 
     public void InputRight()
     {
-        print("Right");
+        OnInputRight?.Invoke();
     }
 
     public void InputLeft()
     {
-        print("Left");
+        OnInputLeft?.Invoke();
     }
 
     public void InputConfirm()
     {
-        print("Confirm");
+        OnInputConfirm?.Invoke();
     }
 }
