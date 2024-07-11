@@ -15,7 +15,7 @@ public class HydraSetup : ChickenAbilitySetup
         currentChargeTime += Time.deltaTime;
     }
 
-    protected override bool CanCall()
+    public override bool CanCall()
     {
         base.CanCall();
 

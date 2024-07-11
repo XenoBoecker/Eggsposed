@@ -51,7 +51,7 @@ public class ChickenAbilitySetup : MonoBehaviour
         else return 0;
     }
 
-    protected virtual bool CanCall()
+    public virtual bool CanCall()
     {
         print("Checking Can Call");
 
