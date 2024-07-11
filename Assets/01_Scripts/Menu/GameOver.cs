@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
+    [SerializeField] Transform cam;
+    [SerializeField] Transform camStartPos, camFinalPos;
+    [SerializeField] float cameraTransitionTime = 2f;
+    [SerializeField] AnimationCurve cameraTransitionCurve;
+
+    [SerializeField] int testEggCount = 10;
     [SerializeField] ChickenData testChicken;
 
     List<ChickenData> bredChicken = new List<ChickenData>();
@@ -14,7 +20,7 @@ public class GameOver : MonoBehaviour
 
         if (bredChicken.Count == 0)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < testEggCount; i++)
             {
 
                 bredChicken.Add(testChicken);
@@ -43,6 +49,20 @@ public class GameOver : MonoBehaviour
             SpawnChickenEgg(chicken.eggVisual);
 
             yield return new WaitForSeconds(Random.Range(0.5f, 0.8f));
+        }
+
+        StartCoroutine(CameraAnimation());
+    }
+
+    IEnumerator CameraAnimation()
+    {
+        for (float i = 0; i < cameraTransitionTime; i+= Time.deltaTime)
+        {
+            float percentage = cameraTransitionCurve.Evaluate(i / cameraTransitionTime);
+
+            cam.position = Vector3.Lerp(camStartPos.position, camFinalPos.position, percentage);
+            cam.rotation = Quaternion.Lerp(camStartPos.rotation, camFinalPos.rotation, percentage);
+            yield return null;
         }
     }
 
