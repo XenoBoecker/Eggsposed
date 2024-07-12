@@ -64,7 +64,7 @@ public class GameOver : MonoBehaviour
         yield return new WaitForSeconds(delayBeforeEggsDrop);
         foreach (ChickenData chicken in bredChicken)
         {
-            SpawnChickenEgg(chicken.eggVisual);
+            SpawnChickenEgg(chicken.eggPrefab);
 
             yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 0.8f));
         }

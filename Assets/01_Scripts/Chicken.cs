@@ -17,6 +17,7 @@ public class Chicken : MonoBehaviour
 
 
     [SerializeField] Transform eggCarryPosition, eggDropPosition;
+    public Transform EggDropPosition => eggDropPosition;
 
     Egg myEgg;
 

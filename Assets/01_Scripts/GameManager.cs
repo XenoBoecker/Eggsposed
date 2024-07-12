@@ -22,8 +22,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] ChickenData _baseChickenData;
     [SerializeField] List<ChickenData> _allChicken;
 
-    [SerializeField] GameObject eggPrefab;
-
     [SerializeField] int inheritanceCount = 2;
 
     List<ChickenData> previousChickenDatas = new List<ChickenData>();
@@ -62,7 +60,7 @@ public class GameManager : MonoBehaviour
         _player = Instantiate(chickenPrefab, spawnPos, Quaternion.identity);
         _player.SetControlledByPlayer(true);
 
-        _player.SetEgg(Instantiate(eggPrefab, spawnPos - Vector3.forward*2 + Vector3.up, Quaternion.identity).GetComponent<Egg>());
+        _player.SetEgg(Instantiate(chickenData.eggPrefab, spawnPos - Vector3.forward*2 + Vector3.up, Quaternion.identity).GetComponent<Egg>());
 
         playerCam.SetTarget(_player.transform);
 
@@ -151,6 +149,15 @@ public class GameManager : MonoBehaviour
         GameOverInfo.SetBredChickens(previousChickenDatas);
 
         SceneManager.LoadScene(gameOverSceneName);
+    }
+
+    internal void SpawnEgg(Vector3 position)
+    {
+        int rand = UnityEngine.Random.Range(0, _allChicken.Count);
+
+        ChickenData chickenData = _allChicken[rand];
+
+        Instantiate(chickenData.eggPrefab, position, Quaternion.identity);
     }
 }
 

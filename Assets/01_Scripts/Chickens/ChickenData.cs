@@ -6,7 +6,7 @@ public class ChickenData : ScriptableObject
 {
     public GameObject prefab;
 
-    public GameObject eggVisual;
+    public GameObject eggPrefab;
     public GameObject chickenVisualHead, chickenVisualBody, chickenVisualTail;
 
     public Sprite abilityIcon;
