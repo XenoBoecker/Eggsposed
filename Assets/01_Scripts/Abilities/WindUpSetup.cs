@@ -7,16 +7,21 @@ public class WindUpSetup : ChickenAbilitySetup
     [SerializeField] float startCharge = 10;
 
     [SerializeField] float chargeGainPerSecond;
+    public float ChargeGainPerSecond => chargeGainPerSecond;
     [SerializeField] float chargeLossPerSecond;
+    public float ChargeLossPerSecond => chargeLossPerSecond;
 
     [SerializeField] float maxCharge = 10;
     [SerializeField] float maxSpeedMultiplier = 3;
 
     [SerializeField] AnimationCurve SpeedPerCharge;
-    
+
+
+    [SerializeField] WindUpRotator rotatorPrefab;
     bool charging;
 
     float currentCharge;
+    public float CurrentCharge => currentCharge;
 
 
     public override void Setup(Chicken chicken)
@@ -36,6 +41,9 @@ public class WindUpSetup : ChickenAbilitySetup
         bcc.OnStandUp += StopCharging;
         
         bcc.OnAddSpeedMultiplier += TurnChargeIntoSpeedMultiplier;
+
+        WindUpRotator rotator = Instantiate(rotatorPrefab, transform);
+        rotator.SetAbility(this);
     }
 
     private float SpeedMultiplier()

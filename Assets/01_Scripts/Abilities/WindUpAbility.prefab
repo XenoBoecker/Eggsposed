@@ -131,3 +131,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  rotatorPrefab: {fileID: 7507257151033900248, guid: f98b88a42e6f7b94496c190aa40f607a,
+    type: 3}
