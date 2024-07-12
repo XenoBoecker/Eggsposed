@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music:
-  - {fileID: 8300000, guid: 50d6433acb61c304b9f6a92a71607781, type: 3}
+  - {fileID: 8300000, guid: 259bcc64da173ee4f819d96e5120dc15, type: 3}
   musicAudioSource: {fileID: 6880539880263720575}
   sfxAudioSource: {fileID: 5261854424008113395}
   uiSFX:
