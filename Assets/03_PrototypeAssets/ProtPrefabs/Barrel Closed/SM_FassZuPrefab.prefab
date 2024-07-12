@@ -116,10 +116,50 @@ PrefabInstance:
       value: Fass zu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -2793727289926329592, guid: efe40e20a52c48347a65b57d1cd4ad3c, type: 3}
+    - {fileID: 1507767883509144192, guid: efe40e20a52c48347a65b57d1cd4ad3c, type: 3}
+    - {fileID: 3779745573541866595, guid: efe40e20a52c48347a65b57d1cd4ad3c, type: 3}
+    - {fileID: -8513424388201257645, guid: efe40e20a52c48347a65b57d1cd4ad3c, type: 3}
+    - {fileID: 3006328815571793890, guid: efe40e20a52c48347a65b57d1cd4ad3c, type: 3}
+    - {fileID: 8523772855540137367, guid: efe40e20a52c48347a65b57d1cd4ad3c, type: 3}
+    - {fileID: -5539764629200458662, guid: efe40e20a52c48347a65b57d1cd4ad3c, type: 3}
+    - {fileID: -8418885108249170206, guid: efe40e20a52c48347a65b57d1cd4ad3c, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -5731229141766309534, guid: efe40e20a52c48347a65b57d1cd4ad3c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6352978350004171691}
   m_SourcePrefab: {fileID: 100100000, guid: efe40e20a52c48347a65b57d1cd4ad3c, type: 3}
+--- !u!1 &4751569850912209279 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5731229141766309534, guid: efe40e20a52c48347a65b57d1cd4ad3c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8180334552870617117}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &6352978350004171691
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751569850912209279}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8211372540250625004, guid: efe40e20a52c48347a65b57d1cd4ad3c, type: 3}
 --- !u!4 &8506415217398802422 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: efe40e20a52c48347a65b57d1cd4ad3c,

@@ -111,13 +111,32 @@ PrefabInstance:
       value: Bench
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3779745573541866595, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
+    - {fileID: -2688211036754535390, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
+    - {fileID: 384091372448585267, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
+    - {fileID: 3646857207371614349, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
+    - {fileID: 6452334218567059929, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
+    - {fileID: 1571442460376889977, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
+    - {fileID: -1662635186785478837, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
+    - {fileID: -9063704335137719380, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
+    - {fileID: -2576541409280243148, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
+    - {fileID: 1012442313011055761, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
+    - {fileID: -2902848975790988606, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
+    - {fileID: -330849047367618963, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
+    - {fileID: 1982886907227192439, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
+    - {fileID: 3514808886394512263, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
+    - {fileID: -8418885108249170206, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 626afc03c8404f1428a69eb1fe79ed7e,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4667918330695565490}
+    - targetCorrespondingSourceObject: {fileID: 5710113227250142882, guid: 626afc03c8404f1428a69eb1fe79ed7e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9104309763589231669}
   m_SourcePrefab: {fileID: 100100000, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
 --- !u!4 &3826672226151650918 stripped
 Transform:
@@ -153,3 +172,31 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &9056684811374247727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5710113227250142882, guid: 626afc03c8404f1428a69eb1fe79ed7e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3643882002477887885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &9104309763589231669
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9056684811374247727}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5522661683132602780, guid: 626afc03c8404f1428a69eb1fe79ed7e, type: 3}
