@@ -33,5 +33,7 @@ public class KinectInputManager : ChickenInputManager
 
         inputs.OnJump += Jump;
         inputs.OnStopJump += StopJump;
+
+        inputs.OnDropEgg += PickupDropEgg;
     }
 }

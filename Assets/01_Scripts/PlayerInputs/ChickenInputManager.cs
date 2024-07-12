@@ -44,7 +44,9 @@ public class ChickenInputManager : MonoBehaviour
 
     public void PickupDropEgg()
     {
-        chicken.PickupDropEgg();
+        if (chicken == null) chicken = GetComponent<Chicken>();
+
+        chicken.DropEgg();
     }
 
     public void Call()

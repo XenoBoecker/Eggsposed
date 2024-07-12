@@ -43,6 +43,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8614615901445407662}
+  - {fileID: 6806775776762019024}
+  - {fileID: 5170453058575347228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8695131461178697061
@@ -268,6 +270,8 @@ MonoBehaviour:
   - {fileID: 8343700215415963554}
   - {fileID: 5084944400656500730}
   - {fileID: 8436353215386987010}
+  eggCarryPosition: {fileID: 6806775776762019024}
+  eggDropPosition: {fileID: 5170453058575347228}
 --- !u!195 &8436353215386987010
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -412,6 +416,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d78258a1ad8a044abec460299ec4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1082624109510388296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6806775776762019024}
+  m_Layer: 0
+  m_Name: EggCarryPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6806775776762019024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082624109510388296}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.59502965, y: -0, z: -0, w: 0.8037037}
+  m_LocalPosition: {x: 0, y: 0.47, z: -0.501}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7165455128689545529}
+  m_LocalEulerAnglesHint: {x: 73.029, y: 0, z: 0}
 --- !u!1 &1264574075333774109
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,6 +510,37 @@ Transform:
   - {fileID: 4925548575479625985}
   m_Father: {fileID: 8614615901445407662}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &6098237222160189290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5170453058575347228}
+  m_Layer: 0
+  m_Name: EggDropPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5170453058575347228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6098237222160189290}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.59502965, y: -0, z: -0, w: 0.8037037}
+  m_LocalPosition: {x: 0, y: 0.361, z: -0.889}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7165455128689545529}
+  m_LocalEulerAnglesHint: {x: 73.029, y: 0, z: 0}
 --- !u!1 &7657518311733965505
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,6 +27,7 @@ public class KinectInputs : MonoBehaviour
     public event Action OnStopJump;
     public event Action OnSitDown;
     public event Action OnStandUp;
+    public event Action OnDropEgg;
 
     //float printTimer = 0;
 
@@ -128,7 +129,12 @@ public class KinectInputs : MonoBehaviour
         float currentPelvisHeight = pelvis.position.y;
 
         if (currentPelvisHeight > calibrationValues.squatPelvisMeanPosition.y + calibrationValues.squatDistance * calibrationValues.squatDistancePercentageToTriggerInput) OnStandUp?.Invoke();
-        else if (currentPelvisHeight < calibrationValues.standPelvisMeanPosition.y - calibrationValues.squatDistance * calibrationValues.squatDistancePercentageToTriggerInput) OnSitDown?.Invoke();
+        else if (currentPelvisHeight < calibrationValues.standPelvisMeanPosition.y - calibrationValues.squatDistance * calibrationValues.squatDistancePercentageToTriggerInput)
+        {
+            OnSitDown?.Invoke();
+
+            CheckDropEgg();
+        }
     }
     
     private void CheckHandsHeightChange()
@@ -137,6 +143,13 @@ public class KinectInputs : MonoBehaviour
 
         if (currentHandHeight > calibrationValues.standHandsMeanPosition.y + calibrationValues.jumpDistance * calibrationValues.jumpDistancePercentageToTriggerInput) OnJump?.Invoke();
         else if (currentHandHeight < calibrationValues.jumpHandsMeanPosition.y - calibrationValues.jumpDistance * calibrationValues.jumpDistancePercentageToTriggerInput) OnStopJump?.Invoke();
+    }
+
+    private void CheckDropEgg()
+    {
+        float currentHandDistance = Mathf.Abs(leftHand.position.x - rightHand.position.x);
+
+        
     }
 
 

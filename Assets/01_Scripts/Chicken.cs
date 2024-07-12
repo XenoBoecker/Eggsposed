@@ -15,9 +15,17 @@ public class Chicken : MonoBehaviour
     [SerializeField] Behaviour[] playerControlComponents;
     [SerializeField] Behaviour[] aiControlComponents;
 
+
+    [SerializeField] Transform eggCarryPosition, eggDropPosition;
+
     Egg myEgg;
 
     bool hasEgg;
+
+
+    [SerializeField] float timeDelayAfterDropEggBeforePickupPossible = 3f;
+    float timeSinceEggDropped;
+
     public bool HasEgg => hasEgg;
 
     public event Action OnFinishBreeding;
@@ -32,6 +40,19 @@ public class Chicken : MonoBehaviour
         GetComponent<BaseChickenController>().OnFinishBreeding += HatchEgg;
 
         SetControlledByPlayer(_isControlledByPlayer);
+    }
+
+    private void Update()
+    {
+        timeSinceEggDropped += Time.deltaTime;
+
+        if (myEgg != null && !hasEgg && timeSinceEggDropped > timeDelayAfterDropEggBeforePickupPossible)
+        {
+            if (Vector3.Distance(transform.position, myEgg.transform.position) < pickupRange)
+            {
+                PickUpEgg();
+            }
+        }
     }
 
     public void SetControlledByPlayer(bool isControlledByPlayer)
@@ -98,7 +119,7 @@ public class Chicken : MonoBehaviour
     {
         myEgg = egg;
         egg.SetPlayersEgg(_isControlledByPlayer);
-        PickupDropEgg();
+        PickUpEgg();
     }
 
     void HatchEgg()
@@ -107,24 +128,34 @@ public class Chicken : MonoBehaviour
         Destroy(myEgg.gameObject);
     }
 
-    public void PickupDropEgg()
+    public void DropEgg()
     {
         if (myEgg == null) return;
 
-        if (hasEgg)
-        {
-            myEgg.transform.position = transform.position - transform.forward * 2 + Vector3.up; 
-            myEgg.gameObject.SetActive(true);
-            hasEgg = false;
-        }
-        else
-        {
-            if (Vector3.Distance(transform.position, myEgg.transform.position) < pickupRange)
-            {
-                myEgg.gameObject.SetActive(false);
-                hasEgg = true;
-            }
-        }
+        if (!hasEgg) return;
+        
+        myEgg.transform.position = eggDropPosition.position;
+        myEgg.transform.parent = null;
+
+        myEgg.GetComponentInChildren<Collider>().enabled = true;
+        myEgg.GetComponent<Rigidbody>().isKinematic = false;
+
+        hasEgg = false;
+
+        timeSinceEggDropped = 0;
+    }
+
+    private void PickUpEgg()
+    {
+        myEgg.transform.position = eggCarryPosition.position;
+        myEgg.transform.rotation = eggCarryPosition.rotation;
+
+        myEgg.transform.parent = eggCarryPosition;
+
+        myEgg.GetComponentInChildren<Collider>().enabled = false;
+        myEgg.GetComponent<Rigidbody>().isKinematic = true;
+
+        hasEgg = true;
     }
 
     public void TakeEgg()
