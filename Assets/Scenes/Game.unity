@@ -3440,6 +3440,11 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
+      propertyPath: gameOverSceneName
+      value: GameOverScreenScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
+        type: 3}
       propertyPath: playerStartPosition
       value: 
       objectReference: {fileID: 274736880}

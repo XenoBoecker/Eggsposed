@@ -9,7 +9,10 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] bool kinectInputs;
     public bool KinectInputs => kinectInputs;
-    
+
+
+    [SerializeField] string gameOverSceneName = "GameOverScreenScene";
+
     [SerializeField] CameraController playerCam;
 
     [SerializeField] Transform playerStartPosition;
@@ -145,7 +148,7 @@ public class GameManager : MonoBehaviour
     {
         GameOverInfo.SetBredChickens(previousChickenDatas);
 
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene(gameOverSceneName);
     }
 }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,13 +13,20 @@ public class GameOver : MonoBehaviour
     [SerializeField] float delayBeforeEggsDrop = 1f;
     [SerializeField] float delayBeforeCamAnimation = 1f;
 
+    [SerializeField] float eggDropRange = 0.6f;
+
     [SerializeField] int testEggCount = 10;
     [SerializeField] ChickenData testChicken;
 
     List<ChickenData> bredChicken = new List<ChickenData>();
+
+    public event Action OnShowLeaderboard;
+
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
+
         bredChicken = GameOverInfo.GetBredChickens();
 
         if (bredChicken.Count == 0)
@@ -51,7 +59,7 @@ public class GameOver : MonoBehaviour
         {
             SpawnChickenEgg(chicken.eggVisual);
 
-            yield return new WaitForSeconds(Random.Range(0.5f, 0.8f));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 0.8f));
         }
 
         yield return new WaitForSeconds(delayBeforeCamAnimation);
@@ -69,11 +77,13 @@ public class GameOver : MonoBehaviour
             cam.rotation = Quaternion.Lerp(camStartPos.rotation, camFinalPos.rotation, percentage);
             yield return null;
         }
+
+        OnShowLeaderboard?.Invoke();
     }
 
     private void SpawnChickenEgg(GameObject eggVisual)
     {
-        GameObject egg = Instantiate(eggVisual, new Vector3(Random.Range(-1f, 1f), 8, Random.Range(-1f, 1f)), Quaternion.identity);
+        GameObject egg = Instantiate(eggVisual, new Vector3(UnityEngine.Random.Range(-eggDropRange, eggDropRange), 8, UnityEngine.Random.Range(-eggDropRange, eggDropRange)), Quaternion.identity);
 
         if(egg.GetComponent<Collider>() == null) egg.AddComponent<SphereCollider>();
     }
