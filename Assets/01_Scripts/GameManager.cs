@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
 
     internal void GameOver()
     {
+        PlayerPrefs.SetInt("OnlyShowLeaderboard", 0);
         GameOverInfo.SetBredChickens(previousChickenDatas);
 
         SceneManager.LoadScene(gameOverSceneName);

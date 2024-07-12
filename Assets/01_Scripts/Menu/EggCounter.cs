@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EggCounter : MonoBehaviour
 {
-    [SerializeField] TMP_Text eggCountText;
+    [SerializeField] NumberDisplay eggCounter;
 
     List<Collider> alreadyCountedEggs = new List<Collider>();
 
@@ -20,6 +21,6 @@ public class EggCounter : MonoBehaviour
         alreadyCountedEggs.Add(other);
 
         eggsCollected++;
-        eggCountText.text = eggsCollected.ToString();
+        eggCounter.SetNumber(eggsCollected);
     }
 }

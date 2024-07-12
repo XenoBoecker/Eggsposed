@@ -10,7 +10,9 @@ public class MainMenuRotator : MonoBehaviour
     float currentTargetRotation;
 
 
-    [SerializeField] float rotationSpeed = 5;
+    [SerializeField] float rotationDuration;
+
+    float rotationTimer;
 
 
     [SerializeField] AnimationCurve rotationCurve;
@@ -25,15 +27,31 @@ public class MainMenuRotator : MonoBehaviour
 
     private void Update()
     {
-        float curvePercentage = (transform.rotation.y - lastRotation) / (currentTargetRotation - lastRotation);
-        
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, currentTargetRotation, 0), Time.deltaTime * rotationSpeed);
+        if (rotationTimer > rotationDuration)
+        {
+            transform.rotation = Quaternion.Euler(0, currentTargetRotation, 0);
+            return;
+        }
+
+        rotationTimer += Time.deltaTime;
+
+        float curvePercentage = rotationTimer / rotationDuration;
+
+        float rotValue = rotationCurve.Evaluate(curvePercentage);
+
+        float rotDiff = currentTargetRotation - lastRotation;
+
+        if (Mathf.Abs(rotDiff) > 90) rotDiff = -90 * Mathf.Sign(rotDiff);
+
+        transform.rotation = Quaternion.Euler(0, lastRotation + rotValue * rotDiff, 0);
     }
 
     private void UpdateTaretRotation()
     {
-        lastRotation = transform.rotation.y;
+        lastRotation = transform.rotation.eulerAngles.y;
 
         currentTargetRotation = 360f * mainMenu.CurrentButtonIndex / mainMenu.ButtonCount;
+        
+        rotationTimer = 0;
     }
 }

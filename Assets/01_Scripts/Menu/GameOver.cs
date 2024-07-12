@@ -25,6 +25,13 @@ public class GameOver : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(PlayerPrefs.GetInt("OnlyShowLeaderboard") == 1)
+        {
+            Invoke("OnlyShowLeaderboard", 0.1f);
+
+            return;
+        }
+
         Time.timeScale = 1;
 
         bredChicken = GameOverInfo.GetBredChickens();
@@ -86,5 +93,13 @@ public class GameOver : MonoBehaviour
         GameObject egg = Instantiate(eggVisual, new Vector3(UnityEngine.Random.Range(-eggDropRange, eggDropRange), 8, UnityEngine.Random.Range(-eggDropRange, eggDropRange)), Quaternion.identity);
 
         if(egg.GetComponent<Collider>() == null) egg.AddComponent<SphereCollider>();
+    }
+
+    void OnlyShowLeaderboard()
+    {
+        cam.position = camFinalPos.position;
+        cam.rotation = camFinalPos.rotation;
+
+        OnShowLeaderboard?.Invoke();
     }
 }

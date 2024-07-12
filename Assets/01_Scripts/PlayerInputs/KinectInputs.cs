@@ -10,7 +10,10 @@ public class KinectInputs : MonoBehaviour
 
     KinectBody kinectBody;
     [SerializeField] CalibrationValues calibrationValues;
-    
+
+
+    [SerializeField] AnimationCurve rotationInputCurve;
+
     Transform head;
 
     Transform pelvis;
@@ -107,13 +110,13 @@ public class KinectInputs : MonoBehaviour
         {
             float valueOverRange = currentHeadXPosition - (calibrationValues.standHeadMeanPosition.x + calibrationValues.headSidewaysDistance * calibrationValues.rotateDistancePercentageToTriggerInput);
 
-            rotDir = -Mathf.Min(valueOverRange / rotRange, 1);
+            rotDir = -rotationInputCurve.Evaluate(Mathf.Min(valueOverRange / rotRange, 1));
         }
         else if (currentHeadXPosition < calibrationValues.standHeadMeanPosition.x - calibrationValues.headSidewaysDistance * calibrationValues.rotateDistancePercentageToTriggerInput)
         {
             float valueOverRange = (calibrationValues.standHeadMeanPosition.x + calibrationValues.headSidewaysDistance * calibrationValues.rotateDistancePercentageToTriggerInput) - currentHeadXPosition;
 
-            rotDir = Mathf.Min(valueOverRange / rotRange, 1);
+            rotDir = rotationInputCurve.Evaluate(Mathf.Min(valueOverRange / rotRange, 1));
         }
         //else print("Dont Rotate");
 

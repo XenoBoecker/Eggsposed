@@ -77,5 +77,6 @@ public class Leaderboard : MonoBehaviour
     internal void ResetLeaderboard()
     {
         players.Clear();
+        SaveLeaderboard();
     }
 }

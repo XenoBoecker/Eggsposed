@@ -3,15 +3,17 @@ using UnityEngine.UI;
 
 public class GeneralUI : MonoBehaviour
 {
-    [SerializeField] Text eggCountText;
+    [SerializeField] NumberDisplay eggCounter;
 
     void Start()
     {
         GameManager.Instance.OnSpawnChicken += OnSpawnChicken;
+
+        eggCounter.SetNumber(0);
     }
 
     private void OnSpawnChicken()
     {
-        eggCountText.text = GameManager.Instance.BredEggCount.ToString();
+        eggCounter.SetNumber(GameManager.Instance.BredEggCount);
     }
 }

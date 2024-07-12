@@ -29,7 +29,9 @@ public class MainMenu : MonoBehaviour
         controls = new PlayerControls();
         controls.Enable();
 
-        inputs.OnSitDown += InputConfirm;
+        if(inputs != null) inputs.OnSitDown += InputConfirm;
+
+        OnInput += () => timeSinceLastInput = 0;
     }
 
     // Update is called once per frame
@@ -39,8 +41,16 @@ public class MainMenu : MonoBehaviour
 
         if (timeSinceLastInput < timeBetweenInputs) return;
 
-        if (inputs.MoveInput.x < 0) InputLeft();
-        else if (inputs.MoveInput.x > 0) InputRight();
+        if (inputs != null) 
+        {
+            if (inputs.MoveInput.x < 0) InputLeft();
+            else if (inputs.MoveInput.x > 0) InputRight();
+        }
+
+        if (controls.Player.Move.ReadValue<Vector2>().x < 0) InputLeft();
+        else if (controls.Player.Move.ReadValue<Vector2>().x > 0) InputRight();
+
+        if (controls.Player.Breed.triggered) InputConfirm();
     }
 
     public void InputRight()
@@ -64,8 +74,12 @@ public class MainMenu : MonoBehaviour
     public void InputConfirm()
     {
         if (currentButtonIndex == 0) SceneManager.LoadScene("Game");
-        else if (currentButtonIndex == 1) SceneManager.LoadScene("Leaderboard");
-        else if (currentButtonIndex == 2) SceneManager.LoadScene("Options");
+        else if (currentButtonIndex == 1) SceneManager.LoadScene("Options");
+        else if (currentButtonIndex == 2)
+        {
+            PlayerPrefs.SetInt("OnlyShowLeaderboard", 1);
+            SceneManager.LoadScene("GameOverScreenScene");
+        }
         else if (currentButtonIndex == 3) SceneManager.LoadScene("Calibration_X");
         else if (currentButtonIndex == 4) Application.Quit();
     }
