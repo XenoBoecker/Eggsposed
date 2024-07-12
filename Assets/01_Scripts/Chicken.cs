@@ -193,14 +193,18 @@ public class Chicken : MonoBehaviour
         }
     }
 
-    internal void Call()
+    internal bool CheckCanCall()
     {
-        print("Call");
-
         int canCall = 0;
         canCall += OnCheckCanCallEvent.Invoke();
 
-        if (canCall > 0)
+        if (canCall > 0) return true;
+        else return false;
+    }
+
+    internal void Call()
+    {
+        if (CheckCanCall())
         {
             print("Can Call");
             OnCall?.Invoke();

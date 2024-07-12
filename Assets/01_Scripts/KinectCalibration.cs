@@ -16,6 +16,7 @@ public class KinectCalibration : MonoBehaviour
         RotLeft,
         RotRight,
         Jump,
+        DropEgg,
         SetInputThresholdValues
     }
 
@@ -67,6 +68,11 @@ public class KinectCalibration : MonoBehaviour
 
     [SerializeField] float minJumpArmsDistance = 0.3f;
 
+    // Drop Egg
+
+
+    [SerializeField] float minDropEggArmsDistance = 0.3f;
+
 
     private void Awake()
     {
@@ -117,6 +123,9 @@ public class KinectCalibration : MonoBehaviour
 
             case CalibrationPhase.Jump:
                 JumpCalibration();
+                break;
+            case CalibrationPhase.DropEgg:
+                DropEggCalibration();
                 break;
             case CalibrationPhase.SetInputThresholdValues:
                 SetInputThresholdValues();
@@ -402,7 +411,40 @@ public class KinectCalibration : MonoBehaviour
             calibrationValues.jumpDistance = (calibrationValues.jumpLeftHandMeanPosition.y - calibrationValues.standLeftHandMeanPosition.y
                                 + calibrationValues.jumpRightHandMeanPosition.y - calibrationValues.standRightHandMeanPosition.y) / 2;
 
+            ChangePhase(CalibrationPhase.DropEgg);
+        }
+    }
+
+    private void DropEggCalibration()
+    {
+        if (currentPhaseStepIndex == 0)
+        {
+            leftHandPositionQueue.Clear();
+            rightHandPositionQueue.Clear();
+            currentPhaseStepIndex++;
+        }
+
+        if (PlayerIsMoving() || PlayerIsStanding())
+        {
+            ChangePhase(CalibrationPhase.DropEgg);
+            return;
+        }
+
+        if (kinectBody.leftHand.position.x < calibrationValues.standLeftHandMeanPosition.x + minDropEggArmsDistance
+            && kinectBody.rightHand.position.x > calibrationValues.standRightHandMeanPosition.x + minDropEggArmsDistance)
+        {
+            leftHandPositionQueue.Enqueue(kinectBody.leftHand.position);
+            rightHandPositionQueue.Enqueue(kinectBody.rightHand.position);
+        }
+
+        if (leftHandPositionQueue.Count >= calibrationQueueSize)
+        {
+            calibrationValues.leftHandStretchPosition = MeanOfArray(leftHandPositionQueue.ToArray());
+            calibrationValues.rightHandStretchPosition = MeanOfArray(rightHandPositionQueue.ToArray());
+
+            calibrationValues.handsStretchDistance = Mathf.Abs(calibrationValues.leftHandStretchPosition.x - calibrationValues.rightHandStretchPosition.x);
+
             ChangePhase(CalibrationPhase.SetInputThresholdValues);
-        }  
+        }
     }
 }

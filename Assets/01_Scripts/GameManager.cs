@@ -29,7 +29,8 @@ public class GameManager : MonoBehaviour
     List<ChickenData> previousChickenDatas = new List<ChickenData>();
     public int BredEggCount => previousChickenDatas.Count -1;
     ChickenData _nextChickenData;
-    public ChickenData CurrentChickenData => previousChickenDatas[previousChickenDatas.Count - 1];
+    public ChickenData CurrentChickenData => PreviousChickenData(0);
+    public ChickenData PreviousChickenData(int reverseIndex) => previousChickenDatas[previousChickenDatas.Count - 1 - reverseIndex];
 
     Chicken _player;
     public Chicken Player => _player;

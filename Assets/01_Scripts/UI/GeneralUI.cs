@@ -5,15 +5,54 @@ public class GeneralUI : MonoBehaviour
 {
     [SerializeField] NumberDisplay eggCounter;
 
-    void Start()
+
+    [SerializeField] Image canCallImage;
+
+    [SerializeField] Sprite canCallSprite, cannotCallSprite;
+
+    [SerializeField] Image[] abilityIcons;
+
+    void Awake()
     {
-        GameManager.Instance.OnSpawnChicken += OnSpawnChicken;
+        GameManager.Instance.OnSpawnChicken += UpdateUI;
 
         eggCounter.SetNumber(0);
     }
 
-    private void OnSpawnChicken()
+    private void Start()
+    {
+        UpdateUI();
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.Player.CheckCanCall())
+        {
+            canCallImage.sprite = canCallSprite;
+        }
+        else
+        {
+            canCallImage.sprite = cannotCallSprite;
+        }
+    }
+
+    private void UpdateUI()
     {
         eggCounter.SetNumber(GameManager.Instance.BredEggCount);
+
+        print("OnBRed UI");
+        print("BredCount: " + GameManager.Instance.BredEggCount);
+
+        if (GameManager.Instance.BredEggCount == 0)
+        {
+            abilityIcons[0].sprite = GameManager.Instance.PreviousChickenData(0).abilityIcon;
+            abilityIcons[1].sprite = GameManager.Instance.PreviousChickenData(0).abilityIcon;
+            return;
+        }
+
+        for (int i = 0; i < abilityIcons.Length; i++)
+        {
+            abilityIcons[i].sprite = GameManager.Instance.PreviousChickenData(i).abilityIcon;
+        }
     }
 }

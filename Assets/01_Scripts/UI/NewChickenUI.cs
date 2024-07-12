@@ -7,6 +7,8 @@ public class NewChickenUI : MonoBehaviour
 
     [SerializeField] TMP_Text newChickenNameText;
 
+    PlayerControls controls;
+
     KinectInputs inputs;
 
     private void Start()
@@ -20,6 +22,14 @@ public class NewChickenUI : MonoBehaviour
             inputs = FindObjectOfType<KinectInputs>();
             inputs.OnSitDown += Continue;
         }
+
+        controls = new PlayerControls();
+        controls.Enable();
+    }
+
+    private void Update()
+    {
+        if (controls.Player.Breed.triggered) Continue();
     }
 
     private void OnSpawnChicken()

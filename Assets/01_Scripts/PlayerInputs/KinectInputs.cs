@@ -148,8 +148,8 @@ public class KinectInputs : MonoBehaviour
     private void CheckDropEgg()
     {
         float currentHandDistance = Mathf.Abs(leftHand.position.x - rightHand.position.x);
-
         
+        if (currentHandDistance > calibrationValues.handsStretchDistance * calibrationValues.stretchDistancePercentageToTriggerInput) OnDropEgg?.Invoke();
     }
 
 

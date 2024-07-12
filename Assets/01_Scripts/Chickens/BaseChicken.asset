@@ -21,3 +21,4 @@ MonoBehaviour:
     type: 3}
   chickenVisualTail: {fileID: 7869408652454135770, guid: e6a90d99e1c4db84cb9f29b72946403e,
     type: 3}
+  abilityIcon: {fileID: 21300000, guid: 4c4214088ca9ca34c860c501421348fe, type: 3}

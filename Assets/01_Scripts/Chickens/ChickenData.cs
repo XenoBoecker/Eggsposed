@@ -8,4 +8,6 @@ public class ChickenData : ScriptableObject
 
     public GameObject eggVisual;
     public GameObject chickenVisualHead, chickenVisualBody, chickenVisualTail;
+
+    public Sprite abilityIcon;
 }
