@@ -1,18 +1,24 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     KinectInputs inputs;
 
+
+    [SerializeField] int buttonCount = 5;
+    public int ButtonCount => buttonCount;
+
     [SerializeField] float timeBetweenInputs = 0.5f;
 
     float timeSinceLastInput;
 
-    public event Action OnInputRight;
-    public event Action OnInputLeft;
-    public event Action OnInputConfirm;
+    int currentButtonIndex;
+    public int CurrentButtonIndex => currentButtonIndex;
+
+    public event Action OnInput;
 
     private void Awake()
     {
@@ -34,16 +40,28 @@ public class MainMenu : MonoBehaviour
 
     public void InputRight()
     {
-        OnInputRight?.Invoke();
+        currentButtonIndex++;
+
+        if (currentButtonIndex > buttonCount-1 ) currentButtonIndex = 0;
+        
+        OnInput?.Invoke();
     }
 
     public void InputLeft()
     {
-        OnInputLeft?.Invoke();
+        currentButtonIndex--;
+
+        if (currentButtonIndex < 0) currentButtonIndex = buttonCount-1;
+        
+        OnInput?.Invoke();
     }
 
     public void InputConfirm()
     {
-        OnInputConfirm?.Invoke();
+        if (currentButtonIndex == 0) SceneManager.LoadScene("Game");
+        else if (currentButtonIndex == 1) SceneManager.LoadScene("Leaderboard");
+        else if (currentButtonIndex == 2) SceneManager.LoadScene("Options");
+        else if (currentButtonIndex == 3) SceneManager.LoadScene("Quit");
+        else if (currentButtonIndex == 4) SceneManager.LoadScene("Calibration_X");
     }
 }

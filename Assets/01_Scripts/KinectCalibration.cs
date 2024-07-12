@@ -131,7 +131,7 @@ public class KinectCalibration : MonoBehaviour
         print("Calibration Done!");
         inputs.SetCalibrationValues(calibrationValues);
 
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("MainMenu");
     }
 
     void ChangePhase(CalibrationPhase newPhase)
