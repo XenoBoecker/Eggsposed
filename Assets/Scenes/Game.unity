@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fillImage: {fileID: 305278984}
   eggUI: {fileID: 1666301032}
-  crackingEggImage: {fileID: 0}
+  crackingEggImage: {fileID: 1167158072}
   crackingEggSprites:
   - {fileID: 158537784, guid: 919b3950a8e95d747ba1d2c46162929b, type: 3}
   - {fileID: -341901748, guid: 919b3950a8e95d747ba1d2c46162929b, type: 3}
