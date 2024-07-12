@@ -96,9 +96,20 @@ PrefabInstance:
       value: Feeding Station
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -2793727289926329592, guid: 04e0605ef20df2941a1fa4dcd96955ae, type: 3}
+    - {fileID: 1507767883509144192, guid: 04e0605ef20df2941a1fa4dcd96955ae, type: 3}
+    - {fileID: 3779745573541866595, guid: 04e0605ef20df2941a1fa4dcd96955ae, type: 3}
+    - {fileID: -8513424388201257645, guid: 04e0605ef20df2941a1fa4dcd96955ae, type: 3}
+    - {fileID: 8523772855540137367, guid: 04e0605ef20df2941a1fa4dcd96955ae, type: 3}
+    - {fileID: -5539764629200458662, guid: 04e0605ef20df2941a1fa4dcd96955ae, type: 3}
+    - {fileID: -8418885108249170206, guid: 04e0605ef20df2941a1fa4dcd96955ae, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -8981362334726045088, guid: 04e0605ef20df2941a1fa4dcd96955ae,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7147737809288808814}
   m_SourcePrefab: {fileID: 100100000, guid: 04e0605ef20df2941a1fa4dcd96955ae, type: 3}
 --- !u!4 &7647124112529471992 stripped
 Transform:
@@ -106,3 +117,31 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7902325997127196179}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7994304038907485299 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8981362334726045088, guid: 04e0605ef20df2941a1fa4dcd96955ae,
+    type: 3}
+  m_PrefabInstance: {fileID: 7902325997127196179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &7147737809288808814
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7994304038907485299}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8151507147331504123, guid: 04e0605ef20df2941a1fa4dcd96955ae, type: 3}
