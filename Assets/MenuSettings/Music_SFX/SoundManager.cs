@@ -16,9 +16,9 @@ public class SoundManager : MonoBehaviour
 
     [Header("SFX")]
     [SerializeField] UISFX uiSFX;
-    [SerializeField] ArtifactSFX artifactSFX;
-    [SerializeField] StationSFX stationSFX;
-    [SerializeField] ItemSFX itemSFX;
+    [SerializeField] ChickenSFX chickenSFX;
+    [SerializeField] FarmerSFX farmerSFX;
+    [SerializeField] OtherSFX otherSFX;
 
     private void Awake()
     {
@@ -83,7 +83,7 @@ public class SoundManager : MonoBehaviour
     }
 
     [System.Serializable]
-    struct ArtifactSFX
+    struct ChickenSFX
     {
         [SerializeField] AudioClip dashSound;
         [SerializeField] AudioClip tunnelDashSound;
@@ -91,7 +91,7 @@ public class SoundManager : MonoBehaviour
     }
 
     [System.Serializable]
-    struct StationSFX
+    struct FarmerSFX
     {
         public AudioClip breakStationSound;
         public AudioClip destroyStationSound;
@@ -113,7 +113,7 @@ public class SoundManager : MonoBehaviour
     }
 
     [System.Serializable]
-    struct ItemSFX
+    struct OtherSFX
     {
         [SerializeField] AudioClip itemPickupSound;
         [SerializeField] AudioClip itemDropSound;
