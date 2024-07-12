@@ -8,6 +8,13 @@ public class BreedUI : MonoBehaviour
 
     [SerializeField] Image fillImage;
 
+
+    [SerializeField] GameObject eggUI;
+
+    [SerializeField] Image crackingEggImage;
+
+    [SerializeField] Sprite[] crackingEggSprites;
+
     private void Start()
     {
         playerChickenController = GameManager.Instance.Player.GetComponent<BaseChickenController>();
@@ -22,5 +29,22 @@ public class BreedUI : MonoBehaviour
     void Update()
     {
         fillImage.rectTransform.localScale = new Vector3(playerChickenController.breedPercentage, 1, 1);
+
+        if (playerChickenController.breeding)
+        {
+            eggUI.SetActive(true);
+
+            UpdateEggSprite();
+        }
+        else
+        {
+            eggUI.SetActive(false);
+        }
+    }
+
+    private void UpdateEggSprite()
+    {
+        int index = Mathf.FloorToInt(playerChickenController.breedPercentage * (crackingEggSprites.Length - 1));
+        crackingEggImage.sprite = crackingEggSprites[index];
     }
 }
