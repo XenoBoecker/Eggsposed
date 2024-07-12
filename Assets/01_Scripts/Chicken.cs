@@ -173,23 +173,19 @@ public class Chicken : MonoBehaviour
         body.SetActive(false);
         tail.SetActive(false);
 
-        if(count == 2)
-        {
-            Instantiate(newChickenData.chickenVisualHead, headParent.transform);
-            Instantiate(newChickenData.chickenVisualBody, bodyParent.transform);
-            Instantiate(newChickenData.chickenVisualTail, tailParent.transform);
-        }
-        else if (count % 2 == 0)
+        if (count % 2 == 0)
         {
             Instantiate(newChickenData.chickenVisualHead, headParent.transform);
             Instantiate(oldChickenData.chickenVisualBody, bodyParent.transform);
-            Instantiate(newChickenData.chickenVisualTail, tailParent.transform);
+            if(newChickenData.chickenVisualTail == null) Instantiate(oldChickenData.chickenVisualTail, tailParent.transform);
+            else Instantiate(newChickenData.chickenVisualTail, tailParent.transform);
         }
         else
         {
             Instantiate(oldChickenData.chickenVisualHead, headParent.transform);
             Instantiate(newChickenData.chickenVisualBody, bodyParent.transform);
-            Instantiate(oldChickenData.chickenVisualTail, tailParent.transform);
+            if (oldChickenData.chickenVisualTail == null) Instantiate(newChickenData.chickenVisualTail, tailParent.transform);
+            else Instantiate(oldChickenData.chickenVisualTail, tailParent.transform);
         }
     }
 
