@@ -7,6 +7,8 @@ public class MainMenu : MonoBehaviour
 {
     KinectInputs inputs;
 
+    PlayerControls controls;
+
 
     [SerializeField] int buttonCount = 5;
     public int ButtonCount => buttonCount;
@@ -23,6 +25,9 @@ public class MainMenu : MonoBehaviour
     private void Awake()
     {
         inputs = FindObjectOfType<KinectInputs>();
+
+        controls = new PlayerControls();
+        controls.Enable();
 
         inputs.OnSitDown += InputConfirm;
     }
@@ -61,7 +66,7 @@ public class MainMenu : MonoBehaviour
         if (currentButtonIndex == 0) SceneManager.LoadScene("Game");
         else if (currentButtonIndex == 1) SceneManager.LoadScene("Leaderboard");
         else if (currentButtonIndex == 2) SceneManager.LoadScene("Options");
-        else if (currentButtonIndex == 3) SceneManager.LoadScene("Quit");
-        else if (currentButtonIndex == 4) SceneManager.LoadScene("Calibration_X");
+        else if (currentButtonIndex == 3) SceneManager.LoadScene("Calibration_X");
+        else if (currentButtonIndex == 4) Application.Quit();
     }
 }
