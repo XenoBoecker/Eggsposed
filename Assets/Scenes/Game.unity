@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 305278985}
   - component: {fileID: 305278984}
   m_Layer: 5
-  m_Name: BreedFill
+  m_Name: abilityCDFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1091,7 +1091,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68988130e9f72e74faca93d2708f57f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillImage: {fileID: 305278984}
   eggUI: {fileID: 1666301032}
   crackingEggImage: {fileID: 1167158072}
   crackingEggSprites:
@@ -1133,6 +1132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eggCounter: {fileID: 1969128948385905405}
   canCallImage: {fileID: 1699688111}
+  fillImage: {fileID: 305278984}
   canCallSprite: {fileID: 21300000, guid: 4c4214088ca9ca34c860c501421348fe, type: 3}
   cannotCallSprite: {fileID: 21300000, guid: d83e9c8c51da1b24b97dc6277d24a045, type: 3}
   abilityIcons:

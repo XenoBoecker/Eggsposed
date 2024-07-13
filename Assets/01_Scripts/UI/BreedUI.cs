@@ -6,8 +6,6 @@ public class BreedUI : MonoBehaviour
 {
     BaseChickenController playerChickenController;
 
-    [SerializeField] Image fillImage;
-
 
     [SerializeField] GameObject eggUI;
 
@@ -28,8 +26,6 @@ public class BreedUI : MonoBehaviour
 
     void Update()
     {
-        fillImage.rectTransform.localScale = new Vector3(playerChickenController.breedPercentage, 1, 1);
-
         if (playerChickenController.breeding)
         {
             eggUI.SetActive(true);

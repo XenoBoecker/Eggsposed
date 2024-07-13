@@ -31,6 +31,9 @@ public class Chicken : MonoBehaviour
 
     public event Action OnFinishBreeding;
 
+    public float CurrentCallCooldownPercentage;
+    public event Action OnGetCallCooldown;
+
     public delegate int OnCheckCanCall();
     public event OnCheckCanCall OnCheckCanCallEvent;
     public event Action OnCall;
@@ -190,6 +193,13 @@ public class Chicken : MonoBehaviour
         }
     }
 
+    internal float GetCallCDPercentage()
+    {
+        OnGetCallCooldown?.Invoke();
+
+        return CurrentCallCooldownPercentage;
+    }
+
     internal bool CheckCanCall()
     {
         if (OnCheckCanCallEvent == null) return false;
@@ -205,6 +215,7 @@ public class Chicken : MonoBehaviour
     {
         if (CheckCanCall())
         {
+            CurrentCallCooldownPercentage = 0;
             print("Can Call");
             OnCall?.Invoke();
         }

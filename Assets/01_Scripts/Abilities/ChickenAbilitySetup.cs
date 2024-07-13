@@ -12,6 +12,7 @@ public class ChickenAbilitySetup : MonoBehaviour
 
     FarmerAutoInput farmer;
 
+    Chicken chicken;
     protected BaseChickenController bcc;
     protected CharacterMovement movement;
 
@@ -33,6 +34,21 @@ public class ChickenAbilitySetup : MonoBehaviour
 
         chicken.OnCheckCanCallEvent += CanCallInt;
         chicken.OnCall += Call;
+        chicken.OnGetCallCooldown += SetChickenCallCDPercentage;
+
+        this.chicken = chicken;
+    }
+
+    private void SetChickenCallCDPercentage()
+    {
+        float percentage = timeSinceLastCall / callCD;
+
+        float currentPercentage = chicken.CurrentCallCooldownPercentage;
+
+        if (percentage > currentPercentage)
+        {
+            chicken.CurrentCallCooldownPercentage = percentage;
+        }
     }
 
     public virtual void Call()

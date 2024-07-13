@@ -8,6 +8,8 @@ public class GeneralUI : MonoBehaviour
 
     [SerializeField] Image canCallImage;
 
+    [SerializeField] Image fillImage;
+
     [SerializeField] Sprite canCallSprite, cannotCallSprite;
 
     [SerializeField] Image[] abilityIcons;
@@ -33,6 +35,9 @@ public class GeneralUI : MonoBehaviour
         else
         {
             canCallImage.sprite = cannotCallSprite;
+
+            fillImage.rectTransform.localScale = new Vector3(GameManager.Instance.Player.GetCallCDPercentage(), 1, 1);
+
         }
     }
 
