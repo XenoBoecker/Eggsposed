@@ -26,6 +26,7 @@ public class Chicken : MonoBehaviour
     CharacterMovement movement;
 
     Egg myEgg;
+    public Egg Egg => myEgg;
 
     bool hasEgg;
 

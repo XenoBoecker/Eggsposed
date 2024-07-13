@@ -130,8 +130,6 @@ public class BaseChickenController : BaseCharacterController
             speedMultiplier *= OnAddSpeedMultiplier();
         }
 
-        print("Speed multi: " + speedMultiplier);
-
         return transform.forward * speed * speedMultiplier * Mathf.Max(0, moveDirection.z);
     }
 
