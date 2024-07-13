@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class EggDirectionIndicator : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class EggDirectionIndicator : MonoBehaviour
     Camera playerCamera;
 
     [SerializeField] RectTransform directionIndicatorUI; // UI element to indicate the direction
+
+
+    [SerializeField] GameObject eggArrow;
 
 
     private void Start()
@@ -20,6 +24,8 @@ public class EggDirectionIndicator : MonoBehaviour
     }
     void Update()
     {
+        ShowEggArrow();
+
         Vector3 playerToEgg = egg.position - playerTransform.position;
         playerToEgg.y = 0; // Ignore y difference
 
@@ -60,6 +66,18 @@ public class EggDirectionIndicator : MonoBehaviour
         float maxHeight = Screen.height * 0.5f; // Half the screen height for normalization
         float verticalPosition = Mathf.Clamp(yDifference, -maxHeight, maxHeight);
         directionIndicatorUI.anchoredPosition = new Vector3(directionIndicatorUI.anchoredPosition.x, verticalPosition, 0);
+    }
+
+    private void ShowEggArrow()
+    {
+        eggArrow.transform.position = egg.position;
+
+        float distanceEggToPlayer = Vector3.Distance(egg.position, playerTransform.position);
+
+        eggArrow.transform.localScale = Vector3.one * distanceEggToPlayer;
+
+        if (player.HasEgg) eggArrow.SetActive(false);
+        else eggArrow.SetActive(true);
     }
 
     void FindPlayerAndEgg()
