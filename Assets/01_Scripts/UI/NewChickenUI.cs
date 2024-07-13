@@ -44,7 +44,7 @@ public class NewChickenUI : MonoBehaviour
 
         newChickenNameText.text = data.name;
         explanationText.text = data.chickenSpawnScreenExplanation;
-        newChickenImage.sprite = data.chickenSpawnScreenImage;
+        if(data.chickenSpawnScreenImage != null) newChickenImage.sprite = data.chickenSpawnScreenImage;
     }
 
     public void Continue()
