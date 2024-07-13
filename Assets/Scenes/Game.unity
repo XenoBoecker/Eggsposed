@@ -1093,6 +1093,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eggUI: {fileID: 1666301032}
   crackingEggImage: {fileID: 1167158072}
+  eggBaseImage: {fileID: 0}
+  nestUeberEiImage: {fileID: 0}
   crackingEggSprites:
   - {fileID: 158537784, guid: 919b3950a8e95d747ba1d2c46162929b, type: 3}
   - {fileID: -341901748, guid: 919b3950a8e95d747ba1d2c46162929b, type: 3}
@@ -1104,6 +1106,7 @@ MonoBehaviour:
   - {fileID: -1216616993, guid: 919b3950a8e95d747ba1d2c46162929b, type: 3}
   - {fileID: 810231931, guid: 919b3950a8e95d747ba1d2c46162929b, type: 3}
   - {fileID: -1293071207, guid: 919b3950a8e95d747ba1d2c46162929b, type: 3}
+  fadeDuration: 0.5
 --- !u!114 &546355097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4667,7 +4670,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _baseChickenData
       value: 
-      objectReference: {fileID: 11400000, guid: 719ae78b830f4824bb949b0037f5fccb,
+      objectReference: {fileID: 11400000, guid: 0375b249229b8ea41a04ae2e2ebc2af2,
         type: 2}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}

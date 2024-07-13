@@ -1,3 +1,4 @@
+using ECM.Components;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,6 +10,8 @@ public class Chicken : MonoBehaviour
 
     [SerializeField] float pickupRange = 5f;
 
+    [SerializeField] float withEggSpeedMultiplier = 1, withoutEggSpeedMultiplier = 1.2f;
+
     [SerializeField] GameObject headParent, bodyParent, tailParent;
     [SerializeField] GameObject head, body, tail;
 
@@ -18,6 +21,9 @@ public class Chicken : MonoBehaviour
 
     [SerializeField] Transform eggCarryPosition, eggDropPosition;
     public Transform EggDropPosition => eggDropPosition;
+
+    BaseChickenController bcc;
+    CharacterMovement movement;
 
     Egg myEgg;
 
@@ -41,9 +47,25 @@ public class Chicken : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<BaseChickenController>().OnFinishBreeding += HatchEgg;
+        bcc = GetComponent<BaseChickenController>();
+        bcc.OnFinishBreeding += HatchEgg;
+        bcc.OnAddSpeedMultiplier += CarryEggSpeedMultiplier;
+        bcc.OnAddMaxSpeedMultiplier += CarryEggSpeedMultiplier;
+
+        movement = bcc.movement;
+        movement.OnAddMaxSpeedMultiplier += CarryEggSpeedMultiplier;
+
 
         SetControlledByPlayer(_isControlledByPlayer);
+    }
+
+    private float CarryEggSpeedMultiplier()
+    {
+        if (hasEgg)
+        {
+            return withEggSpeedMultiplier;
+        }
+        else return withoutEggSpeedMultiplier;
     }
 
     private void Update()

@@ -4,10 +4,6 @@ public class SuperHotSetup : ChickenAbilitySetup
 {
     [SerializeField] float timeSlowFactor = 0.1f;
 
-    TimeManager timeManager;
-
-    Chicken chicken;
-
     float baseAngularSpeed;
 
     bool passiveTimeslowDeactivated;

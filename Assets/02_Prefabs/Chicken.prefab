@@ -238,8 +238,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomPositionRange: 10
+  farmerDetectionRadius: 10
   minWaitTime: 1
   maxWaitTime: 5
+  fleeDistance: 6
+  layingEggCD: 11
+  callCD: 13
 --- !u!114 &1902837851461061361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +258,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isControlledByPlayer: 1
   pickupRange: 5
+  withEggSpeedMultiplier: 1
+  withoutEggSpeedMultiplier: 1.4
   headParent: {fileID: 1264574075333774109}
   bodyParent: {fileID: 7657518311733965505}
   tailParent: {fileID: 3655608118911403939}
@@ -272,6 +278,8 @@ MonoBehaviour:
   - {fileID: 8436353215386987010}
   eggCarryPosition: {fileID: 6806775776762019024}
   eggDropPosition: {fileID: 5170453058575347228}
+  timeDelayAfterDropEggBeforePickupPossible: 3
+  CurrentCallCooldownPercentage: 0
 --- !u!195 &8436353215386987010
 NavMeshAgent:
   m_ObjectHideFlags: 0

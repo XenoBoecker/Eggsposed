@@ -12,7 +12,7 @@ public class ChickenAbilitySetup : MonoBehaviour
 
     FarmerAutoInput farmer;
 
-    Chicken chicken;
+    protected Chicken chicken;
     protected BaseChickenController bcc;
     protected CharacterMovement movement;
 
