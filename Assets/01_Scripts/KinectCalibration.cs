@@ -53,6 +53,8 @@ public class KinectCalibration : MonoBehaviour
 
     [SerializeField] float notMovingThreshold = 0.15f;
 
+    [SerializeField] float standThreshold = 0.2f;
+
     // Squat
 
     [SerializeField] float squatMinValue = 0.1f;
@@ -174,12 +176,14 @@ public class KinectCalibration : MonoBehaviour
 
     private bool PlayerIsStanding()
     {
-        return Vector3.Distance(calibrationValues.standPelvisMeanPosition, kinectBody.pelvis.position) < notMovingThreshold;
+        return kinectBody.pelvis.position.y > calibrationValues.standPelvisMeanPosition.y - standThreshold;
     }
 
     private void ConnectWithKinect()
     {
         print("Pelvis: " + kinectBody.pelvis.position);
+
+        problemText.text = "Connecting";
 
         if (pelvisLastPosition != Vector3.zero && pelvisLastPosition != kinectBody.pelvis.position)
         {
@@ -191,6 +195,26 @@ public class KinectCalibration : MonoBehaviour
     private void StandCalibration()
     {
         // Panel: Stand straight in front of the camera in a comfortable position
+        
+        if (currentPhaseStepIndex == 0)
+        {
+            headPositionQueue.Clear();
+            pelvisPositionQueue.Clear();
+            leftHandPositionQueue.Clear();
+            rightHandPositionQueue.Clear();
+            currentPhaseStepIndex++;
+        }
+
+        problemText.text = "";
+
+        if (PlayerIsMoving())
+        {
+            problemText.text = "Stay still!";
+            ChangePhase(CalibrationPhase.Stand);
+            return;
+        }
+
+        problemText.text = "Exactly like that!";
 
         headPositionQueue.Enqueue(kinectBody.head.position);
         pelvisPositionQueue.Enqueue(kinectBody.pelvis.position);
@@ -242,17 +266,20 @@ public class KinectCalibration : MonoBehaviour
             currentPhaseStepIndex++;
         }
 
+        problemText.text = "";
+
         if (PlayerIsMoving())
         {
             problemText.text = "Stay still! Movement Distance: " + Vector3.Distance(pelvisLastPosition, kinectBody.pelvis.position).ToString();
             ChangePhase(CalibrationPhase.Squat);
             return;
         }
-        else problemText.text = "";
 
 
         if (kinectBody.pelvis.position.y < calibrationValues.standPelvisMeanPosition.y - squatMinValue)
         {
+            problemText.text = "Exactly like that!";
+            
             pelvisPositionQueue.Enqueue(kinectBody.pelvis.position);
             headPositionQueue.Enqueue(kinectBody.head.position);
         }
@@ -285,14 +312,27 @@ public class KinectCalibration : MonoBehaviour
             currentPhaseStepIndex++;
         }
 
-        if (PlayerIsMoving() || !PlayerIsStanding())
+        problemText.text = "";
+
+        if (PlayerIsMoving())
         {
+            problemText.text = "Stop moving!";
             ChangePhase(CalibrationPhase.HeadForward);
             return;
         }
 
+        if (!PlayerIsStanding())
+        {
+            problemText.text = "Stand up!";
+            ChangePhase(CalibrationPhase.HeadForward);
+            return;
+        }
+
+
+
         if (kinectBody.head.position.z < calibrationValues.standHeadMeanPosition.z - headForwardMinDistance)
         {
+            problemText.text = "Exactly like that!";
             headPositionQueue.Enqueue(kinectBody.head.position);
         }
 
@@ -316,6 +356,8 @@ public class KinectCalibration : MonoBehaviour
             currentPhaseStepIndex++;
         }
 
+        problemText.text = "";
+
         if (PlayerIsMoving())
         {
             problemText.text = "Stop Moving!";
@@ -332,6 +374,7 @@ public class KinectCalibration : MonoBehaviour
 
         if (kinectBody.head.position.x > calibrationValues.standHeadMeanPosition.x + headSidewaysMinDistance)
         {
+            problemText.text = "Exactly like that!";
             headPositionQueue.Enqueue(kinectBody.head.position);
         }
         else
@@ -355,14 +398,25 @@ public class KinectCalibration : MonoBehaviour
             currentPhaseStepIndex++;
         }
 
-        if (PlayerIsMoving() || !PlayerIsStanding())
+        problemText.text = "";
+
+        if (PlayerIsMoving())
         {
+            problemText.text = "Stop Moving!";
+            ChangePhase(CalibrationPhase.RotRight);
+            return;
+        }
+
+        if (!PlayerIsStanding())
+        {
+            problemText.text = "Stand Up!";
             ChangePhase(CalibrationPhase.RotRight);
             return;
         }
 
         if (kinectBody.head.position.x < calibrationValues.standHeadMeanPosition.x - headSidewaysMinDistance)
         {
+            problemText.text = "Exactly like that!";
             headPositionQueue.Enqueue(kinectBody.head.position);
         }
         else
@@ -390,8 +444,18 @@ public class KinectCalibration : MonoBehaviour
             currentPhaseStepIndex++;
         }
 
-        if (PlayerIsMoving() || !PlayerIsStanding())
+        problemText.text = "";
+
+        if (PlayerIsMoving())
         {
+            problemText.text = "Stop Moving!";
+            ChangePhase(CalibrationPhase.Jump);
+            return;
+        }
+
+        if (!PlayerIsStanding())
+        {
+            problemText.text = "Stand Up!";
             ChangePhase(CalibrationPhase.Jump);
             return;
         }
@@ -399,6 +463,7 @@ public class KinectCalibration : MonoBehaviour
         if (    kinectBody.leftHand.position.y > calibrationValues.standLeftHandMeanPosition.y + minJumpArmsDistance
             &&  kinectBody.rightHand.position.y > calibrationValues.standRightHandMeanPosition.y + minJumpArmsDistance)
         {
+            problemText.text = "Exactly like that!";
             leftHandPositionQueue.Enqueue(kinectBody.leftHand.position);
             rightHandPositionQueue.Enqueue(kinectBody.rightHand.position);
         }
@@ -444,7 +509,7 @@ public class KinectCalibration : MonoBehaviour
 
         if (Mathf.Abs(kinectBody.leftHand.position.x - kinectBody.rightHand.position.x) > minDropEggArmsDistance)
         {
-            problemText.text = "queueing data!";
+            problemText.text = "Exactly like that!";
             leftHandPositionQueue.Enqueue(kinectBody.leftHand.position);
             rightHandPositionQueue.Enqueue(kinectBody.rightHand.position);
         }

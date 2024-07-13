@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9142630613896952841}
   - component: {fileID: 8727613375489890949}
+  - component: {fileID: 6066066377215914385}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,11 +45,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0bb65c2c5775804d8edf6ebf78521ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kinectInputs: 1
+  gameOverSceneName: GameOverScreenScene
   playerCam: {fileID: 0}
-  _baseChickenData: {fileID: 11400000, guid: 8e4fbdc357118484a9e6bfa07dd89796, type: 2}
-  _allChicken:
-  - {fileID: 11400000, guid: 2647213ebbdb266459b73e2559e24337, type: 2}
-  - {fileID: 11400000, guid: 36c84c9f97cd9ad4986ad0acf22577ac, type: 2}
-  eggPrefab: {fileID: 4219821116601913590, guid: d29f8953a0f610646b95006457ab3f27,
+  playerStartPosition: {fileID: 0}
+  chickenPrefab: {fileID: 1902837851461061361, guid: c677be8ddf1434a44a95262881e373c5,
     type: 3}
+  _baseChickenData: {fileID: 11400000, guid: fb0a77ff2ddd5d048841c9a4274bb78a, type: 2}
+  _allChicken:
+  - {fileID: 11400000, guid: efa99e29a6fb44d45bedb095e782e770, type: 2}
+  - {fileID: 11400000, guid: 5285b1f15bf6c374ca1f817aa81a091d, type: 2}
+  - {fileID: 11400000, guid: 36c84c9f97cd9ad4986ad0acf22577ac, type: 2}
+  - {fileID: 11400000, guid: 0375b249229b8ea41a04ae2e2ebc2af2, type: 2}
+  - {fileID: 11400000, guid: fb0a77ff2ddd5d048841c9a4274bb78a, type: 2}
+  - {fileID: 11400000, guid: 929206417fd8a61468ec4fc55daf0707, type: 2}
+  - {fileID: 11400000, guid: 724745a58d3cc0b438f3b811225b1c35, type: 2}
+  - {fileID: 11400000, guid: ef19b8b9272751d4d8219d39ac64187b, type: 2}
+  - {fileID: 11400000, guid: 08d32fb67f1a4634b88c37e844382a9f, type: 2}
+  - {fileID: 11400000, guid: 719ae78b830f4824bb949b0037f5fccb, type: 2}
   inheritanceCount: 2
+--- !u!114 &6066066377215914385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8237585508337073791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f81cb897dfdc6c47a10607be9b50b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeScale: 1

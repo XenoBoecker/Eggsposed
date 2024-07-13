@@ -17,6 +17,8 @@ public class AudioInputManager : MonoBehaviour
     void Update()
     {
         float loudness = AudioLoudnessDetection.GetLoudnessFromMicrophone();
+        
+
         if (loudness > audioInputThreshold)
         {
             chickenInputManager.Call();

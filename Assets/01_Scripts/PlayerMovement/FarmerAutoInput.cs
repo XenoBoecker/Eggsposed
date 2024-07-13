@@ -25,7 +25,7 @@ public class FarmerAutoInput : MonoBehaviour
     [SerializeField] LayerMask detectionMask;
     [SerializeField] Transform eyes;
 
-    List<Egg> allEggs;
+    List<Egg> allEggs = new List<Egg>();
     Chicken playerChicken;
     Transform currentTarget;
 

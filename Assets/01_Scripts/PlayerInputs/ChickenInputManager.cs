@@ -22,16 +22,19 @@ public class ChickenInputManager : MonoBehaviour
 
     public void Jump()
     {
+        if (chickenController == null) chickenController = GetComponent<BaseChickenController>();
         chickenController.jump = true;
     }
 
     public void StopJump()
     {
+        if (chickenController == null) chickenController = GetComponent<BaseChickenController>();
         chickenController.jump = false;
     }
 
     public void SitDown()
     {
+        if (chickenController == null) chickenController = GetComponent<BaseChickenController>();
         chickenController.SitDown();
     }
 

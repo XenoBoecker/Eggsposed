@@ -75,6 +75,8 @@ public class MainMenu : MonoBehaviour
 
     public void InputConfirm()
     {
+        if (inputs != null) inputs.OnSitDown -= InputConfirm;
+        
         if (currentButtonIndex == 0) SceneManager.LoadScene("Game");
         else if (currentButtonIndex == 1) SceneManager.LoadScene("Options");
         else if (currentButtonIndex == 2)
