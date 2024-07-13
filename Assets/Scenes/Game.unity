@@ -1123,6 +1123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showChickenPanel: {fileID: 1324383635}
   newChickenNameText: {fileID: 660456234}
+  explanationText: {fileID: 0}
+  newChickenImage: {fileID: 0}
 --- !u!114 &546355098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1156,6 +1158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionIndicatorUI: {fileID: 1356332476}
+  heightScaler: 50
   eggArrow: {fileID: 1189977940}
 --- !u!1 &555717408
 GameObject:
@@ -5075,7 +5078,7 @@ PrefabInstance:
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
       propertyPath: kinectInputs
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
@@ -5087,7 +5090,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _baseChickenData
       value: 
-      objectReference: {fileID: 11400000, guid: 0375b249229b8ea41a04ae2e2ebc2af2,
+      objectReference: {fileID: 11400000, guid: 929206417fd8a61468ec4fc55daf0707,
         type: 2}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
@@ -5102,13 +5105,13 @@ PrefabInstance:
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
       propertyPath: _allChicken.Array.size
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
       propertyPath: _allChicken.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: ef19b8b9272751d4d8219d39ac64187b,
+      objectReference: {fileID: 11400000, guid: efa99e29a6fb44d45bedb095e782e770,
         type: 2}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
@@ -5126,11 +5129,41 @@ PrefabInstance:
         type: 3}
       propertyPath: _allChicken.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 724745a58d3cc0b438f3b811225b1c35,
+      objectReference: {fileID: 11400000, guid: 0375b249229b8ea41a04ae2e2ebc2af2,
         type: 2}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
       propertyPath: _allChicken.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: fb0a77ff2ddd5d048841c9a4274bb78a,
+        type: 2}
+    - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
+        type: 3}
+      propertyPath: _allChicken.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 929206417fd8a61468ec4fc55daf0707,
+        type: 2}
+    - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
+        type: 3}
+      propertyPath: _allChicken.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 724745a58d3cc0b438f3b811225b1c35,
+        type: 2}
+    - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
+        type: 3}
+      propertyPath: _allChicken.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: ef19b8b9272751d4d8219d39ac64187b,
+        type: 2}
+    - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
+        type: 3}
+      propertyPath: _allChicken.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 08d32fb67f1a4634b88c37e844382a9f,
+        type: 2}
+    - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
+        type: 3}
+      propertyPath: _allChicken.Array.data[9]
       value: 
       objectReference: {fileID: 11400000, guid: 719ae78b830f4824bb949b0037f5fccb,
         type: 2}

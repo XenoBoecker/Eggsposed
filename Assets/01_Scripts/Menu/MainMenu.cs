@@ -32,6 +32,8 @@ public class MainMenu : MonoBehaviour
         if(inputs != null) inputs.OnSitDown += InputConfirm;
 
         OnInput += () => timeSinceLastInput = 0;
+
+        timeSinceLastInput = -0.5f;
     }
 
     // Update is called once per frame

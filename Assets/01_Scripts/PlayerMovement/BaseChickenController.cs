@@ -107,8 +107,7 @@ public class BaseChickenController : BaseCharacterController
     {
         _sitting = false;
         _breeding = false;
-
-        print("StandUp");
+        
         OnStandUp?.Invoke();
     }
 

@@ -11,6 +11,8 @@ public class EggDirectionIndicator : MonoBehaviour
     [SerializeField] RectTransform directionIndicatorUI; // UI element to indicate the direction
 
 
+    [SerializeField] float heightScaler = 50;
+
     [SerializeField] GameObject eggArrow;
 
 
@@ -62,9 +64,10 @@ public class EggDirectionIndicator : MonoBehaviour
         }
 
         // Adjust for vertical positioning based on y difference
-        float yDifference = egg.position.y - playerTransform.position.y;
+        float yDifference = (egg.position.y - playerTransform.position.y) * heightScaler;
         float maxHeight = Screen.height * 0.5f; // Half the screen height for normalization
         float verticalPosition = Mathf.Clamp(yDifference, -maxHeight, maxHeight);
+
         directionIndicatorUI.anchoredPosition = new Vector3(directionIndicatorUI.anchoredPosition.x, verticalPosition, 0);
     }
 

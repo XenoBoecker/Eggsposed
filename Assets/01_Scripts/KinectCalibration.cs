@@ -17,6 +17,7 @@ public class KinectCalibration : MonoBehaviour
         RotRight,
         Jump,
         DropEgg,
+        Call,
         SetInputThresholdValues
     }
 
@@ -257,7 +258,7 @@ public class KinectCalibration : MonoBehaviour
         }
         else
         {
-            print("not low enough: " + (calibrationValues.standPelvisMeanPosition.y - kinectBody.pelvis.position.y).ToString());
+            problemText.text = "not low enough: " + (calibrationValues.standPelvisMeanPosition.y - kinectBody.pelvis.position.y).ToString();
         }
 
 
@@ -424,17 +425,32 @@ public class KinectCalibration : MonoBehaviour
             currentPhaseStepIndex++;
         }
 
-        if (PlayerIsMoving() || PlayerIsStanding())
+        problemText.text = "";
+
+        if (PlayerIsMoving())
         {
+            problemText.text = "Stop Moving!";
             ChangePhase(CalibrationPhase.DropEgg);
             return;
         }
 
-        if (kinectBody.leftHand.position.x < calibrationValues.standLeftHandMeanPosition.x + minDropEggArmsDistance
-            && kinectBody.rightHand.position.x > calibrationValues.standRightHandMeanPosition.x + minDropEggArmsDistance)
+        if (PlayerIsStanding())
         {
+            problemText.text = "Squat Down!";
+
+            ChangePhase(CalibrationPhase.DropEgg);
+            return;
+        }
+
+        if (Mathf.Abs(kinectBody.leftHand.position.x - kinectBody.rightHand.position.x) > minDropEggArmsDistance)
+        {
+            problemText.text = "queueing data!";
             leftHandPositionQueue.Enqueue(kinectBody.leftHand.position);
             rightHandPositionQueue.Enqueue(kinectBody.rightHand.position);
+        }
+        else
+        {
+            problemText.text = "Move your hands further apart!: " + (calibrationValues.standLeftHandMeanPosition.x - kinectBody.leftHand.position.x).ToString();
         }
 
         if (leftHandPositionQueue.Count >= calibrationQueueSize)

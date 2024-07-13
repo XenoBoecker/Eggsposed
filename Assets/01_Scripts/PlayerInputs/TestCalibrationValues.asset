@@ -12,24 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5b0038a3030144cb3e2ba2df4cd8f9, type: 3}
   m_Name: TestCalibrationValues
   m_EditorClassIdentifier: 
-  standHeadMeanPosition: {x: -0.008535314, y: 1.4423908, z: 1.4032807}
-  standPelvisMeanPosition: {x: -0.0038024215, y: 0.84054804, z: 1.2539582}
-  standLeftHandMeanPosition: {x: 0.28013936, y: 0.78005785, z: 1.1663144}
-  standRightHandMeanPosition: {x: -0.2885624, y: 0.7541242, z: 1.186862}
-  standHandsMeanPosition: {x: -0.004211515, y: 0.76709104, z: 1.1765882}
+  standHeadMeanPosition: {x: 0.010654273, y: 1.7535967, z: 1.5714558}
+  standPelvisMeanPosition: {x: -0.003454699, y: 1.1229889, z: 1.6058785}
+  standLeftHandMeanPosition: {x: 0.29849648, y: 1.0778036, z: 1.578273}
+  standRightHandMeanPosition: {x: -0.26205638, y: 1.0524987, z: 1.5790412}
+  standHandsMeanPosition: {x: 0.018220052, y: 1.0651512, z: 1.5786572}
   squatDistancePercentageToTriggerInput: 0.7
-  squatHeadMeanPosition: {x: -0.02584991, y: 1.1430333, z: 1.1224713}
-  squatPelvisMeanPosition: {x: -0.03341261, y: 0.6236538, z: 1.3118247}
+  squatHeadMeanPosition: {x: 0.03259085, y: 1.3883253, z: 1.3568997}
+  squatPelvisMeanPosition: {x: 0.022461675, y: 0.9425864, z: 1.731213}
   moveDistancePercentageToTriggerInput: 0.7
-  headForwardMeanPosition: {x: -0.021380825, y: 1.4166877, z: 1.0909542}
+  headForwardMeanPosition: {x: -0.006351379, y: 1.6716489, z: 1.3083087}
   rotateDistancePercentageToTriggerInput: 0.7
-  headLeftMeanPosition: {x: 0.27858078, y: 1.3767031, z: 1.2835423}
-  headRightMeanPosition: {x: -0.16968319, y: 1.4407593, z: 1.280466}
+  headLeftMeanPosition: {x: 0.22900963, y: 1.6995637, z: 1.5473061}
+  headRightMeanPosition: {x: -0.23848158, y: 1.6963861, z: 1.5758551}
   jumpDistancePercentageToTriggerInput: 0.7
-  jumpLeftHandMeanPosition: {x: 0.3428997, y: 1.7361559, z: 1.2106748}
-  jumpRightHandMeanPosition: {x: -0.36139676, y: 1.7517263, z: 1.0599364}
-  jumpHandsMeanPosition: {x: -0.009248525, y: 1.7439411, z: 1.1353056}
-  squatDistance: 0.21689421
-  headForwardDistance: 0.31232655
-  headSidewaysDistance: 0.22413199
-  jumpDistance: 0.97685003
+  jumpLeftHandMeanPosition: {x: 0.35325032, y: 2.0728037, z: 1.4335649}
+  jumpRightHandMeanPosition: {x: -0.4075075, y: 2.051187, z: 1.42361}
+  jumpHandsMeanPosition: {x: -0.027128592, y: 2.0619955, z: 1.4285874}
+  stretchDistancePercentageToTriggerInput: 0.7
+  leftHandStretchPosition: {x: 0.709774, y: 1.2633253, z: 1.5075287}
+  rightHandStretchPosition: {x: -0.7579995, y: 1.1993537, z: 1.4437083}
+  squatDistance: 0.18040252
+  headForwardDistance: 0.26314712
+  headSidewaysDistance: 0.2337456
+  jumpDistance: 0.99684423
+  handsStretchDistance: 1.4677734

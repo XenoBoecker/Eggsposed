@@ -196,7 +196,7 @@ public class FarmerAutoInput : MonoBehaviour
             searchTimer = 0;
         }
 
-        print("State: " + newState);
+        // print("State: " + newState);
     }
 
     private void PickupEggsInRange()

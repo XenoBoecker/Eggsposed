@@ -69,8 +69,6 @@ public class ChickenAbilitySetup : MonoBehaviour
 
     public virtual bool CanCall()
     {
-        print("Checking Can Call");
-
         if (timeSinceLastCall >= callCD) return true;
         else return false;
     }
