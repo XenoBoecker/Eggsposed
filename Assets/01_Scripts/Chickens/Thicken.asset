@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Thicken
   m_EditorClassIdentifier: 
   prefab: {fileID: 2948464008182862203, guid: ba8f8452424410048a3c18da20c1a05c, type: 3}
-  eggVisual: {fileID: 4219821116601913590, guid: d29f8953a0f610646b95006457ab3f27,
+  eggPrefab: {fileID: 4219821116601913590, guid: d29f8953a0f610646b95006457ab3f27,
     type: 3}
   chickenVisualHead: {fileID: 919132149155446097, guid: a7bfb86924e9793419612bf5cbc0dabb,
     type: 3}

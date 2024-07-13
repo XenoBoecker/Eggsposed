@@ -192,6 +192,8 @@ public class Chicken : MonoBehaviour
 
     internal bool CheckCanCall()
     {
+        if (OnCheckCanCallEvent == null) return false;
+        
         int canCall = 0;
         canCall += OnCheckCanCallEvent.Invoke();
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hydra
   m_EditorClassIdentifier: 
   prefab: {fileID: 1037596074530622094, guid: 95cf14a6344813c41984089d4a0caa38, type: 3}
-  eggVisual: {fileID: 4219821116601913590, guid: d29f8953a0f610646b95006457ab3f27,
+  eggPrefab: {fileID: 4219821116601913590, guid: d29f8953a0f610646b95006457ab3f27,
     type: 3}
   chickenVisualHead: {fileID: 5102228603206636648, guid: 4e969ae689d03b54ea0a47b4906f9bd1,
     type: 3}

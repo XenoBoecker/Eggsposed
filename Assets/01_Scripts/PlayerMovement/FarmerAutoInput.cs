@@ -225,6 +225,8 @@ public class FarmerAutoInput : MonoBehaviour
 
         foreach (Egg egg in allEggs)
         {
+            if (egg == null) continue;
+
             if (CanSee(egg.transform))
             {
                 possibleTargets.Add(egg.transform);

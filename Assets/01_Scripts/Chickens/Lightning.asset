@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lightning
   m_EditorClassIdentifier: 
   prefab: {fileID: 8158019855574468723, guid: a14776ce3d4cb2d4e83bcc8a32e9e162, type: 3}
-  eggVisual: {fileID: 4219821116601913590, guid: d29f8953a0f610646b95006457ab3f27,
+  eggPrefab: {fileID: 4219821116601913590, guid: d29f8953a0f610646b95006457ab3f27,
     type: 3}
   chickenVisualHead: {fileID: 4785397024427436285, guid: 72722a4cf4d80324c81c05823943eb03,
     type: 3}
