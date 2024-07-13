@@ -1,11 +1,14 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NewChickenUI : MonoBehaviour
 {
     [SerializeField] GameObject showChickenPanel;
 
-    [SerializeField] TMP_Text newChickenNameText;
+    [SerializeField] TMP_Text newChickenNameText, explanationText;
+
+    [SerializeField] Image newChickenImage;
 
     PlayerControls controls;
 
@@ -37,7 +40,11 @@ public class NewChickenUI : MonoBehaviour
         GameManager.Instance.PauseGame();
         showChickenPanel.SetActive(true);
 
-        newChickenNameText.text = GameManager.Instance.CurrentChickenData.name;
+        ChickenData data = GameManager.Instance.CurrentChickenData;
+
+        newChickenNameText.text = data.name;
+        explanationText.text = data.chickenSpawnScreenExplanation;
+        newChickenImage.sprite = data.chickenSpawnScreenImage;
     }
 
     public void Continue()

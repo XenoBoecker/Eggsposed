@@ -10,4 +10,7 @@ public class ChickenData : ScriptableObject
     public GameObject chickenVisualHead, chickenVisualBody, chickenVisualTail;
 
     public Sprite abilityIcon;
+
+    public Sprite chickenSpawnScreenImage;
+    public string chickenSpawnScreenExplanation;
 }
