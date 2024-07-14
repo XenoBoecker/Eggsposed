@@ -91,15 +91,15 @@ public class BaseChickenController : BaseCharacterController
 
             foreach (BreedingSpot spot in breedingSpots)
             {
-                if (spot.IsCloseEnough(transform.position))
+                if (spot.CanBreed(transform.position))
                 {
-                    print("Go Breed");
+                    spot.StartBreeding(this);
                     _breeding = true;
                     break;
                 }
             }
         }
-        print("Sit Down");
+        
         OnSitDown?.Invoke();
     }
 

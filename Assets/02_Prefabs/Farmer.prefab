@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 9151530430497614241}
   - component: {fileID: 6491220106614453277}
   - component: {fileID: 8969696687335447634}
+  - component: {fileID: 549366241584555620}
   m_Layer: 0
   m_Name: Farmer
   m_TagString: Untagged
@@ -200,7 +201,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2866168531291536760}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58f289f75772b854d8ebe0cb7270ca66, type: 3}
   m_Name: 
@@ -216,6 +217,43 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   eyes: {fileID: 4547139001313365589}
+--- !u!114 &549366241584555620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2866168531291536760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53dcc7bcb7da0848b108f28ef6ccc32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eyes: {fileID: 4547139001313365589}
+  detectionMask:
+    serializedVersion: 2
+    m_Bits: 1
+  maxViewAngle: 45
+  detectionRange: 30
+  patrolPoints: []
+  scanAngle: 90
+  scanTurnSpeed: 30
+  breedingSpots: []
+  blockCooldownTime: 30
+  minimumUnblockedSpots: 2
+  blockRange: 3
+  blockingTime: 3
+  collectionRange: 10
+  timeoutRange: 20
+  collectionDecayRate: 0.5
+  minimumCollectionDistance: 2
+  catchupSpeedMultiplier: 1.5
+  catchupDistance: 15
+  maxSpeedBoostDuration: 10
+  disallowHidingMultiplier: 1.2
+  initialSpeed: 5
+  xRayTrackingTime: 5
+  minSearchTime: 2
 --- !u!1 &6689404367308211175
 GameObject:
   m_ObjectHideFlags: 0
