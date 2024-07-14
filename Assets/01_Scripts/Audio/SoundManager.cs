@@ -149,9 +149,7 @@ public class SoundManager : MonoBehaviour
     [System.Serializable]
     struct OtherSFX
     {
-        [SerializeField] AudioClip itemPickupSound;
-        [SerializeField] AudioClip itemDropSound;
-        [SerializeField] AudioClip useAnomalyScanner;
+        
     }
 }
 

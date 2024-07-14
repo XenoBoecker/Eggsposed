@@ -45,9 +45,6 @@ public class GeneralUI : MonoBehaviour
     {
         eggCounter.SetNumber(GameManager.Instance.BredEggCount);
 
-        print("OnBRed UI");
-        print("BredCount: " + GameManager.Instance.BredEggCount);
-
         if (GameManager.Instance.BredEggCount == 0)
         {
             abilityIcons[0].sprite = GameManager.Instance.PreviousChickenData(0).abilityIcon;

@@ -1,4 +1,5 @@
 ﻿using ECM.Components;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +22,9 @@ public class FarmerAutoInput : MonoBehaviour
     [SerializeField] float searchTime = 5f;
 
     [SerializeField] float detectionRange = 30;
+
+    [SerializeField] float maxViewAngle;
+
     [SerializeField] float pickupRange = 3;
     [SerializeField] LayerMask detectionMask;
     [SerializeField] Transform eyes;
@@ -51,7 +55,7 @@ public class FarmerAutoInput : MonoBehaviour
         movement = GetComponent<CharacterMovement>();
         agentController.SetDestination(transform.position + Random.insideUnitSphere * randomPositionRange);
 
-        InvokeRepeating("RefreshEggList", 0, 0.5f);
+        StartCoroutine(RefreshEggListRoutine());
 
         playerChicken = GameManager.Instance.Player;
         GameManager.Instance.OnSpawnChicken += RefreshPlayerChicken;
@@ -103,37 +107,38 @@ public class FarmerAutoInput : MonoBehaviour
 
     private void Scan()
     {
-        if (rotStep == 0)
-        {
-            movement.Rotate(targetDirection, scanRotSpeed, true);
+        RotateTowardsTargetDirection();
 
-            if (AreVectorsApproximatelyEqual(transform.forward, targetDirection, 0.1f))
-            {
-                rotStep = 1;
-                targetDirection = GetVectorRotated(startScanForwardDirection, -120);
-            }
-        }
-        else if(rotStep == 1)
+        if (rotationCompleted())
         {
-            movement.Rotate(targetDirection, scanRotSpeed, true);
-
-            if (AreVectorsApproximatelyEqual(transform.forward, targetDirection, 0.1f))
+            switch (rotStep)
             {
-                rotStep = 2;
-                targetDirection = startScanForwardDirection;
-            }
-        }else if(rotStep == 2)
-        {
-            movement.Rotate(targetDirection, scanRotSpeed, true);
-
-            if (AreVectorsApproximatelyEqual(transform.forward, targetDirection, 0.1f))
-            {
-                SetState(FarmerState.Patrol);
+                case 0:
+                    rotStep = 1;
+                    targetDirection = GetVectorRotated(startScanForwardDirection, -120);
+                    break;
+                case 1:
+                    rotStep = 2;
+                    targetDirection = startScanForwardDirection;
+                    break;
+                case 2:
+                    SetState(FarmerState.Patrol);
+                    break;
             }
         }
 
         currentTarget = GetClosestEggInSight();
         if (currentTarget != null) SetState(FarmerState.Chase);
+    }
+
+    private void RotateTowardsTargetDirection()
+    {
+        movement.Rotate(targetDirection, scanRotSpeed, true);
+    }
+
+    private bool rotationCompleted()
+    {
+        return AreVectorsApproximatelyEqual(transform.forward, targetDirection, 0.1f);
     }
 
     Vector3 GetVectorRotated(Vector3 inputVector, float yRotation)
@@ -183,20 +188,30 @@ public class FarmerAutoInput : MonoBehaviour
         
         currentState = newState;
 
-        if (newState == FarmerState.Patrol)
+        switch (newState)
         {
-            agentController.SetDestination(Random.insideUnitSphere * randomPositionRange);
-        } else if(newState == FarmerState.Scan)
-        {
-            startScanForwardDirection = transform.forward;
-            rotStep = 0;
-            targetDirection = GetVectorRotated(startScanForwardDirection, 120);
-        }else if(newState == FarmerState.Search)
-        {
-            searchTimer = 0;
+            case FarmerState.Patrol:
+                SetRandomDestination();
+                break;
+            case FarmerState.Scan:
+                InitScanState();
+                break;
+            case FarmerState.Search:
+                searchTimer = 0;
+                break;
         }
+    }
 
-        // print("State: " + newState);
+    private void SetRandomDestination()
+    {
+        agentController.SetDestination(Random.insideUnitSphere * randomPositionRange);
+    }
+
+    private void InitScanState()
+    {
+        startScanForwardDirection = transform.forward;
+        rotStep = 0;
+        targetDirection = GetVectorRotated(startScanForwardDirection, 120);
     }
 
     private void PickupEggsInRange()
@@ -221,7 +236,8 @@ public class FarmerAutoInput : MonoBehaviour
 
     private Transform GetClosestEggInSight()
     {
-        List<Transform> possibleTargets = new List<Transform>();
+        Transform closestTarget = null;
+        float closestDistance = Mathf.Infinity;
 
         foreach (Egg egg in allEggs)
         {
@@ -229,30 +245,25 @@ public class FarmerAutoInput : MonoBehaviour
 
             if (CanSee(egg.transform))
             {
-                possibleTargets.Add(egg.transform);
+                float distance = Vector3.Distance(transform.position, egg.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestTarget = egg.transform;
+                }
             }
         }
 
-        if (playerChicken != null)
+        if (playerChicken != null && playerChicken.HasEgg && CanSee(playerChicken.transform))
         {
-            if (playerChicken.HasEgg && CanSee(playerChicken.transform))
-            {
-                possibleTargets.Add(playerChicken.transform);
-            }
-        }
-
-        float closestDistance = Mathf.Infinity;
-
-        foreach (Transform target in possibleTargets)
-        {
-            float distance = Vector3.Distance(transform.position, target.position);
+            float distance = Vector3.Distance(transform.position, playerChicken.transform.position);
             if (distance < closestDistance)
             {
-                closestDistance = distance;
-                return target;
+                closestTarget = playerChicken.transform;
             }
         }
-        return null;
+
+        return closestTarget;
     }
 
     private bool CanSee(Transform target)
@@ -260,15 +271,33 @@ public class FarmerAutoInput : MonoBehaviour
         if (target == null) return false;
 
         Vector3 direction = target.position - eyes.position;
+        direction.y = 0; // Ignore the vertical component
+
+        Vector3 forward = eyes.forward;
+        forward.y = 0; // Ignore the vertical component
+
+        float angle = Vector3.Angle(forward, direction);
+
+        if (angle > maxViewAngle / 2) return false;
+
         RaycastHit hit;
-        if (Physics.Raycast(eyes.position, direction, out hit, detectionRange, detectionMask))
+        if (Physics.Raycast(eyes.position, direction.normalized, out hit, detectionRange, detectionMask))
         {
-            if(hit.collider.transform == target)
+            if (hit.collider.transform == target)
             {
                 return true;
             }
         }
         return false;
+    }
+
+    private IEnumerator RefreshEggListRoutine()
+    {
+        while (true)
+        {
+            RefreshEggList();
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     void RefreshEggList()

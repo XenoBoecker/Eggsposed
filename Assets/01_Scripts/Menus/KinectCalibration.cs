@@ -452,9 +452,7 @@ public class KinectCalibration : MonoBehaviour
     }
 
     private void StandCalibration()
-    {
-        // Panel: Stand straight in front of the camera in a comfortable position
-        
+    {        
         if (currentPhaseStepIndex == 0)
         {
             headPositionQueue.Clear();
@@ -473,11 +471,7 @@ public class KinectCalibration : MonoBehaviour
             return;
         }
 
-        // problemText.text = calibrationTexts.confirmationLines[randomConfirmationLineIndex];
-
         SetText(problemText, calibrationTexts.confirmationLines[randomConfirmationLineIndex]);
-
-
 
         headPositionQueue.Enqueue(kinectBody.head.position);
         pelvisPositionQueue.Enqueue(kinectBody.pelvis.position);
@@ -511,22 +505,16 @@ public class KinectCalibration : MonoBehaviour
 
     private void HeadForwardCalibration()
     {
-        // stand up again
-
         if (currentPhaseStepIndex == 0)
         {
             headPositionQueue.Clear();
             currentPhaseStepIndex++;
         }
-
-        //problemText.text = "";
-        SetText(problemText, "");
-
         
+        SetText(problemText, "");        
 
         if (PlayerIsMoving())
         {
-            //problemText.text = calibrationTexts.stopMovingText;
             SetText(problemText, calibrationTexts.stopMovingText);
             ChangePhase(CalibrationPhase.HeadForward);
             return;
@@ -534,17 +522,13 @@ public class KinectCalibration : MonoBehaviour
 
         if (!PlayerIsStanding())
         {
-            //problemText.text = calibrationTexts.standText;
             SetText(problemText, calibrationTexts.standText);
             ChangePhase(CalibrationPhase.HeadForward);
             return;
         }
 
-
-
         if (kinectBody.head.position.z < calibrationValues.standHeadMeanPosition.z - headForwardMinDistance)
         {
-            // problemText.text = calibrationTexts.confirmationLines[randomConfirmationLineIndex];
             SetText(problemText, calibrationTexts.confirmationLines[randomConfirmationLineIndex]);
             headPositionQueue.Enqueue(kinectBody.head.position);
         }
@@ -569,36 +553,32 @@ public class KinectCalibration : MonoBehaviour
             currentPhaseStepIndex++;
         }
 
-        problemText.text = "";
+        SetText(problemText, "");
 
         if (PlayerIsMoving())
         {
-            // problemText.text = calibrationTexts.stopMovingText;
             SetText(problemText, calibrationTexts.stopMovingText);
             ChangePhase(CalibrationPhase.RotLeft);
             return;
         }
         else if (!PlayerIsStanding())
         {
-            // problemText.text = calibrationTexts.standText;
             SetText(problemText, calibrationTexts.standText);
             ChangePhase(CalibrationPhase.RotLeft);
             return;
         }
-        else //problemText.text = "";
+        else
         {
             SetText(problemText, "");
         }
 
         if (kinectBody.head.position.x > calibrationValues.standHeadMeanPosition.x + headSidewaysMinDistance)
         {
-            //problemText.text = calibrationTexts.confirmationLines[randomConfirmationLineIndex];
             SetText(problemText, calibrationTexts.confirmationLines[randomConfirmationLineIndex]);
             headPositionQueue.Enqueue(kinectBody.head.position);
         }
         else
         {
-            //problemText.text = calibrationTexts.leanFurtherText;
             SetText(problemText, calibrationTexts.leanFurtherText);
         }
 
@@ -618,11 +598,10 @@ public class KinectCalibration : MonoBehaviour
             currentPhaseStepIndex++;
         }
 
-        problemText.text = "";
+        SetText(problemText, "");        
 
         if (PlayerIsMoving())
         {
-            //problemText.text = calibrationTexts.stopMovingText;
             SetText(problemText, calibrationTexts.stopMovingText);
 
             ChangePhase(CalibrationPhase.RotRight);
@@ -631,7 +610,6 @@ public class KinectCalibration : MonoBehaviour
 
         if (!PlayerIsStanding())
         {
-            //problemText.text = calibrationTexts.standText;
             SetText(problemText, calibrationTexts.standText);
             ChangePhase(CalibrationPhase.RotRight);
             return;
@@ -639,13 +617,11 @@ public class KinectCalibration : MonoBehaviour
 
         if (kinectBody.head.position.x < calibrationValues.standHeadMeanPosition.x - headSidewaysMinDistance)
         {
-            //problemText.text = calibrationTexts.confirmationLines[randomConfirmationLineIndex];
             SetText(problemText, calibrationTexts.confirmationLines[randomConfirmationLineIndex]);
             headPositionQueue.Enqueue(kinectBody.head.position);
         }
         else
         {
-            //problemText.text = calibrationTexts.leanFurtherText;
             SetText(problemText, calibrationTexts.leanFurtherText);
         }
 
@@ -668,13 +644,11 @@ public class KinectCalibration : MonoBehaviour
             rightHandPositionQueue.Clear();
             currentPhaseStepIndex++;
         }
-
-        //problemText.text = "";
+        
         SetText(problemText, "");
 
         if (PlayerIsMoving())
         {
-            //problemText.text = calibrationTexts.stopMovingText;
             SetText(problemText, calibrationTexts.stopMovingText);
             ChangePhase(CalibrationPhase.Jump);
             return;
@@ -682,7 +656,6 @@ public class KinectCalibration : MonoBehaviour
 
         if (!PlayerIsStanding())
         {
-            //problemText.text = calibrationTexts.standText;
             SetText(problemText, calibrationTexts.standText);
             ChangePhase(CalibrationPhase.Jump);
             return;
@@ -691,7 +664,6 @@ public class KinectCalibration : MonoBehaviour
         if (    kinectBody.leftHand.position.y > calibrationValues.standLeftHandMeanPosition.y + minJumpArmsDistance
             &&  kinectBody.rightHand.position.y > calibrationValues.standRightHandMeanPosition.y + minJumpArmsDistance)
         {
-            //problemText.text = calibrationTexts.confirmationLines[randomConfirmationLineIndex];
             SetText(problemText, calibrationTexts.confirmationLines[randomConfirmationLineIndex]);
             leftHandPositionQueue.Enqueue(kinectBody.leftHand.position);
             rightHandPositionQueue.Enqueue(kinectBody.rightHand.position);
@@ -728,21 +700,17 @@ public class KinectCalibration : MonoBehaviour
 
     private void SquatCalibration()
     {
-        // squat down and hold position
-
         if (currentPhaseStepIndex == 0)
         {
             pelvisPositionQueue.Clear();
             headPositionQueue.Clear();
             currentPhaseStepIndex++;
         }
-
-        //roblemText.text = "";
+        
         SetText(problemText, "");
 
         if (PlayerIsMoving())
         {
-            //problemText.text = calibrationTexts.stopMovingText;
             SetText(problemText, calibrationTexts.stopMovingText);
             ChangePhase(CalibrationPhase.Squat);
             return;
@@ -751,7 +719,6 @@ public class KinectCalibration : MonoBehaviour
 
         if (kinectBody.pelvis.position.y < calibrationValues.standPelvisMeanPosition.y - squatMinValue)
         {
-            // problemText.text = calibrationTexts.confirmationLines[randomConfirmationLineIndex];
             SetText(problemText, calibrationTexts.confirmationLines[randomConfirmationLineIndex]);
 
             pelvisPositionQueue.Enqueue(kinectBody.pelvis.position);
@@ -759,7 +726,6 @@ public class KinectCalibration : MonoBehaviour
         }
         else
         {
-            //problemText.text = calibrationTexts.squatLowerText;
             SetText(problemText, calibrationTexts.squatLowerText);
         }
 
@@ -797,13 +763,11 @@ public class KinectCalibration : MonoBehaviour
             rightHandPositionQueue.Clear();
             currentPhaseStepIndex++;
         }
-
-        //problemText.text = "";
+        
         SetText(problemText, "");
 
         if (PlayerIsMoving())
         {
-            //problemText.text = calibrationTexts.stopMovingText;
             SetText(problemText, calibrationTexts.stopMovingText);
             ChangePhase(CalibrationPhase.DropEgg);
             return;
@@ -811,7 +775,6 @@ public class KinectCalibration : MonoBehaviour
 
         if (PlayerIsStanding())
         {
-            //problemText.text = calibrationTexts.squatLowerText;
             SetText(problemText, calibrationTexts.squatLowerText);
 
             ChangePhase(CalibrationPhase.DropEgg);
@@ -820,14 +783,12 @@ public class KinectCalibration : MonoBehaviour
 
         if (Mathf.Abs(kinectBody.leftHand.position.x - kinectBody.rightHand.position.x) > minDropEggArmsDistance)
         {
-            //problemText.text = calibrationTexts.confirmationLines[randomConfirmationLineIndex];
             SetText(problemText, calibrationTexts.confirmationLines[randomConfirmationLineIndex]);
             leftHandPositionQueue.Enqueue(kinectBody.leftHand.position);
             rightHandPositionQueue.Enqueue(kinectBody.rightHand.position);
         }
         else
         {
-            //problemText.text = calibrationTexts.stretchArmsMoreText;
             SetText(problemText, calibrationTexts.stretchArmsMoreText);
         }
 
@@ -861,8 +822,7 @@ public class KinectCalibration : MonoBehaviour
             loudnessQueue.Clear();
             currentPhaseStepIndex++;
         }
-
-        //problemText.text = "";
+        
         SetText(problemText, "");
 
         loudnessQueue.Enqueue(AudioLoudnessDetection.GetLoudnessFromMicrophone());
@@ -883,21 +843,18 @@ public class KinectCalibration : MonoBehaviour
             loudnessQueue.Clear();
             currentPhaseStepIndex++;
         }
-
-        //problemText.text = "";
+        
         SetText(problemText, "");
 
         float currentLoudness = AudioLoudnessDetection.GetLoudnessFromMicrophone();
 
         if (currentLoudness > calibrationValues.ambientNoiseMeanValue + minCallToAmbientNoiseDifference)
         {
-            //problemText.text = calibrationTexts.confirmationLines[randomConfirmationLineIndex];
             SetText(problemText, calibrationTexts.confirmationLines[randomConfirmationLineIndex]);
             loudnessQueue.Enqueue(currentLoudness);
         }
         else
         {
-            // problemText.text = calibrationTexts.screamLouderText;
             SetText(problemText, calibrationTexts.screamLouderText);
         }
 
