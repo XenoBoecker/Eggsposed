@@ -20,7 +20,7 @@ public class StateMachine : MonoBehaviour
         get { return target; }
         set { target = value; }
     }
-    private Transform lastKnownPosition;
+    public BreedingSpot targetBreedingSpot;
 
     // State instances
     public PatrolState PatrolState { get; private set; }
@@ -260,7 +260,7 @@ public class StateMachine : MonoBehaviour
             if (breedingSpots.Count - currentlyBlockedBreedingSpots <= minimumUnblockedSpots) return;
         }
 
-        Target = targetSpot.transform;
+        targetBreedingSpot = targetSpot;
         ChangeState(BlockBreedingSpotsState);
     }
 }

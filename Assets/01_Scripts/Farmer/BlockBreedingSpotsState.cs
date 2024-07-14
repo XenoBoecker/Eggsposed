@@ -26,9 +26,9 @@ public class BlockBreedingSpotsState : BaseState
 
         if (_isBlocking) return;
 
-        _stateMachine.MoveTo(_stateMachine.Target.position);
+        _stateMachine.MoveTo(_stateMachine.targetBreedingSpot.transform.position);
 
-        if (Vector3.Distance(_stateMachine.transform.position, _stateMachine.Target.position) < _blockRange)
+        if (Vector3.Distance(_stateMachine.transform.position, _stateMachine.targetBreedingSpot.transform.position) < _blockRange)
         {
             _stateMachine.StartCoroutine(BlockBreedingSpot());
         }
@@ -39,6 +39,8 @@ public class BlockBreedingSpotsState : BaseState
     public override void Exit()
     {
         base.Exit();
+
+        _stateMachine.targetBreedingSpot = null;
     }
 
     public override void OnBlockingFinished()
@@ -57,6 +59,6 @@ public class BlockBreedingSpotsState : BaseState
             blockingTimer += Time.deltaTime;
             yield return null;
         }
-        _stateMachine.Target.GetComponent<BreedingSpot>().BlockSpot();
+        _stateMachine.targetBreedingSpot.BlockSpot();
     }
 }
