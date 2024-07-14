@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4753511224437712148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7563402868096267051}
+  - component: {fileID: 139220443767652589}
+  m_Layer: 0
+  m_Name: Calibration
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7563402868096267051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4753511224437712148}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &139220443767652589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4753511224437712148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d84a4639c3cf3d42ad195d78c2a5651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  calibrationValues: {fileID: 11400000, guid: 24d832ba5c2dd43428d077be5f6386ff, type: 2}
+  phaseText: {fileID: 0}
+  problemText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  textLengthThresholds: 320000006400000096000000c8000000
+  fontSizeMultiplier: 0.5
+  calibrationQueueSize: 50
+  distancePercentageToTriggerInput: 0.7
+  moveDistancePercentageToTriggerInput: 0.7
+  rotateDistancePercentageToTriggerInput: 0.7
+  jumpDistancePercentageToTriggerInput: 0.7
+  connectingWaitTime: 5
+  notMovingThreshold: 0.1
+  standThreshold: 0.2
+  headForwardMinDistance: 0.15
+  headSidewaysMinDistance: 0.1
+  minJumpArmsDistance: 0.3
+  glideWaitTime: 5
+  squatMinValue: 0.15
+  hatchWaitTime: 5
+  minDropEggArmsDistance: 1
+  minCallToAmbientNoiseDifference: 0.1

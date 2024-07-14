@@ -29,10 +29,15 @@ public class CalibrationValues : ScriptableObject
     public Vector3 leftHandStretchPosition;
     public Vector3 rightHandStretchPosition;
 
+    public float loundessPercentageToTriggerInput;
+    public float ambientNoiseMeanValue;
+    public float callNoiseMeanValue;
+
 
     public float squatDistance;
     public float headForwardDistance;
     public float headSidewaysDistance;
     public float jumpDistance;
     public float handsStretchDistance;
+    public float ambientToCallNoiseDifference;
 }
