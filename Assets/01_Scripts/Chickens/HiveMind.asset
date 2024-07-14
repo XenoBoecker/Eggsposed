@@ -21,4 +21,6 @@ MonoBehaviour:
     type: 3}
   chickenVisualTail: {fileID: 6684023612524318044, guid: 51b28084022c122418faed237b34051a,
     type: 3}
-  abilityIcon: {fileID: -341901748, guid: 919b3950a8e95d747ba1d2c46162929b, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 70e007db85bb66d40b00867966446606, type: 3}
+  chickenSpawnScreenImage: {fileID: 0}
+  chickenSpawnScreenExplanation: 

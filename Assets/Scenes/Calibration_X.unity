@@ -524,6 +524,7 @@ GameObject:
   - component: {fileID: 597945426}
   - component: {fileID: 597945425}
   - component: {fileID: 597945424}
+  - component: {fileID: 597945428}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -560,12 +561,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -623,6 +624,56 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &597945428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597945423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e34c9c8f6c8bd43ad2b0825734551c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pictogramImage: {fileID: 1714959119}
+  frameRate: 3
+  standSprites:
+  - {fileID: 21300000, guid: 0c60da0a2a722f04f843fb26dcae2bb0, type: 3}
+  headForwardSprites:
+  - {fileID: 21300000, guid: 1486c7325b9cebb4e9ead4d99f20466a, type: 3}
+  - {fileID: 21300000, guid: 8f3d8a91fb77da142a137f05ffaf37f1, type: 3}
+  - {fileID: 21300000, guid: d3ee238aad2da4246a46073b416df04a, type: 3}
+  rotLeftSprites:
+  - {fileID: 21300000, guid: 82c9eda4f57bee14c8adf671e234f12d, type: 3}
+  - {fileID: 21300000, guid: 1ed904bfa349c8e4192587444e7aead8, type: 3}
+  - {fileID: 21300000, guid: 4a0883d6a0b550d48b032a7b68b50a0f, type: 3}
+  rotRightSprites:
+  - {fileID: 21300000, guid: a473ec9f0efe0f8498d6dd14ac40d16c, type: 3}
+  - {fileID: 21300000, guid: cdc594054012877439bf153596aa2eb9, type: 3}
+  - {fileID: 21300000, guid: bdafe5114e4cfb04ea9317a953aae4f9, type: 3}
+  jumpSprites:
+  - {fileID: 21300000, guid: 0c60da0a2a722f04f843fb26dcae2bb0, type: 3}
+  - {fileID: 21300000, guid: bd7cff0484163b54694709f8744f81eb, type: 3}
+  - {fileID: 21300000, guid: ea08810ec88e0fb4aa933769b86b444a, type: 3}
+  glideSprites:
+  - {fileID: 21300000, guid: ea08810ec88e0fb4aa933769b86b444a, type: 3}
+  squatSprites:
+  - {fileID: 21300000, guid: 2e2b9972a941f3640a96ceaddb91246f, type: 3}
+  - {fileID: 21300000, guid: 27897abe29bb87f4393c88b764894ff1, type: 3}
+  - {fileID: 21300000, guid: 8f23061d658e6764daefd1ba3faf07e7, type: 3}
+  hatchSprites:
+  - {fileID: 21300000, guid: 8f23061d658e6764daefd1ba3faf07e7, type: 3}
+  dropEggSprites:
+  - {fileID: 21300000, guid: 8f23061d658e6764daefd1ba3faf07e7, type: 3}
+  dropEggTutorialSprites:
+  - {fileID: 21300000, guid: 8f23061d658e6764daefd1ba3faf07e7, type: 3}
+  ambientNoiseSprites:
+  - {fileID: 21300000, guid: d8aba13e7ab1cca44ad79b190ff51ed7, type: 3}
+  callSprites:
+  - {fileID: 21300000, guid: d8aba13e7ab1cca44ad79b190ff51ed7, type: 3}
+  - {fileID: 21300000, guid: eae459fd6caaa794d9a989dc94faa62a, type: 3}
+  - {fileID: 21300000, guid: b51676ee811c59547b4cbb478db9e95a, type: 3}
 --- !u!1 &602796846
 GameObject:
   m_ObjectHideFlags: 0

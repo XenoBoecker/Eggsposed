@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager instance;
+    public static SoundManager Instance;
 
     [SerializeField] AudioClip[] music;
     [SerializeField] AudioSource musicAudioSource;
@@ -22,7 +22,7 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null) instance = this;
+        if (Instance == null) Instance = this;
         else Destroy(this);
     }
 
@@ -53,11 +53,12 @@ public class SoundManager : MonoBehaviour
         return sfxAudioSource.volume;
     }
 
-    public void PlaySound(AudioClip clip)
+    public void PlaySound(AudioClip clip, AudioSource source = null)
     {
         if (!sfxOn) return;
 
-        sfxAudioSource.PlayOneShot(clip);
+        if (source == null) sfxAudioSource.PlayOneShot(clip);
+        else source.PlayOneShot(clip);
     }
 
     internal void Reload()
@@ -77,39 +78,72 @@ public class SoundManager : MonoBehaviour
     [System.Serializable]
     struct UISFX
     {
+        [SerializeField] AudioSource source;
         [SerializeField] AudioClip buttonClickSound;
         [SerializeField] AudioClip buttonHoverSound;
-        [SerializeField] AudioSource source;
+
+
     }
 
     [System.Serializable]
     struct ChickenSFX
     {
-        [SerializeField] AudioClip dashSound;
-        [SerializeField] AudioClip tunnelDashSound;
-        [SerializeField] AudioClip stringOfTimeUseSound;
+
+        [SerializeField] AudioClip[] screams;
+        [SerializeField] AudioClip walkingSound;
+        [SerializeField] AudioClip jumpSound;
+        [SerializeField] AudioClip glideSound;
+
+        [SerializeField] AudioClip standUpSound;
+        [SerializeField] AudioClip sitDownSound;
+
+        [SerializeField] AudioClip dropEggSound;
+        [SerializeField] AudioClip pickUpEggSound;
+        [SerializeField] AudioClip eggHatchingSound;
+
+        // special chicken sounds
+
+        // Hive Mind
+
+        // Hydra
+
+        // Lightning
+
+        // Robot
+
+        [SerializeField] AudioClip robotWalkSound;
+        [SerializeField] AudioClip indikatorBeeping;
+
+        // Rocket
+
+        // Rotissory
+
+        // Super Hot
+
+        [SerializeField] AudioClip superHotSlowDown;
+        [SerializeField] AudioClip superHotSpeedUp;
+
+        [SerializeField] AudioClip breedingSound;
+
+        // Thicken
+
+        // Tortured
+
+        [SerializeField] AudioClip torturedChickenScream;
+
+        // Wind Up
+
+        [SerializeField] AudioClip windupSound;
+        [SerializeField] AudioClip unwindSound;
     }
 
     [System.Serializable]
     struct FarmerSFX
     {
-        public AudioClip breakStationSound;
-        public AudioClip destroyStationSound;
-        public AudioClip repairStationSound;
-
-        // task completed sounds
-        public AudioClip uploadRPSound;
-        public AudioClip collectNewMissionsSound;
-        public AudioClip buyArtifactSound;
-
-
-        public AudioClip moveShipUpSound;
-
-        public AudioClip analyzingAnomalySound;
-        public AudioClip anomalyAnalyzedSound;
-
-        public AudioClip newMissionAvailableSound;
-        public AudioClip missionCompletedSound;
+        public AudioClip scanSound;
+        public AudioClip warnSound;
+        public AudioClip walkSound;
+        public AudioClip catchSound;
     }
 
     [System.Serializable]

@@ -5,25 +5,26 @@ using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+public enum CalibrationPhase
+{
+    ConnectWithKinect,
+    Stand,
+    HeadForward,
+    RotLeft,
+    RotRight,
+    Jump,
+    Glide,
+    Squat,
+    Hatch,
+    DropEgg,
+    DropEggTutorial,
+    AmbientNoise,
+    Call,
+    SetInputThresholdValues
+}
 public class KinectCalibration : MonoBehaviour
 {
-    enum CalibrationPhase
-    {
-        ConnectWithKinect,
-        Stand,
-        HeadForward,
-        RotLeft,
-        RotRight,
-        Jump,
-        Glide,
-        Squat,
-        Hatch,
-        DropEgg,
-        DropEggTutuorial,
-        AmbientNoise,
-        Call,
-        SetInputThresholdValues
-    }
 
     [System.Serializable]
     public class CalibrationTexts
@@ -87,6 +88,7 @@ public class KinectCalibration : MonoBehaviour
     KinectInputs inputs;
 
     CalibrationPhase currentCalibrationPhase;
+    public CalibrationPhase CurrentCalibrationPhase => currentCalibrationPhase;
     [SerializeField] CalibrationValues calibrationValues;
 
     [SerializeField] TMP_Text phaseText;
@@ -283,7 +285,7 @@ public class KinectCalibration : MonoBehaviour
                 DropEggCalibration();
                 break;
 
-            case CalibrationPhase.DropEggTutuorial:
+            case CalibrationPhase.DropEggTutorial:
                 DropEggTutorial();
                 break;
 
@@ -346,7 +348,7 @@ public class KinectCalibration : MonoBehaviour
                 return calibrationTexts.hatchHeading;
             case CalibrationPhase.DropEgg:
                 return calibrationTexts.dropEggHeading;
-            case CalibrationPhase.DropEggTutuorial:
+            case CalibrationPhase.DropEggTutorial:
                 return calibrationTexts.dropEggTutorialHeading;
             case CalibrationPhase.AmbientNoise:
                 return calibrationTexts.ambientNoiseHeading;
@@ -383,7 +385,7 @@ public class KinectCalibration : MonoBehaviour
                 return calibrationTexts.hatchDescription;
             case CalibrationPhase.DropEgg:
                 return calibrationTexts.dropEggDescription;
-            case CalibrationPhase.DropEggTutuorial:
+            case CalibrationPhase.DropEggTutorial:
                 return calibrationTexts.dropEggTutorialDescription;
             case CalibrationPhase.AmbientNoise:
                 return calibrationTexts.ambientNoiseDescription;
@@ -836,7 +838,7 @@ public class KinectCalibration : MonoBehaviour
 
             calibrationValues.handsStretchDistance = Mathf.Abs(calibrationValues.leftHandStretchPosition.x - calibrationValues.rightHandStretchPosition.x);
 
-            ChangePhase(CalibrationPhase.DropEggTutuorial);
+            ChangePhase(CalibrationPhase.DropEggTutorial);
         }
     }
 

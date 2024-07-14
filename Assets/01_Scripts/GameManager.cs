@@ -57,7 +57,8 @@ public class GameManager : MonoBehaviour
     {
         previousChickenDatas.Add(chickenData);
         
-        _player = Instantiate(chickenPrefab, spawnPos, Quaternion.identity);
+        if(_player == null) _player = Instantiate(chickenPrefab, spawnPos, Quaternion.identity);
+        else _player = Instantiate(chickenPrefab, spawnPos, _player.transform.rotation);
         _player.SetControlledByPlayer(true);
 
         _player.SetEgg(Instantiate(chickenData.eggPrefab, spawnPos - Vector3.forward*2 + Vector3.up, Quaternion.identity).GetComponent<Egg>());
