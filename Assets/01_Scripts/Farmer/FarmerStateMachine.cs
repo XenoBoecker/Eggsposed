@@ -36,7 +36,10 @@ public class FarmerStateMachine : MonoBehaviour
     public void SetFarmerStats(FarmerStats stats)
     {
         farmerStats = stats;
+
+        InitializeStates();
     }
+
     public FarmerStats FarmerStats => farmerStats;
 
     [Header("Vision")]
@@ -78,15 +81,17 @@ public class FarmerStateMachine : MonoBehaviour
         agentController = GetComponent<FarmerAgentController>();
         movement = GetComponent<CharacterMovement>();
 
-        // Initialize states
+        InitializeStates();
+    }
+
+    private void InitializeStates()
+    {
         PatrolState = new PatrolState(this, patrolPoints);
         ScanState = new ScanState(this, farmerStats.scanAngle, farmerStats.scanTurnSpeed);
-        BlockBreedingSpotsState = new BlockBreedingSpotsState(this, blockRange, blockingTime);
-        CollectEggState = new CollectEggState(this, target, farmerStats.collectionRange, farmerStats.timeoutRange, collectionDecayRate, minimumCollectionDistance);
+        BlockBreedingSpotsState = new BlockBreedingSpotsState(this, blockRange, blockingTime, farmerStats.breedingSpotBlockDuration);
+        CollectEggState = new CollectEggState(this, minimumCollectionDistance, farmerStats.collectionRange, farmerStats.timeoutRange, collectionDecayRate, minimumCollectionDistance);
         ChaseState = new ChaseState(this, farmerStats.catchupSpeedMultiplier, farmerStats.catchupDistance, farmerStats.catchupMaxDuration, disallowHidingMultiplier);
         SearchState = new SearchState(this, farmerStats.xRayTrackingTime, minSearchTime);
-
-        InitialCollectionRange = CollectionRange;
     }
 
     private void Start()
@@ -104,6 +109,12 @@ public class FarmerStateMachine : MonoBehaviour
         _currentState?.Update();
 
         blockCooldownTimer += Time.deltaTime;
+
+        if(target != null)
+        {
+            if(CanSee(target)) Debug.DrawLine(eyes.position,target.position, Color.cyan);
+            else Debug.DrawLine(eyes.position, target.position, Color.red);
+        }
     }
 
     public void ChangeState(BaseState newState)
@@ -145,8 +156,6 @@ public class FarmerStateMachine : MonoBehaviour
 
     public void CheckTargetInSight()
     {
-        print("Check Target In Sight");
-
         target = TargetInSight();
 
         Debug.DrawRay(Vector3.zero, Vector3.up * 100);
@@ -158,13 +167,9 @@ public class FarmerStateMachine : MonoBehaviour
         Transform closestTarget = null;
         float closestDistance = Mathf.Infinity;
 
-        print("eggs. " + allEggs.Count);
-
         foreach (Egg egg in allEggs)
         {
             if (egg == null) continue;
-
-            print("Check egg");
 
             if (CanSee(egg.transform))
             {
@@ -179,58 +184,50 @@ public class FarmerStateMachine : MonoBehaviour
 
         if (playerChicken != null && playerChicken.HasEgg && CanSee(playerChicken.transform))
         {
-            print("check player");
             float distance = Vector3.Distance(transform.position, playerChicken.transform.position);
             if (distance < closestDistance)
             {
                 closestTarget = playerChicken.transform;
             }
+            //Debug.DrawLine(eyes.position, playerChicken.transform.position, Color.cyan);
         }
+        // if(!CanSee(playerChicken.transform)) Debug.DrawLine(eyes.position, playerChicken.transform.position, Color.magenta);
 
         return closestTarget;
     }
-
-    LineRenderer lr;
 
     public bool CanSee(Transform target)
     {
         if (target == null) return false;
 
         Vector3 direction = target.position - eyes.position;
-        direction.y = 0; // Ignore the vertical component
+        Vector3 noYDirection = direction;
+        noYDirection.y = 0; // Ignore the vertical component
 
         Vector3 forward = eyes.forward;
         forward.y = 0; // Ignore the vertical component
 
-        float angle = Vector3.Angle(forward, direction);
+        float angle = Vector3.Angle(forward, noYDirection);
 
-        print("angle:" + farmerStats.maxViewAngle / 2);
+        float distance = Vector3.Distance(transform.position, target.position);
+
+        if (distance < farmerStats.collectionRange) return true;
+
+        if (distance > farmerStats.detectionRange) return false;
 
         if (angle > farmerStats.maxViewAngle / 2) return false;
-
-        print("ASASAS");
-
+        
         RaycastHit hit;
-        if (Physics.Raycast(eyes.position, direction.normalized, out hit, farmerStats.detectionRange, detectionMask))
+        if (Physics.Raycast(eyes.position, direction.normalized, out hit, farmerStats.detectionRange))//, detectionMask))
         {
             if (hit.collider.transform == target)
             {
-                print("Can see " + target.name);
+                Debug.DrawLine(eyes.position, target.position, Color.green);
 
                 return true;
             }
         }
 
-        if (lr == null) lr = GetComponent<LineRenderer>();
-
-        print("jallojei§");
-
-        lr.SetPosition(0, eyes.position);
-        lr.SetPosition(1, target.position);
-
-        Debug.DrawRay(eyes.position, direction.normalized * 30, Color.red);
-        Debug.DrawLine(eyes.position, target.position, Color.green);
-        Debug.DrawRay(eyes.position, transform.forward * 30, Color.cyan);
         return false;
     }
     private void RefreshPlayerChicken()
@@ -285,5 +282,10 @@ public class FarmerStateMachine : MonoBehaviour
 
         targetBreedingSpot = targetSpot;
         ChangeState(BlockBreedingSpotsState);
+    }
+
+    internal void StopMoving()
+    {
+        MoveTo(transform.position);
     }
 }

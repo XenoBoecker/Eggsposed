@@ -111,7 +111,7 @@ public class StatIncrease
     [ConditionalHide("statType", (int)StatType.DetectionRange)]
     public float detectionRangeIncrease;
 
-    [ConditionalHide("statType", (int)StatType.XRayTrackingime)]
+    [ConditionalHide("statType", (int)StatType.XRayTrackingTime)]
     public float xRayTrackingimeIncrease;
 
     [ConditionalHide("statType", (int)StatType.ScanTurnSpeed)]
@@ -166,7 +166,7 @@ public enum StatType
     MaxViewAngle,
     HearingDistance,
     DetectionRange,
-    XRayTrackingime,
+    XRayTrackingTime,
     ScanTurnSpeed,
     ScanAngle,
     BreedingSpotBlockDuration,

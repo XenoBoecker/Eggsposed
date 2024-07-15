@@ -48,7 +48,6 @@ public class PatrolState : BaseState
         base.Update();
         if (_stateMachine.HasReachedDestination())
         {
-            _patrolQueue.Dequeue();
             _stateMachine.OnReachDestination();
         }
 

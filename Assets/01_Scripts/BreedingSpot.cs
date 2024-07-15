@@ -7,11 +7,21 @@ public class BreedingSpot : MonoBehaviour
 {
     [SerializeField] float radius = 3f;
 
+
+    [SerializeField] GameObject blockSpotVisuals;
+
     bool _isBlocked;
 
     float _timeBred;
 
     bool _breeding;
+
+    float blockedTime;
+
+    private void Start()
+    {
+        blockSpotVisuals.SetActive(false);
+    }
 
     void Update()
     {
@@ -19,11 +29,27 @@ public class BreedingSpot : MonoBehaviour
         {
             _timeBred += Time.deltaTime;
         }
+
+        if (_isBlocked)
+        {
+            blockedTime -= Time.deltaTime;
+            if (blockedTime <= 0) UnblockSpot();
+        }
     }
 
-    internal void BlockSpot()
+    private void UnblockSpot()
+    {
+        _isBlocked = false;
+
+        blockSpotVisuals.SetActive(false);
+    }
+
+    internal void BlockSpot(float blockTime)
     {
         _isBlocked = true;
+        blockedTime = blockTime;
+
+        blockSpotVisuals.SetActive(true);
     }
 
     internal float GetTimeBred()

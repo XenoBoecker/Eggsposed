@@ -4,15 +4,17 @@ using System.Collections;
 public class BlockBreedingSpotsState : BaseState
 {
     float _blockRange;
+    float _blockDuration;
 
     bool _isBlocking;
     float blockingTime;
     float blockingTimer;
 
-    public BlockBreedingSpotsState(FarmerStateMachine stateMachine, float blockRange, float blockingTime) : base(stateMachine)
+    public BlockBreedingSpotsState(FarmerStateMachine stateMachine, float blockRange, float blockingTime, float blockDuration) : base(stateMachine)
     {
         _blockRange = blockRange;
         this.blockingTime = blockingTime;
+        _blockDuration = blockDuration;
     }
 
     public override void Enter()
@@ -59,6 +61,6 @@ public class BlockBreedingSpotsState : BaseState
             blockingTimer += Time.deltaTime;
             yield return null;
         }
-        _stateMachine.targetBreedingSpot.BlockSpot();
+        _stateMachine.targetBreedingSpot.BlockSpot(_blockDuration);
     }
 }

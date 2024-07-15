@@ -3,15 +3,16 @@
 public class CollectEggState : BaseState
 {
     private Transform _target;
+    float _collectionTime;
     private float _collectionRange;
     private float _timeoutRange;
     private float _decayRate;
     private float _minimumDistance;
     private float _collectionProgress;
 
-    public CollectEggState(FarmerStateMachine stateMachine, Transform target, float collectionRange, float timeoutRange, float decayRate, float minimumDistance) : base(stateMachine)
+    public CollectEggState(FarmerStateMachine stateMachine, float collectionTime, float collectionRange, float timeoutRange, float decayRate, float minimumDistance) : base(stateMachine)
     {
-        _target = target;
+        _collectionTime = collectionTime;
         _collectionRange = collectionRange;
         _timeoutRange = timeoutRange;
         _decayRate = decayRate;
@@ -22,11 +23,14 @@ public class CollectEggState : BaseState
     {
         base.Enter();
         _collectionProgress = 0f;
+
+        _target = _stateMachine.Target;
     }
 
     public override void Update()
     {
         base.Update();
+
         Collect();
     }
 
@@ -44,6 +48,21 @@ public class CollectEggState : BaseState
     public override void OnCollectSucceded()
     {
         base.OnCollectSucceded();
+
+        Egg targetEgg = _target.GetComponent<Egg>();
+
+        if (targetEgg != null)
+        {
+            targetEgg.Pickup();
+        }
+        else
+        {
+            Chicken chicken = _target.GetComponent<Chicken>();
+            if (chicken != null) chicken.TakeEgg();
+        }
+        
+        
+
         _stateMachine.ChangeState(_stateMachine.PatrolState);
     }
 
@@ -51,10 +70,13 @@ public class CollectEggState : BaseState
     {
         float distanceToTarget = Vector3.Distance(_stateMachine.transform.position, _target.position);
 
+        if (distanceToTarget > _minimumDistance) _stateMachine.MoveTo(_target.position);
+        else _stateMachine.StopMoving();
+
         if (distanceToTarget <= _minimumDistance)
         {
             _collectionProgress += Time.deltaTime;
-            if (_collectionProgress >= 1f)
+            if (_collectionProgress >= _collectionTime)
             {
                 OnCollectSucceded();
             }
