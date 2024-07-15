@@ -11,7 +11,7 @@ public class ChaseState : BaseState
     private float _speedBoostCooldown;
     float _speedBoostCDTimer;
 
-    public ChaseState(StateMachine stateMachine, float catchupSpeedMultiplier, float catchupDistance, float maxSpeedBoostDuration, float disallowHidingMultiplier) : base(stateMachine)
+    public ChaseState(FarmerStateMachine stateMachine, float catchupSpeedMultiplier, float catchupDistance, float maxSpeedBoostDuration, float disallowHidingMultiplier) : base(stateMachine)
     {
         _catchupSpeedMultiplier = catchupSpeedMultiplier;
         _catchupDistance = catchupDistance;

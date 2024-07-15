@@ -315,6 +315,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 38798188}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &43477115 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8695457510074496409, guid: b93d2771c0fff9e4188c0d5d3fff2378,
+    type: 3}
+  m_PrefabInstance: {fileID: 6107517771166971797}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &78591535 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4233653711055760602, guid: d29f8953a0f610646b95006457ab3f27,
@@ -1080,7 +1092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showChickenPanel: {fileID: 1324383635}
   newChickenNameText: {fileID: 660456234}
-  explanationText: {fileID: 1950783659}
+  explanationText: {fileID: 43477115}
   newChickenImage: {fileID: 1066967732}
   waitTimeBeforeContinueIsAllowed: 1
 --- !u!114 &546355098
@@ -4305,6 +4317,114 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1840538134}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1862922720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1862922722}
+  - component: {fileID: 1862922721}
+  m_Layer: 0
+  m_Name: DifficultyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1862922721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862922720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ea4b0b61479a64584dd1b24efec39d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelDifficultyChanges:
+  - statIncreases:
+    - statType: 0
+      maxViewAngleIncrease: 20
+      hearingDistanceIncrease: 0
+      detectionRangeIncrease: 0
+      xRayTrackingimeIncrease: 0
+      scanTurnSpeedIncrease: 0
+      scanAngleIncrease: 0
+      breedingSpotBlockDurationIncrease: 0
+      blockCooldownTimeIncrease: 0
+      minimumUnblockedSpotsIncrease: 0
+      collectionProgressTimeIncrease: 0
+      collectionRangeIncrease: 0
+      timeoutRangeIncrease: 0
+      biasDistanceIncrease: 0
+      baseMovementSpeedIncrease: 0
+      catchupDistanceIncrease: 0
+      catchupMinimumDistanceIncrease: 0
+      catchupSpeedMultiplierIncrease: 0
+      catchupCooldownIncrease: 0
+      catchupMaxDurationIncrease: 0
+    - statType: 13
+      maxViewAngleIncrease: 20
+      hearingDistanceIncrease: 0
+      detectionRangeIncrease: 0
+      xRayTrackingimeIncrease: 0
+      scanTurnSpeedIncrease: 0
+      scanAngleIncrease: 0
+      breedingSpotBlockDurationIncrease: 0
+      blockCooldownTimeIncrease: 0
+      minimumUnblockedSpotsIncrease: 0
+      collectionProgressTimeIncrease: 0
+      collectionRangeIncrease: 0
+      timeoutRangeIncrease: 0
+      biasDistanceIncrease: 0
+      baseMovementSpeedIncrease: 0.5
+      catchupDistanceIncrease: 0
+      catchupMinimumDistanceIncrease: 0
+      catchupSpeedMultiplierIncrease: 0
+      catchupCooldownIncrease: 0
+      catchupMaxDurationIncrease: 0
+  - statIncreases:
+    - statType: 12
+      maxViewAngleIncrease: 0
+      hearingDistanceIncrease: 0
+      detectionRangeIncrease: 0
+      xRayTrackingimeIncrease: 0
+      scanTurnSpeedIncrease: 0
+      scanAngleIncrease: 0
+      breedingSpotBlockDurationIncrease: 0
+      blockCooldownTimeIncrease: 0
+      minimumUnblockedSpotsIncrease: 0
+      collectionProgressTimeIncrease: 0
+      collectionRangeIncrease: 0
+      timeoutRangeIncrease: 0
+      biasDistanceIncrease: -4
+      baseMovementSpeedIncrease: 0
+      catchupDistanceIncrease: 0
+      catchupMinimumDistanceIncrease: 0
+      catchupSpeedMultiplierIncrease: 0
+      catchupCooldownIncrease: 0
+      catchupMaxDurationIncrease: 0
+  - statIncreases: []
+--- !u!4 &1862922722
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862922720}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1873354141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4755,18 +4875,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1947556217}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1950783659 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4583274997021288090, guid: b93d2771c0fff9e4188c0d5d3fff2378,
-    type: 3}
-  m_PrefabInstance: {fileID: 6107517771166971797}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1978709075 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9004327903058617597, guid: 9c9604da0eeee324d92f62c12ca3e33c,
@@ -5343,6 +5451,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
         type: 3}
+      propertyPath: farmerStats.scanAngle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
+        type: 3}
       propertyPath: patrolPoints.Array.size
       value: 7
       objectReference: {fileID: 0}
@@ -5350,6 +5463,26 @@ PrefabInstance:
         type: 3}
       propertyPath: breedingSpots.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
+        type: 3}
+      propertyPath: farmerStats.maxViewAngle
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
+        type: 3}
+      propertyPath: farmerStats.timeoutRange
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
+        type: 3}
+      propertyPath: farmerStats.scanTurnSpeed
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
+        type: 3}
+      propertyPath: farmerStats.detectionRange
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
         type: 3}
@@ -5406,6 +5539,61 @@ PrefabInstance:
       propertyPath: breedingSpots.Array.data[3]
       value: 
       objectReference: {fileID: 2128275015}
+    - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
+        type: 3}
+      propertyPath: farmerStats.catchupCooldown
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
+        type: 3}
+      propertyPath: farmerStats.catchupDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
+        type: 3}
+      propertyPath: farmerStats.collectionRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
+        type: 3}
+      propertyPath: farmerStats.baseMovementSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
+        type: 3}
+      propertyPath: farmerStats.blockCooldownTime
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
+        type: 3}
+      propertyPath: farmerStats.catchupMaxDuration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
+        type: 3}
+      propertyPath: farmerStats.minimumUnblockedSpots
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
+        type: 3}
+      propertyPath: farmerStats.catchupMinimumDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
+        type: 3}
+      propertyPath: farmerStats.catchupSpeedMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
+        type: 3}
+      propertyPath: farmerStats.collectionProgressTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 549366241584555620, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
+        type: 3}
+      propertyPath: farmerStats.breedingSpotBlockDuration
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1693593146314659800, guid: b66509b2b95c0ce4bb174a6be4b64b8e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6189,3 +6377,4 @@ SceneRoots:
   - {fileID: 1189977941}
   - {fileID: 1684108621}
   - {fileID: 580173059}
+  - {fileID: 1862922722}

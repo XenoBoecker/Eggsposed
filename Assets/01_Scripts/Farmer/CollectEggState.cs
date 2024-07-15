@@ -9,7 +9,7 @@ public class CollectEggState : BaseState
     private float _minimumDistance;
     private float _collectionProgress;
 
-    public CollectEggState(StateMachine stateMachine, Transform target, float collectionRange, float timeoutRange, float decayRate, float minimumDistance) : base(stateMachine)
+    public CollectEggState(FarmerStateMachine stateMachine, Transform target, float collectionRange, float timeoutRange, float decayRate, float minimumDistance) : base(stateMachine)
     {
         _target = target;
         _collectionRange = collectionRange;

@@ -9,7 +9,7 @@ public class SearchState : BaseState
     private Vector3 _lastKnownPosition;
     private float _currentTrackingTime;
 
-    public SearchState(StateMachine stateMachine, float xRayTrackingTime, float minTrackingTime) : base(stateMachine)
+    public SearchState(FarmerStateMachine stateMachine, float xRayTrackingTime, float minTrackingTime) : base(stateMachine)
     {
         _xRayTrackingTime = xRayTrackingTime;
         _minTrackingTime = minTrackingTime;

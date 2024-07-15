@@ -1,8 +1,8 @@
 ﻿public abstract class BaseState
 {
-    protected StateMachine _stateMachine;
+    protected FarmerStateMachine _stateMachine;
 
-    public BaseState(StateMachine stateMachine)
+    public BaseState(FarmerStateMachine stateMachine)
     {
         _stateMachine = stateMachine;
     }

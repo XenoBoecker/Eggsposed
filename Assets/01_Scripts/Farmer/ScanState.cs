@@ -12,7 +12,7 @@ public class ScanState : BaseState
     Vector3 startScanForwardDirection;
     Vector3 targetDirection;
 
-    public ScanState(StateMachine stateMachine, float scanAngle, float turnSpeed) : base(stateMachine)
+    public ScanState(FarmerStateMachine stateMachine, float scanAngle, float turnSpeed) : base(stateMachine)
     {
         ScanAngle = scanAngle;
         TurnSpeed = turnSpeed;

@@ -7,7 +7,7 @@ public class PatrolState : BaseState
     private Queue<Transform> _patrolQueue;
     private Transform _currentTarget;
 
-    public PatrolState(StateMachine stateMachine, List<Transform> patrolPoints) : base(stateMachine)
+    public PatrolState(FarmerStateMachine stateMachine, List<Transform> patrolPoints) : base(stateMachine)
     {
         PatrolPoints = patrolPoints;
         InitializePatrolQueue();

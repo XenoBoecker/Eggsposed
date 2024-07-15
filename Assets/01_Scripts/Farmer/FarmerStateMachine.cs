@@ -4,7 +4,7 @@ using ECM.Components;
 using System.Collections;
 using System;
 
-public class StateMachine : MonoBehaviour
+public class FarmerStateMachine : MonoBehaviour
 {
     FarmerAgentController agentController;
     CharacterMovement movement;
@@ -32,46 +32,37 @@ public class StateMachine : MonoBehaviour
 
     // Inspector variables
 
+    [SerializeField] FarmerStats farmerStats;
+    public void SetFarmerStats(FarmerStats stats)
+    {
+        farmerStats = stats;
+    }
+    public FarmerStats FarmerStats => farmerStats;
+
     [Header("Vision")]
     [SerializeField] Transform eyes;
     [SerializeField] LayerMask detectionMask;
-    [SerializeField] float maxViewAngle = 45f;
-    [SerializeField] float detectionRange = 30;
-
 
     [Header("Patrol State")]
     [SerializeField] private List<Transform> patrolPoints;
 
-    [Header("Scan State")]
-    [SerializeField] private float scanAngle = 90f;
-    [SerializeField] private float scanTurnSpeed = 30f;
-
     [Header("Block Breeding Spots State")]
     [SerializeField] private List<BreedingSpot> breedingSpots;
-    [SerializeField] private float blockCooldownTime = 30f;
-    [SerializeField] private int minimumUnblockedSpots = 2;
     float blockCooldownTimer;
 
     [SerializeField] float blockRange = 3f;
 
     [SerializeField] float blockingTime = 3f;
 
+    public float CollectionRange => farmerStats.collectionRange;
     [Header("Collect Egg State")]
-    [SerializeField] private float collectionRange = 10f;
-    public float CollectionRange => collectionRange;
-    [SerializeField] private float timeoutRange = 20f;
     [SerializeField] private float collectionDecayRate = 0.5f;
     [SerializeField] private float minimumCollectionDistance = 2f;
 
     [Header("Chase State")]
-    [SerializeField] private float catchupSpeedMultiplier = 1.5f;
-    [SerializeField] private float catchupDistance = 15f;
-    [SerializeField] private float maxSpeedBoostDuration = 10f;
     [SerializeField] private float disallowHidingMultiplier = 1.2f;
-    [SerializeField] private float initialSpeed = 5f;
 
     [Header("Search State")]
-    [SerializeField] private float xRayTrackingTime = 5f;
     [SerializeField] private float minSearchTime = 2f;
 
     public float InitialCollectionRange { get; private set; }
@@ -89,13 +80,13 @@ public class StateMachine : MonoBehaviour
 
         // Initialize states
         PatrolState = new PatrolState(this, patrolPoints);
-        ScanState = new ScanState(this, scanAngle, scanTurnSpeed);
+        ScanState = new ScanState(this, farmerStats.scanAngle, farmerStats.scanTurnSpeed);
         BlockBreedingSpotsState = new BlockBreedingSpotsState(this, blockRange, blockingTime);
-        CollectEggState = new CollectEggState(this, target, collectionRange, timeoutRange, collectionDecayRate, minimumCollectionDistance);
-        ChaseState = new ChaseState(this, catchupSpeedMultiplier, catchupDistance, maxSpeedBoostDuration, disallowHidingMultiplier);
-        SearchState = new SearchState(this, xRayTrackingTime, minSearchTime);
+        CollectEggState = new CollectEggState(this, target, farmerStats.collectionRange, farmerStats.timeoutRange, collectionDecayRate, minimumCollectionDistance);
+        ChaseState = new ChaseState(this, farmerStats.catchupSpeedMultiplier, farmerStats.catchupDistance, farmerStats.catchupMaxDuration, disallowHidingMultiplier);
+        SearchState = new SearchState(this, farmerStats.xRayTrackingTime, minSearchTime);
 
-        InitialCollectionRange = collectionRange;
+        InitialCollectionRange = CollectionRange;
     }
 
     private void Start()
@@ -211,14 +202,14 @@ public class StateMachine : MonoBehaviour
 
         float angle = Vector3.Angle(forward, direction);
 
-        print("angle:" + maxViewAngle / 2);
+        print("angle:" + farmerStats.maxViewAngle / 2);
 
-        if (angle > maxViewAngle / 2) return false;
+        if (angle > farmerStats.maxViewAngle / 2) return false;
 
         print("ASASAS");
 
         RaycastHit hit;
-        if (Physics.Raycast(eyes.position, direction.normalized, out hit, detectionRange, detectionMask))
+        if (Physics.Raycast(eyes.position, direction.normalized, out hit, farmerStats.detectionRange, detectionMask))
         {
             if (hit.collider.transform == target)
             {
@@ -266,7 +257,7 @@ public class StateMachine : MonoBehaviour
 
     internal void CheckCanBlockBreedingSpot()
     {
-        if (blockCooldownTimer < blockCooldownTime) return;
+        if (blockCooldownTimer < farmerStats.blockCooldownTime) return;
 
         int currentlyBlockedBreedingSpots = 0;
 
@@ -285,7 +276,7 @@ public class StateMachine : MonoBehaviour
                 }
             }
 
-            if (breedingSpots.Count - currentlyBlockedBreedingSpots <= minimumUnblockedSpots) return;
+            if (breedingSpots.Count - currentlyBlockedBreedingSpots <= farmerStats.minimumUnblockedSpots) return;
         }
 
         if (targetSpot == null) return;

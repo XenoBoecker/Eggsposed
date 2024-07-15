@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
         if (previousChickenDatas.Count == 1) _player.SetChickenVisuals(chickenData, chickenData, previousChickenDatas.Count);
         else if (previousChickenDatas.Count > 1) _player.SetChickenVisuals(chickenData, previousChickenDatas[previousChickenDatas.Count - 2], previousChickenDatas.Count);
 
+        print("OnSpawnChicken");
         OnSpawnChicken?.Invoke();
     }
     

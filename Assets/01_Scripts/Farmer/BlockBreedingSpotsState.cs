@@ -9,7 +9,7 @@ public class BlockBreedingSpotsState : BaseState
     float blockingTime;
     float blockingTimer;
 
-    public BlockBreedingSpotsState(StateMachine stateMachine, float blockRange, float blockingTime) : base(stateMachine)
+    public BlockBreedingSpotsState(FarmerStateMachine stateMachine, float blockRange, float blockingTime) : base(stateMachine)
     {
         _blockRange = blockRange;
         this.blockingTime = blockingTime;
