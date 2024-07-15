@@ -86,10 +86,6 @@ public class SoundManager : MonoBehaviour
     public struct UISFX
     {
         [SerializeField] AudioSource source;
-        public AudioClip buttonClickSound;
-        public AudioClip buttonHoverSound;
-
-
     }
 
     [System.Serializable]
