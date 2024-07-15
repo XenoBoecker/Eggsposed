@@ -10415,8 +10415,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelChangeStats:
-  - {fileID: 11400000, guid: d54406c1c62eb7f418b3a422a14d8dab, type: 2}
-  - {fileID: 0}
+  - baseMovementSpeed: 0
+    maxViewAngle: 0
+    hearingDistance: 0
+    detectionRange: 0
+    xRayTrackingTime: 0
+    biasDistance: 0
+    scanTurnSpeed: 0
+    scanAngle: 0
+    breedingSpotBlockDuration: 0
+    blockCooldownTime: 0
+    minimumUnblockedSpots: 0
+    collectionProgressTime: 0
+    collectionRange: 0
+    timeoutRange: 0
+    catchupDistance: 0
+    catchupMinimumDistance: 0
+    catchupSpeedMultiplier: 0
+    catchupCooldown: 0
+    catchupMaxDuration: 0
+  - baseMovementSpeed: 0
+    maxViewAngle: 0
+    hearingDistance: 0
+    detectionRange: 0
+    xRayTrackingTime: 0
+    biasDistance: 0
+    scanTurnSpeed: 0
+    scanAngle: 0
+    breedingSpotBlockDuration: 0
+    blockCooldownTime: 0
+    minimumUnblockedSpots: 0
+    collectionProgressTime: 0
+    collectionRange: 0
+    timeoutRange: 0
+    catchupDistance: 0
+    catchupMinimumDistance: 0
+    catchupSpeedMultiplier: 0
+    catchupCooldown: 0
+    catchupMaxDuration: 0
 --- !u!4 &1862922722
 Transform:
   m_ObjectHideFlags: 0
@@ -11634,6 +11670,74 @@ Transform:
   - {fileID: 649498050}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2114894863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2114894865}
+  - component: {fileID: 2114894864}
+  - component: {fileID: 2114894866}
+  m_Layer: 0
+  m_Name: GrassEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2114894864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114894863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbeb7a5615a929046b9b4d790df81d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grassEffectPrefab: {fileID: 7172918690741236804, guid: 111385b84ec9b494ba3b1783ee51670f,
+    type: 3}
+--- !u!4 &2114894865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114894863}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 183.71, y: 1.97, z: 260.65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2114894866
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114894863}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7, y: 7, z: 7}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2122123196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13084,3 +13188,4 @@ SceneRoots:
   - {fileID: 1974256156}
   - {fileID: 316323675}
   - {fileID: 1749265300}
+  - {fileID: 2114894865}
