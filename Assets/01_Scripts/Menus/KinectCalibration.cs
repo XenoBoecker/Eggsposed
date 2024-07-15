@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -830,7 +831,7 @@ public class KinectCalibration : MonoBehaviour
 
         if (loudnessQueue.Count >= calibrationQueueSize)
         {
-            calibrationValues.ambientNoiseMeanValue = MeanOfArray(loudnessQueue.ToArray());
+            calibrationValues.ambientNoiseMaxValue = MeanOfArray(loudnessQueue.ToArray());
 
             ChangePhase(CalibrationPhase.Call);
         }
@@ -848,7 +849,7 @@ public class KinectCalibration : MonoBehaviour
 
         float currentLoudness = AudioLoudnessDetection.GetLoudnessFromMicrophone();
 
-        if (currentLoudness > calibrationValues.ambientNoiseMeanValue + minCallToAmbientNoiseDifference)
+        if (currentLoudness > calibrationValues.ambientNoiseMaxValue + minCallToAmbientNoiseDifference)
         {
             SetText(problemText, calibrationTexts.confirmationLines[randomConfirmationLineIndex]);
             loudnessQueue.Enqueue(currentLoudness);
@@ -861,9 +862,21 @@ public class KinectCalibration : MonoBehaviour
 
         if (loudnessQueue.Count >= calibrationQueueSize)
         {
-            calibrationValues.ambientNoiseMeanValue = MeanOfArray(loudnessQueue.ToArray());
+            calibrationValues.ambientNoiseMaxValue = MaxOfArray(loudnessQueue.ToArray());
 
             ChangePhase(CalibrationPhase.SetInputThresholdValues);
         }
+    }
+
+    private float MaxOfArray(float[] floats)
+    {
+        float max = 0;
+
+        foreach (float f in floats)
+        {
+            if (f > max) max = f;
+        }
+
+        return max;
     }
 }

@@ -30,7 +30,7 @@ public class CalibrationValues : ScriptableObject
     public Vector3 rightHandStretchPosition;
 
     public float loundessPercentageToTriggerInput;
-    public float ambientNoiseMeanValue;
+    public float ambientNoiseMaxValue;
     public float callNoiseMeanValue;
 
 

@@ -22,7 +22,7 @@ public class AudioInputManager : MonoBehaviour
     {
         float loudness = AudioLoudnessDetection.GetLoudnessFromMicrophone();
 
-        if (loudness > calibrationValues.ambientNoiseMeanValue + calibrationValues.ambientToCallNoiseDifference * calibrationValues.loundessPercentageToTriggerInput)
+        if (loudness > calibrationValues.ambientNoiseMaxValue + calibrationValues.ambientToCallNoiseDifference * calibrationValues.loundessPercentageToTriggerInput)
         {
             chickenInputManager.Call();
         }
