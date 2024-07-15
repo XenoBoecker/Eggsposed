@@ -52,6 +52,8 @@ public class PatrolState : BaseState
             _stateMachine.OnReachDestination();
         }
 
+        _stateMachine.CheckTargetInSight();
+
         _stateMachine.CheckCanBlockBreedingSpot();
     }
 

@@ -145,6 +145,8 @@ public class FarmerStateMachine : MonoBehaviour
 
     public void CheckTargetInSight()
     {
+        print("Check Target In Sight");
+
         target = TargetInSight();
 
         Debug.DrawRay(Vector3.zero, Vector3.up * 100);
