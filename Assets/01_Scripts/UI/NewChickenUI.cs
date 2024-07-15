@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,8 @@ public class NewChickenUI : MonoBehaviour
 
     [SerializeField] Image newChickenImage;
 
+    [SerializeField] CanvasGroup fadeCanvasGroup;
+
     PlayerControls controls;
 
     KinectInputs inputs;
@@ -18,6 +21,9 @@ public class NewChickenUI : MonoBehaviour
     bool chickenPanelPause;
 
     [SerializeField] float waitTimeBeforeContinueIsAllowed = 1f;
+
+
+    [SerializeField] float fadeDuration;
 
     bool canContinue;
 
@@ -53,7 +59,7 @@ public class NewChickenUI : MonoBehaviour
     private void OnSpawnChicken()
     {
         GameManager.Instance.PauseGame();
-        showChickenPanel.SetActive(true);
+        StartCoroutine(FadeIn(fadeCanvasGroup));
         chickenPanelPause = true;
 
         canContinue = false;
@@ -72,7 +78,7 @@ public class NewChickenUI : MonoBehaviour
 
         if (!canContinue) return;
 
-        showChickenPanel.SetActive(false);
+        StartCoroutine(FadeOut(fadeCanvasGroup));
         chickenPanelPause = false;
         GameManager.Instance.ResumeGame();
     }
@@ -86,4 +92,35 @@ public class NewChickenUI : MonoBehaviour
         }
         canContinue = true;
     }
+
+    IEnumerator FadeIn(CanvasGroup canvasGroup)
+    {
+        showChickenPanel.SetActive(true);
+        for (float i = 0; i < fadeDuration; i += Time.unscaledDeltaTime)
+        {
+            float percentage = i / fadeDuration;
+
+            canvasGroup.alpha = percentage;
+
+            yield return null;
+        }
+
+        canvasGroup.alpha = 1;
+    }
+
+    IEnumerator FadeOut(CanvasGroup canvasGroup)
+    {
+        for (float i = 0; i < fadeDuration; i += Time.unscaledDeltaTime)
+        {
+            float percentage = i / fadeDuration;
+
+            canvasGroup.alpha = 1 - percentage;
+
+            yield return null;
+        }
+
+        canvasGroup.alpha = 0;
+        showChickenPanel.SetActive(false);
+    }
+
 }

@@ -2098,8 +2098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eggUI: {fileID: 1666301032}
   crackingEggImage: {fileID: 1167158072}
-  eggBaseImage: {fileID: 1666301034}
-  nestUeberEiImage: {fileID: 976898581}
+  fadeCanvasGroup: {fileID: 1666301036}
   crackingEggSprites:
   - {fileID: 21300000, guid: fd58b7b2f21bd0243a3b88ac5dec4860, type: 3}
   - {fileID: 21300000, guid: b7928d94d70eb924b8ba0da835d3e603, type: 3}
@@ -2128,7 +2127,9 @@ MonoBehaviour:
   newChickenNameText: {fileID: 660456234}
   explanationText: {fileID: 43477115}
   newChickenImage: {fileID: 1066967732}
+  fadeCanvasGroup: {fileID: 1324383637}
   waitTimeBeforeContinueIsAllowed: 1
+  fadeDuration: 0.2
 --- !u!114 &546355098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2148,7 +2149,7 @@ MonoBehaviour:
   cannotCallSprite: {fileID: 21300000, guid: d83e9c8c51da1b24b97dc6277d24a045, type: 3}
   abilityIcons:
   - {fileID: 1881929095}
-  - {fileID: 0}
+  - {fileID: 131387598}
 --- !u!114 &546355099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5444,6 +5445,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6107517771166971797}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &1324383637
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324383635}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1327304289
 GameObject:
   m_ObjectHideFlags: 0
@@ -6657,6 +6670,7 @@ GameObject:
   - component: {fileID: 1666301033}
   - component: {fileID: 1666301035}
   - component: {fileID: 1666301034}
+  - component: {fileID: 1666301036}
   m_Layer: 5
   m_Name: EggBase
   m_TagString: Untagged
@@ -6723,6 +6737,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666301032}
   m_CullTransparentMesh: 1
+--- !u!225 &1666301036
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666301032}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1684108621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12730,7 +12756,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4373969928507650090, guid: b93d2771c0fff9e4188c0d5d3fff2378,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1324383637}
   m_SourcePrefab: {fileID: 100100000, guid: b93d2771c0fff9e4188c0d5d3fff2378, type: 3}
 --- !u!1001 &7849223260258201386
 PrefabInstance:

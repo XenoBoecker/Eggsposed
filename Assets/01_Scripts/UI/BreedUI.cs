@@ -10,7 +10,9 @@ public class BreedUI : MonoBehaviour
 
     [SerializeField] GameObject eggUI;
 
-    [SerializeField] Image crackingEggImage, eggBaseImage, nestUeberEiImage;
+    [SerializeField] Image crackingEggImage;
+
+    [SerializeField] CanvasGroup fadeCanvasGroup;
 
     [SerializeField] Sprite[] crackingEggSprites;
 
@@ -59,17 +61,12 @@ public class BreedUI : MonoBehaviour
         {
             float percentage = i / fadeDuration;
 
-            crackingEggImage.color = new Color(crackingEggImage.color.r, crackingEggImage.color.g, crackingEggImage.color.b, percentage);
-            eggBaseImage.color = new Color(eggBaseImage.color.r, eggBaseImage.color.g, eggBaseImage.color.b, percentage);
-            nestUeberEiImage.color = new Color(nestUeberEiImage.color.r, nestUeberEiImage.color.g, nestUeberEiImage.color.b, percentage);
+            fadeCanvasGroup.alpha = percentage;
 
             yield return null;
         }
 
-        // Ensure the final state is fully opaque
-        crackingEggImage.color = new Color(crackingEggImage.color.r, crackingEggImage.color.g, crackingEggImage.color.b, 1f);
-        eggBaseImage.color = new Color(eggBaseImage.color.r, eggBaseImage.color.g, eggBaseImage.color.b, 1f);
-        nestUeberEiImage.color = new Color(nestUeberEiImage.color.r, nestUeberEiImage.color.g, nestUeberEiImage.color.b, 1f);
+        fadeCanvasGroup.alpha = 1;
     }
 
     IEnumerator FadeOutEgg()
@@ -80,17 +77,12 @@ public class BreedUI : MonoBehaviour
         {
             float percentage = i / fadeDuration;
 
-            crackingEggImage.color = new Color(crackingEggImage.color.r, crackingEggImage.color.g, crackingEggImage.color.b, 1 - percentage);
-            eggBaseImage.color = new Color(eggBaseImage.color.r, eggBaseImage.color.g, eggBaseImage.color.b, 1 - percentage);
-            nestUeberEiImage.color = new Color(nestUeberEiImage.color.r, nestUeberEiImage.color.g, nestUeberEiImage.color.b, 1 - percentage);
-
+            fadeCanvasGroup.alpha = 1-percentage;
             yield return null;
         }
+        
+        fadeCanvasGroup.alpha = 0;
 
-        // Ensure the final state is fully transparent
-        crackingEggImage.color = new Color(crackingEggImage.color.r, crackingEggImage.color.g, crackingEggImage.color.b, 0f);
-        eggBaseImage.color = new Color(eggBaseImage.color.r, eggBaseImage.color.g, eggBaseImage.color.b, 0f);
-        nestUeberEiImage.color = new Color(nestUeberEiImage.color.r, nestUeberEiImage.color.g, nestUeberEiImage.color.b, 0f);
 
         eggUI.SetActive(false);
     }
