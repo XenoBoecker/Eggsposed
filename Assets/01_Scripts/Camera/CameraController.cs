@@ -17,6 +17,7 @@ public class CameraController : MonoBehaviour
 
 
     [SerializeField] AnimationCurve flySpeedCurve;
+    [SerializeField] bool skipAnimation = false;
 
     private void Start()
     {
@@ -39,7 +40,7 @@ public class CameraController : MonoBehaviour
 
         flyThroughTargets.Add(playerTargetTransform);
 
-        StartCoroutine(StartGameFlyThrough());
+        if(!skipAnimation) StartCoroutine(StartGameFlyThrough());
     }
 
     void TargetNewChicken()

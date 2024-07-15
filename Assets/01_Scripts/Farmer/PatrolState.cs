@@ -46,7 +46,7 @@ public class PatrolState : BaseState
     public override void Update()
     {
         base.Update();
-        if (Vector3.Distance(_stateMachine.transform.position, _currentTarget.position) < 1f)
+        if (_stateMachine.HasReachedDestination())
         {
             _patrolQueue.Dequeue();
             _stateMachine.OnReachDestination();

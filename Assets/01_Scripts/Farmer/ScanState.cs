@@ -24,6 +24,7 @@ public class ScanState : BaseState
         rotStep = 0;
 
         startScanForwardDirection = _stateMachine.transform.forward;
+        targetDirection = GetVectorRotated(startScanForwardDirection, -ScanAngle / 2);
     }
 
     public override void Update()
@@ -52,17 +53,12 @@ public class ScanState : BaseState
             switch (rotStep)
             {
                 case 0:
-                    rotStep = 1;
-                    targetDirection = GetVectorRotated(startScanForwardDirection, -ScanAngle/2);
-                    break;
-                case 1:
-                    rotStep = 2;
                     targetDirection = GetVectorRotated(startScanForwardDirection, ScanAngle / 2); ;
                     break;
-                case 2:
+                case 1:
                     targetDirection = startScanForwardDirection;
                     break;
-                case 3:
+                case 2:
                     OnScanFinished();
                     break;
             }

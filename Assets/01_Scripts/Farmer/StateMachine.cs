@@ -117,6 +117,8 @@ public class StateMachine : MonoBehaviour
 
     public void ChangeState(BaseState newState)
     {
+        if(_currentState != null) print("Change State from " + _currentState.ToString() + " to " + newState.ToString());
+
         _currentState?.Exit();
         _currentState = newState;
         _currentState.Enter();
@@ -259,6 +261,8 @@ public class StateMachine : MonoBehaviour
 
             if (breedingSpots.Count - currentlyBlockedBreedingSpots <= minimumUnblockedSpots) return;
         }
+
+        if (targetSpot == null) return;
 
         targetBreedingSpot = targetSpot;
         ChangeState(BlockBreedingSpotsState);
