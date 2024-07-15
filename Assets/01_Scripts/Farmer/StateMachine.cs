@@ -156,6 +156,8 @@ public class StateMachine : MonoBehaviour
     {
         target = TargetInSight();
 
+        Debug.DrawRay(Vector3.zero, Vector3.up * 100);
+
         if (target != null) ChangeState(ChaseState);
     }
     public Transform TargetInSight()
@@ -163,9 +165,13 @@ public class StateMachine : MonoBehaviour
         Transform closestTarget = null;
         float closestDistance = Mathf.Infinity;
 
+        print("eggs. " + allEggs.Count);
+
         foreach (Egg egg in allEggs)
         {
             if (egg == null) continue;
+
+            print("Check egg");
 
             if (CanSee(egg.transform))
             {
@@ -180,6 +186,7 @@ public class StateMachine : MonoBehaviour
 
         if (playerChicken != null && playerChicken.HasEgg && CanSee(playerChicken.transform))
         {
+            print("check player");
             float distance = Vector3.Distance(transform.position, playerChicken.transform.position);
             if (distance < closestDistance)
             {
@@ -189,6 +196,8 @@ public class StateMachine : MonoBehaviour
 
         return closestTarget;
     }
+
+    LineRenderer lr;
 
     public bool CanSee(Transform target)
     {
@@ -202,16 +211,33 @@ public class StateMachine : MonoBehaviour
 
         float angle = Vector3.Angle(forward, direction);
 
+        print("angle:" + maxViewAngle / 2);
+
         if (angle > maxViewAngle / 2) return false;
+
+        print("ASASAS");
 
         RaycastHit hit;
         if (Physics.Raycast(eyes.position, direction.normalized, out hit, detectionRange, detectionMask))
         {
             if (hit.collider.transform == target)
             {
+                print("Can see " + target.name);
+
                 return true;
             }
         }
+
+        if (lr == null) lr = GetComponent<LineRenderer>();
+
+        print("jallojei§");
+
+        lr.SetPosition(0, eyes.position);
+        lr.SetPosition(1, target.position);
+
+        Debug.DrawRay(eyes.position, direction.normalized * 30, Color.red);
+        Debug.DrawLine(eyes.position, target.position, Color.green);
+        Debug.DrawRay(eyes.position, transform.forward * 30, Color.cyan);
         return false;
     }
     private void RefreshPlayerChicken()
