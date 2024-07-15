@@ -10,7 +10,7 @@ public class ChickenAbilitySetup : MonoBehaviour
     [SerializeField] float callCD = 5;
     float timeSinceLastCall = Mathf.Infinity;
 
-    FarmerAutoInput farmer;
+    FarmerStateMachine farmer;
 
     protected Chicken chicken;
     protected BaseChickenController bcc;
@@ -30,7 +30,7 @@ public class ChickenAbilitySetup : MonoBehaviour
     {
         bcc = chicken.GetComponent<BaseChickenController>();
         movement = bcc.movement;
-        farmer = FindObjectOfType<FarmerAutoInput>();
+        farmer = FindObjectOfType<FarmerStateMachine>();
 
         chicken.OnCheckCanCallEvent += CanCallInt;
         chicken.OnCall += Call;
@@ -55,7 +55,7 @@ public class ChickenAbilitySetup : MonoBehaviour
     {
         SetCallOnCooldown();
 
-        if (Vector3.Distance(transform.position, farmer.transform.position) < callRange)
+        if (Vector3.Distance(transform.position, farmer.transform.position) < callRange - farmer.HearingDistance)
         {
             farmer.HearCall(transform.position);
         }

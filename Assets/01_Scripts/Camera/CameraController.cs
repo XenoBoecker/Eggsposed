@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -10,13 +11,20 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] Transform flyThroughTargetParent;
     List<Transform> flyThroughTargets = new List<Transform>();
-
     [SerializeField] float flyThroughSpeed = 1.0f;
-
     [SerializeField] float stopAtTargetTime = 0.2f;
-
-
     [SerializeField] AnimationCurve flySpeedCurve;
+
+
+    [SerializeField] NumberDisplay countdownDisplay;
+
+    [SerializeField] float countdownDuration = 3.0f;
+
+
+    [SerializeField] int countdownStartNumber = 3;
+
+
+
     [SerializeField] bool skipAnimation = false;
 
     private void Start()
@@ -36,7 +44,7 @@ public class CameraController : MonoBehaviour
         Transform playerTargetTransform = new GameObject().transform;
         playerTargetTransform.position = GameManager.Instance.Player.transform.position + offset;
         playerTargetTransform.rotation = GameManager.Instance.Player.transform.rotation;
-        playerTargetTransform.Rotate(transform.rotation.x, 0, 0);
+        playerTargetTransform.Rotate(20, 0, 0);
 
         flyThroughTargets.Add(playerTargetTransform);
 
@@ -92,6 +100,23 @@ public class CameraController : MonoBehaviour
 
         SetTarget(GameManager.Instance.Player.transform);
 
+
+        StartCoroutine(GameStartCountdown());
+
+    }
+
+    private IEnumerator GameStartCountdown()
+    {
+        for (float i = 0; i < countdownDuration; i+= Time.unscaledDeltaTime)
+        {
+            int number = countdownStartNumber - (int)(i / countdownDuration * countdownStartNumber);
+
+            countdownDisplay.SetNumber(number);
+
+            yield return null;
+        }
+
+        countdownDisplay.gameObject.SetActive(false);
 
         TimeManager.Instance.SetTimeScale(1);
     }

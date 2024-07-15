@@ -8,7 +8,9 @@ public class DifficultyManager : MonoBehaviour
     FarmerStats farmerBaseStats;
     FarmerStateMachine farmer;
 
-    public List<LevelDifficultyChanges> levelDifficultyChanges;
+    // public List<LevelDifficultyChanges> levelDifficultyChanges;
+
+    public List<FarmerStats> levelChangeStats;
 
     int currentLevel = 0;
 
@@ -22,12 +24,89 @@ public class DifficultyManager : MonoBehaviour
 
     private void SetStatsToNextLevel()
     {
+        currentLevel++;
+        
         print("NewStats");
        farmer.SetFarmerStats(CalculateNewStats());
-
-        currentLevel++;
     }
 
+    FarmerStats CalculateNewStats()
+    {
+        FarmerStats newStats = new FarmerStats();
+        newStats.baseMovementSpeed = farmerBaseStats.baseMovementSpeed;
+        float baseMovementSpeedMultiplier = 1;
+        newStats.maxViewAngle = farmerBaseStats.maxViewAngle;
+        newStats.hearingDistance = farmerBaseStats.hearingDistance;
+        newStats.detectionRange = farmerBaseStats.detectionRange;
+        newStats.xRayTrackingTime = farmerBaseStats.xRayTrackingTime;
+        newStats.biasDistance = farmerBaseStats.biasDistance;
+        newStats.scanTurnSpeed = farmerBaseStats.scanTurnSpeed;
+        float scanTurningSpeedMultiplier = 1;
+        newStats.scanAngle = farmerBaseStats.scanAngle;
+        newStats.breedingSpotBlockDuration = farmerBaseStats.breedingSpotBlockDuration;
+        newStats.blockCooldownTime = farmerBaseStats.blockCooldownTime;
+        newStats.minimumUnblockedSpots = farmerBaseStats.minimumUnblockedSpots;
+        newStats.collectionProgressTime = farmerBaseStats.collectionProgressTime;
+        newStats.collectionRange = farmerBaseStats.collectionRange;
+        newStats.timeoutRange = farmerBaseStats.timeoutRange;
+        newStats.catchupDistance = farmerBaseStats.catchupDistance;
+        newStats.catchupMinimumDistance = farmerBaseStats.catchupMinimumDistance;
+        newStats.catchupSpeedMultiplier = farmerBaseStats.catchupSpeedMultiplier;
+        float catchupSpeedMultiplier = 1;
+        newStats.catchupCooldown = farmerBaseStats.catchupCooldown;
+        newStats.catchupMaxDuration = farmerBaseStats.catchupMaxDuration;
+        
+        for (int i = 0; i < currentLevel; i++)
+        {
+            baseMovementSpeedMultiplier += levelChangeStats[i].baseMovementSpeed;
+
+            newStats.maxViewAngle += levelChangeStats[i].maxViewAngle;
+
+            newStats.hearingDistance += levelChangeStats[i].hearingDistance;
+
+            newStats.detectionRange += levelChangeStats[i].detectionRange;
+
+            newStats.xRayTrackingTime += levelChangeStats[i].xRayTrackingTime;
+
+            newStats.biasDistance += levelChangeStats[i].biasDistance;
+
+            scanTurningSpeedMultiplier += levelChangeStats[i].scanTurnSpeed;
+
+            newStats.scanAngle += levelChangeStats[i].scanAngle;
+
+            newStats.breedingSpotBlockDuration += levelChangeStats[i].breedingSpotBlockDuration;
+
+            newStats.blockCooldownTime += levelChangeStats[i].blockCooldownTime;
+
+            newStats.minimumUnblockedSpots += levelChangeStats[i].minimumUnblockedSpots;
+
+            newStats.collectionProgressTime += levelChangeStats[i].collectionProgressTime;
+
+            newStats.collectionRange += levelChangeStats[i].collectionRange;
+
+            newStats.timeoutRange += levelChangeStats[i].timeoutRange;
+
+            newStats.catchupDistance += levelChangeStats[i].catchupDistance;
+
+            newStats.catchupMinimumDistance += levelChangeStats[i].catchupMinimumDistance;
+
+            catchupSpeedMultiplier += levelChangeStats[i].catchupSpeedMultiplier;
+
+            newStats.catchupCooldown += levelChangeStats[i].catchupCooldown;
+
+            newStats.catchupMaxDuration += levelChangeStats[i].catchupMaxDuration;
+        }
+
+        newStats.baseMovementSpeed *= baseMovementSpeedMultiplier;
+
+        newStats.scanTurnSpeed *= scanTurningSpeedMultiplier;
+
+        newStats.catchupSpeedMultiplier *= catchupSpeedMultiplier;
+
+        return newStats;
+    }
+    
+    /*
     private FarmerStats CalculateNewStats()
     {
         FarmerStats newStats = new FarmerStats();
@@ -89,6 +168,7 @@ public class DifficultyManager : MonoBehaviour
 
         return newStats;
     }
+    */
 }
 
 [System.Serializable]

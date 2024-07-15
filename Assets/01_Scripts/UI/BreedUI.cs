@@ -16,6 +16,8 @@ public class BreedUI : MonoBehaviour
 
     [SerializeField] Sprite[] crackingEggSprites;
 
+    [SerializeField] private float wiggleSpeed = 1f; // Speed of the wiggle
+    [SerializeField] private float wiggleAngle = 15f; // Maximum angle of the wiggle
 
     [SerializeField] float fadeDuration = 0.5f;
 
@@ -40,11 +42,18 @@ public class BreedUI : MonoBehaviour
         {
             if(!isBreeding) StartCoroutine(FadeInEgg());
             UpdateEggSprite();
+            WiggleEgg();
         }
         else
         {
             if(isBreeding) StartCoroutine(FadeOutEgg());
         }
+    }
+
+    private void WiggleEgg()
+    {
+        float angle = Mathf.Sin(Time.time * wiggleSpeed) * wiggleAngle;
+        crackingEggImage.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private void UpdateEggSprite()

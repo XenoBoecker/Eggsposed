@@ -37,10 +37,15 @@ public class FarmerStateMachine : MonoBehaviour
     {
         farmerStats = stats;
 
+        SetSpeed();
+
         InitializeStates();
     }
 
     public FarmerStats FarmerStats => farmerStats;
+
+
+    [SerializeField] float callReactionProbability = 1;
 
     [Header("Vision")]
     [SerializeField] Transform eyes;
@@ -68,12 +73,21 @@ public class FarmerStateMachine : MonoBehaviour
     [Header("Search State")]
     [SerializeField] private float minSearchTime = 2f;
 
-    public float InitialCollectionRange { get; private set; }
-    float currentSpeedMultiplier;
+    public float HearingDistance => farmerStats.hearingDistance;
+    
+    float currentSpeedMultiplier = 1;
     public void SetSpeedMultiplier(float multiplier)
     {
         currentSpeedMultiplier = multiplier;
+        SetSpeed();
+    }
 
+    void SetSpeed()
+    {
+        float speed = farmerStats.baseMovementSpeed * currentSpeedMultiplier;
+
+        agentController.speed = speed;
+        movement.maxLateralSpeed = speed;
     }
 
     private void Awake()
@@ -184,7 +198,7 @@ public class FarmerStateMachine : MonoBehaviour
 
         if (playerChicken != null && playerChicken.HasEgg && CanSee(playerChicken.transform))
         {
-            float distance = Vector3.Distance(transform.position, playerChicken.transform.position);
+            float distance = Vector3.Distance(transform.position, playerChicken.transform.position) + farmerStats.biasDistance;
             if (distance < closestDistance)
             {
                 closestTarget = playerChicken.transform;
@@ -287,5 +301,13 @@ public class FarmerStateMachine : MonoBehaviour
     internal void StopMoving()
     {
         MoveTo(transform.position);
+    }
+
+    internal void HearCall(Vector3 position)
+    {
+        if (UnityEngine.Random.Range(0, 1f) > callReactionProbability) return;
+
+        agentController.SetDestination(position);
+        ChangeState(SearchState);
     }
 }
