@@ -10,6 +10,8 @@ public class FarmerStateMachine : MonoBehaviour
     CharacterMovement movement;
     Chicken playerChicken;
 
+    Vector3 startPosition;
+
     List<Egg> allEggs = new List<Egg>();
 
     private BaseState _currentState;
@@ -94,6 +96,8 @@ public class FarmerStateMachine : MonoBehaviour
     {
         agentController = GetComponent<FarmerAgentController>();
         movement = GetComponent<CharacterMovement>();
+
+        startPosition = transform.position;
 
         InitializeStates();
     }
@@ -309,5 +313,13 @@ public class FarmerStateMachine : MonoBehaviour
 
         agentController.SetDestination(position);
         ChangeState(SearchState);
+    }
+
+    internal void ResetToStartPositionAndState()
+    {
+        transform.position = startPosition;
+        target = null;
+
+        ChangeState(PatrolState);
     }
 }

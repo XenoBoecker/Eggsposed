@@ -27,7 +27,8 @@ public class DifficultyManager : MonoBehaviour
         currentLevel++;
         
         print("NewStats");
-       farmer.SetFarmerStats(CalculateNewStats());
+        farmer.SetFarmerStats(CalculateNewStats());
+        farmer.ResetToStartPositionAndState();
     }
 
     FarmerStats CalculateNewStats()
