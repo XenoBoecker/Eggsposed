@@ -10,6 +10,7 @@ public class KinectInputs : MonoBehaviour
 
     KinectBody kinectBody;
     [SerializeField] CalibrationValues calibrationValues;
+    public CalibrationValues CalibrationValues => calibrationValues;
 
 
     [SerializeField] AnimationCurve rotationInputCurve;

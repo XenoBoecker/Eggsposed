@@ -2,14 +2,18 @@
 
 public class AudioInputManager : MonoBehaviour
 {
+    CalibrationValues calibrationValues;
+
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] float audioInputThreshold = 0.2f;
+    // [SerializeField] float audioInputThreshold = 0.2f;
     
     ChickenInputManager chickenInputManager;
 
     private void Awake()
     {
         chickenInputManager = GetComponent<ChickenInputManager>();
+
+        calibrationValues = FindObjectOfType<KinectInputs>().CalibrationValues;
     }
 
     // Update is called once per frame
@@ -17,9 +21,8 @@ public class AudioInputManager : MonoBehaviour
     void Update()
     {
         float loudness = AudioLoudnessDetection.GetLoudnessFromMicrophone();
-        
 
-        if (loudness > audioInputThreshold)
+        if (loudness > calibrationValues.ambientNoiseMeanValue + calibrationValues.ambientToCallNoiseDifference * calibrationValues.loundessPercentageToTriggerInput)
         {
             chickenInputManager.Call();
         }
