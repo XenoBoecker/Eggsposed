@@ -25,6 +25,8 @@ public class ScanState : BaseState
 
         startScanForwardDirection = _stateMachine.transform.forward;
         targetDirection = GetVectorRotated(startScanForwardDirection, -ScanAngle / 2);
+
+        SoundManager.Instance.PlaySound(SoundManager.Instance.farmerSFX.scanSound, _stateMachine.Audiosource);
     }
 
     public override void Update()

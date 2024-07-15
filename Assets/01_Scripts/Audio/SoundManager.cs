@@ -15,10 +15,10 @@ public class SoundManager : MonoBehaviour
     public event Action onSoundReload;
 
     [Header("SFX")]
-    [SerializeField] UISFX uiSFX;
-    [SerializeField] ChickenSFX chickenSFX;
-    [SerializeField] FarmerSFX farmerSFX;
-    [SerializeField] OtherSFX otherSFX;
+    public UISFX uiSFX;
+    public ChickenSFX chickenSFX;
+    public FarmerSFX farmerSFX;
+    public OtherSFX otherSFX;
 
     private void Awake()
     {
@@ -55,10 +55,17 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(AudioClip clip, AudioSource source = null)
     {
+        if (clip == null) return;
+
         if (!sfxOn) return;
 
+
         if (source == null) sfxAudioSource.PlayOneShot(clip);
-        else source.PlayOneShot(clip);
+        else
+        {
+            source.volume = sfxAudioSource.volume;
+            source.PlayOneShot(clip);
+        }
     }
 
     internal void Reload()
@@ -76,30 +83,30 @@ public class SoundManager : MonoBehaviour
     }
 
     [System.Serializable]
-    struct UISFX
+    public struct UISFX
     {
         [SerializeField] AudioSource source;
-        [SerializeField] AudioClip buttonClickSound;
-        [SerializeField] AudioClip buttonHoverSound;
+        public AudioClip buttonClickSound;
+        public AudioClip buttonHoverSound;
 
 
     }
 
     [System.Serializable]
-    struct ChickenSFX
+    public struct ChickenSFX
     {
 
-        [SerializeField] AudioClip[] screams;
-        [SerializeField] AudioClip walkingSound;
-        [SerializeField] AudioClip jumpSound;
-        [SerializeField] AudioClip glideSound;
-
-        [SerializeField] AudioClip standUpSound;
-        [SerializeField] AudioClip sitDownSound;
-
-        [SerializeField] AudioClip dropEggSound;
-        [SerializeField] AudioClip pickUpEggSound;
-        [SerializeField] AudioClip eggHatchingSound;
+       public AudioClip[] screams;
+       public AudioClip[] stepSounds;
+       public AudioClip jumpSound;
+       public AudioClip glideSound;
+       
+       public AudioClip standUpSound;
+       public AudioClip sitDownSound;
+       
+       public AudioClip dropEggSound;
+       public AudioClip pickUpEggSound;
+       public AudioClip eggHatchingSound;
 
         // special chicken sounds
 
@@ -111,8 +118,8 @@ public class SoundManager : MonoBehaviour
 
         // Robot
 
-        [SerializeField] AudioClip robotWalkSound;
-        [SerializeField] AudioClip indikatorBeeping;
+        public AudioClip robotWalkSound;
+        public AudioClip indikatorBeeping;
 
         // Rocket
 
@@ -120,34 +127,34 @@ public class SoundManager : MonoBehaviour
 
         // Super Hot
 
-        [SerializeField] AudioClip superHotSlowDown;
-        [SerializeField] AudioClip superHotSpeedUp;
-
-        [SerializeField] AudioClip breedingSound;
+        public AudioClip superHotSlowDown;
+        public AudioClip superHotSpeedUp;
+        
+        public AudioClip breedingSound;
 
         // Thicken
 
         // Tortured
 
-        [SerializeField] AudioClip torturedChickenScream;
+        public AudioClip torturedChickenScream;
 
         // Wind Up
 
-        [SerializeField] AudioClip windupSound;
-        [SerializeField] AudioClip unwindSound;
+        public AudioClip windupSound;
+        public AudioClip unwindSound;
     }
 
     [System.Serializable]
-    struct FarmerSFX
+    public struct FarmerSFX
     {
         public AudioClip scanSound;
         public AudioClip warnSound;
-        public AudioClip walkSound;
-        public AudioClip catchSound;
+        public AudioClip chaseSpedSound;
+        public AudioClip normalSpeedSound;
     }
 
     [System.Serializable]
-    struct OtherSFX
+    public struct OtherSFX
     {
         
     }
