@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c7459d6717691dc498a4ada13865a28c
+guid: 1c51a78dcd6613546b4077b63e0871fd
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Super Playful
+  - Take Coffee
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
