@@ -5,17 +5,17 @@ public class ChaseState : BaseState
 {
     private Transform _target;
     private float _catchupSpeedMultiplier;
-    private float _catchupDistance;
+    private float _catchupMinDistance;
     private float _maxSpeedBoostDuration;
     private float _disallowHidingMultiplier;
     private float _speedBoostStartTime;
     private float _speedBoostCooldown;
     float _speedBoostCDTimer;
 
-    public ChaseState(FarmerStateMachine stateMachine, float catchupSpeedMultiplier, float catchupDistance, float maxSpeedBoostDuration, float disallowHidingMultiplier) : base(stateMachine)
+    public ChaseState(FarmerStateMachine stateMachine, float catchupSpeedMultiplier, float catchupMinDistance, float maxSpeedBoostDuration, float disallowHidingMultiplier) : base(stateMachine)
     {
         _catchupSpeedMultiplier = catchupSpeedMultiplier;
-        _catchupDistance = catchupDistance;
+        _catchupMinDistance = catchupMinDistance;
         _maxSpeedBoostDuration = maxSpeedBoostDuration;
         _disallowHidingMultiplier = disallowHidingMultiplier;
     }
@@ -53,20 +53,25 @@ public class ChaseState : BaseState
     {
         base.OnEnterCollectionRange();
         _stateMachine.ChangeState(_stateMachine.CollectEggState);
+
+        if (_target == GameManager.Instance.Player.transform)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.farmerSFX.warnSound, _stateMachine.Audiosource);
+        }
     }
 
     private void Chase()
     {
         float distanceToTarget = Vector3.Distance(_stateMachine.transform.position, _target.position);
 
-        if (distanceToTarget >= _catchupDistance && _speedBoostStartTime == 0f && _speedBoostCDTimer >= _speedBoostCooldown)
+        if (distanceToTarget >= _catchupMinDistance && _speedBoostStartTime == 0f && _speedBoostCDTimer >= _speedBoostCooldown)
         {
             StartSpeedBoost();
         }
 
         if (_speedBoostStartTime > 0f)
         {
-            if (distanceToTarget <= _catchupDistance || Time.time - _speedBoostStartTime >= _maxSpeedBoostDuration)
+            if (distanceToTarget <= _catchupMinDistance || Time.time - _speedBoostStartTime >= _maxSpeedBoostDuration)
             {
                 EndSpeedBoost();
             }

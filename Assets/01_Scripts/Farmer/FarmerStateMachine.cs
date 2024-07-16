@@ -9,6 +9,10 @@ public class FarmerStateMachine : MonoBehaviour
     FarmerAgentController agentController;
     CharacterMovement movement;
     Chicken playerChicken;
+    AudioSource audioSource;
+    public AudioSource Audiosource { get { return audioSource; } }
+
+    Vector3 startPosition;
 
     List<Egg> allEggs = new List<Egg>();
 
@@ -81,6 +85,7 @@ public class FarmerStateMachine : MonoBehaviour
         currentSpeedMultiplier = multiplier;
         SetSpeed();
     }
+    public float CurrentSpeedMultiplier => currentSpeedMultiplier;
 
     void SetSpeed()
     {
@@ -95,6 +100,8 @@ public class FarmerStateMachine : MonoBehaviour
         agentController = GetComponent<FarmerAgentController>();
         movement = GetComponent<CharacterMovement>();
 
+        startPosition = transform.position;
+
         InitializeStates();
     }
 
@@ -104,7 +111,7 @@ public class FarmerStateMachine : MonoBehaviour
         ScanState = new ScanState(this, farmerStats.scanAngle, farmerStats.scanTurnSpeed);
         BlockBreedingSpotsState = new BlockBreedingSpotsState(this, blockRange, blockingTime, farmerStats.breedingSpotBlockDuration);
         CollectEggState = new CollectEggState(this, minimumCollectionDistance, farmerStats.collectionRange, farmerStats.timeoutRange, collectionDecayRate, minimumCollectionDistance);
-        ChaseState = new ChaseState(this, farmerStats.catchupSpeedMultiplier, farmerStats.catchupDistance, farmerStats.catchupMaxDuration, disallowHidingMultiplier);
+        ChaseState = new ChaseState(this, farmerStats.catchupSpeedMultiplier, farmerStats.catchupMinimumDistance, farmerStats.catchupMaxDuration, disallowHidingMultiplier);
         SearchState = new SearchState(this, farmerStats.xRayTrackingTime, minSearchTime);
     }
 
@@ -309,5 +316,13 @@ public class FarmerStateMachine : MonoBehaviour
 
         agentController.SetDestination(position);
         ChangeState(SearchState);
+    }
+
+    internal void ResetToStartPositionAndState()
+    {
+        transform.position = startPosition;
+        target = null;
+
+        ChangeState(PatrolState);
     }
 }

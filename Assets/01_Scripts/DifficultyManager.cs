@@ -27,7 +27,8 @@ public class DifficultyManager : MonoBehaviour
         currentLevel++;
         
         print("NewStats");
-       farmer.SetFarmerStats(CalculateNewStats());
+        farmer.SetFarmerStats(CalculateNewStats());
+        farmer.ResetToStartPositionAndState();
     }
 
     FarmerStats CalculateNewStats()
@@ -49,7 +50,7 @@ public class DifficultyManager : MonoBehaviour
         newStats.collectionProgressTime = farmerBaseStats.collectionProgressTime;
         newStats.collectionRange = farmerBaseStats.collectionRange;
         newStats.timeoutRange = farmerBaseStats.timeoutRange;
-        newStats.catchupDistance = farmerBaseStats.catchupDistance;
+        newStats.catchupMinimumDistance = farmerBaseStats.catchupMinimumDistance;
         newStats.catchupMinimumDistance = farmerBaseStats.catchupMinimumDistance;
         newStats.catchupSpeedMultiplier = farmerBaseStats.catchupSpeedMultiplier;
         float catchupSpeedMultiplier = 1;
@@ -86,7 +87,7 @@ public class DifficultyManager : MonoBehaviour
 
             newStats.timeoutRange += levelChangeStats[i].timeoutRange;
 
-            newStats.catchupDistance += levelChangeStats[i].catchupDistance;
+            newStats.catchupMinimumDistance += levelChangeStats[i].catchupMinimumDistance;
 
             newStats.catchupMinimumDistance += levelChangeStats[i].catchupMinimumDistance;
 
@@ -301,8 +302,6 @@ public class FarmerStats
     public float timeoutRange;
 
     [Header("Chase State")]
-    public float catchupDistance;
-
     public float catchupMinimumDistance;
 
     public float catchupSpeedMultiplier;
