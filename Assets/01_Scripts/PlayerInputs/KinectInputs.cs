@@ -84,11 +84,11 @@ public class KinectInputs : MonoBehaviour
 
         float currentHeadZPosition = head.position.z;
 
-       // if(printTimer > 1) print("Head Z Position: " + currentHeadZPosition + "; stopValue: " + (calibrationValues.headForwardMeanPosition.z + calibrationValues.headForwardDistance * calibrationValues.moveDistancePercentageToTriggerInput).ToString()
+        // if(printTimer > 1) print("Head Z Position: " + currentHeadZPosition + "; stopValue: " + (calibrationValues.headForwardMeanPosition.z + calibrationValues.headForwardDistance * calibrationValues.moveDistancePercentageToTriggerInput).ToString()
         //    + "; forwardValue:" + (calibrationValues.standHeadMeanPosition.z - calibrationValues.headForwardDistance * calibrationValues.moveDistancePercentageToTriggerInput).ToString());
 
-        if (currentHeadZPosition > calibrationValues.headForwardMeanPosition.z + calibrationValues.headForwardDistance * calibrationValues.moveDistancePercentageToTriggerInput) moveInput = 0;
-        else moveInput = 1;
+        if (currentHeadZPosition < calibrationValues.standHeadMeanPosition.z - calibrationValues.headForwardDistance * calibrationValues.moveDistancePercentageToTriggerInput) moveInput = 1;
+        else moveInput = 0;
 
         return new Vector2(0, moveInput);
     }
