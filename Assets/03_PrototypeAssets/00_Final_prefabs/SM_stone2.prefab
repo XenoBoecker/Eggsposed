@@ -65,28 +65,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 265fe3431e0bcde4ea786d87d63db57d,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.26373863
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 265fe3431e0bcde4ea786d87d63db57d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.26373863
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 265fe3431e0bcde4ea786d87d63db57d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.26373863
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 265fe3431e0bcde4ea786d87d63db57d,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.00081187
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 265fe3431e0bcde4ea786d87d63db57d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.0020794
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 265fe3431e0bcde4ea786d87d63db57d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.00037565
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 265fe3431e0bcde4ea786d87d63db57d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9998811
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 265fe3431e0bcde4ea786d87d63db57d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.015421214
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 265fe3431e0bcde4ea786d87d63db57d,
         type: 3}
@@ -101,7 +116,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 265fe3431e0bcde4ea786d87d63db57d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 1.767
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 265fe3431e0bcde4ea786d87d63db57d,
         type: 3}
