@@ -7,7 +7,7 @@ public class ChickenData : ScriptableObject
     public GameObject prefab;
 
     public GameObject eggPrefab;
-    public GameObject chickenVisualHead, chickenVisualBody, chickenVisualTail;
+    public SkinnedMeshRenderer eyeL, eyeR, head, torso, wings, tail;
 
     public Sprite abilityIcon;
 

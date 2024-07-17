@@ -15,11 +15,11 @@ MonoBehaviour:
   prefab: {fileID: 7930122644705264913, guid: 028827376c198a146968cfe6fff543ac, type: 3}
   eggPrefab: {fileID: 4219821116601913590, guid: d29f8953a0f610646b95006457ab3f27,
     type: 3}
-  chickenVisualHead: {fileID: 1782462930609190790, guid: 58ef7226b5891264c9e7ec2b6ed26f32,
+  chickenVisualHead: {fileID: 7089643946434066635, guid: 4bd15ab24f35002489b7d6b378df299a,
     type: 3}
-  chickenVisualBody: {fileID: 6899848462411977573, guid: 3a83033741352b641969680d04974264,
+  chickenVisualBody: {fileID: 6010193949853894641, guid: 20037d89a31acf54ea3a6afa132d1d9c,
     type: 3}
-  chickenVisualTail: {fileID: 7869408652454135770, guid: e6a90d99e1c4db84cb9f29b72946403e,
+  chickenVisualTail: {fileID: 5214755342756909370, guid: 712d0b54eecf0d54a94dc7b429337f1b,
     type: 3}
   abilityIcon: {fileID: 21300000, guid: 9dee57631543bf4428ae06b9c29c9911, type: 3}
   chickenSpawnScreenImage: {fileID: 0}

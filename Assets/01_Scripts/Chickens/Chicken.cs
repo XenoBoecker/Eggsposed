@@ -11,9 +11,8 @@ public class Chicken : MonoBehaviour
     [SerializeField] float pickupRange = 5f;
 
     [SerializeField] float withEggSpeedMultiplier = 1, withoutEggSpeedMultiplier = 1.2f;
-
-    [SerializeField] GameObject headParent, bodyParent, tailParent;
-    [SerializeField] GameObject head, body, tail;
+    
+    [SerializeField] SkinnedMeshRenderer eyeL, eyeR, head, torso, wings, tail;
 
     [SerializeField] Behaviour[] playerControlComponents;
     [SerializeField] Behaviour[] aiControlComponents;
@@ -196,24 +195,67 @@ public class Chicken : MonoBehaviour
 
     internal void SetChickenVisuals(ChickenData newChickenData, ChickenData oldChickenData, int count)
     {
-        head.SetActive(false);
-        body.SetActive(false);
-        tail.SetActive(false);
-
         if (count % 2 == 0)
         {
-            Instantiate(newChickenData.chickenVisualHead, headParent.transform);
-            Instantiate(oldChickenData.chickenVisualBody, bodyParent.transform);
-            if(newChickenData.chickenVisualTail == null) Instantiate(oldChickenData.chickenVisualTail, tailParent.transform);
-            else Instantiate(newChickenData.chickenVisualTail, tailParent.transform);
+            // head and tail new
+
+            SetHeadVisuals(newChickenData);
+
+            SetBodyVisual(oldChickenData);
+
+            if (newChickenData.tail == null)
+            {
+                SetTailVisuals(oldChickenData);
+            }
+            else
+            {
+                SetTailVisuals(newChickenData);
+            }
         }
         else
         {
-            Instantiate(oldChickenData.chickenVisualHead, headParent.transform);
-            Instantiate(newChickenData.chickenVisualBody, bodyParent.transform);
-            if (oldChickenData.chickenVisualTail == null) Instantiate(newChickenData.chickenVisualTail, tailParent.transform);
-            else Instantiate(oldChickenData.chickenVisualTail, tailParent.transform);
+            // body new
+
+            SetHeadVisuals(oldChickenData);
+
+            SetBodyVisual(newChickenData);
+
+            if (oldChickenData.tail == null)
+            {
+                SetTailVisuals(newChickenData);
+            }
+            else
+            {
+                SetTailVisuals(oldChickenData);
+            }
         }
+    }
+
+    private void SetHeadVisuals(ChickenData data)
+    {
+        eyeL.sharedMesh = data.eyeL.sharedMesh;
+        eyeL.material = data.eyeL.material;
+
+        eyeR.sharedMesh = data.eyeR.sharedMesh;
+        eyeR.material = data.eyeR.material;
+
+        head.sharedMesh = data.head.sharedMesh;
+        head.material = data.head.material;
+    }
+
+    private void SetBodyVisual(ChickenData data)
+    {
+        torso.sharedMesh = data.torso.sharedMesh;
+        torso.material = data.torso.material;
+
+        wings.sharedMesh = data.wings.sharedMesh;
+        wings.material = data.wings.material;
+    }
+
+    private void SetTailVisuals(ChickenData data)
+    {
+        tail.sharedMesh = data.tail.sharedMesh;
+        tail.material = data.tail.material;
     }
 
     internal float GetCallCDPercentage()
