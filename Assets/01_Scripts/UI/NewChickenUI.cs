@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class NewChickenUI : MonoBehaviour
 
     [SerializeField] TMP_Text newChickenNameText, oldChickenExplanationText, newChickenExplanationText;
 
-    [SerializeField] Image newChickenImage;
+    [SerializeField] Image[] oldChickenImages, newChickenImages, combinedChickenImages;
 
     [SerializeField] CanvasGroup fadeCanvasGroup;
 
@@ -65,12 +66,35 @@ public class NewChickenUI : MonoBehaviour
         canContinue = false;
         StartCoroutine(WaitTimer());
 
-        ChickenData data = GameManager.Instance.CurrentChickenData;
 
+        UpdateNewChickenUI();
+    }
+
+    private void UpdateNewChickenUI()
+    {
+        ChickenData data = GameManager.Instance.CurrentChickenData;
+        
         newChickenNameText.text = data.name;
         oldChickenExplanationText.text = data.chickenSpawnScreenExplanation;
         newChickenExplanationText.text = GameManager.Instance.PreviousChickenData(1).chickenSpawnScreenExplanation;
-        if(data.chickenSpawnScreenImage != null) newChickenImage.sprite = data.chickenSpawnScreenImage;
+
+        SetChickenImages(oldChickenImages, GameManager.Instance.PreviousChickenData(1));
+
+        SetChickenImages(newChickenImages, data);
+
+        if(GameManager.Instance.BredEggCount % 2 == 0) SetChickenImages(combinedChickenImages, data, GameManager.Instance.PreviousChickenData(1));
+        else SetChickenImages(combinedChickenImages, GameManager.Instance.PreviousChickenData(1), data);
+    }
+
+    private void SetChickenImages(Image[] chickenImages, ChickenData data, ChickenData chickenData = null)
+    {
+        if (data.chickenHeadSprite == null) return; // TODO: remove this line when all chickens have sprites
+
+        chickenImages[0].sprite = data.chickenHeadSprite;
+        chickenImages[1].sprite = data.chickenBodySprite;
+        chickenImages[2].sprite = data.chickenTailSprite;
+
+        if (chickenData != null) chickenImages[1].sprite = chickenData.chickenBodySprite;
     }
 
     public void Continue()

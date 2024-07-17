@@ -11,6 +11,6 @@ public class ChickenData : ScriptableObject
 
     public Sprite abilityIcon;
 
-    public Sprite chickenSpawnScreenImage;
+    public Sprite chickenHeadSprite, chickenBodySprite, chickenTailSprite;
     public string chickenSpawnScreenExplanation;
 }
