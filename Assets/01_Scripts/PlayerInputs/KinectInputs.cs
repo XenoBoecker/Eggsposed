@@ -88,7 +88,7 @@ public class KinectInputs : MonoBehaviour
         //    + "; forwardValue:" + (calibrationValues.standHeadMeanPosition.z - calibrationValues.headForwardDistance * calibrationValues.moveDistancePercentageToTriggerInput).ToString());
 
         if (currentHeadZPosition > calibrationValues.headForwardMeanPosition.z + calibrationValues.headForwardDistance * calibrationValues.moveDistancePercentageToTriggerInput) moveInput = 0;
-        else if (currentHeadZPosition < calibrationValues.standHeadMeanPosition.z - calibrationValues.headForwardDistance * calibrationValues.moveDistancePercentageToTriggerInput) moveInput = 1;
+        else moveInput = 1;
 
         return new Vector2(0, moveInput);
     }
@@ -130,7 +130,7 @@ public class KinectInputs : MonoBehaviour
         float currentPelvisHeight = pelvis.position.y;
 
         if (currentPelvisHeight > calibrationValues.squatPelvisMeanPosition.y + calibrationValues.squatDistance * calibrationValues.squatDistancePercentageToTriggerInput) OnStandUp?.Invoke();
-        else if (currentPelvisHeight < calibrationValues.standPelvisMeanPosition.y - calibrationValues.squatDistance * calibrationValues.squatDistancePercentageToTriggerInput)
+        else
         {
             OnSitDown?.Invoke();
 
@@ -143,7 +143,7 @@ public class KinectInputs : MonoBehaviour
         float currentHandHeight = leftHand.transform.position.y + rightHand.transform.position.y / 2;
 
         if (currentHandHeight > calibrationValues.standHandsMeanPosition.y + calibrationValues.jumpDistance * calibrationValues.jumpDistancePercentageToTriggerInput) OnJump?.Invoke();
-        else if (currentHandHeight < calibrationValues.jumpHandsMeanPosition.y - calibrationValues.jumpDistance * calibrationValues.jumpDistancePercentageToTriggerInput) OnStopJump?.Invoke();
+        else OnStopJump?.Invoke();
     }
 
     private void CheckDropEgg()
