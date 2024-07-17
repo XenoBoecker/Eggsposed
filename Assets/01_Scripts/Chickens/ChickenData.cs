@@ -10,6 +10,7 @@ public class ChickenData : ScriptableObject
     public SkinnedMeshRenderer eyeL, eyeR, head, torso, wings, tail;
 
     public Sprite abilityIcon;
+    public AudioClip callSound;
 
     public Sprite chickenHeadSprite, chickenBodySprite, chickenTailSprite;
     public string chickenSpawnScreenExplanation;

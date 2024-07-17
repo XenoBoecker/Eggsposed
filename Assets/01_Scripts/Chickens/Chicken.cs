@@ -24,6 +24,10 @@ public class Chicken : MonoBehaviour
     BaseChickenController bcc;
     CharacterMovement movement;
 
+    ChickenData headData, bodyData;
+    public ChickenData HeadData => headData;
+    public ChickenData BodyData => bodyData;
+
     Egg myEgg;
     public Egg Egg => myEgg;
 
@@ -193,8 +197,11 @@ public class Chicken : MonoBehaviour
         }
     }
 
-    internal void SetChickenVisuals(ChickenData headTailChickenData, ChickenData bodyChickenData, int count)
+    internal void SetChickenVisuals(ChickenData headTailChickenData, ChickenData bodyChickenData)
     {
+        headData = headTailChickenData;
+        bodyData = bodyChickenData;
+
         SetHeadVisuals(headTailChickenData);
 
         SetBodyVisual(bodyChickenData);

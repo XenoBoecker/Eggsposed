@@ -59,7 +59,6 @@ public class SoundManager : MonoBehaviour
 
         if (!sfxOn) return;
 
-
         if (source == null) sfxAudioSource.PlayOneShot(clip);
         else
         {

@@ -78,11 +78,11 @@ public class GameManager : MonoBehaviour
             }
             CopyDerivedComponent(previousChickenDatas[previousChickenDatas.Count - 1-i].prefab, _player.gameObject);
         }
-        if (previousChickenDatas.Count == 1) _player.SetChickenVisuals(chickenData, chickenData, previousChickenDatas.Count);
+        if (previousChickenDatas.Count == 1) _player.SetChickenVisuals(chickenData, chickenData);
         else if (previousChickenDatas.Count > 1)
         {
-            if(previousChickenDatas.Count % 2 == 0) _player.SetChickenVisuals(chickenData, previousChickenDatas[previousChickenDatas.Count - 2], previousChickenDatas.Count);
-            else _player.SetChickenVisuals(previousChickenDatas[previousChickenDatas.Count - 2], chickenData, previousChickenDatas.Count);
+            if(previousChickenDatas.Count % 2 == 0) _player.SetChickenVisuals(chickenData, previousChickenDatas[previousChickenDatas.Count - 2]);
+            else _player.SetChickenVisuals(previousChickenDatas[previousChickenDatas.Count - 2], chickenData);
         }
 
         print("OnSpawnChicken");
