@@ -1,4 +1,5 @@
 using ECM.Components;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class ChickenStepSounds : MonoBehaviour
 {
     AudioSource audioSource;
     AudioClip[] stepSounds;
+    AudioClip[] grassStepSounds;
     float stepInterval; // Interval between step sounds
 
     Rigidbody rb;
@@ -15,6 +17,8 @@ public class ChickenStepSounds : MonoBehaviour
     private int currentSoundIndex = 0;
     private float stepTimer = 0f;
 
+    bool walkingOnGrass;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -22,6 +26,7 @@ public class ChickenStepSounds : MonoBehaviour
         movement = GetComponent<CharacterMovement>();
 
         stepSounds = SoundManager.Instance.chickenSFX.stepSounds;
+        stepSounds = SoundManager.Instance.chickenSFX.grassStepSounds;
 
         stepInterval = stepSounds[0].length;
 
@@ -31,7 +36,6 @@ public class ChickenStepSounds : MonoBehaviour
             return;
         }
 
-        currentStepSounds = new List<AudioClip>(stepSounds);
         ShuffleStepSounds();
     }
 
@@ -83,12 +87,23 @@ public class ChickenStepSounds : MonoBehaviour
 
     private void ShuffleStepSounds()
     {
+        if(walkingOnGrass) currentStepSounds = new List<AudioClip>(grassStepSounds);
+        else currentStepSounds = new List<AudioClip>(stepSounds);
+        
         for (int i = 0; i < currentStepSounds.Count; i++)
         {
             AudioClip temp = currentStepSounds[i];
+            
             int randomIndex = UnityEngine.Random.Range(i, currentStepSounds.Count);
             currentStepSounds[i] = currentStepSounds[randomIndex];
             currentStepSounds[randomIndex] = temp;
         }
+    }
+
+    internal void SetWalkingOnGrass(bool v)
+    {
+        walkingOnGrass = v;
+
+        ShuffleStepSounds();
     }
 }

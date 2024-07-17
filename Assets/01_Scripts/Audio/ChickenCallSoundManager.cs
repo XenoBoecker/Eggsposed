@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class ChickenCallSoundManager : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class ChickenCallSoundManager : MonoBehaviour
 
 
     [SerializeField] ChickenData hydraChicken;
+    [SerializeField] private float[] pitches = { 0.9f, 1.0f, 1.1f }; // Array of different pitches
+    [SerializeField] private float[] delays = { 0.0f, 0.1f, 0.2f }; // Delays for each sound
+
 
     [SerializeField] ChickenData torturedChicken;
 
@@ -20,9 +24,9 @@ public class ChickenCallSoundManager : MonoBehaviour
 
     private void PlayCallSound()
     {
-        if (chicken.BodyData == hydraChicken)
+        if (chicken.BodyData == hydraChicken || chicken.HeadData == hydraChicken)
         {
-            SoundManager.Instance.PlaySound(chicken.BodyData.callSound, audioSource);
+            StartCoroutine(PlaySoundMultipleTimes());
         }
         else if (chicken.BodyData == torturedChicken)
         {
@@ -33,5 +37,28 @@ public class ChickenCallSoundManager : MonoBehaviour
             SoundManager.Instance.PlaySound(chicken.HeadData.callSound, audioSource);
         }
 
+    }
+    private IEnumerator PlaySoundMultipleTimes()
+    {
+        for (int i = 0; i < pitches.Length; i++)
+        {
+            StartCoroutine(PlaySoundWithDelay(chicken.BodyData.callSound, pitches[i], delays[i]));
+        }
+        yield return null; // End the coroutine
+    }
+
+    private IEnumerator PlaySoundWithDelay(AudioClip clip, float pitch, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Create a new GameObject for each sound to avoid overlapping issues
+        GameObject soundObject = new GameObject("SoundObject");
+        AudioSource audioSource = soundObject.AddComponent<AudioSource>();
+        audioSource.clip = clip;
+        audioSource.pitch = pitch;
+        audioSource.Play();
+
+        // Destroy the GameObject after the clip has finished playing
+        Destroy(soundObject, clip.length / pitch);
     }
 }

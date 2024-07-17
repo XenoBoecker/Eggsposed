@@ -90,9 +90,10 @@ public class SoundManager : MonoBehaviour
     [System.Serializable]
     public struct ChickenSFX
     {
+        // SCREAMS ARE IN CHICKEN SCRIPTABLE OBJECTS!!!!!
 
-       public AudioClip[] screams;
        public AudioClip[] stepSounds;
+       internal AudioClip[] grassStepSounds;
        public AudioClip jumpSound;
        public AudioClip glideSound;
        
@@ -128,10 +129,6 @@ public class SoundManager : MonoBehaviour
         public AudioClip breedingSound;
 
         // Thicken
-
-        // Tortured
-
-        public AudioClip torturedChickenScream;
 
         // Wind Up
 

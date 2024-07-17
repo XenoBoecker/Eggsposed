@@ -17,7 +17,11 @@ public class WalkOnGrassEffect : MonoBehaviour
     {
         if (other.GetComponent<BaseCharacterController>())
         {
-            print("StartGrassEffect");
+            ChickenStepSounds chickenStepSounds = other.GetComponent<ChickenStepSounds>();
+            if (chickenStepSounds != null) chickenStepSounds.SetWalkingOnGrass(true);
+
+
+
             onGrassWalkers.Add(other.transform);
             timers.Add(0);
             effects.Add(Instantiate(grassEffectPrefab, other.transform));
@@ -28,6 +32,9 @@ public class WalkOnGrassEffect : MonoBehaviour
     {
         if (onGrassWalkers.Contains(other.transform))
         {
+            ChickenStepSounds chickenStepSounds = other.GetComponent<ChickenStepSounds>();
+            if (chickenStepSounds != null) chickenStepSounds.SetWalkingOnGrass(false);
+            
             int index = onGrassWalkers.IndexOf(other.transform);
             Destroy(effects[index]);
             effects.RemoveAt(index);
