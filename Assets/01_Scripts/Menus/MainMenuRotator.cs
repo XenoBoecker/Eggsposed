@@ -29,7 +29,7 @@ public class MainMenuRotator : MonoBehaviour
     {
         if (rotationTimer > rotationDuration)
         {
-            transform.rotation = Quaternion.Euler(0, currentTargetRotation, 0);
+            transform.localRotation = Quaternion.Euler(0, currentTargetRotation, 0);
             return;
         }
 
@@ -43,12 +43,12 @@ public class MainMenuRotator : MonoBehaviour
 
         if (Mathf.Abs(rotDiff) > 90) rotDiff = -90 * Mathf.Sign(rotDiff);
 
-        transform.rotation = Quaternion.Euler(0, lastRotation + rotValue * rotDiff, 0);
+        transform.localRotation = Quaternion.Euler(0, lastRotation + rotValue * rotDiff, 0);
     }
 
     private void UpdateTaretRotation()
     {
-        lastRotation = transform.rotation.eulerAngles.y;
+        lastRotation = transform.localRotation.eulerAngles.y;
 
         currentTargetRotation = 360f * mainMenu.CurrentButtonIndex / mainMenu.ButtonCount;
         

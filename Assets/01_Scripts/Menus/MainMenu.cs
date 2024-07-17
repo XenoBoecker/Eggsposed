@@ -78,13 +78,12 @@ public class MainMenu : MonoBehaviour
         if (inputs != null) inputs.OnSitDown -= InputConfirm;
         
         if (currentButtonIndex == 0) SceneManager.LoadScene("Game");
-        else if (currentButtonIndex == 1) SceneManager.LoadScene("Options");
+        else if (currentButtonIndex == 1) Application.Quit();
         else if (currentButtonIndex == 2)
         {
             PlayerPrefs.SetInt("OnlyShowLeaderboard", 1);
             SceneManager.LoadScene("GameOverScreenScene");
         }
         else if (currentButtonIndex == 3) SceneManager.LoadScene("Calibration_X");
-        else if (currentButtonIndex == 4) Application.Quit();
     }
 }
