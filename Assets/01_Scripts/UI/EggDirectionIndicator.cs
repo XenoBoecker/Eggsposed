@@ -9,21 +9,16 @@ public class EggDirectionIndicator : MonoBehaviour
     Camera playerCamera;
 
     [SerializeField] RectTransform directionIndicatorUI; // UI element to indicate the direction
-
-
     [SerializeField] float heightScaler = 50;
-
     [SerializeField] GameObject eggArrow;
-
 
     private void Start()
     {
         playerCamera = Camera.main;
-
         FindPlayerAndEgg();
-
         GameManager.Instance.OnSpawnChicken += FindPlayerAndEgg;
     }
+
     void Update()
     {
         ShowEggArrow();
@@ -51,21 +46,26 @@ public class EggDirectionIndicator : MonoBehaviour
         bool isLeft = crossProduct.y < 0;
 
         // Position the indicator at the edge of the screen
-        Vector3 screenCenter = new Vector3(Screen.width, Screen.height, 0) / 2;
-        Vector3 screenBounds = screenCenter * 0.9f; // Slightly inset from the edge
+        Vector3 viewportCenter = new Vector3(0.5f, 0.5f, 0);
+        float horizontalInset = directionIndicatorUI.rect.width; // Slightly inset from the edge (0.5 - 0.05)
+        float verticalInset = directionIndicatorUI.rect.height; // Slightly inset from the edge (0.5 - 0.05)
 
         if (isLeft)
         {
-            directionIndicatorUI.anchoredPosition = new Vector3(-screenBounds.x, 0, 0);
+            directionIndicatorUI.anchorMin = new Vector2(0, 0.5f);
+            directionIndicatorUI.anchorMax = new Vector2(0, 0.5f);
+            directionIndicatorUI.anchoredPosition = new Vector3(horizontalInset, 0, 0);
         }
         else
         {
-            directionIndicatorUI.anchoredPosition = new Vector3(screenBounds.x, 0, 0);
+            directionIndicatorUI.anchorMin = new Vector2(1, 0.5f);
+            directionIndicatorUI.anchorMax = new Vector2(1, 0.5f);
+            directionIndicatorUI.anchoredPosition = new Vector3(-horizontalInset, 0, 0);
         }
 
         // Adjust for vertical positioning based on y difference
         float yDifference = (egg.position.y - playerTransform.position.y) * heightScaler;
-        float maxHeight = Screen.height * 0.5f; // Half the screen height for normalization
+        float maxHeight = Screen.height * 0.5f * verticalInset; // Half the screen height for normalization
         float verticalPosition = Mathf.Clamp(yDifference, -maxHeight, maxHeight);
 
         directionIndicatorUI.anchoredPosition = new Vector3(directionIndicatorUI.anchoredPosition.x, verticalPosition, 0);
@@ -76,18 +76,15 @@ public class EggDirectionIndicator : MonoBehaviour
         eggArrow.transform.position = egg.position;
 
         float distanceEggToPlayer = Vector3.Distance(egg.position, playerTransform.position);
-
         eggArrow.transform.localScale = Vector3.one * distanceEggToPlayer;
 
-        if (player.HasEgg) eggArrow.SetActive(false);
-        else eggArrow.SetActive(true);
+        eggArrow.SetActive(!player.HasEgg);
     }
 
     void FindPlayerAndEgg()
     {
         player = GameManager.Instance.Player;
         playerTransform = player.transform;
-
         egg = player.Egg.transform;
     }
 }

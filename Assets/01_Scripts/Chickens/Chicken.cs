@@ -193,69 +193,47 @@ public class Chicken : MonoBehaviour
         }
     }
 
-    internal void SetChickenVisuals(ChickenData newChickenData, ChickenData oldChickenData, int count)
+    internal void SetChickenVisuals(ChickenData headTailChickenData, ChickenData bodyChickenData, int count)
     {
-        if (count % 2 == 0)
+        SetHeadVisuals(headTailChickenData);
+
+        SetBodyVisual(bodyChickenData);
+
+        if (headTailChickenData.tail == null)
         {
-            // head and tail new
-
-            SetHeadVisuals(newChickenData);
-
-            SetBodyVisual(oldChickenData);
-
-            if (newChickenData.tail == null)
-            {
-                SetTailVisuals(oldChickenData);
-            }
-            else
-            {
-                SetTailVisuals(newChickenData);
-            }
+            SetTailVisuals(bodyChickenData);
         }
         else
         {
-            // body new
-
-            SetHeadVisuals(oldChickenData);
-
-            SetBodyVisual(newChickenData);
-
-            if (oldChickenData.tail == null)
-            {
-                SetTailVisuals(newChickenData);
-            }
-            else
-            {
-                SetTailVisuals(oldChickenData);
-            }
+            SetTailVisuals(headTailChickenData);
         }
     }
 
     private void SetHeadVisuals(ChickenData data)
     {
-        eyeL.sharedMesh = data.eyeL.sharedMesh;
-        eyeL.material = data.eyeL.material;
+        SetMeshAndMaterial(eyeL, data.eyeL);
 
-        eyeR.sharedMesh = data.eyeR.sharedMesh;
-        eyeR.material = data.eyeR.material;
+        SetMeshAndMaterial(eyeR, data.eyeR);
 
-        head.sharedMesh = data.head.sharedMesh;
-        head.material = data.head.material;
+        SetMeshAndMaterial(head, data.head);
     }
 
     private void SetBodyVisual(ChickenData data)
     {
-        torso.sharedMesh = data.torso.sharedMesh;
-        torso.material = data.torso.material;
+        SetMeshAndMaterial(torso, data.torso);
 
-        wings.sharedMesh = data.wings.sharedMesh;
-        wings.material = data.wings.material;
+        SetMeshAndMaterial(wings, data.wings);
     }
 
     private void SetTailVisuals(ChickenData data)
     {
-        tail.sharedMesh = data.tail.sharedMesh;
-        tail.material = data.tail.material;
+        SetMeshAndMaterial(tail, data.tail);
+    }
+
+    void SetMeshAndMaterial(SkinnedMeshRenderer bodyPart, SkinnedMeshRenderer newBodyPart)
+    {
+        bodyPart.sharedMesh = newBodyPart.sharedMesh;
+        bodyPart.sharedMaterial = newBodyPart.sharedMaterial;
     }
 
     internal float GetCallCDPercentage()
