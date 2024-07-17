@@ -8,7 +8,7 @@ public class NewChickenUI : MonoBehaviour
 {
     [SerializeField] GameObject showChickenPanel;
 
-    [SerializeField] TMP_Text newChickenNameText, explanationText;
+    [SerializeField] TMP_Text newChickenNameText, oldChickenExplanationText, newChickenExplanationText;
 
     [SerializeField] Image newChickenImage;
 
@@ -26,7 +26,7 @@ public class NewChickenUI : MonoBehaviour
     [SerializeField] float fadeDuration;
 
     bool canContinue;
-
+    
     private void Start()
     {
         showChickenPanel.SetActive(false);
@@ -68,7 +68,8 @@ public class NewChickenUI : MonoBehaviour
         ChickenData data = GameManager.Instance.CurrentChickenData;
 
         newChickenNameText.text = data.name;
-        explanationText.text = data.chickenSpawnScreenExplanation;
+        oldChickenExplanationText.text = data.chickenSpawnScreenExplanation;
+        newChickenExplanationText.text = GameManager.Instance.PreviousChickenData(1).chickenSpawnScreenExplanation;
         if(data.chickenSpawnScreenImage != null) newChickenImage.sprite = data.chickenSpawnScreenImage;
     }
 

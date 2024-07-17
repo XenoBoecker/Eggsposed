@@ -33,11 +33,11 @@ MonoBehaviour:
   leftHandStretchPosition: {x: 0.709774, y: 1.2633253, z: 1.5075287}
   rightHandStretchPosition: {x: -0.7579995, y: 1.1993537, z: 1.4437083}
   loundessPercentageToTriggerInput: 0.7
-  ambientNoiseMeanValue: 0
-  callNoiseMeanValue: 0
+  ambientNoiseMaxValue: 0.1
+  callNoiseMeanValue: 0.15
   squatDistance: 0.18040252
   headForwardDistance: 0.26314712
   headSidewaysDistance: 0.2337456
   jumpDistance: 0.99684423
   handsStretchDistance: 1.4677734
-  ambientToCallNoiseDifference: 0
+  ambientToCallNoiseDifference: 0.05

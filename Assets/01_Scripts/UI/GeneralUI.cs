@@ -36,7 +36,7 @@ public class GeneralUI : MonoBehaviour
         {
             canCallImage.sprite = cannotCallSprite;
 
-            fillImage.rectTransform.localScale = new Vector3(GameManager.Instance.Player.GetCallCDPercentage(), 1, 1);
+            fillImage.fillAmount = GameManager.Instance.Player.GetCallCDPercentage();
 
         }
     }
