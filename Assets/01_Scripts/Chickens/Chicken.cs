@@ -199,6 +199,8 @@ public class Chicken : MonoBehaviour
 
     internal void SetChickenVisuals(ChickenData headTailChickenData, ChickenData bodyChickenData)
     {
+        print("SET VISUAL");
+
         headData = headTailChickenData;
         bodyData = bodyChickenData;
 

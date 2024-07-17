@@ -27,4 +27,18 @@ public class HydraSetup : ChickenAbilitySetup
     {
         currentChargeTime -= callChargeCD;
     }
+
+    protected override void SetChickenCallCDPercentage()
+    {
+        base.SetChickenCallCDPercentage();
+
+        if (currentChargeTime > callChargeCD)
+        {
+            chicken.CurrentCallCooldownPercentage = 1;
+        }
+        else
+        {
+            chicken.CurrentCallCooldownPercentage = currentChargeTime / callChargeCD;
+        }
+    }
 }

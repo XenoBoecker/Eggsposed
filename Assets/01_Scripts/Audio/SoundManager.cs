@@ -93,7 +93,7 @@ public class SoundManager : MonoBehaviour
         // SCREAMS ARE IN CHICKEN SCRIPTABLE OBJECTS!!!!!
 
        public AudioClip[] stepSounds;
-       internal AudioClip[] grassStepSounds;
+       public AudioClip[] grassStepSounds;
        public AudioClip jumpSound;
        public AudioClip glideSound;
        

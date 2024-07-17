@@ -39,7 +39,7 @@ public class ChickenAbilitySetup : MonoBehaviour
         this.chicken = chicken;
     }
 
-    private void SetChickenCallCDPercentage()
+    protected virtual void SetChickenCallCDPercentage()
     {
         float percentage = timeSinceLastCall / callCD;
 

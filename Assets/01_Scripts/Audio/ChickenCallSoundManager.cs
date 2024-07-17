@@ -34,7 +34,13 @@ public class ChickenCallSoundManager : MonoBehaviour
         }
         else
         {
-            SoundManager.Instance.PlaySound(chicken.HeadData.callSound, audioSource);
+            if (SoundManager.Instance == null) print("noasdjowaid");
+
+            if (chicken == null) print("chieknc null");
+
+            if (chicken.HeadData == null) print("ano head");
+            SoundManager.
+                Instance.PlaySound(chicken.HeadData.callSound,audioSource);
         }
 
     }

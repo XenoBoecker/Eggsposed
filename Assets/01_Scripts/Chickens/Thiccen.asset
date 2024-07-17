@@ -10,17 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2ae24e5c1ecce64a9f4827395b58855, type: 3}
-  m_Name: Thicken
+  m_Name: Thiccen
   m_EditorClassIdentifier: 
   prefab: {fileID: 2948464008182862203, guid: ba8f8452424410048a3c18da20c1a05c, type: 3}
   eggPrefab: {fileID: 4219821116601913590, guid: d29f8953a0f610646b95006457ab3f27,
     type: 3}
-  chickenVisualHead: {fileID: 919132149155446097, guid: a7bfb86924e9793419612bf5cbc0dabb,
-    type: 3}
-  chickenVisualBody: {fileID: 8200676663847201341, guid: 8cd7e9e94af12634caf1765a85c645cb,
-    type: 3}
-  chickenVisualTail: {fileID: 6684023612524318044, guid: 51b28084022c122418faed237b34051a,
-    type: 3}
+  eyeL: {fileID: 0}
+  eyeR: {fileID: 0}
+  head: {fileID: 0}
+  torso: {fileID: 0}
+  wings: {fileID: 0}
+  tail: {fileID: 0}
   abilityIcon: {fileID: 21300000, guid: a6db280f03962914c9d0e4ce796495fc, type: 3}
-  chickenSpawnScreenImage: {fileID: 0}
+  callSound: {fileID: 8300000, guid: e0072235949a61f4c88a801caacc8229, type: 3}
+  chickenHeadSprite: {fileID: 0}
+  chickenBodySprite: {fileID: 0}
+  chickenTailSprite: {fileID: 0}
   chickenSpawnScreenExplanation: 

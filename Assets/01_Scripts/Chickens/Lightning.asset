@@ -22,5 +22,8 @@ MonoBehaviour:
   wings: {fileID: 522849778021121158, guid: cca1461dd9ccdf442ba3563c29289162, type: 3}
   tail: {fileID: 8943311264162088263, guid: 2a9389e5aeda0664398d885e95ca1500, type: 3}
   abilityIcon: {fileID: 21300000, guid: 06cf3277449147043934d12155bb0e93, type: 3}
-  chickenSpawnScreenImage: {fileID: 0}
+  callSound: {fileID: 8300000, guid: 023a73b96393bdb42af48f1f1e770112, type: 3}
+  chickenHeadSprite: {fileID: 0}
+  chickenBodySprite: {fileID: 0}
+  chickenTailSprite: {fileID: 0}
   chickenSpawnScreenExplanation: 

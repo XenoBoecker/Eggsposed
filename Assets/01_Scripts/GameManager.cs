@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
         {
             if (previousChickenDatas.Count <= i)
             {
-                return;
+                continue;
             }
             CopyDerivedComponent(previousChickenDatas[previousChickenDatas.Count - 1-i].prefab, _player.gameObject);
         }

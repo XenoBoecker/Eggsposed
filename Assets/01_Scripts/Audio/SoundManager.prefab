@@ -309,22 +309,7 @@ MonoBehaviour:
   uiSFX:
     source: {fileID: 0}
   chickenSFX:
-    screams:
-    - {fileID: 8300000, guid: 4d58d397bdee45a418ba7686e1b24643, type: 3}
-    - {fileID: 8300000, guid: 8725cf444a5721a41980cc9ebefdd39f, type: 3}
-    - {fileID: 8300000, guid: 023a73b96393bdb42af48f1f1e770112, type: 3}
-    - {fileID: 8300000, guid: 3e5316268bebc4b459ac5852f75f884b, type: 3}
-    - {fileID: 8300000, guid: e0072235949a61f4c88a801caacc8229, type: 3}
-    - {fileID: 8300000, guid: 66459500413529c47adaae4a560957a8, type: 3}
     stepSounds:
-    - {fileID: 8300000, guid: 873f971b428693942ad89bd8152a79b7, type: 3}
-    - {fileID: 8300000, guid: 643b5a26c7f47fe489e25e983a139acc, type: 3}
-    - {fileID: 8300000, guid: ab10a404d9ec71547aee81f448e8b49f, type: 3}
-    - {fileID: 8300000, guid: b062dbc67adf44b4493c0b43504e4464, type: 3}
-    - {fileID: 8300000, guid: 0a2589ac44aed9b4d83b714fdae6e56b, type: 3}
-    - {fileID: 8300000, guid: a2f41b927b59fd4458c4c4cf25fd6c9e, type: 3}
-    - {fileID: 8300000, guid: 7500daad4f56d2446b051374dc633401, type: 3}
-    - {fileID: 8300000, guid: 58870f43e05353943a90caab66fd0cdf, type: 3}
     - {fileID: 8300000, guid: 2f5be193fcaec514d857cea150dcce25, type: 3}
     - {fileID: 8300000, guid: a9b85604f1666f346ab3d4df63c5d42e, type: 3}
     - {fileID: 8300000, guid: 6b61274952a6a7a4ab143f6c1134f87d, type: 3}
@@ -333,6 +318,15 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 32e1f039a389d154285c0377564200d2, type: 3}
     - {fileID: 8300000, guid: 0c16605230ac8e44ba474e8890192b3c, type: 3}
     - {fileID: 8300000, guid: cb6d43dc30c06074e88e4c14f0021871, type: 3}
+    grassStepSounds:
+    - {fileID: 8300000, guid: 873f971b428693942ad89bd8152a79b7, type: 3}
+    - {fileID: 8300000, guid: 643b5a26c7f47fe489e25e983a139acc, type: 3}
+    - {fileID: 8300000, guid: ab10a404d9ec71547aee81f448e8b49f, type: 3}
+    - {fileID: 8300000, guid: b062dbc67adf44b4493c0b43504e4464, type: 3}
+    - {fileID: 8300000, guid: 0a2589ac44aed9b4d83b714fdae6e56b, type: 3}
+    - {fileID: 8300000, guid: a2f41b927b59fd4458c4c4cf25fd6c9e, type: 3}
+    - {fileID: 8300000, guid: 7500daad4f56d2446b051374dc633401, type: 3}
+    - {fileID: 8300000, guid: 58870f43e05353943a90caab66fd0cdf, type: 3}
     jumpSound: {fileID: 8300000, guid: a903caba73481924f9a0898e47020a1c, type: 3}
     glideSound: {fileID: 0}
     standUpSound: {fileID: 0}
@@ -345,7 +339,6 @@ MonoBehaviour:
     superHotSlowDown: {fileID: 0}
     superHotSpeedUp: {fileID: 0}
     breedingSound: {fileID: 0}
-    torturedChickenScream: {fileID: 0}
     windupSound: {fileID: 0}
     unwindSound: {fileID: 0}
   farmerSFX:
