@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using System;
 using UnityEngine.SceneManagement;
+using static Leaderboard;
 
 public class LeaderboardManager : MonoBehaviour
 {
@@ -12,12 +13,18 @@ public class LeaderboardManager : MonoBehaviour
 
     [SerializeField] GameObject leaderboardPanel;
 
+
+    [SerializeField] Transform playerScoreShowParent;
+
+    [SerializeField] PlayerScoreShow playerScoreShowPrefab;
+
+    List<PlayerScoreShow> playerScoreShowObjects = new List<PlayerScoreShow>();
+
     public Leaderboard leaderboard;
     public TMP_InputField playerNameInput;
     public Button submitScoreButton;
     public Button resetScoresButton;
     public Button menuButton;
-    public TMP_Text leaderboardText;
     private int lastGameScore = 0; // Assume this is set when the game ends
 
     private void Awake()
@@ -84,11 +91,19 @@ public class LeaderboardManager : MonoBehaviour
 
     public void UpdateLeaderboardUI()
     {
-        List<string> currentLeaderboard = leaderboard.GetLeaderboard();
-        leaderboardText.text = "";
-        foreach (string entry in currentLeaderboard)
+        List<Leaderboard.Player> currentLeaderboard = leaderboard.GetPlayerScores();
+
+        foreach (PlayerScoreShow playerScoreShow in playerScoreShowObjects)
         {
-            leaderboardText.text += entry + "\n";
+            Destroy(playerScoreShow.gameObject);
+        }
+
+        playerScoreShowObjects.Clear();
+        for (int i = 0; i < currentLeaderboard.Count; i++)
+        {
+            PlayerScoreShow playerScoreShow = Instantiate(playerScoreShowPrefab, playerScoreShowParent);
+            playerScoreShow.SetPlayer(currentLeaderboard[i], i+1);
+            playerScoreShowObjects.Add(playerScoreShow);
         }
     }
 

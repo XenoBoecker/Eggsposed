@@ -21,6 +21,11 @@ public class Leaderboard : MonoBehaviour
     // List to hold players
     public List<Player> players = new List<Player>();
 
+    public List<Player> GetPlayerScores()
+    {
+        return players;
+    }
+
     // Method to add a player
     public void AddPlayer(string name, int score)
     {

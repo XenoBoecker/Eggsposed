@@ -59,6 +59,8 @@ public class DifficultyManager : MonoBehaviour
         
         for (int i = 0; i < currentLevel; i++)
         {
+            if (i >= levelChangeStats.Count) i = levelChangeStats.Count - 1;
+
             baseMovementSpeedMultiplier += levelChangeStats[i].baseMovementSpeed;
 
             newStats.maxViewAngle += levelChangeStats[i].maxViewAngle;

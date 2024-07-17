@@ -199,10 +199,12 @@ public class Chicken : MonoBehaviour
 
     internal void SetChickenVisuals(ChickenData headTailChickenData, ChickenData bodyChickenData)
     {
-        print("SET VISUAL");
-
         headData = headTailChickenData;
         bodyData = bodyChickenData;
+
+        if (headTailChickenData.head == null) return; // TODO: only because visuals are not set up yet
+        if (bodyChickenData.head == null) return;
+
 
         SetHeadVisuals(headTailChickenData);
 
