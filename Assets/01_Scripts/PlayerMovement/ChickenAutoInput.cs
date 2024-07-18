@@ -64,6 +64,8 @@ public class ChickenAutoInput : MonoBehaviour
         {
             if (agentController.HasReachedDestination()) SetState(ChickenState.Idle);
         }
+
+        if (farmer == null) return;
         
         if (Vector3.Distance(transform.position, farmer.transform.position) < fleeDistance) SetState(ChickenState.Flee);
     }
@@ -95,6 +97,8 @@ public class ChickenAutoInput : MonoBehaviour
 
     private void CheckLayEgg()
     {
+        if (GameManager.Instance == null) return;
+
         if (Time.time - lastEggLayingTime > layingEggCD)
         {
             lastEggLayingTime = Time.time;

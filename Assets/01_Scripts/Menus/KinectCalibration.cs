@@ -92,11 +92,7 @@ public class KinectCalibration : MonoBehaviour
     [SerializeField] TMP_Text phaseText;
     [SerializeField] TMP_Text problemText;
     [SerializeField] TMP_Text descriptionText;
-
-
-    [SerializeField] int[] textLengthThresholds;
-
-    [SerializeField] float fontSizeMultiplier = 0.5f;
+    
 
     int currentPhaseStepIndex;
     float waitTimer;
@@ -110,11 +106,6 @@ public class KinectCalibration : MonoBehaviour
 
     [SerializeField] int calibrationQueueSize = 50;
     public int CalibrationQueueSize => calibrationQueueSize;
-
-    [SerializeField] float distancePercentageToTriggerInput = 0.7f;
-    [SerializeField] float moveDistancePercentageToTriggerInput = 0.7f;
-    [SerializeField] float rotateDistancePercentageToTriggerInput = 0.7f;
-    [SerializeField] float jumpDistancePercentageToTriggerInput = 0.7f;
 
     int calibrationQueueCounter;
     public int CalibrationQueueCounter => calibrationQueueCounter;
@@ -179,11 +170,6 @@ public class KinectCalibration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        calibrationValues.squatDistancePercentageToTriggerInput = distancePercentageToTriggerInput;
-        calibrationValues.moveDistancePercentageToTriggerInput = moveDistancePercentageToTriggerInput;
-        calibrationValues.rotateDistancePercentageToTriggerInput = rotateDistancePercentageToTriggerInput;
-        calibrationValues.jumpDistancePercentageToTriggerInput = jumpDistancePercentageToTriggerInput;
 
         LoadCalibrationTexts();
 

@@ -121,7 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebbf133b2670fab4193bafbd88a08a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  calibrationValues: {fileID: 11400000, guid: 24d832ba5c2dd43428d077be5f6386ff, type: 2}
+  squatDebugText: {fileID: 0}
+  calibrationValues: {fileID: 11400000, guid: 229a80df65524344888603dd40596e4a, type: 2}
   rotationInputCurve:
     serializedVersion: 2
     m_Curve:

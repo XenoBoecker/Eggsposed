@@ -28,6 +28,8 @@ public class KinectInputManager : ChickenInputManager
     {
         inputs = FindObjectOfType<KinectInputs>();
 
+        if (inputs == null) return;
+
         inputs.OnSitDown += SitDown;
         inputs.OnStandUp += StandUp;
 

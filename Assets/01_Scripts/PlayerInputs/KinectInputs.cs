@@ -80,14 +80,14 @@ public class KinectInputs : MonoBehaviour
 
     private Vector2 CheckHeadForwardMovement()
     {
-        int moveInput = 0;
+        int moveInput;
 
         float currentHeadZPosition = head.position.z;
 
-        // if(printTimer > 1) print("Head Z Position: " + currentHeadZPosition + "; stopValue: " + (calibrationValues.headForwardMeanPosition.z + calibrationValues.headForwardDistance * calibrationValues.moveDistancePercentageToTriggerInput).ToString()
-        //    + "; forwardValue:" + (calibrationValues.standHeadMeanPosition.z - calibrationValues.headForwardDistance * calibrationValues.moveDistancePercentageToTriggerInput).ToString());
+        float thresholdZPosition = calibrationValues.standHeadMeanPosition.z - calibrationValues.headForwardDistance * calibrationValues.moveDistancePercentageToTriggerInput;
 
-        if (currentHeadZPosition < calibrationValues.standHeadMeanPosition.z - calibrationValues.headForwardDistance * calibrationValues.moveDistancePercentageToTriggerInput) moveInput = 1;
+
+        if (currentHeadZPosition < thresholdZPosition) moveInput = 1; // forward is negative z direction
         else moveInput = 0;
 
         return new Vector2(0, moveInput);
@@ -101,20 +101,16 @@ public class KinectInputs : MonoBehaviour
 
         float rotRange = calibrationValues.headSidewaysDistance * (1 - calibrationValues.rotateDistancePercentageToTriggerInput);
 
-        //if (printTimer > 1)
-        //{
-        //    print("Head X Position: " + currentHeadXPosition + "; rotLeft: " + (calibrationValues.standHeadMeanPosition.x + calibrationValues.headSidewaysDistance * calibrationValues.rotateDistancePercentageToTriggerInput).ToString()+
-        //    "; rotRight: " + (calibrationValues.standHeadMeanPosition.x - calibrationValues.headSidewaysDistance * calibrationValues.rotateDistancePercentageToTriggerInput).ToString());
-        //    printTimer = 0;
-        //}
+        float leftThresholdXPosition = calibrationValues.standHeadMeanPosition.x + calibrationValues.headSidewaysDistance * calibrationValues.rotateDistancePercentageToTriggerInput;
+        float rightThresholdXPosition = calibrationValues.standHeadMeanPosition.x - calibrationValues.headSidewaysDistance * calibrationValues.rotateDistancePercentageToTriggerInput;
 
-        if (currentHeadXPosition > calibrationValues.standHeadMeanPosition.x + calibrationValues.headSidewaysDistance * calibrationValues.rotateDistancePercentageToTriggerInput)
+        if (currentHeadXPosition > leftThresholdXPosition)
         {
             float valueOverRange = currentHeadXPosition - (calibrationValues.standHeadMeanPosition.x + calibrationValues.headSidewaysDistance * calibrationValues.rotateDistancePercentageToTriggerInput);
 
             rotDir = -rotationInputCurve.Evaluate(Mathf.Min(valueOverRange / rotRange, 1));
         }
-        else if (currentHeadXPosition < calibrationValues.standHeadMeanPosition.x - calibrationValues.headSidewaysDistance * calibrationValues.rotateDistancePercentageToTriggerInput)
+        else if (currentHeadXPosition < rightThresholdXPosition)
         {
             float valueOverRange = (calibrationValues.standHeadMeanPosition.x + calibrationValues.headSidewaysDistance * calibrationValues.rotateDistancePercentageToTriggerInput) - currentHeadXPosition;
 
@@ -129,13 +125,15 @@ public class KinectInputs : MonoBehaviour
     {
         float currentPelvisHeight = pelvis.position.y;
 
+        float thresholdPelvisHeight = calibrationValues.squatPelvisMeanPosition.y + calibrationValues.squatDistance * calibrationValues.squatDistancePercentageToTriggerInput;
+
         squatDebugText.text = "";
 
         squatDebugText.text += "currentHeight: " + currentPelvisHeight;
 
         squatDebugText.text += "htresholdHeight: " + calibrationValues.squatPelvisMeanPosition.y + calibrationValues.squatDistance * calibrationValues.squatDistancePercentageToTriggerInput;
 
-        if (currentPelvisHeight > calibrationValues.squatPelvisMeanPosition.y + calibrationValues.squatDistance * calibrationValues.squatDistancePercentageToTriggerInput) OnStandUp?.Invoke();
+        if (currentPelvisHeight > thresholdPelvisHeight) OnStandUp?.Invoke();
         else
         {
             squatDebugText.text += "\nYEAH BOI SQUATTING!!";
@@ -149,15 +147,19 @@ public class KinectInputs : MonoBehaviour
     {
         float currentHandHeight = leftHand.transform.position.y + rightHand.transform.position.y / 2;
 
-        if (currentHandHeight > calibrationValues.standHandsMeanPosition.y + calibrationValues.jumpDistance * calibrationValues.jumpDistancePercentageToTriggerInput) OnJump?.Invoke();
+        float thresholdHandHeight = calibrationValues.standHandsMeanPosition.y + calibrationValues.jumpDistance * calibrationValues.jumpDistancePercentageToTriggerInput;
+
+        if (currentHandHeight > thresholdHandHeight) OnJump?.Invoke();
         else OnStopJump?.Invoke();
     }
 
     private void CheckDropEgg()
     {
         float currentHandDistance = Mathf.Abs(leftHand.position.x - rightHand.position.x);
-        
-        if (currentHandDistance > calibrationValues.handsStretchDistance * calibrationValues.stretchDistancePercentageToTriggerInput) OnDropEgg?.Invoke();
+
+        float thresholdHandDistance = calibrationValues.handsStretchDistance * calibrationValues.stretchDistancePercentageToTriggerInput;
+
+        if (currentHandDistance > thresholdHandDistance) OnDropEgg?.Invoke();
     }
 
 

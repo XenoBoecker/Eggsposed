@@ -44,17 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d84a4639c3cf3d42ad195d78c2a5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  calibrationValues: {fileID: 11400000, guid: 24d832ba5c2dd43428d077be5f6386ff, type: 2}
+  calibrationValues: {fileID: 11400000, guid: 229a80df65524344888603dd40596e4a, type: 2}
   phaseText: {fileID: 0}
   problemText: {fileID: 0}
   descriptionText: {fileID: 0}
   textLengthThresholds: 320000006400000096000000c8000000
   fontSizeMultiplier: 0.5
   calibrationQueueSize: 50
-  distancePercentageToTriggerInput: 0.7
-  moveDistancePercentageToTriggerInput: 0.7
-  rotateDistancePercentageToTriggerInput: 0.7
-  jumpDistancePercentageToTriggerInput: 0.7
   connectingWaitTime: 5
   notMovingThreshold: 0.1
   standThreshold: 0.2
@@ -66,3 +62,4 @@ MonoBehaviour:
   hatchWaitTime: 5
   minDropEggArmsDistance: 1
   minCallToAmbientNoiseDifference: 0.1
+  currentLoudness: 0
