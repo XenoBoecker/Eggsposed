@@ -1,46 +1,35 @@
 ﻿public class CalibrationChickenKinectInputManager : ChickenInputManager
 {
-    KinectInputs inputs;
-
     KinectCalibration calibration;
 
-    bool canMove;
-    bool canJump;
-    bool canSit;
-    bool canDropEgg;
-    bool canCall;
+    int lastCalibrationQueueCount;
     
     
     private void Update()
     {
-        if (calibration.CurrentCalibrationPhase == CalibrationPhase.Squat && !canSit)
+        if (calibration.CurrentCalibrationPhase == CalibrationPhase.Squat)
         {
-            canSit = true;
-            inputs.OnSitDown += SitDown;
+            if (calibration.CalibrationQueueCounter > lastCalibrationQueueCount) SitDown();
         }
-        else if (calibration.CurrentCalibrationPhase == CalibrationPhase.Jump && !canJump)
+        else if (calibration.CurrentCalibrationPhase == CalibrationPhase.Jump)
         {
-            canJump = true;
-
-            inputs.OnJump += Jump;
+            if (calibration.CalibrationQueueCounter > lastCalibrationQueueCount) Jump();
         }
-        else if (calibration.CurrentCalibrationPhase == CalibrationPhase.HeadForward && !canMove)
+        else if (calibration.CurrentCalibrationPhase == CalibrationPhase.HeadForward)
         {
-            canMove = true;
+            if (calibration.CalibrationQueueCounter > lastCalibrationQueueCount) Move(new UnityEngine.Vector2(0,1));
         }
-        else if (calibration.CurrentCalibrationPhase == CalibrationPhase.DropEgg && !canDropEgg)
+        else if (calibration.CurrentCalibrationPhase == CalibrationPhase.DropEgg)
         {
-            canDropEgg = true;
-            inputs.OnDropEgg += PickupDropEgg;
+            if (calibration.CalibrationQueueCounter > lastCalibrationQueueCount) PickupDropEgg();
         }
-        else if (calibration.CurrentCalibrationPhase == CalibrationPhase.Call && !canCall)
+        else if (calibration.CurrentCalibrationPhase == CalibrationPhase.Call)
         {
-            canCall = true;
-
             GetComponent<ChickenCallSoundManager>().enabled = true;
+            
+            if (calibration.CalibrationQueueCounter > lastCalibrationQueueCount) Call();
         }
 
-        if(canMove) Move(inputs.MoveInput);
-
+        lastCalibrationQueueCount = calibration.CalibrationQueueCounter;
     }
 }

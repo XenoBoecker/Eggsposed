@@ -90,11 +90,8 @@ public class KinectCalibration : MonoBehaviour
     [SerializeField] CalibrationValues calibrationValues;
 
     [SerializeField] TMP_Text phaseText;
-    float phaseTextBaseSize;
     [SerializeField] TMP_Text problemText;
-    float problemTextBaseSize;
     [SerializeField] TMP_Text descriptionText;
-    float descriptionTextBaseSize;
 
 
     [SerializeField] int[] textLengthThresholds;
@@ -112,11 +109,15 @@ public class KinectCalibration : MonoBehaviour
     Queue<float> loudnessQueue = new Queue<float>();
 
     [SerializeField] int calibrationQueueSize = 50;
+    public int CalibrationQueueSize => calibrationQueueSize;
 
     [SerializeField] float distancePercentageToTriggerInput = 0.7f;
     [SerializeField] float moveDistancePercentageToTriggerInput = 0.7f;
     [SerializeField] float rotateDistancePercentageToTriggerInput = 0.7f;
     [SerializeField] float jumpDistancePercentageToTriggerInput = 0.7f;
+
+    int calibrationQueueCounter;
+    public int CalibrationQueueCounter => calibrationQueueCounter;
 
     // Connect To Kinect
 
@@ -185,10 +186,6 @@ public class KinectCalibration : MonoBehaviour
         calibrationValues.jumpDistancePercentageToTriggerInput = jumpDistancePercentageToTriggerInput;
 
         LoadCalibrationTexts();
-
-        phaseTextBaseSize = phaseText.fontSize;
-        problemTextBaseSize = problemText.fontSize;
-        descriptionTextBaseSize = descriptionText.fontSize;
 
         ChangePhase(CalibrationPhase.ConnectWithKinect);
     }
@@ -408,6 +405,7 @@ public class KinectCalibration : MonoBehaviour
     {        
         if (currentPhaseStepIndex == 0)
         {
+            calibrationQueueCounter = 0;
             headPositionQueue.Clear();
             pelvisPositionQueue.Clear();
             leftHandPositionQueue.Clear();
@@ -430,6 +428,8 @@ public class KinectCalibration : MonoBehaviour
         pelvisPositionQueue.Enqueue(kinectBody.pelvis.position);
         leftHandPositionQueue.Enqueue(kinectBody.leftHand.position);
         rightHandPositionQueue.Enqueue(kinectBody.rightHand.position);
+
+        calibrationQueueCounter = headPositionQueue.Count;
 
         if (headPositionQueue.Count > calibrationQueueSize)
         {
@@ -460,6 +460,7 @@ public class KinectCalibration : MonoBehaviour
     {
         if (currentPhaseStepIndex == 0)
         {
+            calibrationQueueCounter = 0;
             headPositionQueue.Clear();
             currentPhaseStepIndex++;
         }
@@ -484,6 +485,7 @@ public class KinectCalibration : MonoBehaviour
         {
             SetText(problemText, calibrationTexts.confirmationLines[randomConfirmationLineIndex]);
             headPositionQueue.Enqueue(kinectBody.head.position);
+            calibrationQueueCounter = headPositionQueue.Count;
         }
 
         if (headPositionQueue.Count >= calibrationQueueSize)
@@ -502,6 +504,7 @@ public class KinectCalibration : MonoBehaviour
     {
         if (currentPhaseStepIndex == 0)
         {
+            calibrationQueueCounter = 0;
             headPositionQueue.Clear();
             currentPhaseStepIndex++;
         }
@@ -529,6 +532,7 @@ public class KinectCalibration : MonoBehaviour
         {
             SetText(problemText, calibrationTexts.confirmationLines[randomConfirmationLineIndex]);
             headPositionQueue.Enqueue(kinectBody.head.position);
+            calibrationQueueCounter = headPositionQueue.Count;
         }
         else
         {
@@ -547,6 +551,7 @@ public class KinectCalibration : MonoBehaviour
     {
         if (currentPhaseStepIndex == 0)
         {
+            calibrationQueueCounter = 0;
             headPositionQueue.Clear();
             currentPhaseStepIndex++;
         }
@@ -572,6 +577,7 @@ public class KinectCalibration : MonoBehaviour
         {
             SetText(problemText, calibrationTexts.confirmationLines[randomConfirmationLineIndex]);
             headPositionQueue.Enqueue(kinectBody.head.position);
+            calibrationQueueCounter = headPositionQueue.Count;
         }
         else
         {
@@ -593,6 +599,7 @@ public class KinectCalibration : MonoBehaviour
     {
         if (currentPhaseStepIndex == 0)
         {
+            calibrationQueueCounter = 0;
             leftHandPositionQueue.Clear();
             rightHandPositionQueue.Clear();
             currentPhaseStepIndex++;
@@ -620,6 +627,7 @@ public class KinectCalibration : MonoBehaviour
             SetText(problemText, calibrationTexts.confirmationLines[randomConfirmationLineIndex]);
             leftHandPositionQueue.Enqueue(kinectBody.leftHand.position);
             rightHandPositionQueue.Enqueue(kinectBody.rightHand.position);
+            calibrationQueueCounter = leftHandPositionQueue.Count;
         }
 
         if (leftHandPositionQueue.Count >= calibrationQueueSize)
@@ -641,6 +649,7 @@ public class KinectCalibration : MonoBehaviour
     {
         if (currentPhaseStepIndex == 0)
         {
+            calibrationQueueCounter = 0;
             pelvisPositionQueue.Clear();
             headPositionQueue.Clear();
             currentPhaseStepIndex++;
@@ -662,6 +671,7 @@ public class KinectCalibration : MonoBehaviour
 
             pelvisPositionQueue.Enqueue(kinectBody.pelvis.position);
             headPositionQueue.Enqueue(kinectBody.head.position);
+            calibrationQueueCounter = headPositionQueue.Count;
         }
         else
         {
@@ -686,6 +696,7 @@ public class KinectCalibration : MonoBehaviour
     {
         if (currentPhaseStepIndex == 0)
         {
+            calibrationQueueCounter = 0;
             leftHandPositionQueue.Clear();
             rightHandPositionQueue.Clear();
             currentPhaseStepIndex++;
@@ -713,6 +724,7 @@ public class KinectCalibration : MonoBehaviour
             SetText(problemText, calibrationTexts.confirmationLines[randomConfirmationLineIndex]);
             leftHandPositionQueue.Enqueue(kinectBody.leftHand.position);
             rightHandPositionQueue.Enqueue(kinectBody.rightHand.position);
+            calibrationQueueCounter = leftHandPositionQueue.Count;
         }
         else
         {
@@ -734,6 +746,7 @@ public class KinectCalibration : MonoBehaviour
     {
         if (currentPhaseStepIndex == 0)
         {
+            calibrationQueueCounter = 0;
             loudnessQueue.Clear();
             currentPhaseStepIndex++;
         }
@@ -741,7 +754,8 @@ public class KinectCalibration : MonoBehaviour
         SetText(problemText, "");
 
         loudnessQueue.Enqueue(AudioLoudnessDetection.GetLoudnessFromMicrophone());
-        
+        calibrationQueueCounter = loudnessQueue.Count;
+
 
         if (loudnessQueue.Count >= calibrationQueueSize)
         {
@@ -755,6 +769,7 @@ public class KinectCalibration : MonoBehaviour
     {
         if (currentPhaseStepIndex == 0)
         {
+            calibrationQueueCounter = 0;
             loudnessQueue.Clear();
             currentPhaseStepIndex++;
         }
@@ -767,6 +782,7 @@ public class KinectCalibration : MonoBehaviour
         {
             SetText(problemText, calibrationTexts.confirmationLines[randomConfirmationLineIndex]);
             loudnessQueue.Enqueue(currentLoudness);
+            calibrationQueueCounter = loudnessQueue.Count;
         }
         else
         {
