@@ -1,6 +1,4 @@
 using ECM.Components;
-using System;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class ChickenAbilitySetup : MonoBehaviour
