@@ -16,11 +16,8 @@ public class PictogramAnimator : MonoBehaviour
     [SerializeField] Sprite[] rotLeftSprites;
     [SerializeField] Sprite[] rotRightSprites;
     [SerializeField] Sprite[] jumpSprites;
-    [SerializeField] Sprite[] glideSprites;
     [SerializeField] Sprite[] squatSprites;
-    [SerializeField] Sprite[] hatchSprites;
     [SerializeField] Sprite[] dropEggSprites;
-    [SerializeField] Sprite[] dropEggTutorialSprites;
     [SerializeField] Sprite[] ambientNoiseSprites;
     [SerializeField] Sprite[] callSprites;
 
@@ -80,26 +77,21 @@ public class PictogramAnimator : MonoBehaviour
             case CalibrationPhase.Jump:
                 pictogramSprites = jumpSprites;
                 break;
-            case CalibrationPhase.Glide:
-                pictogramSprites = glideSprites;
-                break;
             case CalibrationPhase.Squat:
                 pictogramSprites = squatSprites;
                 break;
-            case CalibrationPhase.Hatch:
-                pictogramSprites = hatchSprites;
-                break;
             case CalibrationPhase.DropEgg:
                 pictogramSprites = dropEggSprites;
-                break;
-            case CalibrationPhase.DropEggTutorial:
-                pictogramSprites = dropEggTutorialSprites;
                 break;
             case CalibrationPhase.AmbientNoise:
                 pictogramSprites = ambientNoiseSprites;
                 break;
             case CalibrationPhase.Call:
                 pictogramSprites = callSprites;
+                break;
+            default:
+                pictogramSprites = standSprites;
+                print("Weird Phase: " + calibrationPhase);
                 break;
         }
         currentPhase = calibrationPhase;

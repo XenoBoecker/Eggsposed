@@ -15,11 +15,8 @@ public enum CalibrationPhase
     RotLeft,
     RotRight,
     Jump,
-    Glide,
     Squat,
-    Hatch,
     DropEgg,
-    DropEggTutorial,
     AmbientNoise,
     Call,
     SetInputThresholdValues
@@ -217,6 +214,11 @@ public class KinectCalibration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            ChangePhase((CalibrationPhase)((int)currentCalibrationPhase + 1));
+        }
+
         currentLoudness = AudioLoudnessDetection.GetLoudnessFromMicrophone();
 
         switch (currentCalibrationPhase)
@@ -242,10 +244,6 @@ public class KinectCalibration : MonoBehaviour
 
             case CalibrationPhase.Jump:
                 JumpCalibration();
-                break;
-            
-            case CalibrationPhase.Glide:
-                GlideCalibration();
                 break;
 
             case CalibrationPhase.Squat:
@@ -307,16 +305,10 @@ public class KinectCalibration : MonoBehaviour
                 return calibrationTexts.rotRightHeading;
             case CalibrationPhase.Jump:
                 return calibrationTexts.jumpHeading;
-            case CalibrationPhase.Glide:
-                return calibrationTexts.glideHeading;
             case CalibrationPhase.Squat:
                 return calibrationTexts.squatHeading;
-            case CalibrationPhase.Hatch:
-                return calibrationTexts.hatchHeading;
             case CalibrationPhase.DropEgg:
                 return calibrationTexts.dropEggHeading;
-            case CalibrationPhase.DropEggTutorial:
-                return calibrationTexts.dropEggTutorialHeading;
             case CalibrationPhase.AmbientNoise:
                 return calibrationTexts.ambientNoiseHeading;
             case CalibrationPhase.Call:
@@ -344,16 +336,10 @@ public class KinectCalibration : MonoBehaviour
                 return calibrationTexts.rotRightDescription;
             case CalibrationPhase.Jump:
                 return calibrationTexts.jumpDescription;
-            case CalibrationPhase.Glide:
-                return calibrationTexts.glideDescription;
             case CalibrationPhase.Squat:
                 return calibrationTexts.squatDescription;
-            case CalibrationPhase.Hatch:
-                return calibrationTexts.hatchDescription;
             case CalibrationPhase.DropEgg:
                 return calibrationTexts.dropEggDescription;
-            case CalibrationPhase.DropEggTutorial:
-                return calibrationTexts.dropEggTutorialDescription;
             case CalibrationPhase.AmbientNoise:
                 return calibrationTexts.ambientNoiseDescription;
             case CalibrationPhase.SetInputThresholdValues:
@@ -645,22 +631,8 @@ public class KinectCalibration : MonoBehaviour
             calibrationValues.jumpDistance = (calibrationValues.jumpLeftHandMeanPosition.y - calibrationValues.standLeftHandMeanPosition.y
                                 + calibrationValues.jumpRightHandMeanPosition.y - calibrationValues.standRightHandMeanPosition.y) / 2;
 
-            ChangePhase(CalibrationPhase.Glide);
+            ChangePhase(CalibrationPhase.Squat);
         }
-    }
-
-
-
-    private void GlideCalibration()
-    {
-        if (currentPhaseStepIndex == 0)
-        {
-            waitTimer = 0;
-            currentPhaseStepIndex++;
-        }
-        waitTimer += Time.deltaTime;
-
-        if(waitTimer >= glideWaitTime) ChangePhase(CalibrationPhase.Squat);
     }
 
 

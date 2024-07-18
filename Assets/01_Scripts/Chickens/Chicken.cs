@@ -94,7 +94,7 @@ public class Chicken : MonoBehaviour
             ActivateComponents(playerControlComponents);
             DeactivateComponents(aiControlComponents);
 
-            SetInputMethod(GameManager.Instance.KinectInputs);
+            if(GameManager.Instance != null) SetInputMethod(GameManager.Instance.KinectInputs);
         }
         else
         {
