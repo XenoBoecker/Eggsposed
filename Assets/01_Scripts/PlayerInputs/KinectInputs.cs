@@ -1,9 +1,12 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 
 public class KinectInputs : MonoBehaviour
 {
     static KinectInputs Instance;
+
+    [SerializeField] TMP_Text squatDebugText;
 
     KinectBody kinectBody;
     [SerializeField] CalibrationValues calibrationValues;
@@ -126,9 +129,16 @@ public class KinectInputs : MonoBehaviour
     {
         float currentPelvisHeight = pelvis.position.y;
 
+        squatDebugText.text = "";
+
+        squatDebugText.text += "currentHeight: " + currentPelvisHeight;
+
+        squatDebugText.text += "htresholdHeight: " + calibrationValues.squatPelvisMeanPosition.y + calibrationValues.squatDistance * calibrationValues.squatDistancePercentageToTriggerInput;
+
         if (currentPelvisHeight > calibrationValues.squatPelvisMeanPosition.y + calibrationValues.squatDistance * calibrationValues.squatDistancePercentageToTriggerInput) OnStandUp?.Invoke();
         else
         {
+            squatDebugText.text += "\nYEAH BOI SQUATTING!!";
             OnSitDown?.Invoke();
 
             CheckDropEgg();

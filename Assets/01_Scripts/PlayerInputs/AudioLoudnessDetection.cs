@@ -16,7 +16,16 @@ public static class AudioLoudnessDetection
     {
         if (micClip == null) MicrophoneToAudioClip();
 
-        return GetLoudnessFromAudioClip(Microphone.GetPosition(Microphone.devices[0]), micClip);
+        float maxLoudness = 0;
+
+        for (int i = 0; i < Microphone.devices.Length; i++)
+        {
+            float micLoudness = GetLoudnessFromAudioClip(Microphone.GetPosition(Microphone.devices[i]), micClip);
+
+            if(micLoudness > maxLoudness) maxLoudness = micLoudness;
+        }
+
+        return maxLoudness;// GetLoudnessFromAudioClip(Microphone.GetPosition(Microphone.devices[0]), micClip);
     }
 
     public static float GetLoudnessFromAudioClip(int clipPosition, AudioClip clip)

@@ -170,6 +170,8 @@ public class KinectCalibration : MonoBehaviour
 
     [SerializeField] float minCallToAmbientNoiseDifference = 0.1f;
 
+    public float currentLoudness;
+
     private void Awake()
     {
         kinectBody = FindObjectOfType<KinectBody>();
@@ -209,42 +211,14 @@ public class KinectCalibration : MonoBehaviour
     void SetText(TMP_Text textComponent, string text)
     {
         textComponent.text = text;
-        int textLength = text.Length;
-
-        float baseSize = phaseTextBaseSize;
-
-        if (textComponent == problemText) baseSize = problemTextBaseSize;
-        else if (textComponent == descriptionText) baseSize = descriptionTextBaseSize;
-
-
-        // Simple heuristic to adjust font size based on text length
-        float adjustedSize = baseSize;
-
-        if (textLength > textLengthThresholds[0])
-        {
-            adjustedSize = baseSize * fontSizeMultiplier;
-        }
-        else if (textLength > textLengthThresholds[1])
-        {
-            adjustedSize = baseSize * fontSizeMultiplier * 0.75f;
-        }
-        else if (textLength > textLengthThresholds[2])
-        {
-            adjustedSize = baseSize * fontSizeMultiplier * 0.5f;
-        }
-        else if (textLength > textLengthThresholds[3])
-        {
-            adjustedSize = baseSize * fontSizeMultiplier * 0.25f;
-        }
-
-
-        textComponent.fontSize = adjustedSize;
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        currentLoudness = AudioLoudnessDetection.GetLoudnessFromMicrophone();
+
         switch (currentCalibrationPhase)
         {
             case CalibrationPhase.ConnectWithKinect:
@@ -278,16 +252,8 @@ public class KinectCalibration : MonoBehaviour
                 SquatCalibration();
                 break;
 
-            case CalibrationPhase.Hatch:
-                HatchCalibration();
-                break;
-
             case CalibrationPhase.DropEgg:
                 DropEggCalibration();
-                break;
-
-            case CalibrationPhase.DropEggTutorial:
-                DropEggTutorial();
                 break;
 
             case CalibrationPhase.AmbientNoise:
@@ -738,22 +704,10 @@ public class KinectCalibration : MonoBehaviour
 
             calibrationValues.squatDistance = calibrationValues.standPelvisMeanPosition.y - calibrationValues.squatPelvisMeanPosition.y;
 
-            ChangePhase(CalibrationPhase.Hatch);
+            ChangePhase(CalibrationPhase.DropEgg);
         }
 
 
-    }
-
-    private void HatchCalibration()
-    {
-        if (currentPhaseStepIndex == 0)
-        {
-            waitTimer = 0;
-            currentPhaseStepIndex++;
-        }
-        waitTimer += Time.deltaTime;
-
-        if (waitTimer >= hatchWaitTime) ChangePhase(CalibrationPhase.DropEgg);
     }
 
     private void DropEggCalibration()
@@ -800,20 +754,8 @@ public class KinectCalibration : MonoBehaviour
 
             calibrationValues.handsStretchDistance = Mathf.Abs(calibrationValues.leftHandStretchPosition.x - calibrationValues.rightHandStretchPosition.x);
 
-            ChangePhase(CalibrationPhase.DropEggTutorial);
+            ChangePhase(CalibrationPhase.AmbientNoise);
         }
-    }
-
-    private void DropEggTutorial()
-    {
-        if (currentPhaseStepIndex == 0)
-        {
-            waitTimer = 0;
-            currentPhaseStepIndex++;
-        }
-        waitTimer += Time.deltaTime;
-
-        if (waitTimer >= hatchWaitTime) ChangePhase(CalibrationPhase.AmbientNoise);
     }
 
     private void AmbientNoiseCalibration()
