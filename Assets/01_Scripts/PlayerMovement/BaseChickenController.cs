@@ -12,6 +12,7 @@ public class BaseChickenController : BaseCharacterController
 
     [SerializeField]
     float _glideMaxFallSpeed = 3.0f;
+    bool lastFrameJump;
 
     [SerializeField]
     float _breedTime = 20f;
@@ -180,6 +181,9 @@ public class BaseChickenController : BaseCharacterController
         // should animator root motion be enabled? (eg: is grounded)
 
         applyRootMotion = useRootMotion && movement.isGrounded;
+
+
+        lastFrameJump = _jump;
     }
 
     private void Breed()
@@ -206,6 +210,14 @@ public class BaseChickenController : BaseCharacterController
 
             HatchNewChicken();
         }
+    }
+
+    protected override void Jump()
+    {
+        if (lastFrameJump) return;
+
+        base.Jump();
+
     }
 
     private void HatchNewChicken()

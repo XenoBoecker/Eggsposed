@@ -1,5 +1,6 @@
 ﻿using ECM.Components;
 using ECM.Helpers;
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 using static UnityEngine.Rendering.DebugUI.Table;
@@ -507,6 +508,8 @@ namespace ECM.Controllers
 
         #endregion
 
+        public event Action OnJump;
+
         #region METHODS
 
         /// <summary>
@@ -616,6 +619,8 @@ namespace ECM.Controllers
             // 'Pause' grounding, allowing character to safely leave the 'ground'
 
             movement.DisableGrounding();
+
+            OnJump?.Invoke();
         }
 
         /// <summary>
