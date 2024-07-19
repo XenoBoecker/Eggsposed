@@ -10,9 +10,8 @@ public class CameraController : MonoBehaviour
 
 
     [SerializeField] Transform flyThroughTargetParent;
-    List<Transform> flyThroughTargets = new List<Transform>();
+    List<CameraFlyThroughTarget> flyThroughTargets = new List<CameraFlyThroughTarget>();
     [SerializeField] float flyThroughSpeed = 1.0f;
-    [SerializeField] float stopAtTargetTime = 0.2f;
     [SerializeField] AnimationCurve flySpeedCurve;
 
 
@@ -37,14 +36,14 @@ public class CameraController : MonoBehaviour
         {
             if (target != flyThroughTargetParent)
             {
-                flyThroughTargets.Add(target);
+                flyThroughTargets.Add(target.GetComponent<CameraFlyThroughTarget>());
             }
         }
 
-        Transform playerTargetTransform = new GameObject().transform;
-        playerTargetTransform.position = GameManager.Instance.Player.transform.position + offset;
-        playerTargetTransform.rotation = GameManager.Instance.Player.transform.rotation;
-        playerTargetTransform.Rotate(20, 0, 0);
+        CameraFlyThroughTarget playerTargetTransform = new GameObject().AddComponent< CameraFlyThroughTarget>();
+        playerTargetTransform.transform.position = GameManager.Instance.Player.transform.position + offset;
+        playerTargetTransform.transform.rotation = GameManager.Instance.Player.transform.rotation;
+        playerTargetTransform.transform.Rotate(20, 0, 0);
 
         flyThroughTargets.Add(playerTargetTransform);
 
@@ -71,12 +70,11 @@ public class CameraController : MonoBehaviour
     {
         TimeManager.Instance.Pause();
 
-        transform.position = flyThroughTargets[0].position;
-        transform.rotation = flyThroughTargets[0].rotation;
+        transform.position = flyThroughTargets[0].transform.position;
+        transform.rotation = flyThroughTargets[0].transform.rotation;
 
         float startTime = Time.realtimeSinceStartup;
-        startTime = Time.realtimeSinceStartup;
-        while (Time.realtimeSinceStartup < startTime + stopAtTargetTime)
+        while (Time.realtimeSinceStartup < startTime + flyThroughTargets[0].stoppingTime)
         {
             yield return null;
         }
@@ -86,20 +84,20 @@ public class CameraController : MonoBehaviour
         {
             float t = 0;
             startTime = Time.realtimeSinceStartup;
-            float distanceToNextTarget = Vector3.Distance(flyThroughTargets[i].position, flyThroughTargets[i + 1].position);
+            float distanceToNextTarget = Vector3.Distance(flyThroughTargets[i].transform.position, flyThroughTargets[i + 1].transform.position);
 
             while (t < 1)
             {
                 t = (Time.realtimeSinceStartup-startTime) * flyThroughSpeed / distanceToNextTarget;
                 
-                transform.position = Vector3.Lerp(flyThroughTargets[i].position, flyThroughTargets[i+1].position, flySpeedCurve.Evaluate(t));
-                transform.rotation = Quaternion.Lerp(flyThroughTargets[i].rotation, flyThroughTargets[i+1].rotation, flySpeedCurve.Evaluate(t));
+                transform.position = Vector3.Lerp(flyThroughTargets[i].transform.position, flyThroughTargets[i+1].transform.position, flyThroughTargets[i].flyPositionCurve.Evaluate(t));
+                transform.rotation = Quaternion.Lerp(flyThroughTargets[i].transform.rotation, flyThroughTargets[i+1].transform.rotation, flyThroughTargets[i].flyRotationCurve.Evaluate(t));
 
                 yield return null;
             }
 
             startTime = Time.realtimeSinceStartup;
-            while (Time.realtimeSinceStartup < startTime + stopAtTargetTime)
+            while (Time.realtimeSinceStartup < startTime + flyThroughTargets[i+1].stoppingTime)
             {
                 yield return null;
             }
