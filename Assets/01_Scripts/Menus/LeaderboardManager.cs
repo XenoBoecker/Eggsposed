@@ -49,6 +49,14 @@ public class LeaderboardManager : MonoBehaviour
         GameOver(GameOverInfo.GetBredChickens().Count);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            OnSubmitScore();
+        }
+    }
+
     private void GoToMenu()
     {
         SceneManager.LoadScene("MainMenu");
