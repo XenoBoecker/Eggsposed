@@ -46,28 +46,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   callRange: 30
   callCD: 15
-  forceScale: 80
+  forceScale: 150
   abilityDuration: 1.2
   addForceCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: -1
-      outSlope: -1
+      time: 0.0005264282
+      value: 0.0017547607
+      inSlope: 6.608537
+      outSlope: 6.608537
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -1
-      outSlope: -1
-      tangentMode: 34
+      time: 0.15158692
+      value: 1.0000436
+      inSlope: 0.09851343
+      outSlope: 0.09851343
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
+      outWeight: 0.08380869
+    - serializedVersion: 3
+      time: 0.48340535
+      value: 0.30032134
+      inSlope: -1.5655762
+      outSlope: -1.5655762
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.029813897
+      outSlope: -0.029813897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.11440864
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -79,12 +97,12 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 21.968468
+      outSlope: 21.968468
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.05013193
     - serializedVersion: 3
       time: 0.2
       value: 8
