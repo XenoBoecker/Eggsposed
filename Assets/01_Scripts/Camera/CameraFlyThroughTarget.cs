@@ -8,4 +8,6 @@ public class CameraFlyThroughTarget : MonoBehaviour
 
     public AnimationCurve flyPositionCurve;
     public AnimationCurve flyRotationCurve;
+
+    public bool waitForInput;
 }

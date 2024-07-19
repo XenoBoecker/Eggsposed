@@ -26,9 +26,20 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] bool skipAnimation = false;
 
+    KinectInputs kinectInputs;
+    bool waitingForInput;
+    PlayerControls controls;
+        
+
     private void Start()
     {
         GameManager.Instance.OnSpawnChicken += TargetNewChicken;
+
+        kinectInputs = FindObjectOfType<KinectInputs>();
+        kinectInputs.OnSitDown += () => waitingForInput = false;
+
+        controls = new PlayerControls();
+        controls.Enable();
 
         Transform[] targets = flyThroughTargetParent.GetComponentsInChildren<Transform>();
 
@@ -85,6 +96,13 @@ public class CameraController : MonoBehaviour
             float t = 0;
             startTime = Time.realtimeSinceStartup;
             float distanceToNextTarget = Vector3.Distance(flyThroughTargets[i].transform.position, flyThroughTargets[i + 1].transform.position);
+
+            while (waitingForInput)
+            {
+                if (controls.Player.Breed.triggered) waitingForInput = false;
+
+                yield return null;
+            }
 
             while (t < 1)
             {
