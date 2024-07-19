@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07766123, g: 0.34757078, b: 0.5715871, a: 1}
+  m_IndirectSpecularColor: {r: 0.0776612, g: 0.34757075, b: 0.57158697, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1299,7 +1299,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 42.2
+  m_Spacing: 41.56
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -1752,7 +1752,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 288.005, y: 0}
   m_SizeDelta: {x: 576.01, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1637761921
@@ -1775,7 +1775,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RZUUZUGH
+  m_text: RZUUZUGHdddd
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f151173e1ec047f4a8ee5bb2fdb303d0, type: 2}
   m_sharedMaterial: {fileID: 4931826482755260201, guid: f151173e1ec047f4a8ee5bb2fdb303d0,
@@ -2209,12 +2209,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' DROP HE EG HJHDJJSJHJCVDVCDK
-
-    DECGEDCGEDZCGDCGDEJCGEDJCGEDC'
+  m_text: 'hello '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d95742de3931d8645925d62953c1e639, type: 2}
+  m_sharedMaterial: {fileID: -4944805065819261824, guid: d95742de3931d8645925d62953c1e639,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
