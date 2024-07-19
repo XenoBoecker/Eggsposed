@@ -127,16 +127,16 @@ public class KinectInputs : MonoBehaviour
 
         float thresholdPelvisHeight = calibrationValues.squatPelvisMeanPosition.y + calibrationValues.squatDistance * calibrationValues.squatDistancePercentageToTriggerInput;
 
-        squatDebugText.text = "";
+        string debugText = "";
 
-        squatDebugText.text += "currentHeight: " + currentPelvisHeight;
+        debugText += "currentHeight: " + currentPelvisHeight;
 
-        squatDebugText.text += "htresholdHeight: " + calibrationValues.squatPelvisMeanPosition.y + calibrationValues.squatDistance * calibrationValues.squatDistancePercentageToTriggerInput;
+        debugText += "htresholdHeight: " + calibrationValues.squatPelvisMeanPosition.y + calibrationValues.squatDistance * calibrationValues.squatDistancePercentageToTriggerInput;
 
         if (currentPelvisHeight > thresholdPelvisHeight) OnStandUp?.Invoke();
         else
         {
-            squatDebugText.text += "\nYEAH BOI SQUATTING!!";
+            if(squatDebugText != null) squatDebugText.text =  debugText + "\nYEAH BOI SQUATTING!!";
             OnSitDown?.Invoke();
 
             CheckDropEgg();

@@ -10,8 +10,7 @@ public class ChickenStepSounds : MonoBehaviour
     AudioClip[] grassStepSounds;
     float stepInterval; // Interval between step sounds
 
-    Rigidbody rb;
-    CharacterMovement movement;
+    ChickenStateTracker cst;
 
     private List<AudioClip> currentStepSounds;
     private int currentSoundIndex = 0;
@@ -19,14 +18,17 @@ public class ChickenStepSounds : MonoBehaviour
 
     bool walkingOnGrass;
 
+    bool isWalking;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        rb = GetComponent<Rigidbody>();
-        movement = GetComponent<CharacterMovement>();
+        cst = GetComponent<ChickenStateTracker>();
+        cst.OnStartWalking += () => isWalking = true;
+        cst.OnStopWalking += () => isWalking = false;
 
         stepSounds = SoundManager.Instance.chickenSFX.stepSounds;
-        stepSounds = SoundManager.Instance.chickenSFX.grassStepSounds;
+        grassStepSounds = SoundManager.Instance.chickenSFX.grassStepSounds;
 
         stepInterval = stepSounds[0].length;
 
@@ -35,13 +37,24 @@ public class ChickenStepSounds : MonoBehaviour
             Debug.LogError("Step sounds list is empty!");
             return;
         }
+        if (grassStepSounds == null)
+        {
+            Debug.LogError("Grass step sounds list is null!");
+            return;
+        }
+
+        if (grassStepSounds.Length == 0)
+        {
+            Debug.LogError("Grass step sounds list is empty!");
+            return;
+        }
 
         ShuffleStepSounds();
     }
 
     void Update()
     {
-        if (IsWalking())
+        if (isWalking)
         {
             stepTimer += Time.deltaTime;
             if (stepTimer >= stepInterval)
@@ -54,11 +67,6 @@ public class ChickenStepSounds : MonoBehaviour
         {
             stepTimer = 0f;
         }
-    }
-
-    private bool IsWalking()
-    {
-        return movement.isOnGround && rb.velocity.magnitude > 0;
     }
 
     private void PlayNextStepSound()
@@ -87,7 +95,8 @@ public class ChickenStepSounds : MonoBehaviour
 
     private void ShuffleStepSounds()
     {
-        if(walkingOnGrass) currentStepSounds = new List<AudioClip>(grassStepSounds);
+        if (grassStepSounds == null) print("no grass step sounds");
+        if (walkingOnGrass) currentStepSounds = new List<AudioClip>(grassStepSounds);
         else currentStepSounds = new List<AudioClip>(stepSounds);
         
         for (int i = 0; i < currentStepSounds.Count; i++)

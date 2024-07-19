@@ -11,6 +11,8 @@ public class CameraFlyThroughTarget : MonoBehaviour
 
     public bool waitForInput;
 
+    public GameObject tutorialPanel;
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;

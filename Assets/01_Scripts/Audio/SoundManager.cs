@@ -69,6 +69,8 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(AudioClip[] clips, AudioSource source = null)
     {
+        if (clips.Length == 0) return;
+        
         int rand = UnityEngine.Random.Range(0, clips.Length);
 
         PlaySound(clips[rand], source);

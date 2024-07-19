@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 public class KinectInputManager : ChickenInputManager
 {
@@ -12,6 +13,8 @@ public class KinectInputManager : ChickenInputManager
     private void Update()
     {
         if (inputs == null) Setup();
+
+        if (Time.timeScale == 0) return;
 
         Move(inputs.MoveInput);
 

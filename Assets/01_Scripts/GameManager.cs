@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Chicken chickenPrefab;
 
+    [SerializeField] Egg eggPrefab;
+
     [SerializeField] ChickenData _baseChickenData;
     [SerializeField] List<ChickenData> _allChicken;
 
@@ -61,7 +63,9 @@ public class GameManager : MonoBehaviour
         else _player = Instantiate(chickenPrefab, spawnPos, _player.transform.rotation);
         _player.SetControlledByPlayer(true);
 
-        _player.SetEgg(Instantiate(chickenData.eggPrefab, spawnPos - Vector3.forward*2 + Vector3.up, Quaternion.identity).GetComponent<Egg>());
+        Egg newEgg = Instantiate(eggPrefab, spawnPos - Vector3.forward * 2 + Vector3.up, Quaternion.identity);
+        _player.SetEgg(newEgg);
+        newEgg.SetPlayersEgg(true);
 
         playerCam.SetTarget(_player.transform);
 
@@ -171,7 +175,7 @@ public class GameManager : MonoBehaviour
 
         ChickenData chickenData = _allChicken[rand];
 
-        Instantiate(chickenData.eggPrefab, position, Quaternion.identity);
+        Instantiate(chickenData.eggVisual, position, Quaternion.identity);
     }
 }
 

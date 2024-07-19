@@ -35,6 +35,8 @@ public class RotissorySetup : ChickenAbilitySetup
 
     IEnumerator AirDash()
     {
+        bcc.enabled = false;
+        movement.enabled = false;
 
         // Get dash direction and distance based on player input
         Vector3 dashDir = Vector3.up;
