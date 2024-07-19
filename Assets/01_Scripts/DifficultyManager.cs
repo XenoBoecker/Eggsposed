@@ -56,48 +56,51 @@ public class DifficultyManager : MonoBehaviour
         float catchupSpeedMultiplier = 1;
         newStats.catchupCooldown = farmerBaseStats.catchupCooldown;
         newStats.catchupMaxDuration = farmerBaseStats.catchupMaxDuration;
+
+        int addIndex;
         
         for (int i = 0; i < currentLevel; i++)
         {
-            if (i >= levelChangeStats.Count) i = levelChangeStats.Count - 1;
+            if(i < levelChangeStats.Count) addIndex = i;
+            else addIndex = levelChangeStats.Count - 1;
 
-            baseMovementSpeedMultiplier += levelChangeStats[i].baseMovementSpeed;
+            baseMovementSpeedMultiplier += levelChangeStats[addIndex].baseMovementSpeed;
 
-            newStats.maxViewAngle += levelChangeStats[i].maxViewAngle;
+            newStats.maxViewAngle += levelChangeStats[addIndex].maxViewAngle;
 
-            newStats.hearingDistance += levelChangeStats[i].hearingDistance;
+            newStats.hearingDistance += levelChangeStats[addIndex].hearingDistance;
 
-            newStats.detectionRange += levelChangeStats[i].detectionRange;
+            newStats.detectionRange += levelChangeStats[addIndex].detectionRange;
 
-            newStats.xRayTrackingTime += levelChangeStats[i].xRayTrackingTime;
+            newStats.xRayTrackingTime += levelChangeStats[addIndex].xRayTrackingTime;
 
-            newStats.biasDistance += levelChangeStats[i].biasDistance;
+            newStats.biasDistance += levelChangeStats[addIndex].biasDistance;
 
-            scanTurningSpeedMultiplier += levelChangeStats[i].scanTurnSpeed;
+            scanTurningSpeedMultiplier += levelChangeStats[addIndex].scanTurnSpeed;
 
-            newStats.scanAngle += levelChangeStats[i].scanAngle;
+            newStats.scanAngle += levelChangeStats[addIndex].scanAngle;
 
-            newStats.breedingSpotBlockDuration += levelChangeStats[i].breedingSpotBlockDuration;
+            newStats.breedingSpotBlockDuration += levelChangeStats[addIndex].breedingSpotBlockDuration;
 
-            newStats.blockCooldownTime += levelChangeStats[i].blockCooldownTime;
+            newStats.blockCooldownTime += levelChangeStats[addIndex].blockCooldownTime;
 
-            newStats.minimumUnblockedSpots += levelChangeStats[i].minimumUnblockedSpots;
+            newStats.minimumUnblockedSpots += levelChangeStats[addIndex].minimumUnblockedSpots;
 
-            newStats.collectionProgressTime += levelChangeStats[i].collectionProgressTime;
+            newStats.collectionProgressTime += levelChangeStats[addIndex].collectionProgressTime;
 
-            newStats.collectionRange += levelChangeStats[i].collectionRange;
+            newStats.collectionRange += levelChangeStats[addIndex].collectionRange;
 
-            newStats.timeoutRange += levelChangeStats[i].timeoutRange;
+            newStats.timeoutRange += levelChangeStats[addIndex].timeoutRange;
 
-            newStats.catchupMinimumDistance += levelChangeStats[i].catchupMinimumDistance;
+            newStats.catchupMinimumDistance += levelChangeStats[addIndex].catchupMinimumDistance;
 
-            newStats.catchupMinimumDistance += levelChangeStats[i].catchupMinimumDistance;
+            newStats.catchupMinimumDistance += levelChangeStats[addIndex].catchupMinimumDistance;
 
-            catchupSpeedMultiplier += levelChangeStats[i].catchupSpeedMultiplier;
+            catchupSpeedMultiplier += levelChangeStats[addIndex].catchupSpeedMultiplier;
 
-            newStats.catchupCooldown += levelChangeStats[i].catchupCooldown;
+            newStats.catchupCooldown += levelChangeStats[addIndex].catchupCooldown;
 
-            newStats.catchupMaxDuration += levelChangeStats[i].catchupMaxDuration;
+            newStats.catchupMaxDuration += levelChangeStats[addIndex].catchupMaxDuration;
         }
 
         newStats.baseMovementSpeed *= baseMovementSpeedMultiplier;

@@ -3,7 +3,7 @@
 [CreateAssetMenu(fileName = "CalibrationValues", menuName = "CalibrationValues")]
 public class CalibrationValues : ScriptableObject
 {
-    [Header("TriggerInputPercentages")]
+    [Header("TriggerInputPercentages")] // check KinectInputs script for actual implementation of these
     public float squatDistancePercentageToTriggerInput;
     public float moveDistancePercentageToTriggerInput;
     public float rotateDistancePercentageToTriggerInput;

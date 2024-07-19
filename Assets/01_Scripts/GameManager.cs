@@ -65,8 +65,14 @@ public class GameManager : MonoBehaviour
 
         playerCam.SetTarget(_player.transform);
 
-        do _nextChickenData = _allChicken[UnityEngine.Random.Range(0, _allChicken.Count)];
-        while (_nextChickenData == chickenData && _allChicken.Count != 1);
+        int iterationCount = 0;
+
+        do
+        {
+            _nextChickenData = _allChicken[UnityEngine.Random.Range(0, _allChicken.Count)];
+            iterationCount++;
+        }
+        while (_nextChickenData == chickenData && _allChicken.Count != 1 && iterationCount < 100);
 
         _player.OnFinishBreeding += SpawnNextChicken;
 
