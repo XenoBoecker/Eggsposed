@@ -67,6 +67,13 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PlaySound(AudioClip[] clips, AudioSource source = null)
+    {
+        int rand = UnityEngine.Random.Range(0, clips.Length);
+
+        PlaySound(clips[rand], source);
+    }
+
     internal void Reload()
     {
         SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume", 0.5f));
@@ -94,7 +101,7 @@ public class SoundManager : MonoBehaviour
 
        public AudioClip[] stepSounds;
        public AudioClip[] grassStepSounds;
-       public AudioClip jumpSound;
+       public AudioClip[] jumpSounds;
        public AudioClip glideSound;
        
        public AudioClip standUpSound;

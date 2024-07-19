@@ -20,7 +20,7 @@ public class ChickenJumpAndGlideSounds : MonoBehaviour
 
     private void PlayJumpSound()
     {
-        SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.jumpSound, audioSource);
+        SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.jumpSounds, audioSource);
     }
 
     void Update()
