@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Robot
   m_EditorClassIdentifier: 
   prefab: {fileID: 5541882822226729079, guid: a4a6ccd150eed0649b80765bef539a87, type: 3}
-  eggPrefab: {fileID: 4219821116601913590, guid: d29f8953a0f610646b95006457ab3f27,
+  eggVisual: {fileID: 570807820897997669, guid: 45382c4d823483b45b45a88b591216f0,
     type: 3}
   eyeL: {fileID: 0}
   eyeR: {fileID: 0}
