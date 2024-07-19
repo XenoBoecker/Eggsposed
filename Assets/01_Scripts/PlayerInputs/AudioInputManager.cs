@@ -13,11 +13,17 @@ public class AudioInputManager : MonoBehaviour
     {
         chickenInputManager = GetComponent<ChickenInputManager>();
 
-        calibrationValues = FindObjectOfType<KinectInputs>().CalibrationValues;
+    }
+
+    private void Start()
+    {
+        KinectInputs kinectInputs = FindObjectOfType<KinectInputs>();
+
+        if(kinectInputs != null) calibrationValues = kinectInputs.CalibrationValues;
     }
 
     // Update is called once per frame
-
+    
     void Update()
     {
         float loudness = AudioLoudnessDetection.GetLoudnessFromMicrophone();
