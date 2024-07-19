@@ -5,7 +5,7 @@ using UnityEngine;
 public class Egg : MonoBehaviour
 {
     [SerializeField] bool isPlayersEgg;
-
+    
     public void Pickup()
     {
         if (isPlayersEgg)
@@ -25,5 +25,14 @@ public class Egg : MonoBehaviour
     public void SetPlayersEgg(bool isPlayersEgg)
     {
         this.isPlayersEgg = isPlayersEgg;
+    }
+
+    public void SetEggVisual(ChickenData data)
+    {
+        if (data.eggVisual == null) return;
+
+        transform.GetChild(0).gameObject.SetActive(false);
+
+        Instantiate(data.eggVisual, transform);
     }
 }
