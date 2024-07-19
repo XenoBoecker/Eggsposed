@@ -1093,9 +1093,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"Spins and flies straight up into the air when using your Scream."'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aed3b028abbbb3541b3a9a2dd4a02196, type: 2}
-  m_sharedMaterial: {fileID: -1155125940889352589, guid: aed3b028abbbb3541b3a9a2dd4a02196,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1453,8 +1452,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"Spins and flies straight up into the air when using your Scream."'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aed3b028abbbb3541b3a9a2dd4a02196, type: 2}
-  m_sharedMaterial: {fileID: -1155125940889352589, guid: aed3b028abbbb3541b3a9a2dd4a02196,
+  m_fontAsset: {fileID: 11400000, guid: d95742de3931d8645925d62953c1e639, type: 2}
+  m_sharedMaterial: {fileID: -4944805065819261824, guid: d95742de3931d8645925d62953c1e639,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
