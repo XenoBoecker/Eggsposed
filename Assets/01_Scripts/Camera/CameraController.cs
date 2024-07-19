@@ -93,10 +93,6 @@ public class CameraController : MonoBehaviour
 
         for (int i = 0; i < flyThroughTargets.Count-1; i++)
         {
-            float t = 0;
-            startTime = Time.realtimeSinceStartup;
-            float distanceToNextTarget = Vector3.Distance(flyThroughTargets[i].transform.position, flyThroughTargets[i + 1].transform.position);
-
             waitingForInput = flyThroughTargets[i].waitForInput;
 
             while (waitingForInput)
@@ -105,6 +101,11 @@ public class CameraController : MonoBehaviour
 
                 yield return null;
             }
+
+            float t = 0;
+            startTime = Time.realtimeSinceStartup;
+            float distanceToNextTarget = Vector3.Distance(flyThroughTargets[i].transform.position, flyThroughTargets[i + 1].transform.position);
+
 
             while (t < 1)
             {
