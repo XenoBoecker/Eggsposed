@@ -9,7 +9,7 @@ public class NewChickenUI : MonoBehaviour
 {
     [SerializeField] GameObject showChickenPanel;
 
-    [SerializeField] TMP_Text newChickenNameText, oldChickenExplanationText, newChickenExplanationText;
+    [SerializeField] TMP_Text newChickenNameText, oldChickenNameText, combinedChickenNameText, oldChickenExplanationText, newChickenExplanationText;
 
     [SerializeField] Image[] oldChickenImages, newChickenImages, combinedChickenImages;
 
@@ -73,17 +73,32 @@ public class NewChickenUI : MonoBehaviour
     private void UpdateNewChickenUI()
     {
         ChickenData data = GameManager.Instance.CurrentChickenData;
-        
-        newChickenNameText.text = data.name;
-        oldChickenExplanationText.text = data.chickenSpawnScreenExplanation;
-        newChickenExplanationText.text = GameManager.Instance.PreviousChickenData(1).chickenSpawnScreenExplanation;
+        ChickenData previousData = GameManager.Instance.PreviousChickenData(1);
 
-        SetChickenImages(oldChickenImages, GameManager.Instance.PreviousChickenData(1));
+
+        // newChickenNameText.text = data.name;
+        // oldChickenNameText.text = previousData.name;
+        oldChickenExplanationText.text = data.chickenSpawnScreenExplanation;
+        newChickenExplanationText.text = previousData.chickenSpawnScreenExplanation;
+
+        combinedChickenNameText.text = GetCombinedChickenName(data, previousData);
+
+        SetChickenImages(oldChickenImages, previousData);
 
         SetChickenImages(newChickenImages, data);
 
-        if(GameManager.Instance.BredEggCount % 2 == 0) SetChickenImages(combinedChickenImages, data, GameManager.Instance.PreviousChickenData(1));
-        else SetChickenImages(combinedChickenImages, GameManager.Instance.PreviousChickenData(1), data);
+        if(GameManager.Instance.BredEggCount % 2 == 0) SetChickenImages(combinedChickenImages, data, previousData);
+        else SetChickenImages(combinedChickenImages, previousData, data);
+    }
+
+    private string GetCombinedChickenName(ChickenData data, ChickenData previousData)
+    {
+        string firstHalf = data.combinedNameFirstHalf;
+        if (firstHalf == "") firstHalf = data.name;
+        string secondHalf = previousData.combinedNameSecondHalf;
+        if (secondHalf == "") secondHalf = previousData.name;
+
+        return firstHalf + " - " + secondHalf + " Chicken";
     }
 
     private void SetChickenImages(Image[] chickenImages, ChickenData data, ChickenData chickenData = null)

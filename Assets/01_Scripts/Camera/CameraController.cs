@@ -74,11 +74,18 @@ public class CameraController : MonoBehaviour
         transform.position = flyThroughTargets[0].position;
         transform.rotation = flyThroughTargets[0].rotation;
 
+        float startTime = Time.realtimeSinceStartup;
+        startTime = Time.realtimeSinceStartup;
+        while (Time.realtimeSinceStartup < startTime + stopAtTargetTime)
+        {
+            yield return null;
+        }
+
 
         for (int i = 0; i < flyThroughTargets.Count-1; i++)
         {
             float t = 0;
-            float startTime = Time.realtimeSinceStartup;
+            startTime = Time.realtimeSinceStartup;
             float distanceToNextTarget = Vector3.Distance(flyThroughTargets[i].position, flyThroughTargets[i + 1].position);
 
             while (t < 1)

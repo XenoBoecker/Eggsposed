@@ -10,6 +10,11 @@ public class BreedingSpot : MonoBehaviour
 
     [SerializeField] GameObject blockSpotVisuals;
 
+
+    [SerializeField] GameObject tellPlayerToSquat;
+
+    Chicken player;
+
     bool _isBlocked;
 
     float _timeBred;
@@ -18,9 +23,17 @@ public class BreedingSpot : MonoBehaviour
 
     float blockedTime;
 
+    bool playerHasBredOutAnEgg;
+
     private void Start()
     {
         blockSpotVisuals.SetActive(false);
+
+        tellPlayerToSquat.SetActive(false);
+
+        GameManager.Instance.OnSpawnChicken += () => playerHasBredOutAnEgg = true;
+
+        player = GameManager.Instance.Player;
     }
 
     void Update()
@@ -34,6 +47,22 @@ public class BreedingSpot : MonoBehaviour
         {
             blockedTime -= Time.deltaTime;
             if (blockedTime <= 0) UnblockSpot();
+        }
+
+        if (!playerHasBredOutAnEgg)
+        {
+            if (Vector3.Distance(player.transform.position, transform.position) < radius)
+            {
+                tellPlayerToSquat.SetActive(true);
+            }
+            else
+            {
+                tellPlayerToSquat.SetActive(false);
+            }
+        }
+        else
+        {
+            tellPlayerToSquat.SetActive(false);
         }
     }
 

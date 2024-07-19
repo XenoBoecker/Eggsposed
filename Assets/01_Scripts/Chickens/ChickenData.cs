@@ -14,4 +14,5 @@ public class ChickenData : ScriptableObject
 
     public Sprite chickenHeadSprite, chickenBodySprite, chickenTailSprite;
     public string chickenSpawnScreenExplanation;
+    public string combinedNameFirstHalf, combinedNameSecondHalf;
 }

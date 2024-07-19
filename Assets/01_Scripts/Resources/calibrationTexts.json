@@ -12,9 +12,9 @@
     "Perfect!"
   ],
   "connectingHeading": "How to Play",
-  "connectingDescription": "You are a chicken on a farm. Your goal is to hatch your egg and avoid the farmer who is hungry for eggs. In the following moments, you will be guided through a calibration and tutorial sequence that will teach you all you need to know to successfully outwit the farmer and reach your goal.",
+  "connectingDescription": "",
   "standHeading": "Calibration Start",
-  "standDescription": "Stand in a neutral, comfortable position. You will now be asked to perform various movements. Each movement has to be performed successfully three times to calibrate the device.",
+  "standDescription": "Stand in a neutral, comfortable position.",
   "headForwardHeading": "Moving",
   "headForwardDescription": "Lean your upper body forward to move the chicken forward.",
   "rotLeftHeading": "Steering",
