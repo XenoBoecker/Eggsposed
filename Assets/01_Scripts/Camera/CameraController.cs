@@ -94,7 +94,9 @@ public class CameraController : MonoBehaviour
         for (int i = 0; i < flyThroughTargets.Count-1; i++)
         {
             waitingForInput = flyThroughTargets[i].waitForInput;
+            if (flyThroughTargets[i].tutorialPanel != null) flyThroughTargets[i].tutorialPanel.SetActive(true);
 
+            // wait for input
             while (waitingForInput)
             {
                 if (controls.Player.Breed.triggered) waitingForInput = false;
@@ -102,11 +104,13 @@ public class CameraController : MonoBehaviour
                 yield return null;
             }
 
+            if (flyThroughTargets[i].tutorialPanel != null) flyThroughTargets[i].tutorialPanel.SetActive(false);
+
             float t = 0;
             startTime = Time.realtimeSinceStartup;
             float distanceToNextTarget = Vector3.Distance(flyThroughTargets[i].transform.position, flyThroughTargets[i + 1].transform.position);
 
-
+            // fly from current target to next
             while (t < 1)
             {
                 t = (Time.realtimeSinceStartup-startTime) * flyThroughSpeed / distanceToNextTarget;
@@ -117,6 +121,7 @@ public class CameraController : MonoBehaviour
                 yield return null;
             }
 
+            // wait at next target for next target stopping time
             startTime = Time.realtimeSinceStartup;
             while (Time.realtimeSinceStartup < startTime + flyThroughTargets[i+1].stoppingTime)
             {
