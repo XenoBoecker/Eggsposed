@@ -92,7 +92,11 @@ public class GameOver : MonoBehaviour
     {
         GameObject egg = Instantiate(eggVisual, new Vector3(UnityEngine.Random.Range(-eggDropRange, eggDropRange), 8, UnityEngine.Random.Range(-eggDropRange, eggDropRange)), Quaternion.identity);
 
-        if(egg.GetComponent<Collider>() == null) egg.AddComponent<SphereCollider>();
+        if (egg.GetComponent<Rigidbody>() == null)
+        {
+            egg.AddComponent<Rigidbody>();
+        }
+        if (egg.GetComponent<Collider>() == null) egg.AddComponent<SphereCollider>();
     }
 
     void OnlyShowLeaderboard()

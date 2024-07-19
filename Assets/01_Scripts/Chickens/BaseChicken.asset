@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BaseChicken
   m_EditorClassIdentifier: 
   prefab: {fileID: 7930122644705264913, guid: 028827376c198a146968cfe6fff543ac, type: 3}
-  eggPrefab: {fileID: 4219821116601913590, guid: d29f8953a0f610646b95006457ab3f27,
+  eggVisual: {fileID: 570807820897997669, guid: 45382c4d823483b45b45a88b591216f0,
     type: 3}
   eyeL: {fileID: 315638454072789549, guid: 65dd41c523360f74abce28b58153562f, type: 3}
   eyeR: {fileID: 2220389429458926637, guid: 0a92c19ddd2acb14f88b7ccea1400582, type: 3}
@@ -27,3 +27,5 @@ MonoBehaviour:
   chickenBodySprite: {fileID: 0}
   chickenTailSprite: {fileID: 0}
   chickenSpawnScreenExplanation: 
+  combinedNameFirstHalf: 
+  combinedNameSecondHalf: 
