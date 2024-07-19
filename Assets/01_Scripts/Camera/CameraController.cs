@@ -97,6 +97,8 @@ public class CameraController : MonoBehaviour
             startTime = Time.realtimeSinceStartup;
             float distanceToNextTarget = Vector3.Distance(flyThroughTargets[i].transform.position, flyThroughTargets[i + 1].transform.position);
 
+            waitingForInput = flyThroughTargets[i].waitForInput;
+
             while (waitingForInput)
             {
                 if (controls.Player.Breed.triggered) waitingForInput = false;
