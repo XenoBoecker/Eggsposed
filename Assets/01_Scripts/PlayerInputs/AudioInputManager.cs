@@ -26,6 +26,8 @@ public class AudioInputManager : MonoBehaviour
     
     void Update()
     {
+        if (Time.timeScale == 0) return;
+
         float loudness = AudioLoudnessDetection.GetLoudnessFromMicrophone();
 
         if (loudness > calibrationValues.ambientNoiseMaxValue + calibrationValues.ambientToCallNoiseDifference * calibrationValues.loundessPercentageToTriggerInput)

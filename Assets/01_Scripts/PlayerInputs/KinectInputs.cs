@@ -63,6 +63,7 @@ public class KinectInputs : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0) return;
         // printTimer += Time.deltaTime;
 
         moveInput = Vector2.zero;

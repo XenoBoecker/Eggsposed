@@ -27,6 +27,10 @@ public class ChickenStateTracker : MonoBehaviour
     public event Action OnDropEgg;
     public event Action OnPickupEgg;
 
+    public event Action OnLeanLeft;
+    public event Action OnLeanRight;
+    public event Action OnStopLeaning;
+
 
     bool wasWalkingLastFrame;
     bool wasJumpingLastFrame;
@@ -34,6 +38,7 @@ public class ChickenStateTracker : MonoBehaviour
     bool wasGlidingLastFrame;
     bool wasSittingLastFrame;
     bool hadEggLastFrame;
+    float moveXInputLastFrame;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +76,7 @@ public class ChickenStateTracker : MonoBehaviour
         CheckJumpingGlidingAndFalling();
         CheckSitAndStand();
         CheckDropPickupEgg();
+        CheckLeaning();
         
 
         wasWalkingLastFrame = IsWalking();
@@ -79,6 +85,23 @@ public class ChickenStateTracker : MonoBehaviour
         wasFallingLastFrame = IsFalling();
         wasSittingLastFrame = bcc.sitting;
         hadEggLastFrame = chicken.HasEgg;
+        moveXInputLastFrame = bcc.moveDirection.x;
+    }
+
+    private void CheckLeaning()
+    {
+        if (bcc.moveDirection.x < 0 && moveXInputLastFrame >= 0)
+        {
+            OnLeanLeft?.Invoke();
+        }
+        else if (bcc.moveDirection.x > 0 && moveXInputLastFrame <= 0)
+        {
+            OnLeanRight?.Invoke();
+        }
+        else if (bcc.moveDirection.x == 0 && moveXInputLastFrame != 0)
+        {
+            OnStopLeaning?.Invoke();
+        }
     }
 
     private void CheckDropPickupEgg()
