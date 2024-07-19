@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22d9e1a2098606848a6a2964c2195965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  callRange: 10
-  callCD: 5
-  forceScale: 1000
+  callRange: 30
+  callCD: 15
+  forceScale: 700
   abilityDuration: 0.5
   addForceCurve:
     serializedVersion: 2
@@ -54,20 +54,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -1
+      outSlope: -1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0
+      inSlope: -1
+      outSlope: -1
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

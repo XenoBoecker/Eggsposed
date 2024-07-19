@@ -64,14 +64,14 @@ PrefabInstance:
       value: LightningAbility
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 3225673845596218625, guid: 028827376c198a146968cfe6fff543ac, type: 3}
+    - {fileID: -8447059868753543776, guid: 028827376c198a146968cfe6fff543ac, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7930122644705264913, guid: 028827376c198a146968cfe6fff543ac,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: -4680999662550147157}
+      addedObject: {fileID: 7746105886089696413}
   m_SourcePrefab: {fileID: 100100000, guid: 028827376c198a146968cfe6fff543ac, type: 3}
 --- !u!1 &8158019855574468723 stripped
 GameObject:
@@ -79,7 +79,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2250233363764464994}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-4680999662550147157
+--- !u!114 &7746105886089696413
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a992de7e89a5d49b5b1f89e2d96f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  callRange: 10
-  callCD: 5
+  callRange: 30
+  callCD: 12
   accelerationPerSecond: 0.2
   resetAccelerationThreshold: 0.7

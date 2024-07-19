@@ -26,4 +26,7 @@ MonoBehaviour:
   chickenHeadSprite: {fileID: 0}
   chickenBodySprite: {fileID: 0}
   chickenTailSprite: {fileID: 0}
-  chickenSpawnScreenExplanation: 
+  chickenSpawnScreenExplanation: Shows distance between the chicken and the Farm'O'Bot.
+    Shows direction to Farm'O'Bot.
+  combinedNameFirstHalf: 
+  combinedNameSecondHalf: 

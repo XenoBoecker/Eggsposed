@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f7d55878e1b2bd4da734c690eef95bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  callRange: 10
-  callCD: 5
+  callRange: 30
+  callCD: 12
   farmerIndicatorPrefab: {fileID: 7278395500883171657, guid: 930fb737338d63c428ae4c60c8cba4b8,
     type: 3}

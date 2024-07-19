@@ -26,4 +26,6 @@ MonoBehaviour:
   chickenHeadSprite: {fileID: 0}
   chickenBodySprite: {fileID: 0}
   chickenTailSprite: {fileID: 0}
-  chickenSpawnScreenExplanation: 
+  chickenSpawnScreenExplanation: Always uses its Chicken Scream when able.
+  combinedNameFirstHalf: 
+  combinedNameSecondHalf: 

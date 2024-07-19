@@ -26,4 +26,6 @@ MonoBehaviour:
   chickenHeadSprite: {fileID: 0}
   chickenBodySprite: {fileID: 0}
   chickenTailSprite: {fileID: 0}
-  chickenSpawnScreenExplanation: 
+  chickenSpawnScreenExplanation: The Chicken Scream has 3 uses before going on Cooldown.
+  combinedNameFirstHalf: 
+  combinedNameSecondHalf: 

@@ -267,7 +267,7 @@ MonoBehaviour:
   _isControlledByPlayer: 1
   pickupRange: 5
   withEggSpeedMultiplier: 1
-  withoutEggSpeedMultiplier: 1.4
+  withoutEggSpeedMultiplier: 1.6
   eyeL: {fileID: 2804128147191189605}
   eyeR: {fileID: 9132525431158754579}
   head: {fileID: 8983962460697159100}
