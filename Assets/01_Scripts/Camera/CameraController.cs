@@ -69,7 +69,7 @@ public class CameraController : MonoBehaviour
     {
         if (!waitingForInput) return;
 
-        SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.confirmSound, SoundManager.Instance.uiSFX.source);
+        SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.confirmSound);
 
         waitingForInput = false;
     }
@@ -176,6 +176,8 @@ public class CameraController : MonoBehaviour
 
     private IEnumerator GameStartCountdown()
     {
+        SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.CountdownSound);
+
         for (float i = 0; i < countdownDuration; i+= Time.unscaledDeltaTime)
         {
             int number = countdownStartNumber - (int)(i / countdownDuration * countdownStartNumber);

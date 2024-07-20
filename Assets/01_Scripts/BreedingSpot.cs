@@ -8,6 +8,9 @@ public class BreedingSpot : MonoBehaviour
     [SerializeField] float radius = 3f;
 
 
+    [SerializeField] float blockTimeAfterEggHatchedHere = 20f;
+
+
     [SerializeField] GameObject blockSpotVisuals;
 
 
@@ -32,8 +35,19 @@ public class BreedingSpot : MonoBehaviour
         tellPlayerToSquat.SetActive(false);
 
         GameManager.Instance.OnSpawnChicken += () => playerHasBredOutAnEgg = true;
+        GameManager.Instance.OnSpawnChicken += BlockHatchoutSpot;
 
         player = GameManager.Instance.Player;
+    }
+
+    private void BlockHatchoutSpot()
+    {
+        if (IsCloseEnough(GameManager.Instance.Player.transform.position))
+        {
+            _isBlocked = true;
+            blockSpotVisuals.SetActive(true);
+            blockedTime = blockTimeAfterEggHatchedHere;
+        }
     }
 
     void Update()

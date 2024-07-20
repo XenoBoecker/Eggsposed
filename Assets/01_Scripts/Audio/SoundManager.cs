@@ -107,10 +107,10 @@ public class SoundManager : MonoBehaviour
     [System.Serializable]
     public struct UISFX
     {
-        public AudioSource source;
         public AudioClip changeButtonSound;
         public AudioClip confirmSound;
         public AudioClip CountdownSound;
+        public AudioClip HatchNewChickenRiff;
     }
 
     [System.Serializable]

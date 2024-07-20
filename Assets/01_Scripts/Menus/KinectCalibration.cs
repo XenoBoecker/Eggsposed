@@ -191,6 +191,7 @@ public class KinectCalibration : MonoBehaviour
         {
             ChangePhase((CalibrationPhase)((int)currentCalibrationPhase + 1));
         }
+        if (Input.GetKeyDown(KeyCode.L)) SceneManager.LoadScene("MainMenu");
 
         currentLoudness = AudioLoudnessDetection.GetLoudnessFromMicrophone();
 

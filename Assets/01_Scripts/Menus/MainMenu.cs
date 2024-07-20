@@ -66,7 +66,7 @@ public class MainMenu : MonoBehaviour
 
     public void InputRight()
     {
-        SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.changeButtonSound, SoundManager.Instance.uiSFX.source);
+        SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.changeButtonSound);
 
         currentButtonIndex++;
 
@@ -77,7 +77,7 @@ public class MainMenu : MonoBehaviour
 
     public void InputLeft()
     {
-        SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.changeButtonSound, SoundManager.Instance.uiSFX.source);
+        SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.changeButtonSound);
         currentButtonIndex--;
 
         if (currentButtonIndex < 0) currentButtonIndex = buttonCount-1;
@@ -87,7 +87,7 @@ public class MainMenu : MonoBehaviour
 
     public void InputConfirm()
     {
-        SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.confirmSound, SoundManager.Instance.uiSFX.source);
+        SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.confirmSound);
         if (inputs != null) inputs.OnSitDown -= InputConfirm;
         
         if (currentButtonIndex == 0) SceneManager.LoadScene("Game");

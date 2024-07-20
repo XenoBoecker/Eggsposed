@@ -18,12 +18,12 @@ MonoBehaviour:
   jumpDistancePercentageToTriggerInput: 0.5
   stretchDistancePercentageToTriggerInput: 0.5
   loundessPercentageToTriggerInput: 0.4
-  squatDistance: 0
-  headForwardDistance: 0
-  headSidewaysDistance: 0
-  jumpDistance: 0
-  handsStretchDistance: 0
-  ambientToCallNoiseDifference: 0
+  squatDistance: 1
+  headForwardDistance: 1
+  headSidewaysDistance: 1
+  jumpDistance: 1
+  handsStretchDistance: 1
+  ambientToCallNoiseDifference: 1
   standHeadMeanPosition: {x: 0, y: 1, z: 0}
   standPelvisMeanPosition: {x: 0, y: 1, z: 0}
   standLeftHandMeanPosition: {x: 0, y: 1, z: 0}

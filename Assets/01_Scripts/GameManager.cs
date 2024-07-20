@@ -27,10 +27,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] int inheritanceCount = 2;
 
     List<ChickenData> previousChickenDatas = new List<ChickenData>();
-    public int BredEggCount => previousChickenDatas.Count -1;
+    public int BredEggCount => previousChickenDatas.Count - 1;
     ChickenData _nextChickenData;
     public ChickenData CurrentChickenData => PreviousChickenData(0);
-    public ChickenData PreviousChickenData(int reverseIndex) => previousChickenDatas[previousChickenDatas.Count - 1 - reverseIndex];
 
     Chicken _player;
     public Chicken Player => _player;
@@ -53,6 +52,15 @@ public class GameManager : MonoBehaviour
 
         SpawnChicken(_baseChickenData, playerStartPosition.position);
         playerStartPosition.gameObject.SetActive(false);
+    }
+
+
+    public ChickenData PreviousChickenData(int reverseIndex) {
+        int index = previousChickenDatas.Count - 1 - reverseIndex;
+
+        if (index < 0) return null;
+
+        else return previousChickenDatas[index];
     }
 
     private void SpawnChicken(ChickenData chickenData, Vector3 spawnPos)

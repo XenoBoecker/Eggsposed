@@ -45,7 +45,6 @@ public class ChickenAbilitySetup : MonoBehaviour
 
         if (percentage > currentPercentage)
         {
-            print(name + ", Percentage: " + percentage);
             chicken.CurrentCallCooldownPercentage = percentage;
         }
     }

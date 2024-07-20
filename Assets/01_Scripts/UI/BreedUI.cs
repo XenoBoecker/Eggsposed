@@ -40,13 +40,21 @@ public class BreedUI : MonoBehaviour
     {
         if (playerChickenController.breeding)
         {
-            if(!isBreeding) StartCoroutine(FadeInEgg());
+            if (!isBreeding)
+            {
+                StopAllCoroutines();
+                StartCoroutine(FadeInEgg());
+            }
             UpdateEggSprite();
             WiggleEgg();
         }
         else
         {
-            if(isBreeding) StartCoroutine(FadeOutEgg());
+            if (isBreeding)
+            {
+                StopAllCoroutines();
+                StartCoroutine(FadeOutEgg());
+            }
         }
     }
 

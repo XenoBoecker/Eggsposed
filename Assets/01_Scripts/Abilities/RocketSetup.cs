@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class RocketSetup : ChickenAbilitySetup
 {
     [SerializeField] float forceScale = 1000;
     [SerializeField] float abilityDuration = 0.5f;
     [SerializeField] AnimationCurve addForceCurve;
+
+
+    [SerializeField] GameObject particleEffect;
 
     Rigidbody rb;
     AudioSource audioSource;
@@ -21,6 +25,8 @@ public class RocketSetup : ChickenAbilitySetup
     public override void Call()
     {
         base.Call();
+
+        Instantiate(particleEffect, transform);
 
         StartCoroutine(AirDash());
     }
