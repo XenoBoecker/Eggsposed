@@ -67,8 +67,6 @@ public class GameManager : MonoBehaviour
         _player.SetEgg(newEgg);
         newEgg.SetPlayersEgg(true);
 
-        playerCam.SetTarget(_player.transform);
-
         int iterationCount = 0;
 
         do
@@ -77,6 +75,11 @@ public class GameManager : MonoBehaviour
             iterationCount++;
         }
         while ((_nextChickenData == chickenData || _nextChickenData == PreviousChickenData(1)) && _allChicken.Count != 1 && iterationCount < 100);
+
+        newEgg.SetEggVisual(_nextChickenData);
+
+        playerCam.SetTarget(_player.transform);
+
 
         _player.OnFinishBreeding += SpawnNextChicken;
 
