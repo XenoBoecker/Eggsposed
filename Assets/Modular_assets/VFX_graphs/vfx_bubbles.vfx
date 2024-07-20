@@ -20,7 +20,7 @@ MonoBehaviour:
     x: 939
     y: -190
     width: 427
-    height: 1895
+    height: 1874
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -531,7 +531,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Vector, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"vector":{"x":-0.029999999329447748,"y":0.12999999523162843,"z":-0.03999999910593033}}'
+      m_SerializableObject: '{"vector":{"x":-0.10000000149011612,"y":0.12999999523162843,"z":-0.10000000149011612}}'
     m_Space: 0
   m_Property:
     name: A
@@ -701,7 +701,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Vector, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"vector":{"x":0.029999999329447748,"y":0.029999999329447748,"z":0.029999999329447748}}'
+      m_SerializableObject: '{"vector":{"x":0.10000000149011612,"y":0.029999999329447748,"z":0.10000000149011612}}'
     m_Space: 0
   m_Property:
     name: B
@@ -899,7 +899,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.5
+      m_SerializableObject: 1.5
     m_Space: 2147483647
   m_Property:
     name: A
@@ -933,7 +933,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 2.8
+      m_SerializableObject: 5
     m_Space: 2147483647
   m_Property:
     name: B
@@ -1557,7 +1557,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":5.0,"y":10.0}'
+      m_SerializableObject: '{"x":3.0,"y":4.0}'
     m_Space: 2147483647
   m_Property:
     name: Delay
@@ -1659,7 +1659,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":3.0,"y":7.0}'
+      m_SerializableObject: '{"x":4.0,"y":8.0}'
     m_Space: 2147483647
   m_Property:
     name: Count
@@ -2140,7 +2140,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":0.6455641388893127,"outTangent":0.6455641388893127,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.24010467529296876,"value":0.15383529663085938,"inTangent":-0.002018980449065566,"outTangent":-0.002018980449065566,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0033290386199952,"value":0.09645998477935791,"inTangent":-0.18652696907520295,"outTangent":-0.18652696907520295,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
+      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":0.6455641388893127,"outTangent":0.6455641388893127,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.27410125732421877,"value":0.2977104187011719,"inTangent":-0.002018980449065566,"outTangent":-0.002018980449065566,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.8260746598243713,"value":0.16005069017410279,"inTangent":-0.4047861099243164,"outTangent":-0.4047861099243164,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0033290386199952,"value":0.09645998477935791,"inTangent":-0.18652696907520295,"outTangent":-0.18652696907520295,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
     m_Space: 2147483647
   m_Property:
     name: Size
