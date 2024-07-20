@@ -1539,7 +1539,7 @@ MonoBehaviour:
   - {fileID: 1853047288}
   - {fileID: 1148058154}
   fadeCanvasGroup: {fileID: 1324383637}
-  waitTimeBeforeContinueIsAllowed: 1
+  waitTimeBeforeContinueIsAllowed: 3
   fadeDuration: 0.2
 --- !u!114 &546355098
 MonoBehaviour:

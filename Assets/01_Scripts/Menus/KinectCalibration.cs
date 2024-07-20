@@ -778,7 +778,9 @@ public class KinectCalibration : MonoBehaviour
 
         if (loudnessQueue.Count >= calibrationQueueSize)
         {
-            calibrationValues.ambientNoiseMaxValue = MaxOfArray(loudnessQueue.ToArray());
+            calibrationValues.callNoiseMeanValue = MaxOfArray(loudnessQueue.ToArray());
+
+            calibrationValues.ambientToCallNoiseDifference = Mathf.Abs(calibrationValues.ambientNoiseMaxValue - calibrationValues.callNoiseMeanValue);
 
             ChangePhase(CalibrationPhase.SetInputThresholdValues);
         }

@@ -24,21 +24,30 @@ public class MainMenu : MonoBehaviour
 
     private void Awake()
     {
-        inputs = FindObjectOfType<KinectInputs>();
-
         controls = new PlayerControls();
         controls.Enable();
-
-        if(inputs != null) inputs.OnSitDown += InputConfirm;
 
         OnInput += () => timeSinceLastInput = 0;
 
         timeSinceLastInput = -0.5f;
     }
 
+    private void Start()
+    {
+        inputs = FindObjectOfType<KinectInputs>();
+
+        if (inputs != null) inputs.OnSitDown += InputConfirm;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if(inputs == null)
+        {
+            inputs = FindObjectOfType <KinectInputs>();
+            inputs.OnSitDown += InputConfirm;
+        }
+
         timeSinceLastInput += Time.deltaTime;
 
         if (timeSinceLastInput < timeBetweenInputs) return;

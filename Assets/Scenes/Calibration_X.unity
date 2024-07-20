@@ -2467,6 +2467,16 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 2066801005}
+    - target: {fileID: 139220443767652589, guid: 41f27d99ceac0af4da7a2f4914477451,
+        type: 3}
+      propertyPath: calibrationQueueSize
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 139220443767652589, guid: 41f27d99ceac0af4da7a2f4914477451,
+        type: 3}
+      propertyPath: minCallToAmbientNoiseDifference
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 4753511224437712148, guid: 41f27d99ceac0af4da7a2f4914477451,
         type: 3}
       propertyPath: m_Name
