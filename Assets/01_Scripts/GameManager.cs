@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
             }
             CopyDerivedComponent(previousChickenDatas[previousChickenDatas.Count - 1-i].prefab, _player.gameObject);
         }
+
         if (previousChickenDatas.Count == 1) _player.SetChickenVisuals(chickenData, chickenData);
         else if (previousChickenDatas.Count > 1)
         {
@@ -136,20 +137,43 @@ public class GameManager : MonoBehaviour
     // Method to copy values from one component to another
     private void CopyComponentValues(Component source, Component destination)
     {
-        // Get all fields from the source component
-        FieldInfo[] fields = source.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        // Get the type of the source component
+        Type type = source.GetType();
+        // Get the immediate base type of the source component
+        Type baseType = type.BaseType;
+
+        // Copy all fields from the source type and its immediate base type
+        CopyFieldsAndProperties(source, destination, type);
+        if (baseType != null && baseType != typeof(MonoBehaviour))
+        {
+            CopyFieldsAndProperties(source, destination, baseType);
+        }
+    }
+
+    private void CopyFieldsAndProperties(Component source, Component destination, Type type)
+    {
+        // Copy fields
+        FieldInfo[] fields = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
         foreach (FieldInfo field in fields)
         {
-            field.SetValue(destination, field.GetValue(source));
+            object value = field.GetValue(source);
+            if (value != null)
+            {
+                field.SetValue(destination, value);
+            }
         }
 
-        // Get all properties from the source component
-        PropertyInfo[] properties = source.GetType().GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        // Copy properties
+        PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
         foreach (PropertyInfo property in properties)
         {
-            if (property.CanWrite)
+            if (property.CanWrite && property.GetIndexParameters().Length == 0)
             {
-                property.SetValue(destination, property.GetValue(source));
+                object value = property.GetValue(source);
+                if (value != null)
+                {
+                    property.SetValue(destination, value);
+                }
             }
         }
     }

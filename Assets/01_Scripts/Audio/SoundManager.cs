@@ -121,14 +121,19 @@ public class SoundManager : MonoBehaviour
 
         // Lightning
 
-        // Robot
+        public AudioClip electricalSittingSound;
 
-        public AudioClip robotWalkSound;
-        public AudioClip indikatorBeeping;
+        // Robot
+        
+        public AudioClip sonarBeeping;
 
         // Rocket
 
+        public AudioClip rocketBoostSound;
+
         // Rotissory
+
+        public AudioClip rotisserieCallSpinnSound;
 
         // Super Hot
 
@@ -149,9 +154,14 @@ public class SoundManager : MonoBehaviour
     public struct FarmerSFX
     {
         public AudioClip scanSound;
-        public AudioClip warnSound;
         public AudioClip chaseSpedSound;
         public AudioClip normalSpeedSound;
+
+        public AudioClip collectingPlayersEggWarningSound;
+        public AudioClip inCollectRangeSound;
+        public AudioClip eggAlmostCollectedWarningSound;
+
+        public AudioClip blockBreedingSpotSound;
     }
 
     [System.Serializable]
