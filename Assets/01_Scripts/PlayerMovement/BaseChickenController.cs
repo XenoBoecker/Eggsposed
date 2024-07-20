@@ -78,6 +78,12 @@ public class BaseChickenController : BaseCharacterController
 
     }
 
+    void Start()
+    {
+        _baseMaxFallSpeed = movement.maxFallSpeed;
+        _baseSpeed = speed;
+    }
+
     public void SitDown()
     {
         _sitting = true;
@@ -228,9 +234,8 @@ public class BaseChickenController : BaseCharacterController
         
     }
 
-    void Start()
+    internal void StopBreeding()
     {
-        _baseMaxFallSpeed = movement.maxFallSpeed;
-        _baseSpeed = speed;
+        _breeding = false;
     }
 }

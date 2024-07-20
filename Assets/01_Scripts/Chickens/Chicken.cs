@@ -172,6 +172,8 @@ public class Chicken : MonoBehaviour
 
         hasEgg = false;
 
+        bcc.StopBreeding();
+
         timeSinceEggDropped = 0;
     }
 

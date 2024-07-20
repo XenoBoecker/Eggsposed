@@ -21,6 +21,8 @@ public class EggDirectionIndicator : MonoBehaviour
 
     void Update()
     {
+        if (egg == null) return;
+
         ShowEggArrow();
 
         Vector3 playerToEgg = egg.position - playerTransform.position;
@@ -78,8 +80,8 @@ public class EggDirectionIndicator : MonoBehaviour
         float distanceEggToPlayer = Vector3.Distance(egg.position, playerTransform.position);
 
         if(distanceEggToPlayer < 1) eggArrow.transform.localScale = Vector3.one;
-        else if (distanceEggToPlayer < 20) eggArrow.transform.localScale = Vector3.one * (1 + distanceEggToPlayer / 20);
-        else eggArrow.transform.localScale = Vector3.one * 2;
+        else if (distanceEggToPlayer < 30) eggArrow.transform.localScale = Vector3.one * (1 + distanceEggToPlayer / 30) * 1.5f;
+        else eggArrow.transform.localScale = Vector3.one * 3;
 
         eggArrow.SetActive(!player.HasEgg);
     }
