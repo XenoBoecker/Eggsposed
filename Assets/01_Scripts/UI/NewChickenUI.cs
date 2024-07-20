@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class NewChickenUI : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class NewChickenUI : MonoBehaviour
     [SerializeField] Image[] oldChickenImages, newChickenImages, combinedChickenImages;
 
     [SerializeField] CanvasGroup fadeCanvasGroup;
+
+    [SerializeField] VisualEffect poofEffect;
 
     PlayerControls controls;
 
@@ -59,6 +62,7 @@ public class NewChickenUI : MonoBehaviour
 
     private void OnSpawnChicken()
     {
+        StartCoroutine(PoofEffectRoutine());
         GameManager.Instance.PauseGame();
         StartCoroutine(FadeIn(fadeCanvasGroup));
         chickenPanelPause = true;
@@ -68,6 +72,15 @@ public class NewChickenUI : MonoBehaviour
 
 
         UpdateNewChickenUI();
+    }
+
+    private IEnumerator PoofEffectRoutine()
+    {
+
+        // poofEffect.enabled = true;
+        // poofEffect.Play();
+
+        yield return null;
     }
 
     private void UpdateNewChickenUI()

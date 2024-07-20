@@ -13,6 +13,7 @@ public class ChickenSFX : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        cst = GetComponent<ChickenStateTracker>();
 
         cst.OnFinishBreeding += PlayHatchingSound;
 

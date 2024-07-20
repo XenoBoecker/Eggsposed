@@ -1,6 +1,11 @@
-﻿public class HiveMindSetup : ChickenAbilitySetup
+﻿using System;
+using UnityEngine;
+
+public class HiveMindSetup : ChickenAbilitySetup
 {
     Chicken[] allChickens;
+
+    [SerializeField] GameObject seismicWavesEffect;
     
     public override void Setup(Chicken chicken)
     {
@@ -14,6 +19,8 @@
         }
 
         bcc.OnFinishBreeding += GiveUpControl;
+
+        Instantiate(seismicWavesEffect, transform);
     }
 
     private void GiveUpControl()
