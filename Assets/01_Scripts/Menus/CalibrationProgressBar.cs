@@ -18,7 +18,6 @@ public class CalibrationProgressBar : MonoBehaviour
         calibration = FindObjectOfType<KinectCalibration>();
 
         totalCount = calibration.CalibrationQueueSize;
-        print("Total Count:" + totalCount);
     }
 
     // Update is called once per frame
@@ -26,7 +25,6 @@ public class CalibrationProgressBar : MonoBehaviour
     {
         float currentCount = calibration.CalibrationQueueCounter;
 
-        print("currentCount:" + currentCount);
         fillImage.fillAmount = currentCount / totalCount;
     }
 }

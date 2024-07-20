@@ -324,8 +324,10 @@ public class KinectCalibration : MonoBehaviour
             case CalibrationPhase.DropEgg:
                 return calibrationTexts.dropEggDescription;
             case CalibrationPhase.AmbientNoise:
+                print(calibrationTexts.ambientNoiseHeading);
                 return calibrationTexts.ambientNoiseDescription;
-            case CalibrationPhase.SetInputThresholdValues:
+            case CalibrationPhase.Call:
+                print(calibrationTexts.callDescription);
                 return calibrationTexts.callDescription;
             default:
                 return "";

@@ -188,6 +188,7 @@ public class GameManager : MonoBehaviour
         print("GAME OVER!");
 
         PlayerPrefs.SetInt("OnlyShowLeaderboard", 0);
+        previousChickenDatas.RemoveAt(0);
         GameOverInfo.SetBredChickens(previousChickenDatas);
 
         SceneManager.LoadScene(gameOverSceneName);
@@ -209,6 +210,8 @@ public static class GameOverInfo
 
     public static void SetBredChickens(List<ChickenData> chickens)
     {
+        bredChickens.Clear();
+
         foreach (ChickenData chicken in chickens)
         {
             bredChickens.Add(chicken);
