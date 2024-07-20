@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
             _nextChickenData = _allChicken[UnityEngine.Random.Range(0, _allChicken.Count)];
             iterationCount++;
         }
-        while (_nextChickenData == chickenData && _allChicken.Count != 1 && iterationCount < 100);
+        while ((_nextChickenData == chickenData || _nextChickenData == PreviousChickenData(1)) && _allChicken.Count != 1 && iterationCount < 100);
 
         _player.OnFinishBreeding += SpawnNextChicken;
 
