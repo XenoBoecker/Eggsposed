@@ -73,7 +73,7 @@ public class RotissorySetup : ChickenAbilitySetup
     float CalculateCurveScale(AnimationCurve curve, float duration)
     {
         float integral = 0f;
-        int steps = 100; // Increase for more accuracy
+        int steps = (int)maxRotSpeed; // Increase for more accuracy
         float stepSize = duration / steps;
 
         for (int i = 0; i < steps; i++)
