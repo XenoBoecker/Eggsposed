@@ -46,7 +46,7 @@ public class Chicken : MonoBehaviour
 
     public delegate int OnCheckCanCall();
     public event OnCheckCanCall OnCheckCanCallEvent;
-    public event Action OnCall;
+    public event Action<bool> OnCall;
 
     // Start is called before the first frame update
     void Start()
@@ -267,13 +267,13 @@ public class Chicken : MonoBehaviour
         else return false;
     }
 
-    internal void Call()
+    internal void Call(bool activateOnCDCalls = true)
     {
         if (CheckCanCall())
         {
             CurrentCallCooldownPercentage = 0;
-            print("Can Call");
-            OnCall?.Invoke();
+            
+            OnCall?.Invoke(activateOnCDCalls);
         }
     }
 }

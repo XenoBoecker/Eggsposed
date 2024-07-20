@@ -13,6 +13,10 @@
     {
         base.Update();
 
-        chicken.Call();
+
+        if (CanCall())
+        {
+            chicken.Call(false);
+        }
     }
 }

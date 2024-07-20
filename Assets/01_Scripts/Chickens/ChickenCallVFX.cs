@@ -25,7 +25,7 @@ public class ChickenCallVFX : MonoBehaviour
         callSpriteRenderer.enabled = false;
     }
 
-    private void PlayCallVFX()
+    private void PlayCallVFX(bool activateOnCDCalls)
     {
         StartCoroutine(AnimateCallSpriteRenderer());
     }

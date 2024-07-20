@@ -22,7 +22,7 @@ public class ChickenCallSoundManager : MonoBehaviour
         chicken.OnCall += PlayCallSound;
     }
 
-    private void PlayCallSound()
+    private void PlayCallSound(bool activateOnCDCalls)
     {
         if (chicken.BodyData == hydraChicken || chicken.HeadData == hydraChicken)
         {

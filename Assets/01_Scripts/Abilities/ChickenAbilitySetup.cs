@@ -31,7 +31,7 @@ public class ChickenAbilitySetup : MonoBehaviour
         farmer = FindObjectOfType<FarmerStateMachine>();
 
         chicken.OnCheckCanCallEvent += CanCallInt;
-        chicken.OnCall += Call;
+        chicken.OnCall += CallMaybe;
         chicken.OnGetCallCooldown += SetChickenCallCDPercentage;
 
         this.chicken = chicken;
@@ -47,6 +47,11 @@ public class ChickenAbilitySetup : MonoBehaviour
         {
             chicken.CurrentCallCooldownPercentage = percentage;
         }
+    }
+    
+    protected virtual void CallMaybe(bool activateOnCDCalls)
+    {
+        if (activateOnCDCalls || CanCall()) Call();
     }
 
     public virtual void Call()
