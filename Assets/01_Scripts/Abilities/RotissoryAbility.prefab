@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   callRange: 30
   callCD: 15
-  forceScale: 150
+  forceScale: 22
   abilityDuration: 1.2
   addForceCurve:
     serializedVersion: 2
@@ -97,12 +97,12 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 21.968468
-      outSlope: 21.968468
+      inSlope: 60.940437
+      outSlope: 60.940437
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.05013193
+      outWeight: 0.005277055
     - serializedVersion: 3
       time: 0.2
       value: 8
