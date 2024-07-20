@@ -13,9 +13,6 @@
     {
         base.Update();
 
-        foreach (ChickenAbilitySetup ability in allMyAbilities)
-        {
-            if (ability.CanCall()) ability.Call();
-        }
+        chicken.Call();
     }
 }

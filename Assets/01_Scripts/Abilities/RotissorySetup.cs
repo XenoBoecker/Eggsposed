@@ -85,11 +85,6 @@ public class RotissorySetup : ChickenAbilitySetup
         // Find the closest multiple of 360
         float closestMultiple = Mathf.Round(integral / 360f) * 360f;
 
-        print("closestMultiplE: " + closestMultiple);
-        print("Integral:" + integral);
-
-        print("CurveScale: " + closestMultiple / integral);
-
         return closestMultiple / integral;
     }
 }
