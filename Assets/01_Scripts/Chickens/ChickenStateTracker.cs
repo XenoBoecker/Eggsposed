@@ -31,6 +31,8 @@ public class ChickenStateTracker : MonoBehaviour
     public event Action OnLeanRight;
     public event Action OnStopLeaning;
 
+    public event Action OnFinishBreeding;
+
 
     bool wasWalkingLastFrame;
     bool wasJumpingLastFrame;
@@ -49,8 +51,9 @@ public class ChickenStateTracker : MonoBehaviour
         chicken = GetComponent<Chicken>();
 
         bcc.OnJump += () => OnJump?.Invoke();
+        bcc.OnFinishBreeding += () => OnFinishBreeding?.Invoke();
 
-        if(chicken.IsControlledByPlayer) PrintStates();
+        if (chicken.IsControlledByPlayer) PrintStates();
     }
 
     private void PrintStates()

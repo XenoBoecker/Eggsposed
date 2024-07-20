@@ -11,8 +11,9 @@ public class HydraSetup : ChickenAbilitySetup
     protected override void Update()
     {
         base.Update();
+        
 
-        currentChargeTime += Time.deltaTime;
+        if(currentChargeTime < callChargeCD * callCharges) currentChargeTime += Time.deltaTime;
     }
 
     public override bool CanCall()

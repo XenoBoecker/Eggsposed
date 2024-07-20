@@ -135,19 +135,9 @@ public class KinectCalibration : MonoBehaviour
 
     [SerializeField] float minJumpArmsDistance = 0.3f;
 
-    // Glide
-
-
-    [SerializeField] float glideWaitTime = 5f;
-
     // Squat
 
     [SerializeField] float squatMinValue = 0.1f;
-
-    // Hatch
-
-
-    [SerializeField] float hatchWaitTime = 5f;
 
     // Drop Egg
 

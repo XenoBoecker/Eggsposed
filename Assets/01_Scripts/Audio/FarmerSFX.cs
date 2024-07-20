@@ -42,7 +42,7 @@ public class FarmerSFX : MonoBehaviour
 
     private void PlayRunSound()
     {
-        audioSource.clip = SoundManager.Instance.farmerSFX.chaseSpedSound;
+        audioSource.clip = SoundManager.Instance.farmerSFX.chaseSpeedSound;
         audioSource.loop = true;
         audioSource.Play();
     }

@@ -15,12 +15,13 @@ public class RotissorySetup : ChickenAbilitySetup
     Transform chickenVisual;
 
     Rigidbody rb;
-
+    AudioSource audioSource;
     public override void Setup(Chicken chicken)
     {
         base.Setup(chicken);
 
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         chickenVisual = transform.GetChild(0);
 
         curveScaleValue = CalculateCurveScale(rotSpeedCurve, abilityDuration);
@@ -35,6 +36,8 @@ public class RotissorySetup : ChickenAbilitySetup
 
     IEnumerator AirDash()
     {
+        SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.rotisserieCallSpinSound, audioSource);
+
         bcc.enabled = false;
         movement.enabled = false;
 

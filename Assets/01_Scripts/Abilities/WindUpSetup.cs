@@ -23,6 +23,9 @@ public class WindUpSetup : ChickenAbilitySetup
     float currentCharge;
     public float CurrentCharge => currentCharge;
 
+    AudioSource audioSource;
+
+    ChickenStateTracker cst;
 
     public override void Setup(Chicken chicken)
     {
@@ -44,6 +47,10 @@ public class WindUpSetup : ChickenAbilitySetup
 
         WindUpRotator rotator = Instantiate(rotatorPrefab, transform);
         rotator.SetAbility(this);
+        audioSource = rotator.GetComponent<AudioSource>();
+
+        cst = GetComponent<ChickenStateTracker>();
+        cst.OnStopWalking += () => SoundManager.Instance.EndLoopingSound(audioSource);
     }
 
     private float SpeedMultiplier()
@@ -54,6 +61,8 @@ public class WindUpSetup : ChickenAbilitySetup
     private float TurnChargeIntoSpeedMultiplier()
     {
         if (charging) return 0;
+
+        if (!audioSource.isPlaying) SoundManager.Instance.StartLoopingSound(SoundManager.Instance.chickenSFX.unwindSound, audioSource);
 
         currentCharge -= Time.deltaTime * chargeLossPerSecond;
         if (currentCharge < 0) currentCharge = 0;
@@ -69,15 +78,23 @@ public class WindUpSetup : ChickenAbilitySetup
         {
             currentCharge += Time.deltaTime * chargeGainPerSecond;
         }
+        else
+        {
+            SoundManager.Instance.EndLoopingSound(audioSource);
+        }
     }
 
     private void StartCharging()
     {
         charging = true;
+
+        SoundManager.Instance.StartLoopingSound(SoundManager.Instance.chickenSFX.windupSound, audioSource);
     }
 
     private void StopCharging()
     {
         charging = false;
+
+        SoundManager.Instance.EndLoopingSound(audioSource);
     }
 }

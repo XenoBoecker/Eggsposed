@@ -38,7 +38,7 @@ public class CameraController : MonoBehaviour
         if (GameManager.Instance.KinectInputs)
         {
             kinectInputs = FindObjectOfType<KinectInputs>();
-            kinectInputs.OnSitDown += () => waitingForInput = false;
+            kinectInputs.OnSitDown += OnConfirm;
             kinectInputs.OnStandUp += SkipIntro;
         }
 
@@ -65,12 +65,22 @@ public class CameraController : MonoBehaviour
         if(!skipAnimation) StartCoroutine(StartGameFlyThrough());
     }
 
+    private void OnConfirm()
+    {
+        if (!waitingForInput) return;
+
+        SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.confirmSound, SoundManager.Instance.uiSFX.source);
+
+        waitingForInput = false;
+    }
+
     private void Update()
     {
         if (controls.Player.Jump.triggered)
         {
             SkipIntro();
         }
+        if(controls.Player.Breed.triggered) OnConfirm();
     }
 
     private void SkipIntro()

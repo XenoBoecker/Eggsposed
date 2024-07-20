@@ -56,6 +56,8 @@ public class BlockBreedingSpotsState : BaseState
         _isBlocking = true;
         blockingTimer = 0f;
 
+        SoundManager.Instance.PlaySound(SoundManager.Instance.farmerSFX.blockBreedingSpotSound, _stateMachine.Audiosource);
+
         while (blockingTimer < blockingTime)
         {
             blockingTimer += Time.deltaTime;

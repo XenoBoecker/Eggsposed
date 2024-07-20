@@ -67,7 +67,7 @@ public class ChickenAutoInput : MonoBehaviour
 
         if (farmer == null) return;
         
-        if (Vector3.Distance(transform.position, farmer.transform.position) < fleeDistance) SetState(ChickenState.Flee);
+        if (Vector3.Distance(transform.position, farmer.transform.position) < farmerDetectionRadius) SetState(ChickenState.Flee);
     }
 
     void SetState(ChickenState newState)

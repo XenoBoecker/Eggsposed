@@ -90,10 +90,27 @@ public class SoundManager : MonoBehaviour
         onSoundReload?.Invoke();
     }
 
+    internal void StartLoopingSound(AudioClip clip, AudioSource audioSource)
+    {
+        if(audioSource == null) return;
+        if(clip == null) return;
+        audioSource.clip = clip;
+        audioSource.loop = true;
+        audioSource.Play();
+    }
+
+    internal void EndLoopingSound(AudioSource audioSource)
+    {
+        audioSource?.Stop();
+    }
+
     [System.Serializable]
     public struct UISFX
     {
-        [SerializeField] AudioSource source;
+        public AudioSource source;
+        public AudioClip changeButtonSound;
+        public AudioClip confirmSound;
+        public AudioClip CountdownSound;
     }
 
     [System.Serializable]
@@ -101,17 +118,17 @@ public class SoundManager : MonoBehaviour
     {
         // SCREAMS ARE IN CHICKEN SCRIPTABLE OBJECTS!!!!!
 
-       public AudioClip[] stepSounds;
-       public AudioClip[] grassStepSounds;
-       public AudioClip[] jumpSounds;
-       public AudioClip glideSound;
+       public AudioClip[] stepSounds; //
+       public AudioClip[] grassStepSounds; //
+       public AudioClip[] jumpSounds; //
+       public AudioClip glideSound; //
        
-       public AudioClip standUpSound;
-       public AudioClip sitDownSound;
+       public AudioClip standUpSound; //
+       public AudioClip sitDownSound; //
        
-       public AudioClip dropEggSound;
-       public AudioClip pickUpEggSound;
-       public AudioClip eggHatchingSound;
+       public AudioClip dropEggSound; //
+       public AudioClip pickUpEggSound; //
+       public AudioClip eggHatchingSound; //
 
         // special chicken sounds
 
@@ -121,47 +138,47 @@ public class SoundManager : MonoBehaviour
 
         // Lightning
 
-        public AudioClip electricalSittingSound;
+        public AudioClip electricalSittingSound; //
 
         // Robot
         
-        public AudioClip sonarBeeping;
+        public AudioClip sonarBeeping; //
 
         // Rocket
 
-        public AudioClip rocketBoostSound;
+        public AudioClip rocketBoostSound; //
 
         // Rotissory
 
-        public AudioClip rotisserieCallSpinnSound;
+        public AudioClip rotisserieCallSpinSound; //
 
         // Super Hot
 
-        public AudioClip superHotSlowDown;
-        public AudioClip superHotSpeedUp;
+        public AudioClip superHotSlowDown; //
+        public AudioClip superHotSpeedUp; //
         
-        public AudioClip breedingSound;
+        public AudioClip superHotBreedingSound; //
 
         // Thicken
 
         // Wind Up
 
-        public AudioClip windupSound;
-        public AudioClip unwindSound;
+        public AudioClip windupSound; //
+        public AudioClip unwindSound; //
     }
 
     [System.Serializable]
     public struct FarmerSFX
     {
-        public AudioClip scanSound;
-        public AudioClip chaseSpedSound;
-        public AudioClip normalSpeedSound;
+        public AudioClip scanSound; //
+        public AudioClip chaseSpeedSound; //
+        public AudioClip normalSpeedSound; //
+        
+        public AudioClip collectingPlayersEggWarningSound; //
+        public AudioClip inCollectRangeSound; //
+        public AudioClip eggAlmostCollectedWarningSound; //
 
-        public AudioClip collectingPlayersEggWarningSound;
-        public AudioClip inCollectRangeSound;
-        public AudioClip eggAlmostCollectedWarningSound;
-
-        public AudioClip blockBreedingSpotSound;
+        public AudioClip blockBreedingSpotSound; //
     }
 
     [System.Serializable]

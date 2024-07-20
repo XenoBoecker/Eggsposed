@@ -12,6 +12,9 @@ public class LightningMcChickSetup : ChickenAbilitySetup
 
     float currentSpeed = 0.0f;
 
+    ChickenStateTracker cst;
+    AudioSource audioSource;
+
     public override void Setup(Chicken chicken)
     {
         base.Setup(chicken);
@@ -21,6 +24,24 @@ public class LightningMcChickSetup : ChickenAbilitySetup
         bcc.OnAddSpeedMultiplier += GetCurrentSpeedMultiplier;
         bcc.OnAddMaxSpeedMultiplier += GetCurrentSpeedMultiplier;
         movement.OnAddMaxSpeedMultiplier += GetCurrentSpeedMultiplier;
+        cst = GetComponent<ChickenStateTracker>();
+
+        cst.OnSitDown += StartSittingSound;
+        cst.OnStandUp += StopSittingSound;
+
+        audioSource = new GameObject().AddComponent<AudioSource>();
+        audioSource.transform.position = transform.position;
+        audioSource.transform.SetParent(transform);
+    }
+
+    private void StartSittingSound()
+    {
+        SoundManager.Instance.StartLoopingSound(SoundManager.Instance.chickenSFX.electricalSittingSound, audioSource);
+    }
+
+    private void StopSittingSound()
+    {
+        SoundManager.Instance.EndLoopingSound(audioSource);
     }
 
     protected override void Update()

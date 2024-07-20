@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ChickenSFX : MonoBehaviour
 {
     AudioSource audioSource;
 
-    BaseChickenController bcc;
-    Chicken chicken;
+    ChickenStateTracker cst;
 
     bool wasSittingLastFrame;
     bool hadEggLastFrame;
@@ -13,10 +13,24 @@ public class ChickenSFX : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        bcc = GetComponent<BaseChickenController>();
-        chicken = GetComponent<Chicken>();
 
-        bcc.OnFinishBreeding += PlayHatchingSound;
+        cst.OnFinishBreeding += PlayHatchingSound;
+
+        cst.OnSitDown += PlaySitDownSound;
+        cst.OnStandUp += PlayStandUpSound;
+
+        cst.OnDropEgg += PlayDropEggSound;
+        cst.OnPickupEgg += PlayPickupEggSound;
+    }
+
+    private void PlayStandUpSound()
+    {
+        SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.standUpSound, audioSource);
+    }
+
+    private void PlaySitDownSound()
+    {
+        SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.sitDownSound, audioSource);
     }
 
     private void PlayHatchingSound()
@@ -24,17 +38,13 @@ public class ChickenSFX : MonoBehaviour
         SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.eggHatchingSound, audioSource);
     }
 
-    private void Update()
+    private void PlayDropEggSound()
     {
-        if (bcc.sitting && !wasSittingLastFrame) SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.sitDownSound, audioSource);
-        else if (!bcc.sitting && wasSittingLastFrame) SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.standUpSound, audioSource);
-
-        if (chicken.HasEgg && hadEggLastFrame) SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.pickUpEggSound, audioSource);
-        else if (!chicken.HasEgg && hadEggLastFrame) SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.dropEggSound, audioSource);
-
-
-        wasSittingLastFrame = bcc.sitting;
-        hadEggLastFrame = chicken.HasEgg;
+        SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.dropEggSound, audioSource);
     }
 
+    private void PlayPickupEggSound()
+    {
+        SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.pickUpEggSound, audioSource);
+    }
 }

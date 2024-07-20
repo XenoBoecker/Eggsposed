@@ -9,13 +9,28 @@ public class FarmerIndicator : MonoBehaviour
     [SerializeField] TMP_Text farmerDistanceText;
     [SerializeField] Transform farmerPointer;
 
+    [SerializeField] float sonarSoundCD;
+    float sonarSoundTimer;
+
+    AudioSource sonarAudioSource;
+
     private void Start()
     {
         farmer = FindObjectOfType<FarmerAutoInput>().transform;
+
+        sonarAudioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
+        sonarSoundTimer += Time.deltaTime;
+
+        if (sonarSoundTimer > sonarSoundCD)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.sonarBeeping, sonarAudioSource);
+            sonarSoundTimer = 0;
+        }
+
         farmerDistanceText.text = ((int)Vector3.Distance(transform.position, farmer.position)).ToString();
 
         LookAtOnYAxis(farmerPointer, farmer);

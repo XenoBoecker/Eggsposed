@@ -8,6 +8,9 @@ public class SuperHotSetup : ChickenAbilitySetup
 
     bool passiveTimeslowDeactivated;
 
+    ChickenStateTracker cst;
+    AudioSource audioSource;
+
     public override void Setup(Chicken chicken)
     {
         base.Setup(chicken);
@@ -15,6 +18,28 @@ public class SuperHotSetup : ChickenAbilitySetup
         this.chicken = chicken;
 
         baseAngularSpeed = bcc.angularSpeed;
+
+        cst = GetComponent<ChickenStateTracker>();
+
+        cst.OnSitDown += StartSittingSound;
+        cst.OnStandUp += StopSittingSound;
+
+        audioSource = new GameObject().AddComponent<AudioSource>();
+        audioSource.transform.position = transform.position;
+        audioSource.transform.SetParent(transform);
+
+
+    }
+
+    private void StartSittingSound()
+    {
+        if (!bcc.breeding) return;
+        SoundManager.Instance.StartLoopingSound(SoundManager.Instance.chickenSFX.superHotBreedingSound, audioSource);
+    }
+
+    private void StopSittingSound()
+    {
+        SoundManager.Instance.EndLoopingSound(audioSource);
     }
 
     protected override void Update()
@@ -49,6 +74,8 @@ public class SuperHotSetup : ChickenAbilitySetup
 
         TimeManager.Instance.SetTimeScale(timeSlowFactor);
 
+        SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.superHotSlowDown);
+
         bcc.angularSpeed = baseAngularSpeed / timeSlowFactor;
     }
 
@@ -57,6 +84,8 @@ public class SuperHotSetup : ChickenAbilitySetup
         if (Time.timeScale == 0) return;
 
         TimeManager.Instance.SetTimeScale(1);
+
+        SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.superHotSpeedUp);
 
         bcc.angularSpeed = baseAngularSpeed;
     }

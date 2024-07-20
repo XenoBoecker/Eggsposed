@@ -10,6 +10,9 @@ public class CollectEggState : BaseState
     private float _minimumDistance;
     private float _collectionProgress;
 
+    bool lastFrameInCollectionRange;
+    bool lastFrameAlmostCollected;
+
     public CollectEggState(FarmerStateMachine stateMachine, float collectionTime, float collectionRange, float timeoutRange, float decayRate, float minimumDistance) : base(stateMachine)
     {
         _collectionTime = collectionTime;
@@ -73,17 +76,14 @@ public class CollectEggState : BaseState
         if (distanceToTarget > _minimumDistance) _stateMachine.MoveTo(_target.position);
         else _stateMachine.StopMoving();
 
-        if (distanceToTarget <= _minimumDistance)
+        if (distanceToTarget <= _collectionRange)
         {
             _collectionProgress += Time.deltaTime;
+
             if (_collectionProgress >= _collectionTime)
             {
                 OnCollectSucceded();
             }
-        }
-        else if (distanceToTarget <= _collectionRange)
-        {
-            _collectionProgress += Time.deltaTime;
         }
         else if (distanceToTarget <= _timeoutRange)
         {
@@ -97,6 +97,23 @@ public class CollectEggState : BaseState
                 OnCollectFailed();
             }
         }
+
+        bool almostCollected = _collectionProgress > _collectionTime * 0.75f;
+
+        if (distanceToTarget <= _collectionRange)
+        {
+            if (!lastFrameInCollectionRange) SoundManager.Instance.PlaySound(SoundManager.Instance.farmerSFX.inCollectRangeSound, _stateMachine.Audiosource);
+            if(!lastFrameAlmostCollected && almostCollected) SoundManager.Instance.PlaySound(SoundManager.Instance.farmerSFX.eggAlmostCollectedWarningSound, _stateMachine.Audiosource);
+
+
+            lastFrameInCollectionRange = true;
+            lastFrameAlmostCollected = almostCollected;
+        }
+        else
+        {
+            lastFrameInCollectionRange = false;
+        }
+
 
         // Visual representation logic can be added here
     }

@@ -8,12 +8,14 @@ public class RocketSetup : ChickenAbilitySetup
     [SerializeField] AnimationCurve addForceCurve;
 
     Rigidbody rb;
+    AudioSource audioSource;
 
     public override void Setup(Chicken chicken)
     {
         base.Setup(chicken);
 
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public override void Call()
@@ -25,6 +27,8 @@ public class RocketSetup : ChickenAbilitySetup
 
     IEnumerator AirDash()
     {
+        SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.rocketBoostSound, audioSource);
+
         bcc.enabled = false;
         movement.enabled = false;
 

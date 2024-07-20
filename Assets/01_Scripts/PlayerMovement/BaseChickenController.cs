@@ -8,9 +8,6 @@ public class BaseChickenController : BaseCharacterController
     [Header("Chicken Controller")]
 
     [SerializeField]
-    float _glideGravityMultiplier = 0.5f;
-
-    [SerializeField]
     float _glideMaxFallSpeed = 3.0f;
     bool lastFrameJump;
 
