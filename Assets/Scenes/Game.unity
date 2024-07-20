@@ -2656,7 +2656,7 @@ GameObject:
   - component: {fileID: 1045043216}
   - component: {fileID: 1045043215}
   m_Layer: 5
-  m_Name: Image
+  m_Name: degub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3192,6 +3192,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7272904736494988563, guid: 8501343530130654aac497e25d8db543,
+        type: 3}
+      propertyPath: squatDebugText
+      value: 
+      objectReference: {fileID: 293515924}
     - target: {fileID: 7799274417496748032, guid: 8501343530130654aac497e25d8db543,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5633,7 +5638,7 @@ PrefabInstance:
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
       propertyPath: kinectInputs
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}
@@ -6225,6 +6230,23 @@ PrefabInstance:
     - target: {fileID: 30568425218940949, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853193030599346050, guid: b93d2771c0fff9e4188c0d5d3fff2378,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d95742de3931d8645925d62953c1e639,
+        type: 2}
+    - target: {fileID: 1853193030599346050, guid: b93d2771c0fff9e4188c0d5d3fff2378,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4944805065819261824, guid: d95742de3931d8645925d62953c1e639,
+        type: 2}
+    - target: {fileID: 1853193030599346050, guid: b93d2771c0fff9e4188c0d5d3fff2378,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4373969928507650090, guid: b93d2771c0fff9e4188c0d5d3fff2378,
