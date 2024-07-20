@@ -15,31 +15,36 @@ public class ChickenInputManager : MonoBehaviour
 
     public void Move(Vector2 dir)
     {
-        if(chickenController == null) chickenController = GetComponent<BaseChickenController>();
+        if (Time.timeScale == 0) return;
+        if (chickenController == null) chickenController = GetComponent<BaseChickenController>();
 
         chickenController.moveDirection = new Vector3(dir.x, 0, dir.y);
     }
 
     public void Jump()
     {
+        if (Time.timeScale == 0) return;
         if (chickenController == null) chickenController = GetComponent<BaseChickenController>();
         chickenController.jump = true;
     }
 
     public void StopJump()
     {
+        if (Time.timeScale == 0) return;
         if (chickenController == null) chickenController = GetComponent<BaseChickenController>();
         chickenController.jump = false;
     }
 
     public void SitDown()
     {
+        if (Time.timeScale == 0) return;
         if (chickenController == null) chickenController = GetComponent<BaseChickenController>();
         chickenController.SitDown();
     }
 
     public void StandUp()
     {
+        if (Time.timeScale == 0) return;
         if (chickenController == null) chickenController = GetComponent<BaseChickenController>();
         
         chickenController.StandUp();
@@ -47,6 +52,7 @@ public class ChickenInputManager : MonoBehaviour
 
     public void PickupDropEgg()
     {
+        if (Time.timeScale == 0) return;
         if (chicken == null) chicken = GetComponent<Chicken>();
 
         chicken.DropEgg();
@@ -54,6 +60,7 @@ public class ChickenInputManager : MonoBehaviour
 
     public void Call()
     {
+        if (Time.timeScale == 0) return;
         if (chicken == null) chicken = GetComponent<Chicken>();
 
         chicken.Call();

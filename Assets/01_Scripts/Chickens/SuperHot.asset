@@ -13,14 +13,19 @@ MonoBehaviour:
   m_Name: SuperHot
   m_EditorClassIdentifier: 
   prefab: {fileID: 5541882822226729079, guid: ce67c2255debc7e47a5e31d5396fe37d, type: 3}
-  eggPrefab: {fileID: 4219821116601913590, guid: d29f8953a0f610646b95006457ab3f27,
+  eggVisual: {fileID: 570807820897997669, guid: 45382c4d823483b45b45a88b591216f0,
     type: 3}
-  chickenVisualHead: {fileID: 4785397024427436285, guid: 72722a4cf4d80324c81c05823943eb03,
-    type: 3}
-  chickenVisualBody: {fileID: 1064445737630549295, guid: ba9dbfc1fe635a14084c5e194a51aa89,
-    type: 3}
-  chickenVisualTail: {fileID: 3578432218920092674, guid: f0ae560d4e5f1cf4298f773390f0dafa,
-    type: 3}
+  eyeL: {fileID: 0}
+  eyeR: {fileID: 0}
+  head: {fileID: 0}
+  torso: {fileID: 0}
+  wings: {fileID: 0}
+  tail: {fileID: 0}
   abilityIcon: {fileID: 21300000, guid: 09cabbad8114d294fb65ff821f38d142, type: 3}
-  chickenSpawnScreenImage: {fileID: 0}
-  chickenSpawnScreenExplanation: 
+  callSound: {fileID: 0}
+  chickenHeadSprite: {fileID: 0}
+  chickenBodySprite: {fileID: 0}
+  chickenTailSprite: {fileID: 0}
+  chickenSpawnScreenExplanation: Time is slowed while not moving or breeding.
+  combinedNameFirstHalf: 
+  combinedNameSecondHalf: 

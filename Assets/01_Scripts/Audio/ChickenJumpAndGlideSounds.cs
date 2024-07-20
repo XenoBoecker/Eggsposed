@@ -5,36 +5,22 @@ public class ChickenJumpAndGlideSounds : MonoBehaviour
 {
     AudioSource audioSource;
 
-    BaseChickenController bcc;
-    Rigidbody rb;
-
-    bool wasJumpingLastFrame = false;
+    ChickenStateTracker cst;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        bcc = GetComponent<BaseChickenController>();
 
-        bcc.OnJump += PlayJumpSound;
+        cst = GetComponent<ChickenStateTracker>();
+        cst.OnStartGlide += () => PlayGlideSound();
+        cst.OnStopGlide += () => StopGlideSound();
+        
+        cst.OnJump += PlayJumpSound;
     }
 
     private void PlayJumpSound()
     {
         SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.jumpSounds, audioSource);
-    }
-
-    void Update()
-    {
-        if (bcc.jump)
-        {
-            if(rb.velocity.y < 0) PlayGlideSound();
-        }
-        else if (wasJumpingLastFrame)
-        {
-            StopGlideSound();
-        }
-
-        wasJumpingLastFrame = bcc.jump;
     }
 
     private void PlayGlideSound()

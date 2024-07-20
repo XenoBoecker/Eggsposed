@@ -28,6 +28,8 @@ GameObject:
   - component: {fileID: 3211397365790643504}
   - component: {fileID: 4098647458881147399}
   - component: {fileID: 1139851635114011949}
+  - component: {fileID: 9048938080814624937}
+  - component: {fileID: 3268816360499435488}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Untagged
@@ -49,8 +51,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8614615901445407662}
-  - {fileID: 6806775776762019024}
-  - {fileID: 5170453058575347228}
   - {fileID: 6109562415132229770}
   - {fileID: 5152274352206553067}
   m_Father: {fileID: 0}
@@ -147,7 +147,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &8843444543953355996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,7 +267,7 @@ MonoBehaviour:
   _isControlledByPlayer: 1
   pickupRange: 5
   withEggSpeedMultiplier: 1
-  withoutEggSpeedMultiplier: 1.4
+  withoutEggSpeedMultiplier: 1.6
   eyeL: {fileID: 2804128147191189605}
   eyeR: {fileID: 9132525431158754579}
   head: {fileID: 8983962460697159100}
@@ -604,6 +604,30 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 650f9e6f4a4a4f34daf0deb403580a16, type: 3}
   callSpriteDuration: 0.2
   totalSpriteRotations: 3
+--- !u!114 &9048938080814624937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25585136701300107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5afe25d15ee4574bb5ec0039325b39a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3268816360499435488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25585136701300107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfdf050abac78f345b37d8647eb649f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &107007228720348880
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,7 +984,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7165455128689545529}
+  m_Father: {fileID: 8614615901445407662}
   m_LocalEulerAnglesHint: {x: 73.029, y: 0, z: 0}
 --- !u!1 &1262715038520115663
 GameObject:
@@ -1757,7 +1781,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7165455128689545529}
+  m_Father: {fileID: 8614615901445407662}
   m_LocalEulerAnglesHint: {x: 73.029, y: 0, z: 0}
 --- !u!1 &6191861301065656891
 GameObject:
@@ -2499,6 +2523,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8368781268213210061}
+  - {fileID: 6806775776762019024}
+  - {fileID: 5170453058575347228}
   m_Father: {fileID: 7165455128689545529}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9134375864320426036

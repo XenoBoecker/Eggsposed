@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Chicken chickenPrefab;
 
+    [SerializeField] Egg eggPrefab;
+
     [SerializeField] ChickenData _baseChickenData;
     [SerializeField] List<ChickenData> _allChicken;
 
@@ -61,7 +63,9 @@ public class GameManager : MonoBehaviour
         else _player = Instantiate(chickenPrefab, spawnPos, _player.transform.rotation);
         _player.SetControlledByPlayer(true);
 
-        _player.SetEgg(Instantiate(chickenData.eggPrefab, spawnPos - Vector3.forward*2 + Vector3.up, Quaternion.identity).GetComponent<Egg>());
+        Egg newEgg = Instantiate(eggPrefab, spawnPos - Vector3.forward * 2 + Vector3.up, Quaternion.identity);
+        _player.SetEgg(newEgg);
+        newEgg.SetPlayersEgg(true);
 
         playerCam.SetTarget(_player.transform);
 
@@ -84,6 +88,7 @@ public class GameManager : MonoBehaviour
             }
             CopyDerivedComponent(previousChickenDatas[previousChickenDatas.Count - 1-i].prefab, _player.gameObject);
         }
+
         if (previousChickenDatas.Count == 1) _player.SetChickenVisuals(chickenData, chickenData);
         else if (previousChickenDatas.Count > 1)
         {
@@ -132,20 +137,43 @@ public class GameManager : MonoBehaviour
     // Method to copy values from one component to another
     private void CopyComponentValues(Component source, Component destination)
     {
-        // Get all fields from the source component
-        FieldInfo[] fields = source.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        // Get the type of the source component
+        Type type = source.GetType();
+        // Get the immediate base type of the source component
+        Type baseType = type.BaseType;
+
+        // Copy all fields from the source type and its immediate base type
+        CopyFieldsAndProperties(source, destination, type);
+        if (baseType != null && baseType != typeof(MonoBehaviour))
+        {
+            CopyFieldsAndProperties(source, destination, baseType);
+        }
+    }
+
+    private void CopyFieldsAndProperties(Component source, Component destination, Type type)
+    {
+        // Copy fields
+        FieldInfo[] fields = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
         foreach (FieldInfo field in fields)
         {
-            field.SetValue(destination, field.GetValue(source));
+            object value = field.GetValue(source);
+            if (value != null)
+            {
+                field.SetValue(destination, value);
+            }
         }
 
-        // Get all properties from the source component
-        PropertyInfo[] properties = source.GetType().GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        // Copy properties
+        PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
         foreach (PropertyInfo property in properties)
         {
-            if (property.CanWrite)
+            if (property.CanWrite && property.GetIndexParameters().Length == 0)
             {
-                property.SetValue(destination, property.GetValue(source));
+                object value = property.GetValue(source);
+                if (value != null)
+                {
+                    property.SetValue(destination, value);
+                }
             }
         }
     }
@@ -171,7 +199,7 @@ public class GameManager : MonoBehaviour
 
         ChickenData chickenData = _allChicken[rand];
 
-        Instantiate(chickenData.eggPrefab, position, Quaternion.identity);
+        Instantiate(chickenData.eggVisual, position, Quaternion.identity);
     }
 }
 

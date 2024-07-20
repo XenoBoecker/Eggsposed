@@ -65,6 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -4680999662550147157, guid: a14776ce3d4cb2d4e83bcc8a32e9e162, type: 3}
+    - {fileID: 7746105886089696413, guid: a14776ce3d4cb2d4e83bcc8a32e9e162, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -91,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c318c3c7c6dbc49ab0d3f9dcf1ca6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  callRange: 10
-  callCD: 5
+  callRange: 30
+  callCD: 12
   breedTimeMultiplier: 0.7
   moveSpeedMultiplier: 0.7

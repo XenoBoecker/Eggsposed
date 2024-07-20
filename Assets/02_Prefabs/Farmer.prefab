@@ -60,7 +60,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.5
+  m_Radius: 2
   m_Height: 10
   m_Direction: 1
   m_Center: {x: 0, y: 5, z: 0}
@@ -96,7 +96,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2866168531291536760}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 2.5
+  m_Radius: 2
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -231,37 +231,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetBreedingSpot: {fileID: 0}
   farmerStats:
-    baseMovementSpeed: 0
-    maxViewAngle: 0
-    hearingDistance: 0
-    detectionRange: 0
+    baseMovementSpeed: 4.5
+    maxViewAngle: 180
+    hearingDistance: 45
+    detectionRange: 40
     xRayTrackingTime: 0
-    biasDistance: 0
-    scanTurnSpeed: 0
-    scanAngle: 0
-    breedingSpotBlockDuration: 0
-    blockCooldownTime: 0
-    minimumUnblockedSpots: 0
-    collectionProgressTime: 0
-    collectionRange: 0
-    timeoutRange: 0
-    catchupMinimumDistance: 0
-    catchupSpeedMultiplier: 0
-    catchupCooldown: 0
-    catchupMaxDuration: 0
+    biasDistance: -3
+    scanTurnSpeed: 75
+    scanAngle: 90
+    breedingSpotBlockDuration: 30
+    blockCooldownTime: 60
+    minimumUnblockedSpots: 2
+    collectionProgressTime: 1.5
+    collectionRange: 8
+    timeoutRange: 20
+    catchupMinimumDistance: 8
+    catchupSpeedMultiplier: 1.6
+    catchupCooldown: 20
+    catchupMaxDuration: 6
   callReactionProbability: 1
   eyes: {fileID: 4547139001313365589}
   detectionMask:
     serializedVersion: 2
-    m_Bits: 1
-  patrolPoints: []
-  breedingSpots: []
+    m_Bits: 4294967295
+  patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  breedingSpots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   blockRange: 3
-  blockingTime: 3
+  blockingTime: 2
   collectionDecayRate: 0.5
-  minimumCollectionDistance: 2
-  disallowHidingMultiplier: 1.2
-  minSearchTime: 2
+  minimumCollectionDistance: 3
+  disallowHidingMultiplier: 1.6
+  minSearchTime: 1.5
 --- !u!1 &5180413328924805285
 GameObject:
   m_ObjectHideFlags: 0

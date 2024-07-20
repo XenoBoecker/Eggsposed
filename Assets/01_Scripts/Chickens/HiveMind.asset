@@ -13,14 +13,19 @@ MonoBehaviour:
   m_Name: HiveMind
   m_EditorClassIdentifier: 
   prefab: {fileID: 5541882822226729079, guid: fe1c29c91159a3e48890393ba4c672ca, type: 3}
-  eggPrefab: {fileID: 4219821116601913590, guid: d29f8953a0f610646b95006457ab3f27,
+  eggVisual: {fileID: 570807820897997669, guid: 45382c4d823483b45b45a88b591216f0,
     type: 3}
-  chickenVisualHead: {fileID: 5102228603206636648, guid: 4e969ae689d03b54ea0a47b4906f9bd1,
-    type: 3}
-  chickenVisualBody: {fileID: 8200676663847201341, guid: 8cd7e9e94af12634caf1765a85c645cb,
-    type: 3}
-  chickenVisualTail: {fileID: 6684023612524318044, guid: 51b28084022c122418faed237b34051a,
-    type: 3}
+  eyeL: {fileID: 0}
+  eyeR: {fileID: 0}
+  head: {fileID: 0}
+  torso: {fileID: 0}
+  wings: {fileID: 0}
+  tail: {fileID: 0}
   abilityIcon: {fileID: 21300000, guid: 70e007db85bb66d40b00867966446606, type: 3}
-  chickenSpawnScreenImage: {fileID: 0}
-  chickenSpawnScreenExplanation: 
+  callSound: {fileID: 0}
+  chickenHeadSprite: {fileID: 0}
+  chickenBodySprite: {fileID: 0}
+  chickenTailSprite: {fileID: 0}
+  chickenSpawnScreenExplanation: Other chickens mirror your actions.
+  combinedNameFirstHalf: 
+  combinedNameSecondHalf: 

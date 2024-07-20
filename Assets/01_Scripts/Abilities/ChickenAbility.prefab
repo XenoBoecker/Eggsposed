@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543000539704526259}
-  - component: {fileID: 3225673845596218625}
+  - component: {fileID: -8447059868753543776}
   m_Layer: 0
   m_Name: ChickenAbility
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3225673845596218625
+--- !u!114 &-8447059868753543776
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847853c6195ad1e4c94334c85f55a449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  callRange: 10
-  callCD: 5
+  callRange: 30
+  callCD: 12

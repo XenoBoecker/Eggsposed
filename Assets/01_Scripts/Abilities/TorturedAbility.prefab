@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b54f1e87cc22547bfa0f2dfce50083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  callRange: 10
+  callRange: 45
   callCD: 5

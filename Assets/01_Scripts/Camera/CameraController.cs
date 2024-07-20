@@ -33,10 +33,14 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.OnSpawnChicken += TargetNewChicken;
+        GameManager.Instance.OnSpawnChicken += TargetCurrentPlayerChicken;
 
-        kinectInputs = FindObjectOfType<KinectInputs>();
-        kinectInputs.OnSitDown += () => waitingForInput = false;
+        if (GameManager.Instance.KinectInputs)
+        {
+            kinectInputs = FindObjectOfType<KinectInputs>();
+            kinectInputs.OnSitDown += () => waitingForInput = false;
+            kinectInputs.OnStandUp += SkipIntro;
+        }
 
         controls = new PlayerControls();
         controls.Enable();
@@ -61,7 +65,25 @@ public class CameraController : MonoBehaviour
         if(!skipAnimation) StartCoroutine(StartGameFlyThrough());
     }
 
-    void TargetNewChicken()
+    private void Update()
+    {
+        if (controls.Player.Jump.triggered)
+        {
+            SkipIntro();
+        }
+    }
+
+    private void SkipIntro()
+    {
+        print("Skip");
+        StopAllCoroutines();
+
+        TargetCurrentPlayerChicken();
+
+        TimeManager.Instance.SetTimeScale(1);
+    }
+
+    void TargetCurrentPlayerChicken()
     {
         SetTarget(GameManager.Instance.Player.transform);
     }
@@ -79,22 +101,27 @@ public class CameraController : MonoBehaviour
 
     public IEnumerator StartGameFlyThrough()
     {
+        print("StartGameFlyThrough");
         TimeManager.Instance.Pause();
 
         transform.position = flyThroughTargets[0].transform.position;
         transform.rotation = flyThroughTargets[0].transform.rotation;
 
+
+        // first target stopping time
         float startTime = Time.realtimeSinceStartup;
         while (Time.realtimeSinceStartup < startTime + flyThroughTargets[0].stoppingTime)
         {
             yield return null;
         }
 
-
         for (int i = 0; i < flyThroughTargets.Count-1; i++)
         {
             waitingForInput = flyThroughTargets[i].waitForInput;
+            if (flyThroughTargets[i].tutorialPanel != null) flyThroughTargets[i].tutorialPanel.SetActive(true);
 
+            print("wait for input ");
+            // wait for input
             while (waitingForInput)
             {
                 if (controls.Player.Breed.triggered) waitingForInput = false;
@@ -102,11 +129,16 @@ public class CameraController : MonoBehaviour
                 yield return null;
             }
 
+            if (flyThroughTargets[i].tutorialPanel != null) flyThroughTargets[i].tutorialPanel.SetActive(false);
+
             float t = 0;
             startTime = Time.realtimeSinceStartup;
             float distanceToNextTarget = Vector3.Distance(flyThroughTargets[i].transform.position, flyThroughTargets[i + 1].transform.position);
+            
 
-
+            print("start fly through");
+            
+            // fly from current target to next
             while (t < 1)
             {
                 t = (Time.realtimeSinceStartup-startTime) * flyThroughSpeed / distanceToNextTarget;
@@ -117,6 +149,7 @@ public class CameraController : MonoBehaviour
                 yield return null;
             }
 
+            // wait at next target for next target stopping time
             startTime = Time.realtimeSinceStartup;
             while (Time.realtimeSinceStartup < startTime + flyThroughTargets[i+1].stoppingTime)
             {

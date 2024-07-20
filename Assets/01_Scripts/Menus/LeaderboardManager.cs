@@ -21,6 +21,7 @@ public class LeaderboardManager : MonoBehaviour
     List<PlayerScoreShow> playerScoreShowObjects = new List<PlayerScoreShow>();
 
     public Leaderboard leaderboard;
+    public GameObject leaderBoardInputObject;
     public TMP_InputField playerNameInput;
     public Button submitScoreButton;
     public Button resetScoresButton;
@@ -67,16 +68,18 @@ public class LeaderboardManager : MonoBehaviour
         leaderboardPanel.SetActive(true);
         if (PlayerPrefs.GetInt("OnlyShowLeaderboard") == 1)
         {
-            playerNameInput.gameObject.SetActive(false);
+            leaderBoardInputObject.SetActive(false);
             submitScoreButton.gameObject.SetActive(false);
+            menuButton.gameObject.SetActive(true);
         }
     }
 
     public void GameOver(int score)
     {
         lastGameScore = score;
-        playerNameInput.gameObject.SetActive(true);
+        leaderBoardInputObject.SetActive(true);
         submitScoreButton.gameObject.SetActive(true);
+        menuButton.gameObject.SetActive(false);
     }
 
     public void OnSubmitScore()
@@ -85,8 +88,9 @@ public class LeaderboardManager : MonoBehaviour
         if (!string.IsNullOrEmpty(playerName))
         {
             leaderboard.AddPlayer(playerName, lastGameScore);
-            playerNameInput.gameObject.SetActive(false);
+            leaderBoardInputObject.SetActive(false);
             submitScoreButton.gameObject.SetActive(false);
+            menuButton.gameObject.SetActive(true);
             UpdateLeaderboardUI();
         }
     }

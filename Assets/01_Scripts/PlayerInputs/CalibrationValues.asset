@@ -12,32 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5b0038a3030144cb3e2ba2df4cd8f9, type: 3}
   m_Name: CalibrationValues
   m_EditorClassIdentifier: 
-  standHeadMeanPosition: {x: 0, y: 0, z: 0}
-  standPelvisMeanPosition: {x: 0, y: 0, z: 0}
-  standLeftHandMeanPosition: {x: 0, y: 0, z: 0}
-  standRightHandMeanPosition: {x: 0, y: 0, z: 0}
-  standHandsMeanPosition: {x: 0, y: 0, z: 0}
   squatDistancePercentageToTriggerInput: 0.5
-  squatHeadMeanPosition: {x: 0, y: 0, z: 0}
-  squatPelvisMeanPosition: {x: 0, y: 0, z: 0}
   moveDistancePercentageToTriggerInput: 0.5
-  headForwardMeanPosition: {x: 0, y: 0, z: 0}
   rotateDistancePercentageToTriggerInput: 0.7
-  headLeftMeanPosition: {x: 0, y: 0, z: 0}
-  headRightMeanPosition: {x: 0, y: 0, z: 0}
   jumpDistancePercentageToTriggerInput: 0.5
-  jumpLeftHandMeanPosition: {x: 0, y: 0, z: 0}
-  jumpRightHandMeanPosition: {x: 0, y: 0, z: 0}
-  jumpHandsMeanPosition: {x: 0, y: 0, z: 0}
   stretchDistancePercentageToTriggerInput: 0.5
-  leftHandStretchPosition: {x: 0, y: 0, z: 0}
-  rightHandStretchPosition: {x: 0, y: 0, z: 0}
-  loundessPercentageToTriggerInput: 0.5
-  ambientNoiseMaxValue: 0
-  callNoiseMeanValue: 0
+  loundessPercentageToTriggerInput: 0.4
   squatDistance: 0
   headForwardDistance: 0
   headSidewaysDistance: 0
   jumpDistance: 0
   handsStretchDistance: 0
   ambientToCallNoiseDifference: 0
+  standHeadMeanPosition: {x: 0, y: 1, z: 0}
+  standPelvisMeanPosition: {x: 0, y: 1, z: 0}
+  standLeftHandMeanPosition: {x: 0, y: 1, z: 0}
+  standRightHandMeanPosition: {x: 0, y: 1, z: 0}
+  standHandsMeanPosition: {x: 0, y: 1, z: 0}
+  squatHeadMeanPosition: {x: 0, y: 0, z: 0}
+  squatPelvisMeanPosition: {x: 0, y: 0, z: 0}
+  headForwardMeanPosition: {x: 0, y: 0, z: 0}
+  headLeftMeanPosition: {x: 0, y: 0, z: 0}
+  headRightMeanPosition: {x: 0, y: 0, z: 0}
+  jumpLeftHandMeanPosition: {x: 0, y: 0, z: 0}
+  jumpRightHandMeanPosition: {x: 0, y: 0, z: 0}
+  jumpHandsMeanPosition: {x: 0, y: 0, z: 0}
+  leftHandStretchPosition: {x: 0, y: 0, z: 0}
+  rightHandStretchPosition: {x: 0, y: 0, z: 0}
+  ambientNoiseMaxValue: 0.0000074195864
+  callNoiseMeanValue: 0

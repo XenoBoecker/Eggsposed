@@ -56,7 +56,7 @@ public class ChaseState : BaseState
 
         if (_target == GameManager.Instance.Player.transform)
         {
-            SoundManager.Instance.PlaySound(SoundManager.Instance.farmerSFX.warnSound, _stateMachine.Audiosource);
+            SoundManager.Instance.PlaySound(SoundManager.Instance.farmerSFX.collectingPlayersEggWarningSound, _stateMachine.Audiosource);
         }
     }
 

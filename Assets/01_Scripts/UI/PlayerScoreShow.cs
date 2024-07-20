@@ -6,7 +6,7 @@ public class PlayerScoreShow : MonoBehaviour
 
     [SerializeField] NumberDisplay rankDisplay, scoreDisplay;
 
-    [SerializeField] TMP_Text playerNameText;
+    [SerializeField] TMP_Text playerNameText, scoreText;
 
 
     [SerializeField] int baseDashCount = 15;
@@ -14,7 +14,8 @@ public class PlayerScoreShow : MonoBehaviour
     internal void SetPlayer(Leaderboard.Player player, int rank)
     {
         playerNameText.text = player.name + GetNeededDashes(player.name);
-        scoreDisplay.SetNumber(player.score);
+        // scoreDisplay.SetNumber(player.score);
+        scoreText.text = player.score.ToString();
 
         rankDisplay.SetNumber(rank);
     }
