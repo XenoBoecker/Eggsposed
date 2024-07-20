@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,11 @@ public class NumberDisplay : MonoBehaviour
 
     private List<GameObject> digitObjects = new List<GameObject>();
 
+
+    [SerializeField] List<int> specialNumbers = new List<int>();
+
+    [SerializeField] List<Sprite> specialNumberSprites = new List<Sprite>();
+
     public void SetNumber(int number)
     {
         // Clear existing digits
@@ -17,6 +23,17 @@ public class NumberDisplay : MonoBehaviour
             Destroy(digitObject);
         }
         digitObjects.Clear();
+
+        if (specialNumbers.Contains(number))
+        {// Instantiate a new digit object
+            GameObject digitObject = Instantiate(digitPrefab, transform);
+
+            // Set the sprite to the corresponding digit sprite
+            Image image = digitObject.GetComponent<Image>();
+            image.sprite = specialNumberSprites[specialNumbers.IndexOf(number)];
+            return;
+        }
+
 
         // Convert number to string to process each digit
         string numberStr = number.ToString();
@@ -32,6 +49,7 @@ public class NumberDisplay : MonoBehaviour
 
             // Set the sprite to the corresponding digit sprite
             Image image = digitObject.GetComponent<Image>();
+
             image.sprite = numberSprites[digit];
 
             // Add to list of digit objects
