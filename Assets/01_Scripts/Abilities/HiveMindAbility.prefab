@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   callRange: 30
   callCD: 12
-  seismicWavesEffect: {fileID: 3304015778431897160, guid: a98cf4fcb135726478ef21822d117337,
+  seismicWavesEffect: {fileID: 5047823504229077886, guid: 5f2503d634809ec47bda398f7da1660e,
     type: 3}

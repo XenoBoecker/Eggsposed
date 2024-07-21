@@ -740,6 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdf050abac78f345b37d8647eb649f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  callAnimTime: 1
 --- !u!1 &37021556735519262
 GameObject:
   m_ObjectHideFlags: 0
@@ -4442,7 +4443,6 @@ MonoBehaviour:
   farmerDistanceText: {fileID: 5692911739861433559}
   farmerHeadPointer: {fileID: 8269704400637990881}
   farmerBodyPointer: {fileID: 2383639722755363889}
-  sonarSoundCD: 0
 --- !u!82 &1892084723231339611
 AudioSource:
   m_ObjectHideFlags: 0
