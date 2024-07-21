@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HiveMind
   m_EditorClassIdentifier: 
   prefab: {fileID: 5541882822226729079, guid: fe1c29c91159a3e48890393ba4c672ca, type: 3}
-  eggVisual: {fileID: 570807820897997669, guid: 45382c4d823483b45b45a88b591216f0,
+  eggVisual: {fileID: 918317583917290368, guid: 0f5e023c85d5787458c4ade2438ef24c,
     type: 3}
   eyeL: {fileID: 0}
   eyeR: {fileID: 0}

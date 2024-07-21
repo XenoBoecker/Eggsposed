@@ -15,9 +15,7 @@ public class WindUpSetup : ChickenAbilitySetup
     [SerializeField] float maxSpeedMultiplier = 3;
 
     [SerializeField] AnimationCurve SpeedPerCharge;
-
-
-    [SerializeField] WindUpRotator rotatorPrefab;
+    
     bool charging;
 
     float currentCharge;
@@ -45,7 +43,7 @@ public class WindUpSetup : ChickenAbilitySetup
         
         bcc.OnAddSpeedMultiplier += TurnChargeIntoSpeedMultiplier;
 
-        WindUpRotator rotator = Instantiate(rotatorPrefab, transform);
+        WindUpRotator rotator = GetComponentInChildren<WindUpRotator>(true);
         rotator.SetAbility(this);
         audioSource = rotator.GetComponent<AudioSource>();
 

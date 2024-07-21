@@ -19,16 +19,23 @@ public class ChickenAnimationController : MonoBehaviour
         cst.OnStopFalling += () => anim.SetBool("Falling", false);
         cst.OnStartWalking += () => anim.SetBool("Walking", true);
         cst.OnStopWalking += () => anim.SetBool("Walking", false);
-        cst.OnStandUp += () => anim.SetBool("Sitting", false);
         cst.OnSitDown += () => anim.SetBool("Sitting", true);
+        cst.OnStandUp += () => anim.SetBool("Sitting", false);
+
+        cst.OnStartGlide += () => anim.SetTrigger("OnStartGliding");
+        cst.OnStartFalling += () => anim.SetTrigger("OnStartFalling");
+        cst.OnStartWalking += () => anim.SetTrigger("OnStartWalking");
+        cst.OnSitDown += () => anim.SetTrigger("OnSitDown");
     }
 
     // Update is called once per frame
     void Update()
     {
-        anim.SetInteger("IdleIndex", Random.Range(0, 4));
+        anim.SetInteger("IdleIndex", Random.Range(0, 5));
         anim.SetInteger("BreedIndex", Random.Range(0, 2));
 
         anim.SetFloat("LeaningDirection", cst.LeaningDirection);
+
+        anim.SetBool("WalkClosedWings", Random.Range(0, 2) == 0);
     }
 }

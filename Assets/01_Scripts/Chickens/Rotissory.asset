@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rotissory
   m_EditorClassIdentifier: 
   prefab: {fileID: 5541882822226729079, guid: 05259aa9c918b434fa25ecee12317f38, type: 3}
-  eggVisual: {fileID: 570807820897997669, guid: 45382c4d823483b45b45a88b591216f0,
+  eggVisual: {fileID: 1393042455650120694, guid: 7cc09bad5ba477e48970114aa58f4629,
     type: 3}
   eyeL: {fileID: 0}
   eyeR: {fileID: 0}

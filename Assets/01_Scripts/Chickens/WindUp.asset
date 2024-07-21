@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WindUp
   m_EditorClassIdentifier: 
   prefab: {fileID: 8972487873215855097, guid: bc7beb7d84a2a424c85904c6d8aaccd9, type: 3}
-  eggVisual: {fileID: 570807820897997669, guid: 45382c4d823483b45b45a88b591216f0,
+  eggVisual: {fileID: 7247231576825109533, guid: 74e3aff5900d7304981f847b637987c7,
     type: 3}
   eyeL: {fileID: 0}
   eyeR: {fileID: 0}

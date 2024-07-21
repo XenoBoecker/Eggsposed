@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lightning
   m_EditorClassIdentifier: 
   prefab: {fileID: 8158019855574468723, guid: a14776ce3d4cb2d4e83bcc8a32e9e162, type: 3}
-  eggVisual: {fileID: 570807820897997669, guid: 45382c4d823483b45b45a88b591216f0,
+  eggVisual: {fileID: 1353279052478200702, guid: 9db1cdda5948d0c4f8fb72d4b8d1deaf,
     type: 3}
   eyeL: {fileID: 2757915644197419741, guid: 7030b080bf1e1c244b77532ba0a8ab8b, type: 3}
   eyeR: {fileID: 4042642092092160233, guid: a135974e8602b6f4a958e7aaf1764b83, type: 3}

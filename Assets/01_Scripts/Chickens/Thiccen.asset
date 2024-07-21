@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Thiccen
   m_EditorClassIdentifier: 
   prefab: {fileID: 2948464008182862203, guid: ba8f8452424410048a3c18da20c1a05c, type: 3}
-  eggVisual: {fileID: 570807820897997669, guid: 45382c4d823483b45b45a88b591216f0,
+  eggVisual: {fileID: 5884125680100388966, guid: a01580577deff9b4b8cb809f1dd9964f,
     type: 3}
   eyeL: {fileID: 0}
   eyeR: {fileID: 0}
