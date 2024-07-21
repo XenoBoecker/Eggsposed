@@ -277,6 +277,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3580371126574077842, guid: a402dae5e334d7e4c825b2b04e392aa0,
         type: 3}
+      propertyPath: tutorialText
+      value: Make sure to avoid and outwit the Farm'O'Bot who is hungry for eggs.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580371126574077842, guid: a402dae5e334d7e4c825b2b04e392aa0,
+        type: 3}
       propertyPath: waitForInput
       value: 1
       objectReference: {fileID: 0}
@@ -630,6 +635,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3580371126574077842, guid: a402dae5e334d7e4c825b2b04e392aa0,
         type: 3}
+      propertyPath: tutorialText
+      value: Use the conveniently placed nests to breed and continue your genetic
+        lineage.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580371126574077842, guid: a402dae5e334d7e4c825b2b04e392aa0,
+        type: 3}
       propertyPath: waitForInput
       value: 1
       objectReference: {fileID: 0}
@@ -784,6 +795,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3580371126574077842, guid: a402dae5e334d7e4c825b2b04e392aa0,
         type: 3}
+      propertyPath: tutorialText
+      value: Your goal is to successfully hatch your egg.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580371126574077842, guid: a402dae5e334d7e4c825b2b04e392aa0,
+        type: 3}
       propertyPath: waitForInput
       value: 1
       objectReference: {fileID: 0}
@@ -925,6 +941,11 @@ PrefabInstance:
         type: 3}
       propertyPath: stoppingTime
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580371126574077842, guid: a402dae5e334d7e4c825b2b04e392aa0,
+        type: 3}
+      propertyPath: tutorialText
+      value: You are a chicken on a farm.
       objectReference: {fileID: 0}
     - target: {fileID: 3580371126574077842, guid: a402dae5e334d7e4c825b2b04e392aa0,
         type: 3}
