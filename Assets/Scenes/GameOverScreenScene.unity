@@ -1720,7 +1720,9 @@ MonoBehaviour:
   delayBeforeCamAnimation: 1
   eggDropRange: 0.6
   testEggCount: 1
-  testChicken: {fileID: 11400000, guid: 36c84c9f97cd9ad4986ad0acf22577ac, type: 2}
+  testChicken: {fileID: 11400000, guid: 724745a58d3cc0b438f3b811225b1c35, type: 2}
+  eggPrefab: {fileID: 2633285025225748080, guid: d29f8953a0f610646b95006457ab3f27,
+    type: 3}
 --- !u!4 &1201386711
 Transform:
   m_ObjectHideFlags: 0

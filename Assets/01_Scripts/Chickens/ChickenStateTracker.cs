@@ -33,6 +33,8 @@ public class ChickenStateTracker : MonoBehaviour
 
     public event Action OnFinishBreeding;
 
+    public event Action<bool> OnCall;
+
     public float LeaningDirection => bcc.moveDirection.x;
 
 
@@ -51,6 +53,8 @@ public class ChickenStateTracker : MonoBehaviour
         movement = GetComponent<CharacterMovement>();
         bcc = GetComponent<BaseChickenController>();
         chicken = GetComponent<Chicken>();
+
+        chicken.OnCall += (bool v) => OnCall?.Invoke(v);
 
         bcc.OnJump += () => OnJump?.Invoke();
         bcc.OnFinishBreeding += () => OnFinishBreeding?.Invoke();
