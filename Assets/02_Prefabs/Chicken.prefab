@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 1139851635114011949}
   - component: {fileID: 661599417593698870}
   - component: {fileID: 4455760472489790822}
+  - component: {fileID: 8592502167362255684}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Untagged
@@ -742,6 +743,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   callAnimTime: 1
+--- !u!114 &8592502167362255684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25585136701300107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d22a1fbaf9649e4f87079cb2811b735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftTrail: {fileID: 4533455217351282856}
+  rightTrail: {fileID: 7700921733593976850}
 --- !u!1 &37021556735519262
 GameObject:
   m_ObjectHideFlags: 0
