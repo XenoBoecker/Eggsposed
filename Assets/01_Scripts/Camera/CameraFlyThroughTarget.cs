@@ -11,7 +11,7 @@ public class CameraFlyThroughTarget : MonoBehaviour
 
     public bool waitForInput;
 
-    public GameObject tutorialPanel;
+    public string tutorialText;
 
     private void OnDrawGizmos()
     {

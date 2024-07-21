@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -14,6 +15,12 @@ public class CameraController : MonoBehaviour
     [SerializeField] float flyThroughSpeed = 1.0f;
     [SerializeField] AnimationCurve flySpeedCurve;
 
+
+    [SerializeField] CanvasGroup tutorialPanel;
+
+    [SerializeField] TMP_Text tutorialText;
+
+    [SerializeField] float tutorialFadeDuration = 0.2f;
 
     [SerializeField] NumberDisplay countdownDisplay;
 
@@ -29,7 +36,9 @@ public class CameraController : MonoBehaviour
     KinectInputs kinectInputs;
     bool waitingForInput;
     PlayerControls controls;
-        
+
+    Transform target;
+    bool flyThroughActive;
 
     private void Start()
     {
@@ -81,6 +90,28 @@ public class CameraController : MonoBehaviour
             SkipIntro();
         }
         if(controls.Player.Breed.triggered) OnConfirm();
+
+        if (!flyThroughActive) AdjustPositionToNotClip();
+    }
+
+    private void AdjustPositionToNotClip()
+    {
+        // stay at the same height above the target, cast ray in that height backwards from the target, if hit anything move camera to hit point and a bit further
+
+        Vector3 rayStartPosition = target.position + new Vector3(0, offset.y, 0);
+        Vector3 direction = -target.transform.forward;
+
+        RaycastHit hit;
+        if (Physics.Raycast(rayStartPosition, direction, out hit, Mathf.Abs(offset.z)))
+        {
+            transform.position = hit.point - direction * 0.1f;
+        }
+        else
+        {
+            transform.position = rayStartPosition - direction * offset.z;
+        }
+
+        
     }
 
     private void SkipIntro()
@@ -107,10 +138,13 @@ public class CameraController : MonoBehaviour
         transform.rotation = target.rotation;
 
         transform.Rotate(Vector3.right, 20);
+
+        this.target = target;
     }
 
     public IEnumerator StartGameFlyThrough()
     {
+        flyThroughActive = true;
         print("StartGameFlyThrough");
         TimeManager.Instance.Pause();
 
@@ -128,7 +162,11 @@ public class CameraController : MonoBehaviour
         for (int i = 0; i < flyThroughTargets.Count-1; i++)
         {
             waitingForInput = flyThroughTargets[i].waitForInput;
-            if (flyThroughTargets[i].tutorialPanel != null) flyThroughTargets[i].tutorialPanel.SetActive(true);
+            if (flyThroughTargets[i].tutorialText != "")
+            {
+                tutorialText.text = flyThroughTargets[i].tutorialText;
+                StartCoroutine(FadeIn(tutorialPanel));
+            }
 
             print("wait for input ");
             // wait for input
@@ -139,7 +177,10 @@ public class CameraController : MonoBehaviour
                 yield return null;
             }
 
-            if (flyThroughTargets[i].tutorialPanel != null) flyThroughTargets[i].tutorialPanel.SetActive(false);
+            if (flyThroughTargets[i].tutorialText != "")
+            {
+                StartCoroutine(FadeOut(tutorialPanel));
+            }
 
             float t = 0;
             startTime = Time.realtimeSinceStartup;
@@ -174,6 +215,36 @@ public class CameraController : MonoBehaviour
 
     }
 
+    IEnumerator FadeIn(CanvasGroup canvasGroup)
+    {
+        canvasGroup.gameObject.SetActive(true);
+        for (float i = 0; i < tutorialFadeDuration; i += Time.unscaledDeltaTime)
+        {
+            float percentage = i / tutorialFadeDuration;
+
+            canvasGroup.alpha = percentage;
+
+            yield return null;
+        }
+
+        canvasGroup.alpha = 1;
+    }
+
+    IEnumerator FadeOut(CanvasGroup canvasGroup)
+    {
+        for (float i = 0; i < tutorialFadeDuration; i += Time.unscaledDeltaTime)
+        {
+            float percentage = i / tutorialFadeDuration;
+
+            canvasGroup.alpha = 1 - percentage;
+
+            yield return null;
+        }
+
+        canvasGroup.alpha = 0;
+        canvasGroup.gameObject.SetActive(false);
+    }
+
     private IEnumerator GameStartCountdown()
     {
         SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.countdownSound);
@@ -190,5 +261,7 @@ public class CameraController : MonoBehaviour
         countdownDisplay.gameObject.SetActive(false);
 
         TimeManager.Instance.SetTimeScale(1);
+
+        flyThroughActive = false;
     }
 }
