@@ -13,7 +13,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] Transform flyThroughTargetParent;
     List<CameraFlyThroughTarget> flyThroughTargets = new List<CameraFlyThroughTarget>();
     [SerializeField] float flyThroughSpeed = 1.0f;
-    [SerializeField] AnimationCurve flySpeedCurve;
 
 
 

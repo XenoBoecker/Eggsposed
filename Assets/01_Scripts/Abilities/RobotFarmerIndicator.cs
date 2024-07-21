@@ -14,8 +14,8 @@ public class RobotFarmerIndicator : MonoBehaviour
     [SerializeField] TMP_Text farmerDistanceText;
     [SerializeField] Transform farmerHeadPointer, farmerBodyPointer;
 
-    [SerializeField] float sonarSoundCD;
-    float sonarSoundTimer;
+    // [SerializeField] float sonarSoundCD;
+    // float sonarSoundTimer;
 
     AudioSource sonarAudioSource;
 
@@ -28,13 +28,13 @@ public class RobotFarmerIndicator : MonoBehaviour
 
     private void Update()
     {
-        sonarSoundTimer += Time.deltaTime;
-
-        if (sonarSoundTimer > sonarSoundCD)
-        {
-            SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.sonarBeeping, sonarAudioSource);
-            sonarSoundTimer = 0;
-        }
+        //sonarSoundTimer += Time.deltaTime;
+        //
+        //if (sonarSoundTimer > sonarSoundCD)
+        //{
+        //    SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.sonarBeeping, sonarAudioSource);
+        //    sonarSoundTimer = 0;
+        //}
 
         farmerDistanceText.text = ((int)Vector3.Distance(transform.position, farmer.position)).ToString();
 
@@ -56,6 +56,7 @@ public class RobotFarmerIndicator : MonoBehaviour
 
     public void Activate()
     {
+        SoundManager.Instance.StartLoopingSound(SoundManager.Instance.chickenSFX.sonarBeeping, sonarAudioSource);
         distanceCanvas.SetActive(true);
     }
 }

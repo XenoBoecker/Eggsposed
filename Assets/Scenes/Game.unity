@@ -553,6 +553,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: TankChciken
       objectReference: {fileID: 0}
+    - target: {fileID: 305281505131367522, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 673663715571989996, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 798859180839742456, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1902837851461061361, guid: c677be8ddf1434a44a95262881e373c5,
         type: 3}
       propertyPath: aiControlComponents.Array.data[2]
@@ -568,6 +583,11 @@ PrefabInstance:
       propertyPath: playerControlComponents.Array.data[3]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1933802546508328369, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2505073338334265783, guid: c677be8ddf1434a44a95262881e373c5,
         type: 3}
       propertyPath: m_Enabled
@@ -578,6 +598,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5566647812887549358, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6372b891708bf8348850bb149121157d, type: 2}
     - target: {fileID: 7165455128689545529, guid: c677be8ddf1434a44a95262881e373c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -627,6 +652,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913002701353172532, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413982104891007085, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2145837982883020667, guid: c677be8ddf1434a44a95262881e373c5, type: 3}
@@ -1385,6 +1420,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: TankChicken
       objectReference: {fileID: 0}
+    - target: {fileID: 305281505131367522, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 673663715571989996, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 798859180839742456, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1902837851461061361, guid: c677be8ddf1434a44a95262881e373c5,
         type: 3}
       propertyPath: aiControlComponents.Array.data[2]
@@ -1400,6 +1450,11 @@ PrefabInstance:
       propertyPath: playerControlComponents.Array.data[3]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1933802546508328369, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2505073338334265783, guid: c677be8ddf1434a44a95262881e373c5,
         type: 3}
       propertyPath: m_Enabled
@@ -1410,6 +1465,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5566647812887549358, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6372b891708bf8348850bb149121157d, type: 2}
     - target: {fileID: 7165455128689545529, guid: c677be8ddf1434a44a95262881e373c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1459,6 +1519,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -63.216
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913002701353172532, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413982104891007085, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2145837982883020667, guid: c677be8ddf1434a44a95262881e373c5, type: 3}
@@ -3021,7 +3091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1045043214
 RectTransform:
   m_ObjectHideFlags: 0
