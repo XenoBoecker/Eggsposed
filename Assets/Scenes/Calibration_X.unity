@@ -814,12 +814,47 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 305281505131367522, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 673663715571989996, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 798859180839742456, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321926872036382334, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1902837851461061361, guid: c677be8ddf1434a44a95262881e373c5,
         type: 3}
       propertyPath: playerControlComponents.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1933802546508328369, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636546461361341485, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3961564759560718402, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4455760472489790822, guid: c677be8ddf1434a44a95262881e373c5,
         type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -890,6 +925,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 8e4fbdc357118484a9e6bfa07dd89796,
         type: 2}
+    - target: {fileID: 7913002701353172532, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413982104891007085, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8661628317894715477, guid: c677be8ddf1434a44a95262881e373c5,
         type: 3}
       propertyPath: _speed

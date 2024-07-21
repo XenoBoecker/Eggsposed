@@ -44,7 +44,7 @@ public class LeaderboardManager : MonoBehaviour
         UpdateLeaderboardUI();
 
         submitScoreButton.onClick.AddListener(OnSubmitScore);
-        resetScoresButton.onClick.AddListener(ResetScores);
+        if(resetScoresButton != null) resetScoresButton.onClick.AddListener(ResetScores);
         menuButton.onClick.AddListener(GoToMenu);
 
         GameOver(GameOverInfo.GetBredChickens().Count);
