@@ -63,8 +63,8 @@ public class FarmerAnimations : MonoBehaviour
     {
         while (charging)
         {
-            rotateBodyForCharge.localRotation = Quaternion.Euler(0, 0, Mathf.LerpAngle(rotateBodyForCharge.localRotation.eulerAngles.z, bodyRotationForCharge, Time.deltaTime * intoChargeRotSpeed));
-            rotateArmsForCharge.localRotation = Quaternion.Euler(0, 0, Mathf.LerpAngle(rotateArmsForCharge.localRotation.eulerAngles.z, armsRotationForCharge, Time.deltaTime * intoChargeRotSpeed));
+            rotateBodyForCharge.localRotation = Quaternion.Euler(Mathf.LerpAngle(rotateBodyForCharge.localRotation.eulerAngles.z, bodyRotationForCharge, Time.deltaTime * intoChargeRotSpeed), 0, 0);
+            rotateArmsForCharge.localRotation = Quaternion.Euler(Mathf.LerpAngle(rotateArmsForCharge.localRotation.eulerAngles.z, armsRotationForCharge, Time.deltaTime * intoChargeRotSpeed),0, 0);
             yield return null;
         }
 

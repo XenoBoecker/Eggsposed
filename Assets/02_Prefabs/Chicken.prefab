@@ -194,6 +194,7 @@ MonoBehaviour:
   _useRootMotion: 0
   _rootMotionRotation: 0
   _glideMaxFallSpeed: 3
+  _glideSpeedMultiplier: 2
   _breedTime: 5
 --- !u!114 &8343700215415963554
 MonoBehaviour:

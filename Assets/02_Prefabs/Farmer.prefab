@@ -709,8 +709,8 @@ MonoBehaviour:
   rotateArmsForCharge: {fileID: 7764551247784549750}
   bodyRotationForCharge: -60
   armsRotationForCharge: 55
-  intoChargeRotSpeed: 1
-  outOfChargeRotSpeed: 1
+  intoChargeRotSpeed: 5
+  outOfChargeRotSpeed: 5
   wheelRotSpeed: 360
 --- !u!1 &4459273438467217598
 GameObject:

@@ -9,7 +9,8 @@ public class BaseChickenController : BaseCharacterController
 
     [SerializeField]
     float _glideMaxFallSpeed = 3.0f;
-    bool lastFrameJump;
+
+    [SerializeField] float _glideSpeedMultiplier = 2f;
 
     [SerializeField]
     float _breedTime = 20f;
@@ -22,6 +23,10 @@ public class BaseChickenController : BaseCharacterController
 
     float _baseMaxFallSpeed;
     float _baseSpeed;
+    float currentGlideSpeedMultiplier = 1f;
+    
+    bool wasGlidingLastFrame;
+    bool lastFrameJump;
 
     public event Action OnFinishBreeding;
     public event Action OnSitDown;
@@ -69,11 +74,30 @@ public class BaseChickenController : BaseCharacterController
         {
             //movement.glideGravityMultiplier = _glideGravityMultiplier;
             movement.maxFallSpeed = _glideMaxFallSpeed;
+            currentGlideSpeedMultiplier = _glideSpeedMultiplier;
+
+            if (!wasGlidingLastFrame)
+            {
+                speed *= currentGlideSpeedMultiplier;
+                movement.maxLateralSpeed *= currentGlideSpeedMultiplier;
+            }
+
+            wasGlidingLastFrame = true;
         }
         else
         {
+            if (wasGlidingLastFrame)
+            {
+                speed /= currentGlideSpeedMultiplier;
+                movement.maxLateralSpeed /= currentGlideSpeedMultiplier;
+            }
+            
             //movement.glideGravityMultiplier = 1.0f;
             movement.maxFallSpeed = _baseMaxFallSpeed;
+            currentGlideSpeedMultiplier = 1f;
+
+
+            wasGlidingLastFrame = false;
         }
 
     }
@@ -132,6 +156,7 @@ public class BaseChickenController : BaseCharacterController
         {
             speedMultiplier *= OnAddSpeedMultiplier();
         }
+        speedMultiplier *= currentGlideSpeedMultiplier;
 
         return transform.forward * speed * speedMultiplier * Mathf.Max(0, moveDirection.z);
     }
@@ -153,6 +178,7 @@ public class BaseChickenController : BaseCharacterController
         {
             speed *= OnAddMaxSpeedMultiplier();
         }
+        speed *= currentGlideSpeedMultiplier;
 
         // If using root motion and root motion is being applied (eg: grounded),
         // move without acceleration / deceleration, let the animation takes full control
