@@ -20,6 +20,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] GameObject skipTutorial;
     [SerializeField] CanvasGroup tutorialPanel;
 
+    [SerializeField] GameObject bottomLeftUI, bottomRightUI;
+
     [SerializeField] TMP_Text tutorialText;
 
     [SerializeField] float tutorialFadeDuration = 0.2f;
@@ -131,6 +133,9 @@ public class CameraController : MonoBehaviour
 
         tutorialPanel.gameObject.SetActive(false);
 
+        bottomLeftUI.SetActive(true);
+        bottomRightUI.SetActive(true);
+
         TargetCurrentPlayerChicken();
 
         TimeManager.Instance.SetTimeScale(1);
@@ -157,6 +162,9 @@ public class CameraController : MonoBehaviour
     public IEnumerator StartGameFlyThrough()
     {
         skipTutorial.SetActive(true);
+        bottomLeftUI.SetActive(false);
+        bottomRightUI.SetActive(false);
+
         flyThroughActive = true;
         print("StartGameFlyThrough");
         TimeManager.Instance.Pause();

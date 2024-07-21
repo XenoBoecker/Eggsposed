@@ -314,6 +314,9 @@ AnimatorTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: WalkClosedWings
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: Walking
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 6549020883937828797}
   m_DstState: {fileID: 0}
   m_Solo: 0
@@ -622,7 +625,10 @@ AnimatorTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Gliding
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: -1882156223646325051}
   m_DstState: {fileID: 0}
   m_Solo: 0
@@ -2684,6 +2690,9 @@ AnimatorTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: WalkClosedWings
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: Walking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: -7423845076481108405}
   m_DstState: {fileID: 0}
