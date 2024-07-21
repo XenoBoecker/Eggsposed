@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6491220106614453277}
   - component: {fileID: 8969696687335447634}
   - component: {fileID: 549366241584555620}
+  - component: {fileID: 5065969676033023284}
   m_Layer: 0
   m_Name: Farmer
   m_TagString: Untagged
@@ -273,6 +274,23 @@ MonoBehaviour:
   minimumCollectionDistance: 3
   disallowHidingMultiplier: 1.6
   minSearchTime: 1.5
+--- !u!114 &5065969676033023284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2866168531291536760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 092680456883ebe4f8925d13db86757c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  wheelsFront: {fileID: 30621621364774735}
+  wheelBack: {fileID: 7499744643273651898}
+  wheelsTop: {fileID: 2589434452466850155}
+  wheelRotSpeed: 360
 --- !u!1 &5180413328924805285
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +487,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cf8892db53355942ac2fd0fd64de4c4, type: 3}
+--- !u!4 &30621621364774735 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1677453340823676373, guid: 5cf8892db53355942ac2fd0fd64de4c4,
+    type: 3}
+  m_PrefabInstance: {fileID: 7553863828359695716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2589434452466850155 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5420983525580772367, guid: 5cf8892db53355942ac2fd0fd64de4c4,
+    type: 3}
+  m_PrefabInstance: {fileID: 7553863828359695716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7499744643273651898 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -9169112075610637346, guid: 5cf8892db53355942ac2fd0fd64de4c4,
+    type: 3}
+  m_PrefabInstance: {fileID: 7553863828359695716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8024867375489755791 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5cf8892db53355942ac2fd0fd64de4c4,
