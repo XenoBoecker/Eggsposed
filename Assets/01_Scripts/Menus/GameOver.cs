@@ -18,6 +18,9 @@ public class GameOver : MonoBehaviour
     [SerializeField] int testEggCount = 10;
     [SerializeField] ChickenData testChicken;
 
+
+    [SerializeField] Egg eggPrefab;
+
     List<ChickenData> bredChicken = new List<ChickenData>();
 
     public event Action OnShowLeaderboard;
@@ -64,7 +67,7 @@ public class GameOver : MonoBehaviour
         yield return new WaitForSeconds(delayBeforeEggsDrop);
         foreach (ChickenData chicken in bredChicken)
         {
-            SpawnChickenEgg(chicken.eggVisual);
+            SpawnChickenEgg(chicken);
 
             yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 0.8f));
         }
@@ -88,15 +91,19 @@ public class GameOver : MonoBehaviour
         OnShowLeaderboard?.Invoke();
     }
 
-    private void SpawnChickenEgg(GameObject eggVisual)
+    private void SpawnChickenEgg(ChickenData data)
     {
-        GameObject egg = Instantiate(eggVisual, new Vector3(UnityEngine.Random.Range(-eggDropRange, eggDropRange), 8, UnityEngine.Random.Range(-eggDropRange, eggDropRange)), Quaternion.identity);
+        print(data.name);
+
+        Egg egg = Instantiate(eggPrefab, new Vector3(UnityEngine.Random.Range(-eggDropRange, eggDropRange), 8, UnityEngine.Random.Range(-eggDropRange, eggDropRange)), Quaternion.identity);
+
+        egg.SetEggVisual(data);
 
         if (egg.GetComponent<Rigidbody>() == null)
         {
-            egg.AddComponent<Rigidbody>();
+            egg.gameObject.AddComponent<Rigidbody>();
         }
-        if (egg.GetComponent<Collider>() == null) egg.AddComponent<SphereCollider>();
+        if (egg.GetComponent<Collider>() == null) egg.gameObject.AddComponent<SphereCollider>();
     }
 
     void OnlyShowLeaderboard()
