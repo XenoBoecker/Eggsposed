@@ -73,7 +73,13 @@ public class CameraController : MonoBehaviour
 
         flyThroughTargets.Add(playerTargetTransform);
 
-        if(!skipAnimation) StartCoroutine(StartGameFlyThrough());
+        if (skipAnimation)
+        {
+            SkipIntro();
+        }
+        else {
+            StartCoroutine(StartGameFlyThrough());
+        }
     }
 
     private void OnConfirm()
@@ -122,6 +128,8 @@ public class CameraController : MonoBehaviour
         StopAllCoroutines();
 
         skipTutorial.SetActive(false);
+
+        tutorialPanel.gameObject.SetActive(false);
 
         TargetCurrentPlayerChicken();
 
