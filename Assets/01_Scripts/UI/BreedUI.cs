@@ -23,6 +23,8 @@ public class BreedUI : MonoBehaviour
 
     bool isBreeding = false;
 
+    int lastFrameEggIndex;
+
     private void Start()
     {
         playerChickenController = GameManager.Instance.Player.GetComponent<BaseChickenController>();
@@ -68,6 +70,13 @@ public class BreedUI : MonoBehaviour
     {
         int index = Mathf.FloorToInt(playerChickenController.breedPercentage * (crackingEggSprites.Length - 1));
         crackingEggImage.sprite = crackingEggSprites[index];
+
+        if (index != lastFrameEggIndex)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.eggCrackSounds);
+        }
+
+        lastFrameEggIndex = index;
     }
 
     IEnumerator FadeInEgg()

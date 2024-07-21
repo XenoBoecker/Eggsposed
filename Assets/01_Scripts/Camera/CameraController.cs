@@ -176,7 +176,7 @@ public class CameraController : MonoBehaviour
 
     private IEnumerator GameStartCountdown()
     {
-        SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.CountdownSound);
+        SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.countdownSound);
 
         for (float i = 0; i < countdownDuration; i+= Time.unscaledDeltaTime)
         {

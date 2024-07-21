@@ -70,7 +70,7 @@ public class NewChickenUI : MonoBehaviour
         canContinue = false;
         StartCoroutine(WaitTimer());
 
-        SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.HatchNewChickenRiff);
+        SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.hatchNewChickenRiff);
 
         UpdateNewChickenUI();
     }

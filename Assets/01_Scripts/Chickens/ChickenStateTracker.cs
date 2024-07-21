@@ -33,6 +33,8 @@ public class ChickenStateTracker : MonoBehaviour
 
     public event Action OnFinishBreeding;
 
+    public float LeaningDirection => bcc.moveDirection.x;
+
 
     bool wasWalkingLastFrame;
     bool wasJumpingLastFrame;

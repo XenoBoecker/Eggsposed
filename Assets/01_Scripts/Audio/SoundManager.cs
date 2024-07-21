@@ -109,8 +109,9 @@ public class SoundManager : MonoBehaviour
     {
         public AudioClip changeButtonSound;
         public AudioClip confirmSound;
-        public AudioClip CountdownSound;
-        public AudioClip HatchNewChickenRiff;
+        public AudioClip countdownSound;
+        public AudioClip hatchNewChickenRiff;
+        public AudioClip[] eggCrackSounds;
     }
 
     [System.Serializable]
