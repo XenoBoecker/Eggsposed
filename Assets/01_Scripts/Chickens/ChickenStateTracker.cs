@@ -59,7 +59,7 @@ public class ChickenStateTracker : MonoBehaviour
         bcc.OnJump += () => OnJump?.Invoke();
         bcc.OnFinishBreeding += () => OnFinishBreeding?.Invoke();
 
-        if (chicken.IsControlledByPlayer) PrintStates();
+        // if (chicken.IsControlledByPlayer) PrintStates();
     }
 
     private void PrintStates()
