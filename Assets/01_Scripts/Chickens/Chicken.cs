@@ -1,8 +1,16 @@
 using ECM.Components;
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
+[System.Serializable]
+public class ChickenVisualParts
+{
+    public ChickenData data;
+
+    public GameObject[] headObjectsToEnable, bodyObjectsToEnable, tailObjectsToEnable;
+}
 public class Chicken : MonoBehaviour
 {
     [SerializeField] bool _isControlledByPlayer;
@@ -16,6 +24,10 @@ public class Chicken : MonoBehaviour
 
     [SerializeField] Behaviour[] playerControlComponents;
     [SerializeField] Behaviour[] aiControlComponents;
+
+
+    [SerializeField]
+    ChickenVisualParts[] chickenVisualParts;
 
 
     [SerializeField] Transform eggCarryPosition, eggDropPosition;
@@ -201,53 +213,85 @@ public class Chicken : MonoBehaviour
 
     internal void SetChickenVisuals(ChickenData headTailChickenData, ChickenData bodyChickenData)
     {
+        ChickenVisualParts headTailParts = null, bodyParts = null;
+
+        foreach (ChickenVisualParts parts in chickenVisualParts)
+        {
+            if (parts.data == headTailChickenData)
+            {
+                headTailParts = parts;
+            }
+            if(parts.data == bodyChickenData)
+            {
+                bodyParts = parts;
+            }
+        }
+
         headData = headTailChickenData;
         bodyData = bodyChickenData;
 
-        if (headTailChickenData.head == null) return; // TODO: only because visuals are not set up yet
-        if (bodyChickenData.head == null) return;
+        EnableParts(headTailParts.headObjectsToEnable);
+
+        EnableParts(bodyParts.bodyObjectsToEnable);
+
+        if (headTailParts.tailObjectsToEnable.Length == 0) EnableParts(bodyParts.tailObjectsToEnable);
+        else if (bodyParts.tailObjectsToEnable.Length == 0) { }
+        else EnableParts(headTailParts.tailObjectsToEnable);
 
 
-        SetHeadVisuals(headTailChickenData);
 
-        SetBodyVisual(bodyChickenData);
+        //SetHeadVisuals(headTailChickenData);
+        //
+        //SetBodyVisual(bodyChickenData);
+        //
+        //if (headTailChickenData.tail == null)
+        //{
+        //    SetTailVisuals(bodyChickenData);
+        //}else if(bodyChickenData.tail == null)
+        //{
+        //    // no tail (only for tortured chicken body)
+        //}
+        //else
+        //{
+        //    SetTailVisuals(headTailChickenData);
+        //}
+    }
 
-        if (headTailChickenData.tail == null)
+    private void EnableParts(GameObject[] partsToEnable)
+    {
+        foreach (GameObject part in partsToEnable)
         {
-            SetTailVisuals(bodyChickenData);
+            part.SetActive(true);
         }
-        else
-        {
-            SetTailVisuals(headTailChickenData);
-        }
+
     }
 
-    private void SetHeadVisuals(ChickenData data)
-    {
-        SetMeshAndMaterial(eyeL, data.eyeL);
-
-        SetMeshAndMaterial(eyeR, data.eyeR);
-
-        SetMeshAndMaterial(head, data.head);
-    }
-
-    private void SetBodyVisual(ChickenData data)
-    {
-        SetMeshAndMaterial(torso, data.torso);
-
-        SetMeshAndMaterial(wings, data.wings);
-    }
-
-    private void SetTailVisuals(ChickenData data)
-    {
-        SetMeshAndMaterial(tail, data.tail);
-    }
-
-    void SetMeshAndMaterial(SkinnedMeshRenderer bodyPart, SkinnedMeshRenderer newBodyPart)
-    {
-        bodyPart.sharedMesh = newBodyPart.sharedMesh;
-        bodyPart.sharedMaterial = newBodyPart.sharedMaterial;
-    }
+    // private void SetHeadVisuals(ChickenData data)
+    // {
+    //     SetMeshAndMaterial(eyeL, data.eyeL);
+    // 
+    //     SetMeshAndMaterial(eyeR, data.eyeR);
+    // 
+    //     SetMeshAndMaterial(head, data.head);
+    // }
+    // 
+    // private void SetBodyVisual(ChickenData data)
+    // {
+    //     SetMeshAndMaterial(torso, data.torso);
+    // 
+    //     SetMeshAndMaterial(wings, data.wings);
+    // }
+    // 
+    // private void SetTailVisuals(ChickenData data)
+    // {
+    //     SetMeshAndMaterial(tail, data.tail);
+    // }
+    // 
+    // void SetMeshAndMaterial(SkinnedMeshRenderer bodyPart, SkinnedMeshRenderer newBodyPart)
+    // {
+    //     bodyPart.sharedMesh = newBodyPart.sharedMesh;
+    //     bodyPart.sharedMaterial = newBodyPart.sharedMaterial;
+    // }
 
     internal float GetCallCDPercentage()
     {
