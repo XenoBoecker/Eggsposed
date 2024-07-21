@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rocket
   m_EditorClassIdentifier: 
   prefab: {fileID: 5541882822226729079, guid: d4e057720c3225943bc58d1c1bfead71, type: 3}
-  eggVisual: {fileID: 570807820897997669, guid: 45382c4d823483b45b45a88b591216f0,
+  eggVisual: {fileID: 4830000059411958744, guid: 427c22c79529e6c40818eb0243860af5,
     type: 3}
   eyeL: {fileID: 0}
   eyeR: {fileID: 0}

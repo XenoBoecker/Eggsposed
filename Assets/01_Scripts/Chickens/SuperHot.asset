@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SuperHot
   m_EditorClassIdentifier: 
   prefab: {fileID: 5541882822226729079, guid: ce67c2255debc7e47a5e31d5396fe37d, type: 3}
-  eggVisual: {fileID: 570807820897997669, guid: 45382c4d823483b45b45a88b591216f0,
+  eggVisual: {fileID: 3190086152766380056, guid: 6af3ddbc0c228d64d8fb294d850a4e3a,
     type: 3}
   eyeL: {fileID: 0}
   eyeR: {fileID: 0}
