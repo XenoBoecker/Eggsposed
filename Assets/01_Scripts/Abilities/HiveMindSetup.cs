@@ -5,7 +5,7 @@ public class HiveMindSetup : ChickenAbilitySetup
 {
     Chicken[] allChickens;
 
-    [SerializeField] GameObject seismicWavesEffect;
+    //[SerializeField] GameObject seismicWavesEffect;
     
     public override void Setup(Chicken chicken)
     {
@@ -19,8 +19,10 @@ public class HiveMindSetup : ChickenAbilitySetup
         }
 
         bcc.OnFinishBreeding += GiveUpControl;
+        
+        GetComponentInChildren<HiveMindVFXTag>(true).gameObject.SetActive(true);
 
-        Instantiate(seismicWavesEffect, transform);
+        //Instantiate(seismicWavesEffect, transform);
     }
 
     private void GiveUpControl()

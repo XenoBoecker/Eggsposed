@@ -144,7 +144,7 @@ public class FarmerStateMachine : MonoBehaviour
 
     public void ChangeState(BaseState newState)
     {
-        if(_currentState != null) print("Change State from " + _currentState.ToString() + " to " + newState.ToString());
+        // if(_currentState != null) print("Change State from " + _currentState.ToString() + " to " + newState.ToString());
 
         _currentState?.Exit();
         _currentState = newState;

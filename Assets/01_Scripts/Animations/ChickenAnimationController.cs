@@ -41,7 +41,6 @@ public class ChickenAnimationController : MonoBehaviour
     {
         if (timeSinceLastCall < callAnimTime)
         {
-            print("CALLED");
             timeSinceLastCall += Time.deltaTime;
             anim.SetBool("Calling", true);
         }else{
@@ -58,7 +57,6 @@ public class ChickenAnimationController : MonoBehaviour
 
     void OnCall(bool v)
     {
-        print("CALL");
         anim.SetTrigger("Call");
         timeSinceLastCall = 0;
     }
