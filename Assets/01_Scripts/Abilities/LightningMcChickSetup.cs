@@ -8,6 +8,9 @@ public class LightningMcChickSetup : ChickenAbilitySetup
 
     [SerializeField] float resetAccelerationThreshold = 0.7f;
 
+
+    [SerializeField] GameObject lightningEffects;
+
     float currentSpeedMultiplier = 1.0f;
 
     float currentSpeed = 0.0f;
@@ -32,6 +35,8 @@ public class LightningMcChickSetup : ChickenAbilitySetup
         audioSource = new GameObject().AddComponent<AudioSource>();
         audioSource.transform.position = transform.position;
         audioSource.transform.SetParent(transform);
+
+        Instantiate(lightningEffects, transform);
     }
 
     private void StartSittingSound()

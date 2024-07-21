@@ -95,3 +95,5 @@ MonoBehaviour:
   callCD: 12
   accelerationPerSecond: 0.2
   resetAccelerationThreshold: 0.7
+  lightningEffects: {fileID: 8241923499223493900, guid: 85a70dbe8f759204bbeb44a48247b554,
+    type: 3}

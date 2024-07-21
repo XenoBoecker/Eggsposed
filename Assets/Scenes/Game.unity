@@ -499,6 +499,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4455760472489790822, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7165455128689545529, guid: c677be8ddf1434a44a95262881e373c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1399,6 +1404,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2505073338334265783, guid: c677be8ddf1434a44a95262881e373c5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4455760472489790822, guid: c677be8ddf1434a44a95262881e373c5,
         type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -6006,6 +6016,7 @@ GameObject:
   - component: {fileID: 1839556748}
   - component: {fileID: 1839556750}
   - component: {fileID: 1839556749}
+  - component: {fileID: 1839556751}
   m_Layer: 5
   m_Name: TutorialSlides
   m_TagString: Untagged
@@ -6073,6 +6084,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839556747}
   m_CullTransparentMesh: 1
+--- !u!225 &1839556751
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839556747}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1852832290
 GameObject:
   m_ObjectHideFlags: 0
@@ -7689,9 +7712,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9173799365891603159, guid: f6bd1b5ec3042744287d1e6ef7ff7b00,
         type: 3}
+      propertyPath: skipTutorial
+      value: 
+      objectReference: {fileID: 1278270655}
+    - target: {fileID: 9173799365891603159, guid: f6bd1b5ec3042744287d1e6ef7ff7b00,
+        type: 3}
+      propertyPath: tutorialText
+      value: 
+      objectReference: {fileID: 896453332}
+    - target: {fileID: 9173799365891603159, guid: f6bd1b5ec3042744287d1e6ef7ff7b00,
+        type: 3}
       propertyPath: skipAnimation
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9173799365891603159, guid: f6bd1b5ec3042744287d1e6ef7ff7b00,
+        type: 3}
+      propertyPath: tutorialPanel
+      value: 
+      objectReference: {fileID: 1839556751}
     - target: {fileID: 9173799365891603159, guid: f6bd1b5ec3042744287d1e6ef7ff7b00,
         type: 3}
       propertyPath: flyThroughSpeed
