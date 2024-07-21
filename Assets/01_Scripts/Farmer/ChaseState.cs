@@ -79,6 +79,12 @@ public class ChaseState : BaseState
 
         if (distanceToTarget <= _stateMachine.CollectionRange) OnEnterCollectionRange();
 
+        // if (_stateMachine.HasReachedDestination())
+        // {
+        //     _stateMachine.NoHiding = true;
+        //     OnEnterCollectionRange();
+        // }
+
         _stateMachine.MoveTo(_target.position);
     }
 

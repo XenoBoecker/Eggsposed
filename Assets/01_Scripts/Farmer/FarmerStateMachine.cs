@@ -80,6 +80,8 @@ public class FarmerStateMachine : MonoBehaviour
     public float HearingDistance => farmerStats.hearingDistance;
     
     float currentSpeedMultiplier = 1;
+    internal bool NoHiding;
+
     public void SetSpeedMultiplier(float multiplier)
     {
         currentSpeedMultiplier = multiplier;

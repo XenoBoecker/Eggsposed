@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,15 +7,20 @@ public class FarmerAnimations : MonoBehaviour
 {
     FarmerStateMachine _stateMachine;
 
-
-    [SerializeField] Animator anim;
-
-
     [SerializeField] Transform wheelsFront, wheelBack, wheelsTop;
+
+    [SerializeField] Transform rotateBodyForCharge, rotateArmsForCharge;
+
+    [SerializeField] float bodyRotationForCharge, armsRotationForCharge;
+
+    [SerializeField] float intoChargeRotSpeed = 1.0f;
+
+    [SerializeField] float outOfChargeRotSpeed = 1f;
 
     [SerializeField] float wheelRotSpeed = 360f;
 
     bool charging;
+    bool lastFrameCharging;
 
     // Start is called before the first frame update
     void Start()
@@ -28,18 +34,49 @@ public class FarmerAnimations : MonoBehaviour
         if (!_stateMachine.HasReachedDestination())
         {
             RollWheels(_stateMachine.CurrentSpeedMultiplier);
-
-            if (anim == null) return;
+            
             if (_stateMachine.CurrentSpeedMultiplier > 1)
             {
                 charging = true;
-                anim.SetBool("Charging", true);
+                if (!lastFrameCharging)
+                {
+                    StopAllCoroutines();
+                    StartCoroutine(RotateBodyAndArmsForCharge());
+                }
             }
             else
             {
                 charging = false;
-                anim.SetBool("Charging", false);
+
+                if (lastFrameCharging)
+                {
+                    StopAllCoroutines();
+                    StartCoroutine(RotateBodyAndArmsOutOfCharge());
+                }
             }
+        }
+
+        lastFrameCharging = charging;
+    }
+
+    private IEnumerator RotateBodyAndArmsForCharge()
+    {
+        while (charging)
+        {
+            rotateBodyForCharge.localRotation = Quaternion.Euler(0, 0, Mathf.LerpAngle(rotateBodyForCharge.localRotation.eulerAngles.z, bodyRotationForCharge, Time.deltaTime * intoChargeRotSpeed));
+            rotateArmsForCharge.localRotation = Quaternion.Euler(0, 0, Mathf.LerpAngle(rotateArmsForCharge.localRotation.eulerAngles.z, armsRotationForCharge, Time.deltaTime * intoChargeRotSpeed));
+            yield return null;
+        }
+
+    }
+
+    private IEnumerator RotateBodyAndArmsOutOfCharge()
+    {
+        while (!charging)
+        {
+            rotateBodyForCharge.localRotation = Quaternion.Euler(Mathf.LerpAngle(rotateBodyForCharge.localRotation.eulerAngles.z, 0, Time.deltaTime * outOfChargeRotSpeed), 0, 0);
+            rotateArmsForCharge.localRotation = Quaternion.Euler(Mathf.LerpAngle(rotateArmsForCharge.localRotation.eulerAngles.z, 0, Time.deltaTime * outOfChargeRotSpeed), 0, 0);
+            yield return null;
         }
     }
 
