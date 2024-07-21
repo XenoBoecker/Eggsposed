@@ -55,16 +55,20 @@ public class ChickenCallSoundManager : MonoBehaviour
 
     private IEnumerator PlaySoundWithDelay(AudioClip clip, float pitch, float delay)
     {
-        yield return new WaitForSeconds(delay);
+        if (clip != null)
+        {
+            yield return new WaitForSeconds(delay);
 
-        // Create a new GameObject for each sound to avoid overlapping issues
-        GameObject soundObject = new GameObject("SoundObject");
-        AudioSource audioSource = soundObject.AddComponent<AudioSource>();
-        audioSource.clip = clip;
-        audioSource.pitch = pitch;
-        audioSource.Play();
+            // Create a new GameObject for each sound to avoid overlapping issues
+            GameObject soundObject = new GameObject("SoundObject");
+            AudioSource audioSource = soundObject.AddComponent<AudioSource>();
+            audioSource.clip = clip;
+            audioSource.pitch = pitch;
+            audioSource.Play();
 
-        // Destroy the GameObject after the clip has finished playing
-        Destroy(soundObject, clip.length / pitch);
+            // Destroy the GameObject after the clip has finished playing
+            Destroy(soundObject, clip.length / pitch);
+        }
+
     }
 }

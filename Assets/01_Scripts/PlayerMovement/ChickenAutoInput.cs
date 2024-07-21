@@ -9,6 +9,8 @@ public enum ChickenState
 
 public class ChickenAutoInput : MonoBehaviour
 {
+    Chicken chicken;
+
     [SerializeField] float randomPositionRange = 10;
 
     [SerializeField] float farmerDetectionRadius = 10;
@@ -41,8 +43,8 @@ public class ChickenAutoInput : MonoBehaviour
     {
         if (lastEggLayingTime == 0) lastEggLayingTime = Time.time;
         if (lastCallTime == 0) lastCallTime = Time.time;
-        
 
+        chicken = GetComponent<Chicken>();
         farmer = FindObjectOfType<FarmerAutoInput>();
 
         agentController = GetComponent<ChickenAgentController>();
@@ -102,7 +104,7 @@ public class ChickenAutoInput : MonoBehaviour
         if (Time.time - lastEggLayingTime > layingEggCD)
         {
             lastEggLayingTime = Time.time;
-            GameManager.Instance.SpawnEgg(GetComponent<Chicken>().EggDropPosition.position);
+            GameManager.Instance.SpawnEgg(chicken.EggDropPosition.position);
         }
     }
 
@@ -111,7 +113,7 @@ public class ChickenAutoInput : MonoBehaviour
         if (Time.time - lastCallTime > callCD)
         {
             lastCallTime = Time.time;
-            GetComponent<Chicken>().Call();
+            chicken.Call();
         }
     }
 }

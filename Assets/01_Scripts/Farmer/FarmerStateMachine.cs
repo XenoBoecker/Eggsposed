@@ -117,6 +117,8 @@ public class FarmerStateMachine : MonoBehaviour
 
     private void Start()
     {
+        breedingSpots = new List<BreedingSpot>(FindObjectsOfType<BreedingSpot>());
+
         StartCoroutine(RefreshEggListRoutine());
         RefreshPlayerChicken();
         GameManager.Instance.OnSpawnChicken += RefreshPlayerChicken;

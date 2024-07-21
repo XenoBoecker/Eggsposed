@@ -95,7 +95,11 @@ public class ChickenStepSounds : MonoBehaviour
 
     private void ShuffleStepSounds()
     {
-        if (grassStepSounds == null) print("no grass step sounds");
+        if (grassStepSounds == null)
+        {
+            print("no grass step sounds");
+            grassStepSounds = SoundManager.Instance.chickenSFX.grassStepSounds;
+        }
         if (walkingOnGrass) currentStepSounds = new List<AudioClip>(grassStepSounds);
         else currentStepSounds = new List<AudioClip>(stepSounds);
         
