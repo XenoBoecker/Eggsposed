@@ -61,10 +61,12 @@ public class FarmerAnimations : MonoBehaviour
 
     private IEnumerator RotateBodyAndArmsForCharge()
     {
+        
+
         while (charging)
         {
-            rotateBodyForCharge.localRotation = Quaternion.Euler(Mathf.LerpAngle(rotateBodyForCharge.localRotation.eulerAngles.z, bodyRotationForCharge, Time.deltaTime * intoChargeRotSpeed), 0, 0);
-            rotateArmsForCharge.localRotation = Quaternion.Euler(Mathf.LerpAngle(rotateArmsForCharge.localRotation.eulerAngles.z, armsRotationForCharge, Time.deltaTime * intoChargeRotSpeed),0, 0);
+            rotateBodyForCharge.localRotation = Quaternion.Euler(Mathf.LerpAngle(rotateBodyForCharge.localRotation.eulerAngles.x, bodyRotationForCharge, Time.deltaTime * intoChargeRotSpeed), 0, 0);
+            rotateArmsForCharge.localRotation = Quaternion.Euler(Mathf.LerpAngle(rotateArmsForCharge.localRotation.eulerAngles.x, armsRotationForCharge, Time.deltaTime * intoChargeRotSpeed),0, 0);
             yield return null;
         }
 
@@ -74,8 +76,8 @@ public class FarmerAnimations : MonoBehaviour
     {
         while (!charging)
         {
-            rotateBodyForCharge.localRotation = Quaternion.Euler(Mathf.LerpAngle(rotateBodyForCharge.localRotation.eulerAngles.z, 0, Time.deltaTime * outOfChargeRotSpeed), 0, 0);
-            rotateArmsForCharge.localRotation = Quaternion.Euler(Mathf.LerpAngle(rotateArmsForCharge.localRotation.eulerAngles.z, 0, Time.deltaTime * outOfChargeRotSpeed), 0, 0);
+            rotateBodyForCharge.localRotation = Quaternion.Euler(Mathf.LerpAngle(rotateBodyForCharge.localRotation.eulerAngles.x, 0, Time.deltaTime * outOfChargeRotSpeed), 0, 0);
+            rotateArmsForCharge.localRotation = Quaternion.Euler(Mathf.LerpAngle(rotateArmsForCharge.localRotation.eulerAngles.x, 0, Time.deltaTime * outOfChargeRotSpeed), 0, 0);
             yield return null;
         }
     }
