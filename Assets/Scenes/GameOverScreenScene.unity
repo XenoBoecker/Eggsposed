@@ -1719,10 +1719,11 @@ MonoBehaviour:
   delayBeforeEggsDrop: 1
   delayBeforeCamAnimation: 1
   eggDropRange: 0.6
-  testEggCount: 0
+  testEggCount: 5
   testChicken: {fileID: 11400000, guid: 724745a58d3cc0b438f3b811225b1c35, type: 2}
   eggPrefab: {fileID: 2633285025225748080, guid: d29f8953a0f610646b95006457ab3f27,
     type: 3}
+  eggScaleMultiplier: 2
 --- !u!4 &1201386711
 Transform:
   m_ObjectHideFlags: 0

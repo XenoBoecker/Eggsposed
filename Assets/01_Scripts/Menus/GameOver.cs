@@ -22,6 +22,8 @@ public class GameOver : MonoBehaviour
 
     [SerializeField] Egg eggPrefab;
 
+    [SerializeField] float eggScaleMultiplier = 1.5f;
+
     List<ChickenData> bredChicken = new List<ChickenData>();
 
     public event Action OnShowLeaderboard;
@@ -103,7 +105,9 @@ public class GameOver : MonoBehaviour
         if (egg.GetComponent<Rigidbody>() == null)
         {
             egg.gameObject.AddComponent<Rigidbody>();
-        }        
+        }
+        
+        egg.transform.localScale = Vector3.one * eggScaleMultiplier;
     }
 
     void OnlyShowLeaderboard()
