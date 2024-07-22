@@ -23,7 +23,7 @@ public class EggDirectionIndicator : MonoBehaviour
     {
         if (egg == null) return;
 
-        ShowEggArrow();
+        // ShowEggArrow();
 
         Vector3 playerToEgg = egg.position - playerTransform.position;
         playerToEgg.y = 0; // Ignore y difference
@@ -71,6 +71,13 @@ public class EggDirectionIndicator : MonoBehaviour
         float verticalPosition = Mathf.Clamp(yDifference, -maxHeight, maxHeight);
 
         directionIndicatorUI.anchoredPosition = new Vector3(directionIndicatorUI.anchoredPosition.x, verticalPosition, 0);
+    }
+
+    private void LateUpdate()
+    {
+        if (egg == null) return;
+        
+        ShowEggArrow();
     }
 
     private void ShowEggArrow()

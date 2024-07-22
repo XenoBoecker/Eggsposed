@@ -113,10 +113,12 @@ public class CameraController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(rayStartPosition, direction, out hit, Mathf.Abs(offset.z)))
         {
+            print("ray hit");
             transform.position = hit.point - direction * 0.1f;
         }
         else
         {
+            print("Ray no hit");
             transform.position = rayStartPosition - direction * offset.z;
         }
 
@@ -134,6 +136,8 @@ public class CameraController : MonoBehaviour
 
         bottomLeftUI.SetActive(true);
         bottomRightUI.SetActive(true);
+
+        flyThroughActive = false;
 
         TargetCurrentPlayerChicken();
 

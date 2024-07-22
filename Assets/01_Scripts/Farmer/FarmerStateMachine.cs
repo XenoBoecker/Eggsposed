@@ -66,7 +66,7 @@ public class FarmerStateMachine : MonoBehaviour
 
     [SerializeField] float blockingTime = 3f;
 
-    public float CollectionRange => farmerStats.collectionRange;
+    public float CollectionRange => farmerStats.collectionRange + noHidingExtraRange;
     [Header("Collect Egg State")]
     [SerializeField] private float collectionDecayRate = 0.5f;
     [SerializeField] private float minimumCollectionDistance = 2f;
@@ -74,13 +74,16 @@ public class FarmerStateMachine : MonoBehaviour
     [Header("Chase State")]
     [SerializeField] private float disallowHidingMultiplier = 1.2f;
 
+    [SerializeField] bool canActivateNoHidingIncreaseRange = true;
+
     [Header("Search State")]
     [SerializeField] private float minSearchTime = 2f;
 
     public float HearingDistance => farmerStats.hearingDistance;
     
     float currentSpeedMultiplier = 1;
-    internal bool NoHiding;
+    bool noHiding;
+    float noHidingExtraRange;
 
     public void SetSpeedMultiplier(float multiplier)
     {
@@ -135,7 +138,9 @@ public class FarmerStateMachine : MonoBehaviour
 
         blockCooldownTimer += Time.deltaTime;
 
-        if(target != null)
+        if (noHiding) noHidingExtraRange += Time.deltaTime;
+
+        if (target != null)
         {
             if(CanSee(target)) Debug.DrawLine(eyes.position,target.position, Color.cyan);
             else Debug.DrawLine(eyes.position, target.position, Color.red);
@@ -328,5 +333,14 @@ public class FarmerStateMachine : MonoBehaviour
         target = null;
 
         ChangeState(PatrolState);
+    }
+
+    internal void SetNoHiding(bool v)
+    {
+        if (!canActivateNoHidingIncreaseRange) return;
+
+        noHiding = v;
+
+        if (noHiding == false) noHidingExtraRange = 0;
     }
 }

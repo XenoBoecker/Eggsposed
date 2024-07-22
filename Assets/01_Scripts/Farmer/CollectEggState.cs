@@ -40,6 +40,8 @@ public class CollectEggState : BaseState
     public override void Exit()
     {
         base.Exit();
+
+        _stateMachine.SetNoHiding(false);
     }
 
     public override void OnCollectFailed()

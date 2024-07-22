@@ -52,6 +52,7 @@ public class ChaseState : BaseState
     public override void OnEnterCollectionRange()
     {
         base.OnEnterCollectionRange();
+        
         _stateMachine.ChangeState(_stateMachine.CollectEggState);
 
         if (_target == GameManager.Instance.Player.transform)
@@ -78,12 +79,14 @@ public class ChaseState : BaseState
         }
 
         if (distanceToTarget <= _stateMachine.CollectionRange) OnEnterCollectionRange();
-
-        // if (_stateMachine.HasReachedDestination())
-        // {
-        //     _stateMachine.NoHiding = true;
-        //     OnEnterCollectionRange();
-        // }
+        else if (_stateMachine.HasReachedDestination())
+        {
+            _stateMachine.SetNoHiding(true);
+        }
+        else
+        {
+            _stateMachine.SetNoHiding(false);
+        }
 
         _stateMachine.MoveTo(_target.position);
     }
