@@ -307,7 +307,13 @@ MonoBehaviour:
   musicAudioSource: {fileID: 6880539880263720575}
   sfxAudioSource: {fileID: 5261854424008113395}
   uiSFX:
-    source: {fileID: 0}
+    changeButtonSound: {fileID: 8300000, guid: a5dfe488220014f45af88102cb0014b0, type: 3}
+    confirmSound: {fileID: 8300000, guid: 8af6ba4024646f34d9c1197564453ad9, type: 3}
+    countdownSound: {fileID: 8300000, guid: 8c98b491311f7e94bbd6e67f84d76565, type: 3}
+    hatchNewChickenRiff: {fileID: 0}
+    eggCrackSounds:
+    - {fileID: 8300000, guid: c8ff662d124f5f54ca38ea9546cf4ab8, type: 3}
+    - {fileID: 8300000, guid: 9e0674a43493e334a8531d0aa84ad1c4, type: 3}
   chickenSFX:
     stepSounds:
     - {fileID: 8300000, guid: 2f5be193fcaec514d857cea150dcce25, type: 3}
@@ -327,22 +333,35 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a2f41b927b59fd4458c4c4cf25fd6c9e, type: 3}
     - {fileID: 8300000, guid: 7500daad4f56d2446b051374dc633401, type: 3}
     - {fileID: 8300000, guid: 58870f43e05353943a90caab66fd0cdf, type: 3}
-    jumpSound: {fileID: 8300000, guid: a903caba73481924f9a0898e47020a1c, type: 3}
+    jumpSounds:
+    - {fileID: 8300000, guid: 038c2585f0c3ecf41a95ed6932610950, type: 3}
+    - {fileID: 8300000, guid: ec2316b8c11a76745ab533227af0591a, type: 3}
+    - {fileID: 8300000, guid: e2869ed724955c54681453eb0719da6d, type: 3}
     glideSound: {fileID: 0}
     standUpSound: {fileID: 0}
     sitDownSound: {fileID: 0}
-    dropEggSound: {fileID: 0}
-    pickUpEggSound: {fileID: 0}
-    eggHatchingSound: {fileID: 0}
-    robotWalkSound: {fileID: 0}
-    indikatorBeeping: {fileID: 0}
-    superHotSlowDown: {fileID: 0}
-    superHotSpeedUp: {fileID: 0}
-    breedingSound: {fileID: 0}
-    windupSound: {fileID: 0}
+    dropEggSound: {fileID: 8300000, guid: 0a2589ac44aed9b4d83b714fdae6e56b, type: 3}
+    pickUpEggSound: {fileID: 8300000, guid: a5d54bc3649d16a4b9744a592ff2e6b0, type: 3}
+    eggHatchingSound: {fileID: 8300000, guid: 35f350e025b2a984b898084117395ed5, type: 3}
+    electricalSittingSound: {fileID: 0}
+    sonarBeeping: {fileID: 8300000, guid: 1b2aca2cea69b834fab3988edaf8a686, type: 3}
+    rocketBoostSound: {fileID: 8300000, guid: 96fe188ae2a70a946af6ec7c14a5f149, type: 3}
+    rotisserieCallSpinSound: {fileID: 8300000, guid: 2f851b898a80625419b5a3514f1ae4e5,
+      type: 3}
+    superHotSlowDown: {fileID: 8300000, guid: c7cd34adc98da8049a37e4a3c37f8b85, type: 3}
+    superHotSpeedUp: {fileID: 8300000, guid: 45cccdb6b3150c941be70095a6250af4, type: 3}
+    superHotBreedingSound: {fileID: 0}
+    windupSound: {fileID: 8300000, guid: 8aa5f7014b8a95c438cc3a16818dc7dc, type: 3}
     unwindSound: {fileID: 0}
   farmerSFX:
-    scanSound: {fileID: 0}
-    warnSound: {fileID: 0}
-    chaseSpedSound: {fileID: 0}
-    normalSpeedSound: {fileID: 0}
+    scanSound: {fileID: 8300000, guid: 5954296f3a66d434dab29358fe8d3108, type: 3}
+    chaseSpeedSound: {fileID: 8300000, guid: 15dc9c26ca6483d42a74af42152660b2, type: 3}
+    normalSpeedSound: {fileID: 8300000, guid: 5db28055136dab14587f5c09b60d1239, type: 3}
+    collectingPlayersEggWarningSound: {fileID: 8300000, guid: d5f29243eb44e664db159f0364301801,
+      type: 3}
+    inCollectRangeSound: {fileID: 8300000, guid: 14564b9f5bdb7f84e910a956746ffe76,
+      type: 3}
+    eggAlmostCollectedWarningSound: {fileID: 8300000, guid: b4ca7e794d8b14246aeb4d5f5515c581,
+      type: 3}
+    blockBreedingSpotSound: {fileID: 8300000, guid: de1a7cbcda8e88141a994b574f4a8a69,
+      type: 3}
