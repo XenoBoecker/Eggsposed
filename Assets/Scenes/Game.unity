@@ -213,7 +213,7 @@ PrefabInstance:
     - target: {fileID: 7803118350160200425, guid: 9c9604da0eeee324d92f62c12ca3e33c,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9004327903058617597, guid: 9c9604da0eeee324d92f62c12ca3e33c,
         type: 3}
@@ -1071,7 +1071,7 @@ GameObject:
   - component: {fileID: 293515923}
   - component: {fileID: 293515925}
   - component: {fileID: 293515924}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1316,7 +1316,7 @@ GameObject:
   - component: {fileID: 337814807}
   - component: {fileID: 337814809}
   - component: {fileID: 337814808}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Score+ChickenAbilities
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2248,7 +2248,7 @@ GameObject:
   - component: {fileID: 546355097}
   - component: {fileID: 546355098}
   - component: {fileID: 546355099}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2304,8 +2304,8 @@ Canvas:
   m_GameObject: {fileID: 546355091}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 1905210590}
+  m_RenderMode: 1
+  m_Camera: {fileID: 412277072}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2316,7 +2316,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 499
+  m_SortingOrder: 50
   m_TargetDisplay: 0
 --- !u!224 &546355095
 RectTransform:
@@ -2406,7 +2406,8 @@ MonoBehaviour:
   - {fileID: 1853047288}
   - {fileID: 1148058154}
   fadeCanvasGroup: {fileID: 1324383637}
-  poofEffect: {fileID: 2137171127}
+  poofEffect: {fileID: 1246806696}
+  poofEffectDuration: 1
   waitTimeBeforeContinueIsAllowed: 1.5
   fadeDuration: 0.5
 --- !u!114 &546355098
@@ -2640,7 +2641,7 @@ Transform:
   m_GameObject: {fileID: 574182987}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 504}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2676,7 +2677,7 @@ GameObject:
   - component: {fileID: 630431119}
   - component: {fileID: 630431121}
   - component: {fileID: 630431120}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: AbilityIcon (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2856,7 +2857,7 @@ GameObject:
   - component: {fileID: 658148856}
   - component: {fileID: 658148858}
   - component: {fileID: 658148857}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: TutorialBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3233,7 +3234,7 @@ GameObject:
   - component: {fileID: 896453331}
   - component: {fileID: 896453333}
   - component: {fileID: 896453332}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3462,7 +3463,7 @@ GameObject:
   - component: {fileID: 976898580}
   - component: {fileID: 976898582}
   - component: {fileID: 976898581}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: NestUeberEi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3617,7 +3618,7 @@ GameObject:
   - component: {fileID: 1045043214}
   - component: {fileID: 1045043216}
   - component: {fileID: 1045043215}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: degub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3822,7 +3823,7 @@ GameObject:
   - component: {fileID: 1167158071}
   - component: {fileID: 1167158073}
   - component: {fileID: 1167158072}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: CrackingEgg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4223,6 +4224,26 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3852219346587184709, guid: 8a32fc6179fb766439bf14c5566c383a,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524056425016690401, guid: 8a32fc6179fb766439bf14c5566c383a,
+        type: 3}
+      propertyPath: m_ResetSeedOnPlay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524056425016690401, guid: 8a32fc6179fb766439bf14c5566c383a,
+        type: 3}
+      propertyPath: m_InitialEventName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524056425016690401, guid: 8a32fc6179fb766439bf14c5566c383a,
+        type: 3}
+      propertyPath: m_InitialEventNameOverriden
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4312,6 +4333,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8501343530130654aac497e25d8db543, type: 3}
+--- !u!2083052967 &1246806696 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 5524056425016690401, guid: 8a32fc6179fb766439bf14c5566c383a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1230694631}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1278270655
 GameObject:
   m_ObjectHideFlags: 0
@@ -4323,7 +4350,7 @@ GameObject:
   - component: {fileID: 1278270656}
   - component: {fileID: 1278270658}
   - component: {fileID: 1278270657}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: jump to skip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4695,7 +4722,7 @@ GameObject:
   - component: {fileID: 1356332476}
   - component: {fileID: 1356332478}
   - component: {fileID: 1356332477}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: EggDirectionIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5825,7 +5852,7 @@ GameObject:
   - component: {fileID: 1666301035}
   - component: {fileID: 1666301034}
   - component: {fileID: 1666301036}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: EggBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6336,7 +6363,7 @@ GameObject:
   - component: {fileID: 1839556750}
   - component: {fileID: 1839556749}
   - component: {fileID: 1839556751}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: TutorialSlides
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6896,7 +6923,7 @@ GameObject:
   - component: {fileID: 1881929094}
   - component: {fileID: 1881929096}
   - component: {fileID: 1881929095}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: AbilityIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7286,7 +7313,7 @@ GameObject:
   - component: {fileID: 2056062443}
   - component: {fileID: 2056062445}
   - component: {fileID: 2056062444}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: SquatToContinueButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7621,12 +7648,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grassEffectPrefab: {fileID: 7172918690741236804, guid: 111385b84ec9b494ba3b1783ee51670f,
     type: 3}
---- !u!2083052967 &2137171127 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 5524056425016690401, guid: 8a32fc6179fb766439bf14c5566c383a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1433455607}
-  m_PrefabAsset: {fileID: 0}
 --- !u!222 &543635096479749914
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7646,7 +7667,7 @@ GameObject:
   - component: {fileID: 9051607806201268234}
   - component: {fileID: 8717407749710008147}
   - component: {fileID: 6382689761808433479}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: abilityCDFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8123,7 +8144,7 @@ PrefabInstance:
     - target: {fileID: 7803118350160200425, guid: 9c9604da0eeee324d92f62c12ca3e33c,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9004327903058617597, guid: 9c9604da0eeee324d92f62c12ca3e33c,
         type: 3}
@@ -8462,7 +8483,7 @@ GameObject:
   - component: {fileID: 3212540433805526780}
   - component: {fileID: 543635096479749914}
   - component: {fileID: 8677530003325291610}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: CanCallImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8480,7 +8501,7 @@ GameObject:
   - component: {fileID: 5975122013273017009}
   - component: {fileID: 6516163413320638418}
   - component: {fileID: 3464387719053209909}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8618,22 +8639,22 @@ PrefabInstance:
     - target: {fileID: 65620913099352945, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 145278541239179207, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 812143769565064833, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1582286190631428836, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1853193030599346050, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
@@ -8665,7 +8686,7 @@ PrefabInstance:
     - target: {fileID: 2146746458523508708, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2301844495321961753, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
@@ -8680,27 +8701,27 @@ PrefabInstance:
     - target: {fileID: 2400727432135070650, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2994548646299532542, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3213516717067690591, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4009514966745999330, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4360327560487387734, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4373969928507650090, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
@@ -8710,7 +8731,7 @@ PrefabInstance:
     - target: {fileID: 4373969928507650090, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4373969928507650090, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
@@ -8720,42 +8741,42 @@ PrefabInstance:
     - target: {fileID: 5240288191821901305, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5440087225794995338, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5595726066903399061, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6495643079181222739, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6535954705746418298, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6595266841292282925, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8222131191047753601, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8517808030055820126, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8695457510074496409, guid: b93d2771c0fff9e4188c0d5d3fff2378,
         type: 3}
@@ -8833,7 +8854,7 @@ GameObject:
   - component: {fileID: 4685511832376281869}
   - component: {fileID: 1477750582750671726}
   - component: {fileID: 3803956275683755361}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: RightBottomUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
