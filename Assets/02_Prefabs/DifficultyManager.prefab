@@ -126,7 +126,7 @@ MonoBehaviour:
     scanTurnSpeed: 15
     scanAngle: 20
     breedingSpotBlockDuration: 0
-    blockCooldownTime: -20
+    blockCooldownTime: -15
     minimumUnblockedSpots: 0
     collectionProgressTime: 0
     collectionRange: 0
