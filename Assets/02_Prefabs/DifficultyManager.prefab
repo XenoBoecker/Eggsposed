@@ -68,6 +68,96 @@ MonoBehaviour:
     hearingDistance: 0
     detectionRange: 0
     xRayTrackingTime: 0
+    biasDistance: -1
+    scanTurnSpeed: 15
+    scanAngle: 0
+    breedingSpotBlockDuration: 0
+    blockCooldownTime: -5
+    minimumUnblockedSpots: 0
+    collectionProgressTime: 0
+    collectionRange: 0
+    timeoutRange: 0
+    catchupMinimumDistance: 0
+    catchupSpeedMultiplier: 0
+    catchupCooldown: 0
+    catchupMaxDuration: 0
+  - baseMovementSpeed: 0.25
+    maxViewAngle: 0
+    hearingDistance: 0
+    detectionRange: 0
+    xRayTrackingTime: 0
+    biasDistance: 0
+    scanTurnSpeed: 0
+    scanAngle: 10
+    breedingSpotBlockDuration: 0
+    blockCooldownTime: 0
+    minimumUnblockedSpots: 0
+    collectionProgressTime: -0.5
+    collectionRange: 0
+    timeoutRange: 0
+    catchupMinimumDistance: -1
+    catchupSpeedMultiplier: 0.2
+    catchupCooldown: 0
+    catchupMaxDuration: 0
+  - baseMovementSpeed: 0
+    maxViewAngle: 0
+    hearingDistance: 0
+    detectionRange: 0
+    xRayTrackingTime: 0
+    biasDistance: 0
+    scanTurnSpeed: 0
+    scanAngle: 0
+    breedingSpotBlockDuration: 0
+    blockCooldownTime: 0
+    minimumUnblockedSpots: 0
+    collectionProgressTime: 0
+    collectionRange: 0
+    timeoutRange: 0
+    catchupMinimumDistance: 0
+    catchupSpeedMultiplier: 0
+    catchupCooldown: 0
+    catchupMaxDuration: 0
+  - baseMovementSpeed: 0.25
+    maxViewAngle: 10
+    hearingDistance: 5
+    detectionRange: 5
+    xRayTrackingTime: 2
+    biasDistance: 0
+    scanTurnSpeed: 15
+    scanAngle: 20
+    breedingSpotBlockDuration: 0
+    blockCooldownTime: -20
+    minimumUnblockedSpots: 0
+    collectionProgressTime: 0
+    collectionRange: 0
+    timeoutRange: 0
+    catchupMinimumDistance: 0
+    catchupSpeedMultiplier: 0
+    catchupCooldown: 0
+    catchupMaxDuration: 0
+  - baseMovementSpeed: 0
+    maxViewAngle: 0
+    hearingDistance: 0
+    detectionRange: 0
+    xRayTrackingTime: 0
+    biasDistance: -1
+    scanTurnSpeed: 0
+    scanAngle: 0
+    breedingSpotBlockDuration: 5
+    blockCooldownTime: 0
+    minimumUnblockedSpots: 0
+    collectionProgressTime: -0.5
+    collectionRange: 1
+    timeoutRange: 2
+    catchupMinimumDistance: -1
+    catchupSpeedMultiplier: 0.2
+    catchupCooldown: -2
+    catchupMaxDuration: 1
+  - baseMovementSpeed: 0
+    maxViewAngle: 0
+    hearingDistance: 0
+    detectionRange: 0
+    xRayTrackingTime: 0
     biasDistance: 0
     scanTurnSpeed: 0
     scanAngle: 0
