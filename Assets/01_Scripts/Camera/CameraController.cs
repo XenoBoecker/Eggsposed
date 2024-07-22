@@ -125,6 +125,8 @@ public class CameraController : MonoBehaviour
 
     private void SkipIntro()
     {
+        if (!flyThroughActive) return;
+
         StopAllCoroutines();
 
         skipTutorial.SetActive(false);

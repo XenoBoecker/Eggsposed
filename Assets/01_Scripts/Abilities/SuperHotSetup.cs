@@ -90,12 +90,12 @@ public class SuperHotSetup : ChickenAbilitySetup
 
         TimeManager.Instance.SetTimeScale(timeSlowFactor);
 
-        SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.superHotSlowDown);
 
         bcc.angularSpeed = baseAngularSpeed / timeSlowFactor;
 
         if (lastFrameTimescale == 1)
         {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.superHotSlowDown);
             Instantiate(slowDownVFX, transform);
             StartCoroutine(ChangeVolumeWeight(0, 1, fadeDuration));
         }
@@ -107,11 +107,14 @@ public class SuperHotSetup : ChickenAbilitySetup
 
         TimeManager.Instance.SetTimeScale(1);
 
-        SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.superHotSpeedUp);
 
         bcc.angularSpeed = baseAngularSpeed;
 
-        if(lastFrameTimescale != 1) StartCoroutine(ChangeVolumeWeight(1, 0, fadeDuration));
+        if (lastFrameTimescale != 1)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.superHotSpeedUp);
+            StartCoroutine(ChangeVolumeWeight(1, 0, fadeDuration));
+        }
     }
 
     private IEnumerator ChangeVolumeWeight(int v1, int v2, float v3)

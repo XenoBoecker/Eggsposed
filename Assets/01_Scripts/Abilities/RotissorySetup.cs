@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class RotissorySetup : ChickenAbilitySetup
 {
-    [SerializeField] float forceScale = 50;
+    [SerializeField] float forceScale = 50f;
     [SerializeField] float abilityDuration = 2f;
     [SerializeField] AnimationCurve addForceCurve;
 
-    [SerializeField] float maxRotSpeed = 1000;
+    [SerializeField] float maxRotSpeed = 1000f;
     [SerializeField] AnimationCurve rotSpeedCurve;
 
-    [SerializeField] float fixRotSpeed = 10;
+    [SerializeField] float fixRotSpeed = 10f;
+
+    [SerializeField] float fixRotThreshold = 10f;
     float curveScaleValue;
     Transform chickenVisual;
 
@@ -33,7 +35,7 @@ public class RotissorySetup : ChickenAbilitySetup
     {
         base.Update();
 
-        if (Mathf.Abs(chickenVisual.transform.localRotation.eulerAngles.y) > 10f && bcc.enabled)
+        if (Mathf.Abs(chickenVisual.transform.localRotation.eulerAngles.y) > fixRotThreshold && bcc.enabled)
         {
             print("Rotissory fix rotation: " + chickenVisual.transform.localRotation.eulerAngles.y);
             chickenVisual.Rotate(Vector3.up, Time.deltaTime * chickenVisual.transform.localRotation.eulerAngles.y * fixRotSpeed);
