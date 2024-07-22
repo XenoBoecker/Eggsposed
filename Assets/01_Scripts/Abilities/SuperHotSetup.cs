@@ -13,9 +13,6 @@ public class SuperHotSetup : ChickenAbilitySetup
     [SerializeField] GameObject timeSlowVolumePrefab;
     Volume timeSlowVolume;
 
-
-    [SerializeField] GameObject slowDownEffect;
-
     float baseAngularSpeed;
 
     bool passiveTimeslowDeactivated;
@@ -60,10 +57,11 @@ public class SuperHotSetup : ChickenAbilitySetup
     {
         base.Update();
 
-        if (!chicken == GameManager.Instance.Player)
+        if (!chicken.IsControlledByPlayer || chicken != GameManager.Instance.Player)
         {
             if (!passiveTimeslowDeactivated)
             {
+                print("deactivateTimeSlow");
                 passiveTimeslowDeactivated = true;
                 SetTimeNormal();
             }
@@ -86,8 +84,6 @@ public class SuperHotSetup : ChickenAbilitySetup
     void SetTimeSlow()
     {
         if (Time.timeScale == 0) return;
-
-        // Instantiate(slowDownEffect, transform);
 
         TimeManager.Instance.SetTimeScale(timeSlowFactor);
 

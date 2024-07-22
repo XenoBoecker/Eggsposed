@@ -30,7 +30,6 @@ GameObject:
   - component: {fileID: 661599417593698870}
   - component: {fileID: 4455760472489790822}
   - component: {fileID: 8592502167362255684}
-  - component: {fileID: 1588320232327345699}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Untagged
@@ -285,7 +284,6 @@ MonoBehaviour:
   - {fileID: 2145837982883020667}
   - {fileID: -5962194614486061174}
   - {fileID: 3961564759560718402}
-  - {fileID: 1588320232327345699}
   aiControlComponents:
   - {fileID: 8343700215415963554}
   - {fileID: 5084944400656500730}
@@ -671,14 +669,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftTrail: {fileID: 4533455217351282856}
   rightTrail: {fileID: 7700921733593976850}
---- !u!81 &1588320232327345699
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 25585136701300107}
-  m_Enabled: 1
 --- !u!1 &37021556735519262
 GameObject:
   m_ObjectHideFlags: 0
@@ -3946,7 +3936,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1045678160193266708, guid: d8dd827a8728f2f44a44e9e7e45e609f, type: 3}
+  - {fileID: 2100000, guid: a75d3d71e02eaa547a0496d31f371f7f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4530,7 +4520,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8208216665804983546, guid: d8dd827a8728f2f44a44e9e7e45e609f, type: 3}
+  - {fileID: 2100000, guid: 4d419e110f873974b88e61c4d5f36ea5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11715,7 +11705,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6934380080582194954, guid: d8dd827a8728f2f44a44e9e7e45e609f, type: 3}
+  - {fileID: 2100000, guid: 5bec66fa9f91a95469138541ea9d6d73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11881,7 +11871,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6934380080582194954, guid: d8dd827a8728f2f44a44e9e7e45e609f, type: 3}
+  - {fileID: 2100000, guid: 5bec66fa9f91a95469138541ea9d6d73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
