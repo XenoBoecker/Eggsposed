@@ -47,3 +47,6 @@ MonoBehaviour:
   callRange: 30
   callCD: 12
   timeSlowFactor: 0.2
+  fadeDuration: 0.2
+  timeSlowVolumePrefab: {fileID: 8656494735746755961, guid: bd01ce49ee5e29d4e80ddd790967f83e,
+    type: 3}

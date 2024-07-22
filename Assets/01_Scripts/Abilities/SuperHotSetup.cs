@@ -1,8 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.Rendering;
 
 public class SuperHotSetup : ChickenAbilitySetup
 {
     [SerializeField] float timeSlowFactor = 0.1f;
+
+
+    [SerializeField] float fadeDuration = 0.2f;
+
+    [SerializeField] GameObject timeSlowVolumePrefab;
+    Volume timeSlowVolume;
 
     float baseAngularSpeed;
 
@@ -10,6 +19,8 @@ public class SuperHotSetup : ChickenAbilitySetup
 
     ChickenStateTracker cst;
     AudioSource audioSource;
+
+    float lastFrameTimescale;
 
     public override void Setup(Chicken chicken)
     {
@@ -28,7 +39,7 @@ public class SuperHotSetup : ChickenAbilitySetup
         audioSource.transform.position = transform.position;
         audioSource.transform.SetParent(transform);
 
-
+        timeSlowVolume = Instantiate(timeSlowVolumePrefab, transform).GetComponentInChildren<Volume>();
     }
 
     private void StartSittingSound()
@@ -66,6 +77,8 @@ public class SuperHotSetup : ChickenAbilitySetup
         {
             SetTimeNormal();
         }
+
+        lastFrameTimescale = Time.timeScale;
     }
 
     void SetTimeSlow()
@@ -77,6 +90,8 @@ public class SuperHotSetup : ChickenAbilitySetup
         SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.superHotSlowDown);
 
         bcc.angularSpeed = baseAngularSpeed / timeSlowFactor;
+
+        if(lastFrameTimescale == 1) StartCoroutine(ChangeVolumeWeight(0, 1, fadeDuration));
     }
 
     void SetTimeNormal()
@@ -88,5 +103,24 @@ public class SuperHotSetup : ChickenAbilitySetup
         SoundManager.Instance.PlaySound(SoundManager.Instance.chickenSFX.superHotSpeedUp);
 
         bcc.angularSpeed = baseAngularSpeed;
+
+        if(lastFrameTimescale != 1) StartCoroutine(ChangeVolumeWeight(1, 0, fadeDuration));
+    }
+
+    private IEnumerator ChangeVolumeWeight(int v1, int v2, float v3)
+    {
+        float elapsedTime = 0;
+        float t;
+
+        while (elapsedTime < v3)
+        {
+            elapsedTime += Time.deltaTime;
+            t = elapsedTime / v3;
+
+            timeSlowVolume.weight = Mathf.Lerp(v1, v2, t);
+
+            yield return null;
+        }
+
     }
 }
