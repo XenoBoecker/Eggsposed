@@ -64,7 +64,8 @@ public class NewChickenUI : MonoBehaviour
 
     private void OnSpawnChicken()
     {
-        StartCoroutine(PoofEffectRoutine());
+        // StartCoroutine(PoofEffectRoutine());
+        GameManager.Instance.PauseGame();
         StartCoroutine(FadeIn(fadeCanvasGroup));
         chickenPanelPause = true;
 
@@ -98,7 +99,6 @@ public class NewChickenUI : MonoBehaviour
         poofEffect.Stop();
         poofEffect.enabled = false;
 
-        GameManager.Instance.PauseGame();
 
     }
 

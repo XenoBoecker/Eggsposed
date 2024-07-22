@@ -57,11 +57,10 @@ public class SuperHotSetup : ChickenAbilitySetup
     {
         base.Update();
 
-        if (!chicken.IsControlledByPlayer)
+        if (!chicken == GameManager.Instance.Player)
         {
             if (!passiveTimeslowDeactivated)
             {
-                print("deactivateTimeSlow");
                 passiveTimeslowDeactivated = true;
                 SetTimeNormal();
             }
