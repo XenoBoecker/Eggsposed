@@ -12,6 +12,8 @@ public class BaseChickenController : BaseCharacterController
 
     [SerializeField] float _glideSpeedMultiplier = 2f;
 
+    [SerializeField] float _glideRotateMultiplier = 0.5f;
+
     [SerializeField]
     float _breedTime = 20f;
 
@@ -24,6 +26,7 @@ public class BaseChickenController : BaseCharacterController
     float _baseMaxFallSpeed;
     float _baseSpeed;
     float currentGlideSpeedMultiplier = 1f;
+    float currentGlideRotateMultiplier = 1f;
     
     bool wasGlidingLastFrame;
     bool lastFrameJump;
@@ -75,11 +78,13 @@ public class BaseChickenController : BaseCharacterController
             //movement.glideGravityMultiplier = _glideGravityMultiplier;
             movement.maxFallSpeed = _glideMaxFallSpeed;
             currentGlideSpeedMultiplier = _glideSpeedMultiplier;
+            currentGlideRotateMultiplier = _glideRotateMultiplier;
 
             if (!wasGlidingLastFrame)
             {
                 speed *= currentGlideSpeedMultiplier;
                 movement.maxLateralSpeed *= currentGlideSpeedMultiplier;
+                angularSpeed *= currentGlideRotateMultiplier;
             }
 
             wasGlidingLastFrame = true;
@@ -90,11 +95,13 @@ public class BaseChickenController : BaseCharacterController
             {
                 speed /= currentGlideSpeedMultiplier;
                 movement.maxLateralSpeed /= currentGlideSpeedMultiplier;
+                angularSpeed /= currentGlideRotateMultiplier;
             }
             
             //movement.glideGravityMultiplier = 1.0f;
             movement.maxFallSpeed = _baseMaxFallSpeed;
             currentGlideSpeedMultiplier = 1f;
+            currentGlideRotateMultiplier = 1f;
 
 
             wasGlidingLastFrame = false;
