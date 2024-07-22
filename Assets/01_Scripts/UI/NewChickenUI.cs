@@ -18,6 +18,8 @@ public class NewChickenUI : MonoBehaviour
 
     [SerializeField] VisualEffect poofEffect;
 
+    [SerializeField] float poofEffectDuration = 1f;
+
     PlayerControls controls;
 
     KinectInputs inputs;
@@ -63,7 +65,6 @@ public class NewChickenUI : MonoBehaviour
     private void OnSpawnChicken()
     {
         StartCoroutine(PoofEffectRoutine());
-        GameManager.Instance.PauseGame();
         StartCoroutine(FadeIn(fadeCanvasGroup));
         chickenPanelPause = true;
 
@@ -77,11 +78,28 @@ public class NewChickenUI : MonoBehaviour
 
     private IEnumerator PoofEffectRoutine()
     {
+        // Ensure the Visual Effect is enabled and played
+        poofEffect.enabled = true;
+        poofEffect.Play();
 
-        // poofEffect.enabled = true;
-        // poofEffect.Play();
+        float elapsed = 0f;
 
-        yield return null;
+        // Continue updating the effect until the duration is reached
+        while (elapsed < poofEffectDuration)
+        {
+            // Increase the elapsed time by the unscaled delta time
+            elapsed += Time.unscaledDeltaTime;
+
+            // Wait for the next frame
+            yield return null;
+        }
+
+        // Optionally stop or disable the Visual Effect after the duration
+        poofEffect.Stop();
+        poofEffect.enabled = false;
+
+        GameManager.Instance.PauseGame();
+
     }
 
     private void UpdateNewChickenUI()
