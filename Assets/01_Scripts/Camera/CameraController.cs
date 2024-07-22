@@ -36,6 +36,10 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] bool skipAnimation = false;
 
+    [Header("Debug")]
+
+    [SerializeField] bool stopTimeForFlyThrough = true;
+
     KinectInputs kinectInputs;
     bool waitingForInput;
     PlayerControls controls;
@@ -166,7 +170,7 @@ public class CameraController : MonoBehaviour
 
         flyThroughActive = true;
         print("StartGameFlyThrough");
-        TimeManager.Instance.Pause();
+        if(stopTimeForFlyThrough) TimeManager.Instance.Pause();
 
         transform.position = flyThroughTargets[0].transform.position;
         transform.rotation = flyThroughTargets[0].transform.rotation;
