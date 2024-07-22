@@ -2314,7 +2314,7 @@ Canvas:
   m_GameObject: {fileID: 546355091}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 412277072}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -2454,7 +2454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionIndicatorUI: {fileID: 1356332476}
   heightScaler: 50
-  eggArrow: {fileID: 0}
+  eggArrow: {fileID: 2102083435}
 --- !u!1 &555717408
 GameObject:
   m_ObjectHideFlags: 0
@@ -2625,7 +2625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &574182988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4128,7 +4128,7 @@ PrefabInstance:
     - target: {fileID: 3852219346587184709, guid: 8a32fc6179fb766439bf14c5566c383a,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3852219346587184709, guid: 8a32fc6179fb766439bf14c5566c383a,
         type: 3}
@@ -7319,6 +7319,12 @@ Transform:
   - {fileID: 649498050}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2102083435 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7641232205509205627, guid: d623dbc9ad2d87a4b896c7fb7c62980a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1198544500581128705}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2114894863
 GameObject:
   m_ObjectHideFlags: 0
@@ -7686,7 +7692,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _baseChickenData
       value: 
-      objectReference: {fileID: 11400000, guid: fb0a77ff2ddd5d048841c9a4274bb78a,
+      objectReference: {fileID: 11400000, guid: 08d32fb67f1a4634b88c37e844382a9f,
         type: 2}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}

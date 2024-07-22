@@ -31,6 +31,13 @@ public class BaseChickenController : BaseCharacterController
     bool wasGlidingLastFrame;
     bool lastFrameJump;
 
+    bool _glidingDisabled;
+    public bool GlidingDisabled
+    {
+        get { return _glidingDisabled; }
+        set { _glidingDisabled = value; }
+    }
+
     public event Action OnFinishBreeding;
     public event Action OnSitDown;
     public event Action OnStandUp;
@@ -73,7 +80,7 @@ public class BaseChickenController : BaseCharacterController
 
     protected virtual void Glide()
     {
-        if (_jump && movement.velocity.y < 0)
+        if (_jump && movement.velocity.y < 0 && !_glidingDisabled)
         {
             //movement.glideGravityMultiplier = _glideGravityMultiplier;
             movement.maxFallSpeed = _glideMaxFallSpeed;

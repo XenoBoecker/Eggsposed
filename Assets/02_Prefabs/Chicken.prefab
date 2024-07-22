@@ -408,6 +408,8 @@ MonoBehaviour:
     - {fileID: 5803092840954854116}
   eggCarryPosition: {fileID: 6806775776762019024}
   eggDropPosition: {fileID: 5170453058575347228}
+  torturedChickenData: {fileID: 11400000, guid: 08d32fb67f1a4634b88c37e844382a9f,
+    type: 2}
   timeDelayAfterDropEggBeforePickupPossible: 3
   CurrentCallCooldownPercentage: 0
 --- !u!195 &8436353215386987010

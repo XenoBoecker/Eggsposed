@@ -31,6 +31,9 @@ public class Chicken : MonoBehaviour
 
 
     [SerializeField] Transform eggCarryPosition, eggDropPosition;
+
+
+    [SerializeField] ChickenData torturedChickenData;
     public Transform EggDropPosition => eggDropPosition;
 
     BaseChickenController bcc;
@@ -239,6 +242,7 @@ public class Chicken : MonoBehaviour
         headData = headTailChickenData;
         bodyData = bodyChickenData;
 
+
         EnableParts(headTailParts.headObjectsToEnable);
 
         EnableParts(bodyParts.bodyObjectsToEnable);
@@ -248,6 +252,7 @@ public class Chicken : MonoBehaviour
         else EnableParts(headTailParts.tailObjectsToEnable);
 
 
+        if (bodyData == torturedChickenData) bcc.GlidingDisabled = true;
 
         //SetHeadVisuals(headTailChickenData);
         //
