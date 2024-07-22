@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameOver : MonoBehaviour
@@ -103,7 +104,13 @@ public class GameOver : MonoBehaviour
         {
             egg.gameObject.AddComponent<Rigidbody>();
         }
-        if (egg.GetComponent<Collider>() == null) egg.gameObject.AddComponent<SphereCollider>();
+        if (egg.GetComponent<Collider>() != null) egg.gameObject.GetComponent<Collider>().enabled = false;
+
+        foreach (MeshFilter child in egg.transform.GetComponentsInChildren<MeshFilter>())
+        {
+            MeshCollider collider = child.AddComponent<MeshCollider>();
+            collider.convex = true;
+        }
     }
 
     void OnlyShowLeaderboard()
