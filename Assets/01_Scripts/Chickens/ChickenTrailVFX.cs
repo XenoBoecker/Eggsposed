@@ -11,19 +11,19 @@ public class ChickenTrailVFX : MonoBehaviour
     {
         cst = GetComponent<ChickenStateTracker>();
 
-        cst.OnStartGlide += StartGlide;
-        cst.OnStopGlide += StopGlide;
+        cst.OnStartGlide += StartTrailEffect;
+        cst.OnStopGlide += StopTrailEffect;
 
-        StopGlide();
+        StopTrailEffect();
     }
 
-    private void StartGlide()
+    public void StartTrailEffect()
     {
         leftTrail.enabled = true;
         rightTrail.enabled = true;
     }
 
-    private void StopGlide()
+    public void StopTrailEffect()
     {
         leftTrail.enabled = false;
         rightTrail.enabled = false;

@@ -40,6 +40,7 @@ public class RotissorySetup : ChickenAbilitySetup
 
         bcc.enabled = false;
         movement.enabled = false;
+        GetComponent<ChickenTrailVFX>().StartTrailEffect();
 
         // Get dash direction and distance based on player input
         Vector3 dashDir = Vector3.up;
@@ -68,6 +69,8 @@ public class RotissorySetup : ChickenAbilitySetup
 
         bcc.enabled = true;
         movement.enabled = true;
+
+        GetComponent<ChickenTrailVFX>().StopTrailEffect();
     }
 
     float CalculateCurveScale(AnimationCurve curve, float duration)
