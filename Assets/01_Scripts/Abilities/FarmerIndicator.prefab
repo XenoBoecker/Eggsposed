@@ -49,10 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robotChickenData: {fileID: 11400000, guid: 0375b249229b8ea41a04ae2e2ebc2af2, type: 2}
+  distanceCanvas: {fileID: 0}
   farmerDistanceText: {fileID: 8612514651712909655}
   farmerHeadPointer: {fileID: 5352353571333839457}
   farmerBodyPointer: {fileID: 1842226044149340593}
-  sonarSoundCD: 0
 --- !u!82 &2505844614725056987
 AudioSource:
   m_ObjectHideFlags: 0
@@ -384,7 +384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1324384940670145691
 RectTransform:
   m_ObjectHideFlags: 0

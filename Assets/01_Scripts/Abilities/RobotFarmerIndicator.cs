@@ -36,7 +36,7 @@ public class RobotFarmerIndicator : MonoBehaviour
         //    sonarSoundTimer = 0;
         //}
 
-        farmerDistanceText.text = ((int)Vector3.Distance(transform.position, farmer.position)).ToString();
+        // farmerDistanceText.text = ((int)Vector3.Distance(transform.position, farmer.position)).ToString();
 
         LookAtOnYAxis(farmerHeadPointer, farmer);
         LookAtOnYAxis(farmerBodyPointer, farmer);
