@@ -144,36 +144,23 @@ public class ChickenStateTracker : MonoBehaviour
 
     bool IsGliding()
     {
-        return rb.velocity.y < -0.1f && bcc.jump;
+        return rb.velocity.y < -0.1f && bcc.jump && !movement.isGrounded;
     }
     
     private void CheckJumpingGlidingAndFalling()
     {
-        if (bcc.jump)
+        if (bcc.jump && !wasJumpingLastFrame) OnJump?.Invoke();
+        
+        if (IsFalling() && !wasFallingLastFrame)
         {
-            if (!wasJumpingLastFrame)
-            {
-                OnJump?.Invoke();
-            }
-            if (!wasGlidingLastFrame && rb.velocity.y < 0) OnStartGlide?.Invoke();
+            OnStartFalling?.Invoke();
         }
-        else
-        {
-            if (wasGlidingLastFrame)
-            {
-                OnStopGlide?.Invoke();
-            }
-            if (IsFalling() && !wasFallingLastFrame)
-            {
-                OnStartFalling?.Invoke();
-            }
-        }
-
         if (!IsFalling() && wasFallingLastFrame)
         {
             OnStopFalling?.Invoke();
         }
-
+        if (!wasGlidingLastFrame && IsGliding()) OnStartGlide?.Invoke();
+        if (wasGlidingLastFrame && !IsGliding()) OnStopGlide?.Invoke();
     }
 
     private void CheckWalking()
