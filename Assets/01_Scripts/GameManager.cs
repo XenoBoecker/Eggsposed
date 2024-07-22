@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
 
         _player.SetEgg(newEgg);
 
-        playerCam.SetTarget(_player.transform);
+        
 
 
         _player.OnFinishBreeding += SpawnNextChicken;
