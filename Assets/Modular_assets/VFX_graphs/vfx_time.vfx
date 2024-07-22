@@ -20,7 +20,7 @@ MonoBehaviour:
     x: 942
     y: -473
     width: 3694
-    height: 2191
+    height: 2210
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2207,7 +2207,7 @@ MonoBehaviour:
   uvMode: 0
   flipbookLayout: 0
   useSoftParticle: 0
-  vfxSystemSortPriority: 0
+  vfxSystemSortPriority: 2
   sort: 0
   sortMode: 0
   revertSorting: 0
@@ -2217,7 +2217,7 @@ MonoBehaviour:
   castShadows: 0
   useExposureWeight: 0
   needsOwnSort: 0
-  shaderGraph: {fileID: 4333940904281232215, guid: 2801e7b8a20712345ac80dd6bed0d965,
+  shaderGraph: {fileID: -5475051401550479605, guid: 2801e7b8a20712345ac80dd6bed0d965,
     type: 3}
   materialSettings:
     m_PropertyNames:
@@ -3933,7 +3933,7 @@ MonoBehaviour:
   uvMode: 0
   flipbookLayout: 0
   useSoftParticle: 0
-  vfxSystemSortPriority: 0
+  vfxSystemSortPriority: 4
   sort: 0
   sortMode: 0
   revertSorting: 0
@@ -5279,7 +5279,7 @@ MonoBehaviour:
   uvMode: 0
   flipbookLayout: 0
   useSoftParticle: 0
-  vfxSystemSortPriority: 0
+  vfxSystemSortPriority: 1
   sort: 0
   sortMode: 0
   revertSorting: 0
@@ -6439,7 +6439,7 @@ MonoBehaviour:
   uvMode: 0
   flipbookLayout: 0
   useSoftParticle: 0
-  vfxSystemSortPriority: 0
+  vfxSystemSortPriority: 3
   sort: 0
   sortMode: 0
   revertSorting: 0
@@ -6449,7 +6449,7 @@ MonoBehaviour:
   castShadows: 0
   useExposureWeight: 0
   needsOwnSort: 0
-  shaderGraph: {fileID: 4333940904281232215, guid: 04171fd711c540244a7737cc28a6afb5,
+  shaderGraph: {fileID: -5475051401550479605, guid: 04171fd711c540244a7737cc28a6afb5,
     type: 3}
   materialSettings:
     m_PropertyNames:
@@ -8269,7 +8269,7 @@ MonoBehaviour:
   uvMode: 0
   flipbookLayout: 0
   useSoftParticle: 0
-  vfxSystemSortPriority: 0
+  vfxSystemSortPriority: 5
   sort: 0
   sortMode: 0
   revertSorting: 0
