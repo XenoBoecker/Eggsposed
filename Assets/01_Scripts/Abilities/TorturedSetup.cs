@@ -1,12 +1,15 @@
-﻿public class TorturedSetup : ChickenAbilitySetup
+﻿using UnityEngine;
+
+public class TorturedSetup : ChickenAbilitySetup
 {
-    ChickenAbilitySetup[] allMyAbilities;
+
+    [SerializeField] GameObject bloodEffect;
 
     public override void Setup(Chicken chicken)
     {
         base.Setup(chicken);
 
-        allMyAbilities = GetComponents<ChickenAbilitySetup>();
+        Instantiate(bloodEffect, transform);
     }
 
     protected override void Update()

@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   callRange: 45
   callCD: 1
+  bloodEffect: {fileID: 9092911904194912258, guid: 94e9f7997d660244586f705d08a0fcbe,
+    type: 3}
