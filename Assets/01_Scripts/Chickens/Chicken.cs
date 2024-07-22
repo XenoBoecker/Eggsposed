@@ -251,9 +251,6 @@ public class Chicken : MonoBehaviour
         else if (bodyParts.tailObjectsToEnable.Length == 0) { }
         else EnableParts(headTailParts.tailObjectsToEnable);
 
-
-        if (bodyData == torturedChickenData) bcc.GlidingDisabled = true;
-
         //SetHeadVisuals(headTailChickenData);
         //
         //SetBodyVisual(bodyChickenData);
