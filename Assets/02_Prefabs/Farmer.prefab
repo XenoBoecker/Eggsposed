@@ -648,19 +648,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetBreedingSpot: {fileID: 0}
   farmerStats:
-    baseMovementSpeed: 4.5
-    maxViewAngle: 180
-    hearingDistance: 45
-    detectionRange: 40
+    baseMovementSpeed: 4
+    maxViewAngle: 150
+    hearingDistance: 30
+    detectionRange: 25
     xRayTrackingTime: 0
     biasDistance: -3
-    scanTurnSpeed: 75
+    scanTurnSpeed: 60
     scanAngle: 90
-    breedingSpotBlockDuration: 30
+    breedingSpotBlockDuration: 20
     blockCooldownTime: 60
     minimumUnblockedSpots: 2
-    collectionProgressTime: 1.5
-    collectionRange: 8
+    collectionProgressTime: 3
+    collectionRange: 6
     timeoutRange: 20
     catchupMinimumDistance: 8
     catchupSpeedMultiplier: 1.6
