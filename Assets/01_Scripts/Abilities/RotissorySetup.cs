@@ -11,6 +11,8 @@ public class RotissorySetup : ChickenAbilitySetup
 
     [SerializeField] float maxRotSpeed = 1000;
     [SerializeField] AnimationCurve rotSpeedCurve;
+
+    [SerializeField] float fixRotSpeed = 10;
     float curveScaleValue;
     Transform chickenVisual;
 
@@ -25,6 +27,17 @@ public class RotissorySetup : ChickenAbilitySetup
         chickenVisual = transform.GetChild(0);
 
         curveScaleValue = CalculateCurveScale(rotSpeedCurve, abilityDuration);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (Mathf.Abs(chickenVisual.transform.localRotation.eulerAngles.y) > 10f && bcc.enabled)
+        {
+            print("Rotissory fix rotation: " + chickenVisual.transform.localRotation.eulerAngles.y);
+            chickenVisual.Rotate(Vector3.up, Time.deltaTime * chickenVisual.transform.localRotation.eulerAngles.y * fixRotSpeed);
+        }
     }
 
     public override void Call()
