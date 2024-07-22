@@ -103,14 +103,7 @@ public class GameOver : MonoBehaviour
         if (egg.GetComponent<Rigidbody>() == null)
         {
             egg.gameObject.AddComponent<Rigidbody>();
-        }
-        if (egg.GetComponent<Collider>() != null) egg.gameObject.GetComponent<Collider>().enabled = false;
-
-        foreach (MeshFilter child in egg.transform.GetComponentsInChildren<MeshFilter>())
-        {
-            MeshCollider collider = child.AddComponent<MeshCollider>();
-            collider.convex = true;
-        }
+        }        
     }
 
     void OnlyShowLeaderboard()

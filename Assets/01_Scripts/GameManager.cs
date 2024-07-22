@@ -72,7 +72,6 @@ public class GameManager : MonoBehaviour
         _player.SetControlledByPlayer(true);
 
         Egg newEgg = Instantiate(eggPrefab, spawnPos - Vector3.forward * 2 + Vector3.up, Quaternion.identity);
-        _player.SetEgg(newEgg);
         newEgg.SetPlayersEgg(true);
 
         int iterationCount = 0;
@@ -85,6 +84,8 @@ public class GameManager : MonoBehaviour
         while ((_nextChickenData == chickenData || _nextChickenData == PreviousChickenData(1)) && _allChicken.Count != 1 && iterationCount < 100);
 
         newEgg.SetEggVisual(_nextChickenData);
+
+        _player.SetEgg(newEgg);
 
         playerCam.SetTarget(_player.transform);
 

@@ -31,8 +31,15 @@ public class Egg : MonoBehaviour
 
     public void SetEggVisual(ChickenData data)
     {
+        print("Egg add collider");
         if (data.eggVisual == null) return;
 
         Instantiate(data.eggVisual, visualParent);
+
+        foreach (MeshFilter child in GetComponentsInChildren<MeshFilter>())
+        {
+            MeshCollider collider = child.gameObject.AddComponent<MeshCollider>();
+            collider.convex = true;
+        }
     }
 }

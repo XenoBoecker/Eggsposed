@@ -179,7 +179,11 @@ public class Chicken : MonoBehaviour
         myEgg.transform.position = eggDropPosition.position;
         myEgg.transform.parent = null;
 
-        myEgg.GetComponentInChildren<Collider>().enabled = true;
+        Collider[] colliders = myEgg.GetComponentsInChildren<Collider>();
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = true;
+        }
         myEgg.GetComponent<Rigidbody>().isKinematic = false;
 
         hasEgg = false;
@@ -191,12 +195,17 @@ public class Chicken : MonoBehaviour
 
     private void PickUpEgg()
     {
+        print("pickup egg");
         myEgg.transform.position = eggCarryPosition.position;
         myEgg.transform.rotation = eggCarryPosition.rotation;
 
         myEgg.transform.parent = eggCarryPosition;
 
-        myEgg.GetComponentInChildren<Collider>().enabled = false;
+        Collider[] colliders = myEgg.GetComponentsInChildren<Collider>();
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = false;
+        }
         myEgg.GetComponent<Rigidbody>().isKinematic = true;
 
         hasEgg = true;
