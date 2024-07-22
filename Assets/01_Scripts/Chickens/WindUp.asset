@@ -22,7 +22,7 @@ MonoBehaviour:
   wings: {fileID: 0}
   tail: {fileID: 0}
   abilityIcon: {fileID: 21300000, guid: 32f9e7d1c65171549b299660f0d5ddc0, type: 3}
-  callSound: {fileID: 0}
+  callSound: {fileID: 8300000, guid: b1628061914976a438687c9ea079eac5, type: 3}
   chickenHeadSprite: {fileID: 0}
   chickenBodySprite: {fileID: 0}
   chickenTailSprite: {fileID: 0}
