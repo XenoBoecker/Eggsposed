@@ -7692,7 +7692,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _baseChickenData
       value: 
-      objectReference: {fileID: 11400000, guid: 8e4fbdc357118484a9e6bfa07dd89796,
+      objectReference: {fileID: 11400000, guid: 0375b249229b8ea41a04ae2e2ebc2af2,
         type: 2}
     - target: {fileID: 8727613375489890949, guid: 60130f7bd90aa3c40a46861ef38b9d81,
         type: 3}

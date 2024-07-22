@@ -342,6 +342,7 @@ MonoBehaviour:
     - {fileID: 6188783957887729479}
     tailObjectsToEnable:
     - {fileID: 7667781604419227630}
+    - {fileID: 7334566263981366263}
   - data: {fileID: 11400000, guid: fb0a77ff2ddd5d048841c9a4274bb78a, type: 2}
     headObjectsToEnable:
     - {fileID: 6555833955769265856}
@@ -7857,7 +7858,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7451938447935886457, guid: 384df30b738799848b60d2d9292c809e, type: 3}
+  - {fileID: 2100000, guid: fb31b45deb02cc14493e5bea0f11361d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13994,7 +13995,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7451938447935886457, guid: 384df30b738799848b60d2d9292c809e, type: 3}
+  - {fileID: 2100000, guid: fb31b45deb02cc14493e5bea0f11361d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
