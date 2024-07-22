@@ -13,6 +13,9 @@ public class SuperHotSetup : ChickenAbilitySetup
     [SerializeField] GameObject timeSlowVolumePrefab;
     Volume timeSlowVolume;
 
+
+    [SerializeField] GameObject slowDownVFX;
+
     float baseAngularSpeed;
 
     bool passiveTimeslowDeactivated;
@@ -91,7 +94,11 @@ public class SuperHotSetup : ChickenAbilitySetup
 
         bcc.angularSpeed = baseAngularSpeed / timeSlowFactor;
 
-        if(lastFrameTimescale == 1) StartCoroutine(ChangeVolumeWeight(0, 1, fadeDuration));
+        if (lastFrameTimescale == 1)
+        {
+            Instantiate(slowDownVFX, transform);
+            StartCoroutine(ChangeVolumeWeight(0, 1, fadeDuration));
+        }
     }
 
     void SetTimeNormal()
