@@ -50,3 +50,5 @@ MonoBehaviour:
   fadeDuration: 0.2
   timeSlowVolumePrefab: {fileID: 8656494735746755961, guid: bd01ce49ee5e29d4e80ddd790967f83e,
     type: 3}
+  slowDownEffect: {fileID: 7938975987940727684, guid: 50d4dd958026a214d9fca89e55106fed,
+    type: 3}
