@@ -45,6 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   callRange: 30
-  callCD: 1.5
+  callCD: 12
   callCharges: 3
-  callChargeCD: 18
