@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 661599417593698870}
   - component: {fileID: 4455760472489790822}
   - component: {fileID: 8592502167362255684}
+  - component: {fileID: 4452077470002053572}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Untagged
@@ -669,6 +670,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftTrail: {fileID: 2138897042100188688}
   rightTrail: {fileID: 7648372542015321858}
+--- !u!114 &4452077470002053572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25585136701300107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a80fdc85b61b342b1a700cae56ce58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: -5962194614486061174}
+  maxPan: 1
+  volumeBehindWall: 0.5
+  minimumDistance: 5
+  maximumDistance: 15
+  volumeDropoff:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -1.6659806
+      outSlope: -1.6659806
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.18615048
+      value: 0.6898769
+      inSlope: -1.2552471
+      outSlope: -1.2552471
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9974588
+      value: 0.0047159735
+      inSlope: -0.000012505122
+      outSlope: -0.000012505122
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.099169895
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1082624109510388296
 GameObject:
   m_ObjectHideFlags: 0

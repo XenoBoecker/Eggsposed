@@ -16,8 +16,7 @@ public class SpatialAudio : MonoBehaviour
     [SerializeField] private float maximumDistance = 15f;
     [SerializeField] private AnimationCurve volumeDropoff;
 
-    [Header("Player Head Position")]
-    [SerializeField] private Transform headPos;
+    private Transform headPos;
     private float distanceToPlayer;
 
     private Vector3 direction;
@@ -26,6 +25,8 @@ public class SpatialAudio : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         baseVolume = audioSource.volume;
+
+        headPos = Camera.main.transform;
     }
 
     private void Update()
