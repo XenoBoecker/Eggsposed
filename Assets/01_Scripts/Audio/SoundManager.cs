@@ -70,18 +70,18 @@ public class SoundManager : MonoBehaviour
 
         if (!sfxOn) return;
 
+        if (source == null) source = sfxAudioSource;
+           
         source.volume = sfxVolume;
-
-        if (source == null) sfxAudioSource.PlayOneShot(clip);
-        else
-        {
-            source.PlayOneShot(clip);
-        }
+        
+        source.PlayOneShot(clip);
     }
 
     public void PlaySound(AudioClip[] clips, AudioSource source = null)
     {
         if (clips.Length == 0) return;
+
+        if (source == null) source = sfxAudioSource;
 
         source.volume = sfxVolume;
 
