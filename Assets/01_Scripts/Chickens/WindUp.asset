@@ -23,9 +23,9 @@ MonoBehaviour:
   tail: {fileID: 0}
   abilityIcon: {fileID: 21300000, guid: 32f9e7d1c65171549b299660f0d5ddc0, type: 3}
   callSound: {fileID: 8300000, guid: b1628061914976a438687c9ea079eac5, type: 3}
-  chickenHeadSprite: {fileID: 0}
-  chickenBodySprite: {fileID: 0}
-  chickenTailSprite: {fileID: 0}
+  chickenHeadSprite: {fileID: 21300000, guid: d910b72d5bf69ac43bf8f1030a82b78a, type: 3}
+  chickenBodySprite: {fileID: 21300000, guid: 49a22177252fc944cb7227a87f2a6307, type: 3}
+  chickenTailSprite: {fileID: 21300000, guid: 64c3281f5301ca44bb36b395129a014f, type: 3}
   chickenSpawnScreenExplanation: Breeding winds up energy. Expends energy when not
     winding up. More energy makes it move faster.
   combinedNameFirstHalf: 

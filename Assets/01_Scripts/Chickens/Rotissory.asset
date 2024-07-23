@@ -23,9 +23,9 @@ MonoBehaviour:
   tail: {fileID: 0}
   abilityIcon: {fileID: 21300000, guid: 5f352692b47c93744b2e7f56b9534260, type: 3}
   callSound: {fileID: 0}
-  chickenHeadSprite: {fileID: 0}
-  chickenBodySprite: {fileID: 0}
-  chickenTailSprite: {fileID: 0}
+  chickenHeadSprite: {fileID: 21300000, guid: 69d5695e19d69bc48961de860e3bd5fb, type: 3}
+  chickenBodySprite: {fileID: 21300000, guid: 69d5695e19d69bc48961de860e3bd5fb, type: 3}
+  chickenTailSprite: {fileID: 21300000, guid: 69d5695e19d69bc48961de860e3bd5fb, type: 3}
   chickenSpawnScreenExplanation: Spins and flies straight up into the air when using
     its Scream.
   combinedNameFirstHalf: 

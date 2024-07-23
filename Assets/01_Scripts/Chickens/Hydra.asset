@@ -23,9 +23,9 @@ MonoBehaviour:
   tail: {fileID: 0}
   abilityIcon: {fileID: 21300000, guid: 95c4ba966a700ae4d971b8f2b8cc8c63, type: 3}
   callSound: {fileID: 8300000, guid: 4d58d397bdee45a418ba7686e1b24643, type: 3}
-  chickenHeadSprite: {fileID: 0}
-  chickenBodySprite: {fileID: 0}
-  chickenTailSprite: {fileID: 0}
+  chickenHeadSprite: {fileID: 21300000, guid: c13622e4f01684a4b8c32800b93f8fe9, type: 3}
+  chickenBodySprite: {fileID: 21300000, guid: 49d1e78c6959ab54d813b970274cb18b, type: 3}
+  chickenTailSprite: {fileID: 21300000, guid: 4830faa55cf70214089580b41279747d, type: 3}
   chickenSpawnScreenExplanation: The Chicken Scream has 3 uses before going on Cooldown.
   combinedNameFirstHalf: 
   combinedNameSecondHalf: 

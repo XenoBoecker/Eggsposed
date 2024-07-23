@@ -23,9 +23,9 @@ MonoBehaviour:
   tail: {fileID: 0}
   abilityIcon: {fileID: 21300000, guid: 70e007db85bb66d40b00867966446606, type: 3}
   callSound: {fileID: 8300000, guid: 9478a2d1c05e2044bb0c533db47eb400, type: 3}
-  chickenHeadSprite: {fileID: 0}
-  chickenBodySprite: {fileID: 0}
-  chickenTailSprite: {fileID: 0}
+  chickenHeadSprite: {fileID: 21300000, guid: feffd3f01a02a0446b9641001dfa506c, type: 3}
+  chickenBodySprite: {fileID: 21300000, guid: b8097f58ead0e1e4693a4069b234776e, type: 3}
+  chickenTailSprite: {fileID: 21300000, guid: 05230c6ea953bb84c95618b000f19788, type: 3}
   chickenSpawnScreenExplanation: Other chickens mirror your actions.
   combinedNameFirstHalf: 
   combinedNameSecondHalf: 

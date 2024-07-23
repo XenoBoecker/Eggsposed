@@ -23,9 +23,9 @@ MonoBehaviour:
   tail: {fileID: 0}
   abilityIcon: {fileID: 21300000, guid: c7e4c1a1bafdfcc488aedc5bad167edb, type: 3}
   callSound: {fileID: 8300000, guid: 81d0780d9ba07e4429f0c4b5afafe7f5, type: 3}
-  chickenHeadSprite: {fileID: 0}
-  chickenBodySprite: {fileID: 0}
-  chickenTailSprite: {fileID: 0}
+  chickenHeadSprite: {fileID: 21300000, guid: 59feb513ceb5da74b82ed283841c3c51, type: 3}
+  chickenBodySprite: {fileID: 21300000, guid: 0fb956ad5e4722142b4e52ffee14f729, type: 3}
+  chickenTailSprite: {fileID: 21300000, guid: 2df862ae197b12c40921f8f6421b1d8e, type: 3}
   chickenSpawnScreenExplanation: Launches forwards and up when using its Scream.
   combinedNameFirstHalf: 
   combinedNameSecondHalf: 

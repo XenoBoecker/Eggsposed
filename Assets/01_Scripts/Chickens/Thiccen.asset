@@ -23,9 +23,9 @@ MonoBehaviour:
   tail: {fileID: 0}
   abilityIcon: {fileID: 21300000, guid: a6db280f03962914c9d0e4ce796495fc, type: 3}
   callSound: {fileID: 8300000, guid: e0072235949a61f4c88a801caacc8229, type: 3}
-  chickenHeadSprite: {fileID: 0}
-  chickenBodySprite: {fileID: 0}
-  chickenTailSprite: {fileID: 0}
+  chickenHeadSprite: {fileID: 21300000, guid: e5d7fae16e688c743bacd6d950ab6ed3, type: 3}
+  chickenBodySprite: {fileID: 21300000, guid: f333758647cfff04c87ed265ccb6dca9, type: 3}
+  chickenTailSprite: {fileID: 21300000, guid: 484652d88e5a28b4baa73cac80449913, type: 3}
   chickenSpawnScreenExplanation: Extra thicc and slow, breeding is faster.
   combinedNameFirstHalf: 
   combinedNameSecondHalf: 

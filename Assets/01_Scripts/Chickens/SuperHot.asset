@@ -23,9 +23,9 @@ MonoBehaviour:
   tail: {fileID: 0}
   abilityIcon: {fileID: 21300000, guid: 09cabbad8114d294fb65ff821f38d142, type: 3}
   callSound: {fileID: 8300000, guid: b50b49f353156ea4097dfe76f8a25a2b, type: 3}
-  chickenHeadSprite: {fileID: 0}
-  chickenBodySprite: {fileID: 0}
-  chickenTailSprite: {fileID: 0}
+  chickenHeadSprite: {fileID: 21300000, guid: 68f6563276e122f418e4a2ae90c8c3df, type: 3}
+  chickenBodySprite: {fileID: 21300000, guid: 4804cbdd1fe0d984785624c751dba990, type: 3}
+  chickenTailSprite: {fileID: 21300000, guid: c2fa0e79b440fd844b73170f5a361dc1, type: 3}
   chickenSpawnScreenExplanation: Time is slowed while not moving or breeding.
   combinedNameFirstHalf: 
   combinedNameSecondHalf: 

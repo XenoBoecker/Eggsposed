@@ -23,9 +23,9 @@ MonoBehaviour:
   tail: {fileID: 0}
   abilityIcon: {fileID: 21300000, guid: 333763a7e68573f44a161ebd91399c7d, type: 3}
   callSound: {fileID: 8300000, guid: 3e5316268bebc4b459ac5852f75f884b, type: 3}
-  chickenHeadSprite: {fileID: 0}
-  chickenBodySprite: {fileID: 0}
-  chickenTailSprite: {fileID: 0}
+  chickenHeadSprite: {fileID: 21300000, guid: c84de6604c11792448aab16b60744a55, type: 3}
+  chickenBodySprite: {fileID: 21300000, guid: 0199e2d0b4131d14c991862cc91d60aa, type: 3}
+  chickenTailSprite: {fileID: 21300000, guid: a44afe8b0bfc6a14d983a84b4753ab2d, type: 3}
   chickenSpawnScreenExplanation: Shows distance between the chicken and the Farm'O'Bot.
     Shows direction to Farm'O'Bot.
   combinedNameFirstHalf: 
