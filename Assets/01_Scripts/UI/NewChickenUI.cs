@@ -137,9 +137,9 @@ public class NewChickenUI : MonoBehaviour
     {
         if (data.chickenHeadSprite == null) return; // TODO: remove this line when all chickens have sprites
 
-        chickenImages[0].sprite = data.chickenHeadSprite;
+        chickenImages[2].sprite = data.chickenHeadSprite;
         chickenImages[1].sprite = data.chickenBodySprite;
-        chickenImages[2].sprite = data.chickenTailSprite;
+        chickenImages[0].sprite = data.chickenTailSprite;
 
         if (chickenData != null) chickenImages[1].sprite = chickenData.chickenBodySprite;
     }
