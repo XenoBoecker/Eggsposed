@@ -683,10 +683,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: -5962194614486061174}
-  maxPan: 1
+  maxPan: 0.8
   volumeBehindWall: 0.5
-  minimumDistance: 5
-  maximumDistance: 15
+  minimumDistance: 15
+  maximumDistance: 50
   volumeDropoff:
     serializedVersion: 2
     m_Curve:
