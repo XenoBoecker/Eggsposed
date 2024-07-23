@@ -121,6 +121,12 @@ public class SoundManager : MonoBehaviour
         audioSource?.Stop();
     }
 
+    private void OnValidate()
+    {
+        musicAudioSource.volume = musicVolume;
+        sfxAudioSource.volume = sfxVolume;
+    }
+
     [System.Serializable]
     public struct UISFX
     {
