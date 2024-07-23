@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 8674689023333241944}
   - component: {fileID: 7942520648168594534}
   - component: {fileID: 5960895863080740335}
+  - component: {fileID: 8380108753397325578}
   m_Layer: 0
   m_Name: Superhot_Egg_Top
   m_TagString: Untagged
@@ -199,3 +200,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8380108753397325578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5908270703424203313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfb9c1735292c8b4f976050b2357179c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotSpeed: {x: 0, y: 0, z: 90}
+  rotDurationUntilPause: 6.428571
+  pauseDuration: 0.2

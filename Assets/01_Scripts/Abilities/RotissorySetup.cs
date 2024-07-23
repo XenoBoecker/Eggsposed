@@ -35,11 +35,19 @@ public class RotissorySetup : ChickenAbilitySetup
     {
         base.Update();
 
-        if (Mathf.Abs(chickenVisual.transform.localRotation.eulerAngles.y) > fixRotThreshold && bcc.enabled)
+        if (bcc.enabled)
         {
-            print("Rotissory fix rotation: " + chickenVisual.transform.localRotation.eulerAngles.y);
-            chickenVisual.Rotate(Vector3.up, Time.deltaTime * chickenVisual.transform.localRotation.eulerAngles.y * fixRotSpeed);
+            if (Mathf.Abs(chickenVisual.transform.localRotation.eulerAngles.y) > fixRotThreshold)
+            {
+                Quaternion targetRotation = Quaternion.Euler(chickenVisual.transform.localRotation.eulerAngles.x, 0, chickenVisual.transform.localRotation.eulerAngles.z);
+                chickenVisual.transform.localRotation = Quaternion.Slerp(chickenVisual.transform.localRotation, targetRotation, Time.deltaTime * fixRotSpeed);
+            }
+            else
+            {
+                chickenVisual.transform.localRotation = Quaternion.Slerp(chickenVisual.transform.localRotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * fixRotSpeed);
+            }
         }
+
     }
 
     public override void Call()

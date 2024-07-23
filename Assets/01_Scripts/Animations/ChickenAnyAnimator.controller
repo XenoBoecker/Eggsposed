@@ -449,7 +449,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Glide Left
-  m_Speed: 1
+  m_Speed: 0.66
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1509309975176748571}
@@ -1014,7 +1014,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Glide Right
-  m_Speed: 1
+  m_Speed: 0.66
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -6908238653453536007}
@@ -1329,91 +1329,91 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: OnCall
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IdleIndex
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: BreedIndex
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: LeaningDirection
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Gliding
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Falling
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Walking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Sitting
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: OnSitDown
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: OnStartFalling
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: OnStartWalking
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: OnStartGliding
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: WalkClosedWings
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Calling
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -1848,7 +1848,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Glide
-  m_Speed: 1
+  m_Speed: 0.66
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -9016222726746105798}
@@ -2081,16 +2081,6 @@ AnimatorStateMachine:
   - {fileID: 8490050520577015265}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -7734562646896078081}
-    second:
-    - {fileID: 1424084963361741943}
-  - first: {fileID: -4811834057573546967}
-    second:
-    - {fileID: 8041076828447324625}
-  - first: {fileID: -1882156223646325051}
-    second:
-    - {fileID: -5581456744974169930}
-    - {fileID: -4102546607788733748}
   - first: {fileID: 6549020883937828797}
     second:
     - {fileID: -7081735809894081394}
@@ -2101,6 +2091,16 @@ AnimatorStateMachine:
     - {fileID: -7611056405815439084}
     - {fileID: 7451717117177017614}
     - {fileID: -6614313516421469066}
+  - first: {fileID: -7734562646896078081}
+    second:
+    - {fileID: 1424084963361741943}
+  - first: {fileID: -1882156223646325051}
+    second:
+    - {fileID: -5581456744974169930}
+    - {fileID: -4102546607788733748}
+  - first: {fileID: -4811834057573546967}
+    second:
+    - {fileID: 8041076828447324625}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 280, y: -570, z: 0}
   m_EntryPosition: {x: -540, y: 0, z: 0}
