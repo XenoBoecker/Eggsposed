@@ -8,9 +8,18 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip[] music;
     [SerializeField] AudioSource musicAudioSource;
     [SerializeField] AudioSource sfxAudioSource;
-    bool musicOn = true;
-    bool sfxOn = true;
+
+    [SerializeField] bool musicOn = true;
+
+    [SerializeField] bool sfxOn = true;
     int currentTrack = 0;
+
+
+    [Range(0,1)]
+    [SerializeField] float musicVolume = 0.5f;
+    [Range(0, 1)]
+    [SerializeField] float sfxVolume = 0.5f;
+    
 
     public event Action onSoundReload;
 
