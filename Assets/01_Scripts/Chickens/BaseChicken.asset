@@ -23,9 +23,9 @@ MonoBehaviour:
   tail: {fileID: 3873319841129774167, guid: 04510e90744c01f4bbdbd0d9c44965af, type: 3}
   abilityIcon: {fileID: 21300000, guid: 9dee57631543bf4428ae06b9c29c9911, type: 3}
   callSound: {fileID: 8300000, guid: 4d58d397bdee45a418ba7686e1b24643, type: 3}
-  chickenHeadSprite: {fileID: 0}
-  chickenBodySprite: {fileID: 0}
-  chickenTailSprite: {fileID: 0}
+  chickenHeadSprite: {fileID: 21300000, guid: dd276e5d25a9c3a42b95d5f60e63c033, type: 3}
+  chickenBodySprite: {fileID: 21300000, guid: 130298d44afbfdf468ee88cd14f39889, type: 3}
+  chickenTailSprite: {fileID: 21300000, guid: e01620a68ea131e4ea01e3e2aa771f2d, type: 3}
   chickenSpawnScreenExplanation: The standard Chicken.
   combinedNameFirstHalf: 
   combinedNameSecondHalf: 
