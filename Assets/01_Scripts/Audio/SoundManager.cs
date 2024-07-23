@@ -38,11 +38,13 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Reload();
+        
         musicAudioSource.loop = true;
         musicAudioSource.clip = music[currentTrack];
-        if(musicOn && music.Length > 0) musicAudioSource.Play();
 
-        Reload();
+
+        if (musicOn && music.Length > 0) musicAudioSource.Play();
     }
 
     public void SetMusicVolume(float volume)
@@ -68,10 +70,11 @@ public class SoundManager : MonoBehaviour
 
         if (!sfxOn) return;
 
+        source.volume = sfxVolume;
+
         if (source == null) sfxAudioSource.PlayOneShot(clip);
         else
         {
-            source.volume = sfxAudioSource.volume;
             source.PlayOneShot(clip);
         }
     }
@@ -79,7 +82,9 @@ public class SoundManager : MonoBehaviour
     public void PlaySound(AudioClip[] clips, AudioSource source = null)
     {
         if (clips.Length == 0) return;
-        
+
+        source.volume = sfxVolume;
+
         int rand = UnityEngine.Random.Range(0, clips.Length);
 
         PlaySound(clips[rand], source);
@@ -87,16 +92,19 @@ public class SoundManager : MonoBehaviour
 
     internal void Reload()
     {
-        SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume", 0.5f));
-        SetSFXVolume(PlayerPrefs.GetFloat("SFXVolume", 0.5f));
-        bool wasMusicOn = musicOn;
-        musicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
-        if (musicOn && !wasMusicOn) musicAudioSource.Play();
-        else if(!musicOn) musicAudioSource.Stop();
+        musicAudioSource.volume = musicVolume;
+        sfxAudioSource.volume = sfxVolume;
 
-        sfxOn = PlayerPrefs.GetInt("SFXOn", 1) == 1;
-
-        onSoundReload?.Invoke();
+        // SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume", 0.5f));
+        // SetSFXVolume(PlayerPrefs.GetFloat("SFXVolume", 0.5f));
+        // bool wasMusicOn = musicOn;
+        // musicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
+        // if (musicOn && !wasMusicOn) musicAudioSource.Play();
+        // else if(!musicOn) musicAudioSource.Stop();
+        // 
+        // // sfxOn = PlayerPrefs.GetInt("SFXOn", 1) == 1;
+        // 
+        // onSoundReload?.Invoke();
     }
 
     internal void StartLoopingSound(AudioClip clip, AudioSource audioSource)
