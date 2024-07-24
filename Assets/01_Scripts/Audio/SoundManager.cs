@@ -64,7 +64,7 @@ public class SoundManager : MonoBehaviour
         return sfxAudioSource.volume;
     }
 
-    public void PlaySound(AudioClip clip, AudioSource source = null)
+    public void PlaySound(AudioClip clip, AudioSource source = null, float volumeMultiplier = 1)
     {
         if (clip == null) return;
 
@@ -72,7 +72,7 @@ public class SoundManager : MonoBehaviour
 
         if (source == null) source = sfxAudioSource;
            
-        source.volume = sfxVolume;
+        source.volume = sfxVolume * volumeMultiplier;
         
         source.PlayOneShot(clip);
     }
