@@ -329,6 +329,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7799274417496748032, guid: 8501343530130654aac497e25d8db543,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799274417496748032, guid: 8501343530130654aac497e25d8db543,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799274417496748032, guid: 8501343530130654aac497e25d8db543,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799274417496748032, guid: 8501343530130654aac497e25d8db543,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2761,6 +2776,11 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 2066801005}
+    - target: {fileID: 139220443767652589, guid: 41f27d99ceac0af4da7a2f4914477451,
+        type: 3}
+      propertyPath: skipCalibration
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 139220443767652589, guid: 41f27d99ceac0af4da7a2f4914477451,
         type: 3}
       propertyPath: calibrationQueueSize

@@ -149,7 +149,11 @@ public class KinectCalibration : MonoBehaviour
 
     [SerializeField] float minCallToAmbientNoiseDifference = 0.1f;
 
+    [SerializeField] bool skipCalibration;
+
     public float currentLoudness;
+
+
 
     private void Awake()
     {
@@ -375,6 +379,8 @@ public class KinectCalibration : MonoBehaviour
 
         if (pelvisLastPosition != Vector3.zero && pelvisLastPosition != kinectBody.pelvis.position && waitTimer >= connectingWaitTime)
         {
+            if(skipCalibration) ChangePhase(CalibrationPhase.SetInputThresholdValues);
+
             ChangePhase(CalibrationPhase.Stand);
         }
 

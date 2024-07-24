@@ -15,6 +15,8 @@ public class KinectInputs : MonoBehaviour
 
     [SerializeField] AnimationCurve rotationInputCurve;
 
+    CameraController camController;
+
     Transform head;
 
     Transform pelvis;
@@ -56,13 +58,14 @@ public class KinectInputs : MonoBehaviour
         rightHand = kinectBody.rightHand;
 
         //OnStandUp += () => print("Stand Up");
-        //OnSitDown += () => print("Sit Down");
+        OnSitDown += () => print("Sit Down");
         //OnJump += () => print("Jump");
         //OnStopJump += () => print("Stop Jump");
     }
 
     void Update()
     {
+        if(camController==null) camController = FindObjectOfType <CameraController>();
         // printTimer += Time.deltaTime;
 
         moveInput = Vector2.zero;
@@ -131,16 +134,26 @@ public class KinectInputs : MonoBehaviour
 
         debugText += "currentHeight: " + currentPelvisHeight;
 
-        debugText += "htresholdHeight: " + calibrationValues.squatPelvisMeanPosition.y + calibrationValues.squatDistance * calibrationValues.squatDistancePercentageToTriggerInput;
+        debugText += "; htresholdHeight: " + calibrationValues.squatPelvisMeanPosition.y + calibrationValues.squatDistance * calibrationValues.squatDistancePercentageToTriggerInput;
 
         if (currentPelvisHeight > thresholdPelvisHeight)
         {
-            if (squatDebugText != null) squatDebugText.text = debugText + "\ngo lower to squat!!";
+            if (squatDebugText != null)
+            {
+                squatDebugText.text = debugText + "\ngo lower to squat!!";
+            }
             OnStandUp?.Invoke();
         }
         else
         {
-            if (squatDebugText != null) squatDebugText.text = debugText + "\nYEAH BOI SQUATTING!!";
+            if (camController != null)
+            {
+                camController.Confirm();
+            }
+            if (squatDebugText != null)
+            {
+                squatDebugText.text = debugText + "\nYEAH BOI SQUATTING!!";
+            }
             OnSitDown?.Invoke();
 
             CheckDropEgg();
@@ -155,12 +168,16 @@ public class KinectInputs : MonoBehaviour
 
         if (currentHandHeight > thresholdHandHeight)
         {
-            print("jump --- " + "Height: " + currentHandHeight + "Threshold: " + thresholdHandHeight);
+            if (camController != null)
+            {
+                camController.Skip();
+            }
+            // print("jump --- " + "Height: " + currentHandHeight + "Threshold: " + thresholdHandHeight);
             OnJump?.Invoke();
         }
         else
         {
-            print("Height: " + currentHandHeight + "Threshold: " + thresholdHandHeight);
+            // print("Height: " + currentHandHeight + "Threshold: " + thresholdHandHeight);
             OnStopJump?.Invoke();
         }
     }

@@ -32,7 +32,8 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] int countdownStartNumber = 3;
 
-
+    [SerializeField] float minWaitForInputTime = 1f;
+    float waitingTimeStart;
 
     [SerializeField] bool skipAnimation = false;
 
@@ -82,10 +83,20 @@ public class CameraController : MonoBehaviour
             StartCoroutine(StartGameFlyThrough());
         }
     }
+    public void Confirm()
+    {
+        OnConfirm();
+    }
+
+    public void Skip()
+    {
+        EndIntro();
+    }
 
     private void OnConfirm()
     {
-        if (!waitingForInput ||! flyThroughActive) return;
+        print("Camera On Confirm");
+        if (!waitingForInput ||! flyThroughActive || Time.realtimeSinceStartup - waitingTimeStart < minWaitForInputTime) return;
 
         SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.confirmSound);
 
@@ -192,9 +203,13 @@ public class CameraController : MonoBehaviour
             }
 
             print("wait for input ");
+
+            waitingTimeStart = Time.realtimeSinceStartup;
             // wait for input
             while (waitingForInput)
             {
+                float timeWaited = Time.realtimeSinceStartup - waitingTimeStart;
+                print(timeWaited);
                 if (controls.Player.Breed.triggered) waitingForInput = false;
 
                 yield return null;
