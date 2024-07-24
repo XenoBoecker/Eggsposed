@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07766123, g: 0.34757078, b: 0.5715871, a: 1}
+  m_IndirectSpecularColor: {r: 0.0776612, g: 0.34757075, b: 0.57158697, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -792,7 +792,7 @@ Transform:
   m_GameObject: {fileID: 274736879}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 205.31, y: 0.16, z: 252.85}
+  m_LocalPosition: {x: 179.58, y: 1.05, z: 251.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5604,21 +5604,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6880539880263720575, guid: 9636a90bf2be13c4daeec630c8919b0e,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 9193499363791570955, guid: 9636a90bf2be13c4daeec630c8919b0e,
-        type: 3}
-      propertyPath: musicVolume
-      value: 0.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 9193499363791570955, guid: 9636a90bf2be13c4daeec630c8919b0e,
-        type: 3}
-      propertyPath: music.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 7ca702ec3ec12df4098ae2e9b94343eb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

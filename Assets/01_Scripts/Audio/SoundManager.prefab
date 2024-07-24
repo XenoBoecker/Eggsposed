@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -172,7 +172,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -303,13 +303,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music:
-  - {fileID: 8300000, guid: 259bcc64da173ee4f819d96e5120dc15, type: 3}
+  - {fileID: 8300000, guid: 7ca702ec3ec12df4098ae2e9b94343eb, type: 3}
   musicAudioSource: {fileID: 6880539880263720575}
   sfxAudioSource: {fileID: 5261854424008113395}
   musicOn: 1
   sfxOn: 1
-  musicVolume: 0.5
-  sfxVolume: 0.5
+  musicVolume: 0.25
+  sfxVolume: 0.7
   uiSFX:
     changeButtonSound: {fileID: 8300000, guid: a5dfe488220014f45af88102cb0014b0, type: 3}
     confirmSound: {fileID: 8300000, guid: 8af6ba4024646f34d9c1197564453ad9, type: 3}
