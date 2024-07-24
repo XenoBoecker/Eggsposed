@@ -155,7 +155,7 @@ public class KinectInputs : MonoBehaviour
 
         if (currentHandHeight > thresholdHandHeight)
         {
-            print("jump");
+            print("jump --- " + "Height: " + currentHandHeight + "Threshold: " + thresholdHandHeight);
             OnJump?.Invoke();
         }
         else
