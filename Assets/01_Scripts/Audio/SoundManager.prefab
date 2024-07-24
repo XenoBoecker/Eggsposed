@@ -314,7 +314,8 @@ MonoBehaviour:
     changeButtonSound: {fileID: 8300000, guid: a5dfe488220014f45af88102cb0014b0, type: 3}
     confirmSound: {fileID: 8300000, guid: 8af6ba4024646f34d9c1197564453ad9, type: 3}
     countdownSound: {fileID: 8300000, guid: 8c98b491311f7e94bbd6e67f84d76565, type: 3}
-    hatchNewChickenRiff: {fileID: 0}
+    hatchNewChickenRiff: {fileID: 8300000, guid: 52256e8cc49e1514884ee642568cf847,
+      type: 3}
     eggCrackSounds:
     - {fileID: 8300000, guid: c8ff662d124f5f54ca38ea9546cf4ab8, type: 3}
     - {fileID: 8300000, guid: 9e0674a43493e334a8531d0aa84ad1c4, type: 3}

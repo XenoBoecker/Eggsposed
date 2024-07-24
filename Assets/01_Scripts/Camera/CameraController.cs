@@ -51,7 +51,7 @@ public class CameraController : MonoBehaviour
         {
             kinectInputs = FindObjectOfType<KinectInputs>();
             kinectInputs.OnSitDown += OnConfirm;
-            kinectInputs.OnStandUp += SkipIntro;
+            kinectInputs.OnStandUp += EndIntro;
         }
 
         controls = new PlayerControls();
@@ -76,7 +76,7 @@ public class CameraController : MonoBehaviour
 
         if (skipAnimation)
         {
-            SkipIntro();
+            EndIntro();
         }
         else {
             StartCoroutine(StartGameFlyThrough());
@@ -96,7 +96,7 @@ public class CameraController : MonoBehaviour
     {
         if (controls.Player.Jump.triggered)
         {
-            SkipIntro();
+            EndIntro();
         }
         if(controls.Player.Breed.triggered) OnConfirm();
 
@@ -123,7 +123,7 @@ public class CameraController : MonoBehaviour
         
     }
 
-    private void SkipIntro()
+    private void EndIntro()
     {
         if (!flyThroughActive) return;
 
@@ -285,8 +285,7 @@ public class CameraController : MonoBehaviour
 
         countdownDisplay.gameObject.SetActive(false);
 
-        TimeManager.Instance.SetTimeScale(1);
-
+        EndIntro();
         flyThroughActive = false;
     }
 }

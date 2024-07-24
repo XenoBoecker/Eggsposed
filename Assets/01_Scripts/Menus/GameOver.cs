@@ -16,6 +16,10 @@ public class GameOver : MonoBehaviour
 
     [SerializeField] float eggDropRange = 0.6f;
 
+    [SerializeField] float dropEggTimer = 0.6f;
+
+    [SerializeField] float plusMinusDropEggTimer = 0.15f;
+
     [SerializeField] int testEggCount = 10;
     [SerializeField] ChickenData testChicken;
 
@@ -72,7 +76,7 @@ public class GameOver : MonoBehaviour
         {
             SpawnChickenEgg(chicken);
 
-            yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 0.8f));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(dropEggTimer - plusMinusDropEggTimer, dropEggTimer + plusMinusDropEggTimer));
         }
 
         yield return new WaitForSeconds(delayBeforeCamAnimation);

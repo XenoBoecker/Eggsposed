@@ -119,7 +119,7 @@ public class NewChickenUI : MonoBehaviour
 
         SetChickenImages(newChickenImages, data);
 
-        if(GameManager.Instance.BredEggCount % 2 == 0) SetChickenImages(combinedChickenImages, data, previousData);
+        if(GameManager.Instance.BredEggCount % 2 == 1) SetChickenImages(combinedChickenImages, data, previousData);
         else SetChickenImages(combinedChickenImages, previousData, data);
     }
 
