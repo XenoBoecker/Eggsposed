@@ -28,5 +28,5 @@ MonoBehaviour:
   chickenTailSprite: {fileID: 0}
   chickenSpawnScreenExplanation: Spins and flies straight up into the air when using
     its Scream.
-  combinedNameFirstHalf: 
-  combinedNameSecondHalf: 
+  combinedNameFirstHalf: Rotisserie
+  combinedNameSecondHalf: Rotisserie

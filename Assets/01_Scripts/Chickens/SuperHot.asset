@@ -27,5 +27,5 @@ MonoBehaviour:
   chickenBodySprite: {fileID: 21300000, guid: 4804cbdd1fe0d984785624c751dba990, type: 3}
   chickenTailSprite: {fileID: 21300000, guid: c2fa0e79b440fd844b73170f5a361dc1, type: 3}
   chickenSpawnScreenExplanation: Time is slowed while not moving or breeding.
-  combinedNameFirstHalf: 
-  combinedNameSecondHalf: 
+  combinedNameFirstHalf: SuperHot
+  combinedNameSecondHalf: SuperHot

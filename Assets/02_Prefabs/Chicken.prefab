@@ -199,7 +199,7 @@ MonoBehaviour:
   _glideMaxFallSpeed: 3
   _glideSpeedMultiplier: 1.8
   _glideRotateMultiplier: 0.5
-  _breedTime: 12
+  _breedTime: 8
 --- !u!114 &8343700215415963554
 MonoBehaviour:
   m_ObjectHideFlags: 0

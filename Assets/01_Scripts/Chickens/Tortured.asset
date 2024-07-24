@@ -27,5 +27,5 @@ MonoBehaviour:
   chickenBodySprite: {fileID: 21300000, guid: e3dde4d54549f584982cd3afc35948de, type: 3}
   chickenTailSprite: {fileID: 0}
   chickenSpawnScreenExplanation: Always uses its Chicken Scream when able.
-  combinedNameFirstHalf: 
-  combinedNameSecondHalf: 
+  combinedNameFirstHalf: Tortured
+  combinedNameSecondHalf: Tortured

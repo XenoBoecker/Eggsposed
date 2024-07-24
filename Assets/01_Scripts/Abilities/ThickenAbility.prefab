@@ -94,5 +94,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   callRange: 30
   callCD: 12
-  breedTimeMultiplier: 0.7
+  breedTimeMultiplier: 0.5
   moveSpeedMultiplier: 0.7

@@ -27,5 +27,5 @@ MonoBehaviour:
   chickenBodySprite: {fileID: 21300000, guid: 130298d44afbfdf468ee88cd14f39889, type: 3}
   chickenTailSprite: {fileID: 21300000, guid: e01620a68ea131e4ea01e3e2aa771f2d, type: 3}
   chickenSpawnScreenExplanation: The standard Chicken.
-  combinedNameFirstHalf: 
-  combinedNameSecondHalf: 
+  combinedNameFirstHalf: Base
+  combinedNameSecondHalf: Base
