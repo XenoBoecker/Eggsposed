@@ -85,7 +85,7 @@ public class CameraController : MonoBehaviour
 
     private void OnConfirm()
     {
-        if (!waitingForInput) return;
+        if (!waitingForInput ||! flyThroughActive) return;
 
         SoundManager.Instance.PlaySound(SoundManager.Instance.uiSFX.confirmSound);
 
