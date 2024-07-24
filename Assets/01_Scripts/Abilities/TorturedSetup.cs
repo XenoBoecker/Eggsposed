@@ -19,6 +19,7 @@ public class TorturedSetup : ChickenAbilitySetup
 
         if (CanCall())
         {
+            print("Torture: canCall");
             chicken.Call(false);
         }
     }

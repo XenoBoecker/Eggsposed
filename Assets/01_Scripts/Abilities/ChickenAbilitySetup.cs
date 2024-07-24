@@ -1,4 +1,5 @@
 using ECM.Components;
+using System;
 using UnityEngine;
 
 public class ChickenAbilitySetup : MonoBehaviour
@@ -34,7 +35,15 @@ public class ChickenAbilitySetup : MonoBehaviour
         chicken.OnCall += CallMaybe;
         chicken.OnGetCallCooldown += SetChickenCallCDPercentage;
 
+        chicken.OnCheckCanCallEvent += DebugCheckCanCall;
+
         this.chicken = chicken;
+    }
+
+    private int DebugCheckCanCall()
+    {
+        print(GetType().Name + CanCallInt());
+        return 0;
     }
 
     protected virtual void SetChickenCallCDPercentage()

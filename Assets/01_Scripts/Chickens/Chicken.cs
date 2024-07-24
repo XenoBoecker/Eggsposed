@@ -318,6 +318,8 @@ public class Chicken : MonoBehaviour
         int canCall = 0;
         canCall += OnCheckCanCallEvent.Invoke();
 
+        print("Check Can Call:" + canCall);
+
         if (canCall > 0) return true;
         else return false;
     }
