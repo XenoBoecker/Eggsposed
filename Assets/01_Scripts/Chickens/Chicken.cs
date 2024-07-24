@@ -1,5 +1,6 @@
 using ECM.Components;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
@@ -42,6 +43,8 @@ public class Chicken : MonoBehaviour
     ChickenData headData, bodyData;
     public ChickenData HeadData => headData;
     public ChickenData BodyData => bodyData;
+
+    public List<ChickenAbilitySetup> abilities = new List<ChickenAbilitySetup>();
 
     Egg myEgg;
     public Egg Egg => myEgg;
@@ -316,7 +319,13 @@ public class Chicken : MonoBehaviour
         if (OnCheckCanCallEvent == null) return false;
         
         int canCall = 0;
-        canCall += OnCheckCanCallEvent.Invoke();
+
+        foreach (ChickenAbilitySetup ability in abilities)
+        {
+            if (ability.CanCall()) canCall++;
+        }   
+
+        // canCall += OnCheckCanCallEvent.Invoke();
 
         print("Check Can Call:" + canCall);
 

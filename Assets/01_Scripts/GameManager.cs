@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
             {
                 continue;
             }
-            CopyDerivedComponent(previousChickenDatas[previousChickenDatas.Count - 1-i].prefab, _player.gameObject);
+            _player.abilities.Add((ChickenAbilitySetup) CopyDerivedComponent(previousChickenDatas[previousChickenDatas.Count - 1-i].prefab, _player.gameObject));
         }
 
         if (previousChickenDatas.Count == 1) _player.SetChickenVisuals(chickenData, chickenData);
@@ -133,17 +133,19 @@ public class GameManager : MonoBehaviour
         TimeManager.Instance.Unpause();
     }
 
-    private void CopyDerivedComponent(GameObject source, GameObject destination)
+    private Component CopyDerivedComponent(GameObject source, GameObject destination)
     {
+        Component destinationComponent = null;
         // Find any component derived from ChickenAbilitySetup
         ChickenAbilitySetup sourceComponent = source.GetComponent<ChickenAbilitySetup>();
         if (sourceComponent != null)
         {
             // Get the actual type of the component (e.g., LightningMcChickSetup, RotatorChickenSetup)
             Type sourceType = sourceComponent.GetType();
-            Component destinationComponent = destination.AddComponent(sourceType);
+            destinationComponent = destination.AddComponent(sourceType);
             CopyComponentValues(sourceComponent, destinationComponent);
         }
+        return destinationComponent;
     }
 
     // Method to copy values from one component to another
