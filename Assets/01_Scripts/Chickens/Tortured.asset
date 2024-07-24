@@ -25,7 +25,7 @@ MonoBehaviour:
   callSound: {fileID: 8300000, guid: 66459500413529c47adaae4a560957a8, type: 3}
   chickenHeadSprite: {fileID: 21300000, guid: f11bce0c5b53760419e175c303e0341c, type: 3}
   chickenBodySprite: {fileID: 21300000, guid: e3dde4d54549f584982cd3afc35948de, type: 3}
-  chickenTailSprite: {fileID: 21300000, guid: e3dde4d54549f584982cd3afc35948de, type: 3}
+  chickenTailSprite: {fileID: 0}
   chickenSpawnScreenExplanation: Always uses its Chicken Scream when able.
   combinedNameFirstHalf: 
   combinedNameSecondHalf: 

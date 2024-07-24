@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.VFX;
+using static Skeleton;
 
 public class NewChickenUI : MonoBehaviour
 {
@@ -133,15 +134,17 @@ public class NewChickenUI : MonoBehaviour
         return firstHalf + " - " + secondHalf + " Chicken";
     }
 
-    private void SetChickenImages(Image[] chickenImages, ChickenData data, ChickenData chickenData = null)
+    private void SetChickenImages(Image[] chickenImages, ChickenData headTailData, ChickenData bodyData = null)
     {
-        if (data.chickenHeadSprite == null) return; // TODO: remove this line when all chickens have sprites
+        chickenImages[2].sprite = headTailData.chickenHeadSprite;
+        chickenImages[1].sprite = headTailData.chickenBodySprite;
 
-        chickenImages[2].sprite = data.chickenHeadSprite;
-        chickenImages[1].sprite = data.chickenBodySprite;
-        chickenImages[0].sprite = data.chickenTailSprite;
+        if (headTailData.chickenTailSprite == null) chickenImages[0].sprite = bodyData.chickenTailSprite;
+        else if (bodyData.chickenTailSprite == null) { }
+        else chickenImages[0].sprite = headTailData.chickenTailSprite;
 
-        if (chickenData != null) chickenImages[1].sprite = chickenData.chickenBodySprite;
+
+        if (bodyData != null) chickenImages[1].sprite = bodyData.chickenBodySprite;
     }
 
     public void Continue()
