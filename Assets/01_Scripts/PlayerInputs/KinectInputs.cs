@@ -153,8 +153,16 @@ public class KinectInputs : MonoBehaviour
 
         float thresholdHandHeight = calibrationValues.standHandsMeanPosition.y + calibrationValues.jumpDistance * calibrationValues.jumpDistancePercentageToTriggerInput;
 
-        if (currentHandHeight > thresholdHandHeight) OnJump?.Invoke();
-        else OnStopJump?.Invoke();
+        if (currentHandHeight > thresholdHandHeight)
+        {
+            print("jump");
+            OnJump?.Invoke();
+        }
+        else
+        {
+            print("Height: " + currentHandHeight + "Threshold: " + thresholdHandHeight);
+            OnStopJump?.Invoke();
+        }
     }
 
     private void CheckDropEgg()
