@@ -3681,6 +3681,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6314742583159082674, guid: 8501343530130654aac497e25d8db543,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7272904736494988563, guid: 8501343530130654aac497e25d8db543,
         type: 3}
       propertyPath: squatDebugText
