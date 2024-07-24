@@ -28,5 +28,5 @@ MonoBehaviour:
   chickenTailSprite: {fileID: 21300000, guid: a44afe8b0bfc6a14d983a84b4753ab2d, type: 3}
   chickenSpawnScreenExplanation: Shows distance between the chicken and the Farm'O'Bot.
     Shows direction to Farm'O'Bot.
-  combinedNameFirstHalf: 
-  combinedNameSecondHalf: 
+  combinedNameFirstHalf: Robot
+  combinedNameSecondHalf: Bot
