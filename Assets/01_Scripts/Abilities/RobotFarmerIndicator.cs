@@ -42,7 +42,7 @@ public class RobotFarmerIndicator : MonoBehaviour
         LookAtOnYAxis(farmerHeadPointer, farmer);
         LookAtOnYAxis(farmerBodyPointer, farmer);
 
-        if(!chicken.IsControlledByPlayer) SoundManager.Instance.EndLoopingSound(sonarAudioSource);
+        if(chicken != null && !chicken.IsControlledByPlayer) SoundManager.Instance.EndLoopingSound(sonarAudioSource);
     }
     void LookAtOnYAxis(Transform pointer, Transform target)
     {

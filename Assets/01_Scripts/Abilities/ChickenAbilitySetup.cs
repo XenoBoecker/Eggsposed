@@ -35,7 +35,7 @@ public class ChickenAbilitySetup : MonoBehaviour
         chicken.OnCall += CallMaybe;
         chicken.OnGetCallCooldown += SetChickenCallCDPercentage;
 
-        chicken.OnCheckCanCallEvent += DebugCheckCanCall;
+        // chicken.OnCheckCanCallEvent += DebugCheckCanCall;
 
         this.chicken = chicken;
     }
