@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4763945598278013987}
   - component: {fileID: 3714261817340318802}
   - component: {fileID: 296799872383510981}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: NewChickenImage (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.000030517578}
-  m_SizeDelta: {x: 470.5078, y: 470.5078}
+  m_SizeDelta: {x: 891.0701, y: 501.2269}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3714261817340318802
 CanvasRenderer:
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 130298d44afbfdf468ee88cd14f39889, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 6030797589518792080}
   - component: {fileID: 2322471280155020028}
   - component: {fileID: 6364705916664018144}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: NewChickenName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 2915396691087677752}
   - component: {fileID: 3946962283377627639}
   - component: {fileID: 7955932191225858624}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: OldChickenLeft (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 160, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3946962283377627639
 CanvasRenderer:
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 130298d44afbfdf468ee88cd14f39889, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 3804117573459512282}
   - component: {fileID: 1723915648840795325}
   - component: {fileID: 8956255921086691782}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: WoodenBoard1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6969164911094518213}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Texts--------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 406055170417444131}
   - component: {fileID: 490564897494612684}
   - component: {fileID: 5119154262436707890}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: WoodenBoxBackground2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -472,6 +472,81 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2637809253663627038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8954287243176489460}
+  - component: {fileID: 3868625085498678411}
+  - component: {fileID: 7669169450263152467}
+  m_Layer: 15
+  m_Name: OldChickenRight (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8954287243176489460
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2637809253663627038}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8932084609142919532}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_SizeDelta: {x: 160, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3868625085498678411
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2637809253663627038}
+  m_CullTransparentMesh: 1
+--- !u!114 &7669169450263152467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2637809253663627038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: dd276e5d25a9c3a42b95d5f60e63c033, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2994548646299532542
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,7 +558,7 @@ GameObject:
   - component: {fileID: 5820428272505050156}
   - component: {fileID: 6389953816015110724}
   - component: {fileID: 295800541317938461}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: WoodenBoard 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +633,7 @@ GameObject:
   - component: {fileID: 1448743362379485913}
   - component: {fileID: 7243869310293604759}
   - component: {fileID: 5511580910440386990}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: OldChickenRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +658,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 676, y: 276}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 160, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7243869310293604759
 CanvasRenderer:
@@ -613,7 +688,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e01620a68ea131e4ea01e3e2aa771f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -634,7 +709,7 @@ GameObject:
   - component: {fileID: 1315571115032771462}
   - component: {fileID: 7942182371522713627}
   - component: {fileID: 1144473824236707920}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: OldChickenLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -659,7 +734,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -685, y: 276}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 160, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7942182371522713627
 CanvasRenderer:
@@ -689,7 +764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e01620a68ea131e4ea01e3e2aa771f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -710,7 +785,7 @@ GameObject:
   - component: {fileID: 348154722766792574}
   - component: {fileID: 1890575046636567071}
   - component: {fileID: 6389889222091306584}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: NewChickenImage (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -734,7 +809,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0.000030517578}
-  m_SizeDelta: {x: 470.5078, y: 470.5078}
+  m_SizeDelta: {x: 891.0701, y: 501.2269}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1890575046636567071
 CanvasRenderer:
@@ -764,7 +839,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: dd276e5d25a9c3a42b95d5f60e63c033, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -786,7 +861,7 @@ GameObject:
   - component: {fileID: 4153195177883159356}
   - component: {fileID: 1788473815574933618}
   - component: {fileID: 1591872052193118917}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: NewChickenUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -886,7 +961,7 @@ GameObject:
   - component: {fileID: 2301844495321961753}
   - component: {fileID: 7930888717962923354}
   - component: {fileID: 7129140332643940421}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: SquatToContinue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -910,7 +985,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 18, y: -398}
-  m_SizeDelta: {x: 443.12, y: 221.5597}
+  m_SizeDelta: {x: 295.1957, y: 145.9263}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7930888717962923354
 CanvasRenderer:
@@ -961,7 +1036,7 @@ GameObject:
   - component: {fileID: 7543733696574457503}
   - component: {fileID: 1418610867876437786}
   - component: {fileID: 2007468667683493892}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: WoodenFrameBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1036,7 +1111,7 @@ GameObject:
   - component: {fileID: 2279373531768159302}
   - component: {fileID: 777986072603200232}
   - component: {fileID: 1853193030599346050}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: ChickenScreamDescryptionLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1092,8 +1167,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"Spins and flies straight up into the air when using your Scream."'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d95742de3931d8645925d62953c1e639, type: 2}
+  m_sharedMaterial: {fileID: -4944805065819261824, guid: d95742de3931d8645925d62953c1e639,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1117,8 +1193,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1170,7 +1246,7 @@ GameObject:
   - component: {fileID: 8932084609142919532}
   - component: {fileID: 4909897751554944753}
   - component: {fileID: 1644163436575979432}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: OldChickenRight (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1188,13 +1264,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8954287243176489460}
   m_Father: {fileID: 1448743362379485913}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.000061035156, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 160, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4909897751554944753
 CanvasRenderer:
@@ -1224,7 +1301,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 130298d44afbfdf468ee88cd14f39889, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1245,7 +1322,7 @@ GameObject:
   - component: {fileID: 9068041406743425524}
   - component: {fileID: 1167841872808690824}
   - component: {fileID: 5966972676623572916}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: WoodenBoxBackground1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1320,7 +1397,7 @@ GameObject:
   - component: {fileID: 7284990192837182426}
   - component: {fileID: 9180155239897128888}
   - component: {fileID: 8604744740723057124}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: NewChickenImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1345,7 +1422,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 86}
-  m_SizeDelta: {x: 470.5078, y: 470.5078}
+  m_SizeDelta: {x: 891.0701, y: 501.2269}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9180155239897128888
 CanvasRenderer:
@@ -1375,7 +1452,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e01620a68ea131e4ea01e3e2aa771f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1396,7 +1473,7 @@ GameObject:
   - component: {fileID: 4307080739615739795}
   - component: {fileID: 8827301894954421019}
   - component: {fileID: 8695457510074496409}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: ChickenScreamDescryptionRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1478,8 +1555,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1531,7 +1608,7 @@ GameObject:
   - component: {fileID: 1120675279293310273}
   - component: {fileID: 5085984793087620911}
   - component: {fileID: 1868435384522708612}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: OldChickenLeft (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1555,7 +1632,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 160, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5085984793087620911
 CanvasRenderer:
@@ -1585,7 +1662,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: dd276e5d25a9c3a42b95d5f60e63c033, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
