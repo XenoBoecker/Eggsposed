@@ -137,14 +137,15 @@ public class NewChickenUI : MonoBehaviour
     private void SetChickenImages(Image[] chickenImages, ChickenData headTailData, ChickenData bodyData = null)
     {
         chickenImages[2].sprite = headTailData.chickenHeadSprite;
+        
         chickenImages[1].sprite = headTailData.chickenBodySprite;
+        if (bodyData != null) chickenImages[1].sprite = bodyData.chickenBodySprite;
 
         if (headTailData.chickenTailSprite == null) chickenImages[0].sprite = bodyData.chickenTailSprite;
-        else if (bodyData.chickenTailSprite == null) { }
+        else if ( bodyData != null && bodyData.chickenTailSprite == null) { }
         else chickenImages[0].sprite = headTailData.chickenTailSprite;
 
 
-        if (bodyData != null) chickenImages[1].sprite = bodyData.chickenBodySprite;
     }
 
     public void Continue()
