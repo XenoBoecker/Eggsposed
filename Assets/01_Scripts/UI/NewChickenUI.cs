@@ -136,13 +136,35 @@ public class NewChickenUI : MonoBehaviour
 
     private void SetChickenImages(Image[] chickenImages, ChickenData headTailData, ChickenData bodyData = null)
     {
-        chickenImages[2].sprite = headTailData.chickenHeadSprite;
+        chickenImages[2].gameObject.SetActive(true);
+        chickenImages[1].gameObject.SetActive(true);
+        chickenImages[0].gameObject.SetActive(true);
         
+        if (headTailData.chickenHeadSprite != null)
+        {
+            chickenImages[2].sprite = headTailData.chickenHeadSprite;
+        }
+        else
+        {
+            chickenImages[2].gameObject.SetActive(false);
+        }
+
         chickenImages[1].sprite = headTailData.chickenBodySprite;
         if (bodyData != null) chickenImages[1].sprite = bodyData.chickenBodySprite;
 
-        if (headTailData.chickenTailSprite == null) chickenImages[0].sprite = bodyData.chickenTailSprite;
-        else if ( bodyData != null && bodyData.chickenTailSprite == null) { }
+        if (headTailData.chickenTailSprite == null)
+        {
+            if (bodyData == null || bodyData.chickenTailSprite == null)
+            {
+                chickenImages[0].sprite = null;
+                chickenImages[0].gameObject.SetActive(false);
+            }
+            else
+            {
+                chickenImages[0].sprite = bodyData.chickenTailSprite;
+            }
+        }
+        else if (bodyData != null && bodyData.chickenTailSprite == null) { }
         else chickenImages[0].sprite = headTailData.chickenTailSprite;
 
 
