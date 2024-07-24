@@ -24,6 +24,7 @@ public class ChickenAnimationController : MonoBehaviour
         cst.OnStopFalling += () => anim.SetBool("Falling", false);
         cst.OnStartWalking += () => anim.SetBool("Walking", true);
         cst.OnStopWalking += () => anim.SetBool("Walking", false);
+        cst.OnStopWalking += () => anim.SetTrigger("OnStopWalking");
         cst.OnSitDown += () => anim.SetBool("Sitting", true);
         cst.OnStandUp += () => anim.SetBool("Sitting", false);
         cst.OnCall += OnCall;
