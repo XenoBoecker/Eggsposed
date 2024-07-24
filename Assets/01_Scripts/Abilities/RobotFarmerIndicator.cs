@@ -8,6 +8,7 @@ public class RobotFarmerIndicator : MonoBehaviour
 
 
     [SerializeField] ChickenData robotChickenData;
+    Chicken chicken;
 
 
     [SerializeField] GameObject distanceCanvas;
@@ -40,6 +41,8 @@ public class RobotFarmerIndicator : MonoBehaviour
 
         LookAtOnYAxis(farmerHeadPointer, farmer);
         LookAtOnYAxis(farmerBodyPointer, farmer);
+
+        if(!chicken.IsControlledByPlayer) SoundManager.Instance.EndLoopingSound(sonarAudioSource);
     }
     void LookAtOnYAxis(Transform pointer, Transform target)
     {
@@ -54,8 +57,9 @@ public class RobotFarmerIndicator : MonoBehaviour
         }
     }
 
-    public void Activate()
+    public void Activate(Chicken chicken)
     {
+        this.chicken = chicken;
         SoundManager.Instance.StartLoopingSound(SoundManager.Instance.chickenSFX.sonarBeeping, sonarAudioSource);
         distanceCanvas.SetActive(true);
     }

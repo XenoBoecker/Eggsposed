@@ -6,6 +6,6 @@ public class RobotSetup : ChickenAbilitySetup
     {
         base.Setup(chicken);
 
-        GetComponentInChildren<RobotFarmerIndicator>().Activate();
+        GetComponentInChildren<RobotFarmerIndicator>().Activate(chicken);
     }
 }
