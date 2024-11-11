@@ -45,7 +45,7 @@ public class MainMenu : MonoBehaviour
         if(inputs == null)
         {
             inputs = FindObjectOfType <KinectInputs>();
-            inputs.OnSitDown += InputConfirm;
+            if(inputs != null) inputs.OnSitDown += InputConfirm;
         }
 
         timeSinceLastInput += Time.deltaTime;

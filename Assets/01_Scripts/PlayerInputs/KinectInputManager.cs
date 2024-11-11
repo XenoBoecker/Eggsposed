@@ -29,9 +29,17 @@ public class KinectInputManager : ChickenInputManager
 
     private void Setup()
     {
+        Debug.Log("Try Setup Kinect Inputs");
         inputs = FindObjectOfType<KinectInputs>();
+        inputs.name = "CurrentKinectInputs";
 
-        if (inputs == null) return;
+        if (inputs == null)
+        {
+            Debug.Log("No KinectInputs found");
+            return;
+        }
+
+        Debug.Log("Kinect Inputs found and setup");
 
         inputs.OnSitDown += SitDown;
         inputs.OnStandUp += StandUp;
@@ -40,5 +48,18 @@ public class KinectInputManager : ChickenInputManager
         inputs.OnStopJump += StopJump;
 
         inputs.OnDropEgg += PickupDropEgg;
+    }
+
+    private void OnDisable()
+    {
+
+        inputs.OnSitDown -= SitDown;
+        inputs.OnStandUp -= StandUp;
+
+        inputs.OnJump -= Jump;
+        inputs.OnStopJump -= StopJump;
+
+        inputs.OnDropEgg -= PickupDropEgg;
+
     }
 }

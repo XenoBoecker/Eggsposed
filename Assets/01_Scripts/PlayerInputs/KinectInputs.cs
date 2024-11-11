@@ -50,7 +50,7 @@ public class KinectInputs : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        kinectBody = FindObjectOfType<KinectBody>();
+        kinectBody = FindObjectOfType<KinectBody>(false);
 
         head = kinectBody.head;
         pelvis = kinectBody.pelvis;
@@ -58,7 +58,7 @@ public class KinectInputs : MonoBehaviour
         rightHand = kinectBody.rightHand;
 
         //OnStandUp += () => print("Stand Up");
-        OnSitDown += () => print("Sit Down");
+        //OnSitDown += () => print("Sit Down");
         //OnJump += () => print("Jump");
         //OnStopJump += () => print("Stop Jump");
     }

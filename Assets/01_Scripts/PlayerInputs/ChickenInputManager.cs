@@ -23,6 +23,7 @@ public class ChickenInputManager : MonoBehaviour
 
     public void Jump()
     {
+        print("Jump");
         if (Time.timeScale == 0) return;
         if (chickenController == null) chickenController = GetComponent<BaseChickenController>();
         chickenController.jump = true;
@@ -37,8 +38,14 @@ public class ChickenInputManager : MonoBehaviour
 
     public void SitDown()
     {
+        Debug.Log(gameObject.name + " Sit");
         if (Time.timeScale == 0) return;
-        if (chickenController == null) chickenController = GetComponent<BaseChickenController>();
+        if (chickenController == null)
+        {
+            if (this == null) Debug.Log("   this is null");
+            chickenController = GetComponent<BaseChickenController>();
+            if (chickenController == null) Debug.Log(gameObject.name + ": can not find BaseChickenController");
+        }
         chickenController.SitDown();
     }
 

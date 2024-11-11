@@ -152,6 +152,9 @@ public class CameraController : MonoBehaviour
         TargetCurrentPlayerChicken();
 
         TimeManager.Instance.SetTimeScale(1);
+
+        kinectInputs.OnSitDown -= OnConfirm;
+        kinectInputs.OnStandUp -= EndIntro;
     }
 
     void TargetCurrentPlayerChicken()
@@ -209,7 +212,7 @@ public class CameraController : MonoBehaviour
             while (waitingForInput)
             {
                 float timeWaited = Time.realtimeSinceStartup - waitingTimeStart;
-                print(timeWaited);
+                // print(timeWaited);
                 if (controls.Player.Breed.triggered) waitingForInput = false;
 
                 yield return null;

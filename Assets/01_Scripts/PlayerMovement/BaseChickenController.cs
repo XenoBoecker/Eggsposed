@@ -117,6 +117,7 @@ public class BaseChickenController : BaseCharacterController
 
     public void SitDown()
     {
+        Debug.Log("SitDown");
         _sitting = true;
 
 
@@ -140,6 +141,7 @@ public class BaseChickenController : BaseCharacterController
 
     public void StandUp()
     {
+        Debug.Log("Stand Up");
         _sitting = false;
         _breeding = false;
         
@@ -148,7 +150,11 @@ public class BaseChickenController : BaseCharacterController
 
     protected override Vector3 CalcDesiredVelocity()
     {
-        if (sitting) return Vector3.zero;
+        if (sitting)
+        {
+            Debug.Log("Chicken is sitting");
+            return Vector3.zero;
+        }
 
         if (OnCalcDesiredVelocityStart != null)
         {
